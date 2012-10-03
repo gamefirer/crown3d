@@ -4,6 +4,7 @@
 package blade3d.editor
 {
 	import away3d.containers.ObjectContainer3D;
+	import away3d.containers.View3D;
 	import away3d.core.base.Geometry;
 	import away3d.debug.Debug;
 	import away3d.entities.Mesh;
@@ -17,6 +18,7 @@ package blade3d.editor
 	import away3d.textures.BitmapTexture;
 	import away3d.textures.BitmapTextureCache;
 	
+	import blade3d.BlEngine;
 	import blade3d.resource.BlImageResource;
 	import blade3d.resource.BlModelResource;
 	import blade3d.resource.BlResource;

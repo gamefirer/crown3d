@@ -438,6 +438,10 @@ package blade3d.editor
 			}
 			else if(_colorIndex == 1)
 			{
+				BlEngine.testView.renderer.backgroundR = Number(color.getRed())/0xff;
+				BlEngine.testView.renderer.backgroundG = Number(color.getGreen())/0xff;
+				BlEngine.testView.renderer.backgroundB = Number(color.getBlue())/0xff;
+				
 				DefaultRenderer(BlEngine.mainView.renderer).lightMapRenderer.backgroundR = Number(color.getRed())/0xff;
 				DefaultRenderer(BlEngine.mainView.renderer).lightMapRenderer.backgroundG = Number(color.getGreen())/0xff;
 				DefaultRenderer(BlEngine.mainView.renderer).lightMapRenderer.backgroundB = Number(color.getBlue())/0xff;
