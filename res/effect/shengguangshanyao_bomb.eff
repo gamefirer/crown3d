@@ -1,0 +1,19 @@
+<effect>
+  <property lifetime="400" cache="1"/>
+  <particle mesh="" texture="lighting3" endTime="0" billboard="false" max="10" label="" global="true" pos="" orient="4" startTime="0">
+    <uv_effector sv="0.5" su="0.5">
+      <keyframe v="0" lifepercent="0.0" u="0.5"/>
+      <keyframe v="0.5" lifepercent="0.2" u="0.5"/>
+      <keyframe v="0.5" lifepercent="0.9" u="0"/>
+    </uv_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter emittime="0" sizerange="200" g="200" emitperiod="0" lifetimerange="100" rotvelrange="0" emitrate="40" sizeX="100" rotvel="0" rotrange="0.0" sizeY="100" rot="0" velrange="0" a="255" rectz="5" b="200" r="200" recty="5" rectx="5" lifetime="100" directionto="1 1 1" vel="27" directionfrom="-1 -1 -1"/>
+    <attract_effector p="" f="0"/>
+    <force_effector dir="" f="0"/>
+    <color_effector/>
+    <size_effector/>
+  </particle>
+</effect>

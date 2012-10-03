@@ -1,0 +1,14 @@
+<effect>
+  <stripe texture="mingheshu" endTime="0" label="" wide="60" widedir="2" timeduv="true" endtime="5000" startTime="0" billboard="true" max="30" starttime="0" stripenum="1" pos="" dragtime="300">
+    <dragger a="255" g="255" b="118" r="77"/>
+    <color_effector r="255" g="200" b="0"/>
+  </stripe>
+  <property cache="20" lifetime="3000">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+</effect>

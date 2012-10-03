@@ -1,0 +1,80 @@
+<effect>
+  <quad width="100" zUp="true" texture="ripple" pos="" billboard="false" label="q1" orient="1.0" starttime="0" rot="0" endtime="200" height="100">
+    <uv>
+      <frame su="1" r="0" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="-500"/>
+    </rotate>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <scale>
+      <frame x="4" z="4" durtime="200" y="4"/>
+      <frame x="1" z="1" durtime="1000" y="1"/>
+    </scale>
+    <color>
+      <frame r="106.0" b="255.0" g="146.0" durtime="200" a="255.0"/>
+      <frame r="103.0" b="255" g="109.0" durtime="1000" a="255.0"/>
+    </color>
+  </quad>
+  <quad zUp="true" texture="t_blast_002" orient="1.0" pos="" rot="0" label="q2" starttime="0" billboard="false" width="100" endtime="400" height="100">
+    <scale>
+      <frame x="1" z="1" durtime="400" y="1"/>
+      <frame x="4" z="4" durtime="1000" y="4"/>
+    </scale>
+    <uv>
+      <frame su="1" r="0" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="300"/>
+    </rotate>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <color>
+      <frame r="60.0" b="255.0" g="203.0" durtime="400" a="255"/>
+      <frame r="27.0" b="255" g="103.0" durtime="1000" a="130.0"/>
+    </color>
+  </quad>
+  <property cache="1" lifetime="600">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <particle startTime="0" global="true" max="10" texture="t_star_003" pos="" mesh="" label="" orient="2.0" billboard="false" endTime="300">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <color_effector>
+      <keyframe lifepercent="0" r="0.0" b="250.0" g="190.0"/>
+      <keyframe lifepercent="0.8" r="0.0" b="255" g="114.0"/>
+      <keyframe lifepercent="1" r="0.0" b="255" g="41.0"/>
+    </color_effector>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <rect_emitter lifetime="30" directionto="0 1 0" lifetimerange="800" emittime="0" directionfrom="0 0 0" emitperiod="0" sizerange="20" g="255.0" rotvelrange="0" emitrate="20" rotvel="0" r="255.0" vel="300" rotrange="0" velrange="0" rot="0" sizeY="100" rectz="60" b="255.0" sizeX="100" recty="0" a="212.0" rectx="60"/>
+    <size_effector>
+      <keyframe sizeY="100" lifepercent="0" sizeX="50"/>
+      <keyframe sizeY="300" lifepercent="0.2" sizeX="50"/>
+    </size_effector>
+    <force_effector dir="" f="0"/>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <attract_effector p="" f="0"/>
+    <uv_effector sv="1" su="1"/>
+    <alpha_effector>
+      <keyframe lifepercent="0" a="0"/>
+      <keyframe lifepercent="0.3" a="255"/>
+      <keyframe lifepercent="1" a="0"/>
+    </alpha_effector>
+  </particle>
+</effect>

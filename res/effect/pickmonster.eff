@@ -1,0 +1,29 @@
+<effect>
+  <property lifetime="3000" cache="1">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+  <particle texture="chuansongdian" label="" global="true" orient="0" max="10" startTime="0" pos="" endTime="0" mesh="">
+    <color_effector>
+      <keyframe g="255" b="255" lifepercent="0.0" r="255"/>
+      <keyframe g="161.0" b="255" lifepercent="1.0" r="135.0"/>
+    </color_effector>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="0.0"/>
+      <keyframe lifepercent="0.2" a="255.0"/>
+      <keyframe lifepercent="1.0" a="0.0"/>
+    </alpha_effector>
+    <rect_emitter sizerange="20" g="200" lifetimerange="500" rotvelrange="0" emitrate="4" emitperiod="0" a="255" rotrange="0" rot="0" sizeY="100" velrange="18.0" vel="56.0" sizeX="100" rectz="20" b="200" recty="0.0" rotvel="0" rectx="20" lifetime="500" directionto="0 1 0" r="200" directionfrom="0 1 0" emittime="0"/>
+    <size_effector>
+      <keyframe sizeX="120" lifepercent="0.0" sizeY="100"/>
+      <keyframe sizeX="100" lifepercent="1.0" sizeY="120"/>
+    </size_effector>
+  </particle>
+</effect>

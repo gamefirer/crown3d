@@ -1,0 +1,20 @@
+<effect>
+  <property cache="1" lifetime="2000"/>
+  <particle mesh="" texture="lightningball2" label="" orient="0" max="5" startTime="0" endTime="0" pos="" global="true">
+    <uv_effector sv="0.5" su="0.5">
+      <keyframe v="0" u="0" lifepercent="0.0"/>
+      <keyframe v="0" u="0.5" lifepercent="0.3"/>
+      <keyframe v="0.5" u="0" lifepercent="0.6"/>
+      <keyframe v="0.5" u="0.5" lifepercent="0.8"/>
+    </uv_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter emitrate="10" sizeY="80" g="200" rot="0" sizeX="80" emitperiod="10000" directionfrom="-1 -1 -1" lifetime="500" rotvelrange="0" b="200" sizerange="30" emittime="1000" rectz="0.0" rotvel="0" recty="0.0" r="200" rectx="0.0" rotrange="360" velrange="0" lifetimerange="200" vel="0" directionto="1 1 1" a="255"/>
+    <size_effector>
+      <keyframe sizeY="80" sizeX="80" lifepercent="0.0"/>
+      <keyframe sizeY="50" sizeX="50" lifepercent="1.0"/>
+    </size_effector>
+  </particle>
+</effect>

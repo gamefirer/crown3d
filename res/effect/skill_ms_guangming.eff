@@ -1,0 +1,138 @@
+<effect>
+  <particle label="up1" mesh="" max="50" endTime="0" global="true" orient="0" pos="" texture="t_star_003" rot="" startTime="0">
+    <rect_emitter b="200" rectx="50" lifetime="200" sizeY="100" directionto="0 1 0" sizeX="100" directionfrom="0 0 0" emitrate="30" emittime="300" sizerange="20" emitperiod="10000" lifetimerange="200" r="200" g="200" rotvel="0" a="255" rotrange="0" recty="20" rot="0" velrange="0" rectz="50" vel="800" rotvelrange="0"/>
+    <force_effector dir="" f="0"/>
+    <scale/>
+    <attract_effector f="0" p=""/>
+    <uv_effector su="1" sv="1"/>
+    <rotate>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </rotate>
+    <alpha_effector>
+      <keyframe a="0" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.2"/>
+      <keyframe a="255" lifepercent="0.8"/>
+      <keyframe a="0" lifepercent="1"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe r="255" g="255" b="152" lifepercent="0.1"/>
+      <keyframe r="255" g="255" b="117" lifepercent="1"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeY="60" sizeX="60" lifepercent="0.1"/>
+      <keyframe sizeY="80" sizeX="10" lifepercent="1"/>
+    </size_effector>
+  </particle>
+  <particle label="up2" mesh="" max="50" endTime="0" global="true" orient="0" rot="" texture="t_star_003" pos="" startTime="0">
+    <rect_emitter rectx="50" lifetime="200" sizeY="100" directionto="0 1 0" sizeX="100" directionfrom="0 0 0" emitrate="30" emittime="300" sizerange="50" emitperiod="10000" lifetimerange="200" rotvelrange="0" g="200" rotvel="0" a="255" r="200" rotrange="0" b="200" rot="0" velrange="0" rectz="50" vel="800" recty="20"/>
+    <force_effector f="0" dir=""/>
+    <scale/>
+    <attract_effector f="0" p=""/>
+    <uv_effector su="1" sv="1"/>
+    <rotate>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </rotate>
+    <alpha_effector>
+      <keyframe a="0" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.2"/>
+      <keyframe a="255" lifepercent="0.8"/>
+      <keyframe a="0" lifepercent="1"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe r="255" g="255" b="152" lifepercent="0.1"/>
+      <keyframe r="255" g="199" b="38" lifepercent="1"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeY="60" sizeX="60" lifepercent="0.1"/>
+      <keyframe sizeY="80" sizeX="10" lifepercent="1"/>
+    </size_effector>
+  </particle>
+  <property cache="1" lifetime="600"/>
+  <mesh pos="0 0 0" file="m_circle_003" label="" rot="" texture="t_wave_002" endtime="0" starttime="0">
+    <color>
+      <frame r="255" g="180" durtime="600" a="255" b="65"/>
+      <frame r="250" g="220" durtime="1000" a="0.0" b="79"/>
+    </color>
+    <uv>
+      <frame r="0" su="1" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <rotate>
+      <frame z="0" y="200" durtime="1000" x="0"/>
+    </rotate>
+    <scale loop="true">
+      <frame z="2" y="1" durtime="600" x="2"/>
+      <frame z="2" y="4" durtime="1000" x="2"/>
+    </scale>
+  </mesh>
+  <mesh pos="0 0 0" file="m_turbo_004" label="" starttime="0" rot="" texture="t_shock_001" endtime="0">
+    <color>
+      <frame r="247.0" g="177.0" durtime="500" a="255" b="62.0"/>
+      <frame r="255" g="137.0" durtime="100" a="0.0" b="5.0"/>
+      <frame r="255" g="255" durtime="1000" a="0.0" b="255"/>
+    </color>
+    <path>
+      <frame z="0" y="0" durtime="600" x="0"/>
+      <frame z="0" y="200" durtime="1000" x="0"/>
+    </path>
+    <scale loop="false">
+      <frame z="2" y="0.2" durtime="600" x="2"/>
+      <frame z="1" y="4" durtime="1000" x="1"/>
+    </scale>
+    <rotate>
+      <frame z="0" y="720" durtime="600" x="0"/>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </rotate>
+  </mesh>
+  <mesh pos="0 0 0" file="tong" label="cylinder" starttime="0" rot="" texture="quntizhiliao" endtime="0">
+    <color>
+      <frame r="255.0" g="185.0" durtime="600" a="140.0" b="81.0"/>
+      <frame r="255" g="169.0" durtime="1000" a="0.0" b="8.0"/>
+    </color>
+    <scale>
+      <frame z="4" y="4" durtime="600" x="4"/>
+      <frame z="5" y="20" durtime="1000" x="5"/>
+    </scale>
+    <rotate>
+      <frame z="0" y="200" durtime="1000" x="0"/>
+    </rotate>
+  </mesh>
+  <quad label="decal1" height="100" rot="0" width="100" billboard="false" orient="1" pos="" texture="t_glow_003" endtime="0" starttime="0">
+    <color>
+      <frame r="255" g="255" durtime="50" a="50" b="35"/>
+      <frame r="255" g="169" durtime="150" a="255" b="24"/>
+      <frame r="255" g="255" durtime="5000" a="0.0" b="133"/>
+    </color>
+    <uv>
+      <frame r="0" su="1" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <scale loop="true">
+      <frame z="5" y="5" durtime="200" x="5"/>
+      <frame z="1" y="1" durtime="10000" x="1"/>
+    </scale>
+    <rotate>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </rotate>
+    <path>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </path>
+  </quad>
+  <quad label="decal2" height="100" rot="0" width="100" billboard="false" orient="1" pos="" texture="t_glow_003" endtime="0" starttime="0">
+    <color>
+      <frame r="255" g="252" a="0.0" durtime="200" b="35"/>
+      <frame r="255" g="188" a="50" durtime="50" b="49"/>
+      <frame r="255" g="255" durtime="150" a="255" b="68"/>
+      <frame r="255" g="191" durtime="5000" a="0.0" b="109"/>
+    </color>
+    <uv>
+      <frame r="0" su="1" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <scale loop="true">
+      <frame z="4" y="4" durtime="200" x="4"/>
+      <frame z="4" y="4" durtime="200" x="4"/>
+      <frame z="1" y="1" durtime="500" x="1"/>
+    </scale>
+    <rotate>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </rotate>
+  </quad>
+</effect>

@@ -1,0 +1,116 @@
+<effect>
+  <quad label="decal" height="100" texture="t_decal_003" pos="" width="100" orient="1" billboard="false" rot="0" endtime="0" starttime="0">
+    <color>
+      <frame r="255" g="255" a="255" durtime="700" b="255"/>
+      <frame r="255" g="255" a="120" durtime="300" b="255"/>
+      <frame r="255" g="255" a="0" durtime="1000" b="255"/>
+    </color>
+    <uv>
+      <frame r="0" v="0" u="0" durtime="1000" sv="1" su="1"/>
+    </uv>
+    <rotate>
+      <frame z="0" durtime="1000" y="50" x="0"/>
+    </rotate>
+    <scale>
+      <frame z="3" durtime="400" y="1" x="3"/>
+      <frame z="2.5" durtime="400" y="1" x="2.5"/>
+      <frame z="3" durtime="400" y="1" x="3"/>
+    </scale>
+  </quad>
+  <property lifetime="1000" cache="1">
+    <scale>
+      <frame z="1" durtime="0" y="1" x="1"/>
+    </scale>
+    <path>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </path>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+  </property>
+  <mesh label="lightmesh" file="quan" texture="tx_pet_chunvzuo_034" pos="0 0 0" endtime="0" starttime="0">
+    <color>
+      <frame r="236" g="105" a="255" durtime="1000" b="33"/>
+      <frame r="255" g="78" a="113" durtime="1000" b="54"/>
+    </color>
+    <uv repeat="true" smooth="true">
+      <frame r="1.56" v="0" u="0" durtime="500" sv="1" su="1"/>
+      <frame r="1.56" v="0" u="0" durtime="0" sv="1" su="1"/>
+    </uv>
+    <scale>
+      <frame z="8" durtime="1000" y="1" x="8"/>
+      <frame z="9" durtime="1000" y="40" x="9"/>
+    </scale>
+    <rotate>
+      <frame z="0" durtime="1000" y="500" x="0"/>
+    </rotate>
+  </mesh>
+  <mesh label="firecylinder" file="m_turbo_001" texture="t_fire_002" pos="0 -80 0" endtime="0" starttime="0">
+    <color>
+      <frame r="255" g="255" a="0" durtime="200" b="255"/>
+      <frame r="255" g="255" a="255" durtime="600" b="255"/>
+      <frame r="255" g="255" a="109" durtime="200" b="255"/>
+      <frame r="255" g="255" a="0.0" durtime="1000" b="255"/>
+    </color>
+    <path>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </path>
+    <scale>
+      <frame z="2" durtime="800" y="1" x="2"/>
+      <frame z="1" durtime="200" y="4" x="1"/>
+      <frame z="0.8" durtime="1000" y="4" x="0.8"/>
+    </scale>
+    <uv>
+      <frame r="0" v="0" u="0" durtime="1000" sv="1" su="1"/>
+    </uv>
+    <rotate>
+      <frame z="0" durtime="1000" y="800" x="0"/>
+    </rotate>
+  </mesh>
+  <particle label="fire" texture="t_decal_002" endTime="0" max="5" rot="" orient="1" global="false" billboard="false" pos="0 0 0" startTime="0" mesh="">
+    <scale>
+      <frame z="1" durtime="1000" y="1" x="1"/>
+    </scale>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.5"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <size_effector>
+      <keyframe lifepercent="0.1" sizeY="350" sizeX="350"/>
+      <keyframe lifepercent="1" sizeY="150" sizeX="150"/>
+    </size_effector>
+    <rect_emitter grange="0" sizeY="100" rrange="0" sizeX="100" arange="0" lifetimerange="0.0" emitrate="10" r="234" emittime="500" a="255" emitperiod="10000" b="43" lifetime="700" rotvelrange="0" rotvel="-150" rotrange="360" velrange="0" rectz="0.0" recty="0.0" g="89" rectx="0.0" directionto="1 1 1" rot="0" directionfrom="-1 -1 -1" sizerange="100" vel="0" brange="0"/>
+  </particle>
+  <particle label="lightparticle" mesh="" endTime="0" max="10" texture="vocals01" orient="3" global="true" billboard="false" pos="" startTime="0">
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeY="200" sizeX="200"/>
+      <keyframe lifepercent="1" sizeY="2000" sizeX="150"/>
+    </size_effector>
+    <rect_emitter lifetime="500" rotvelrange="0" vel="1000" sizeY="100" sizeX="100" recty="0.0" rotvel="0" velrange="100" lifetimerange="700" rotrange="0" rectz="70" emitrate="15" r="200" g="86" rectx="70" a="255" directionto="0 1 0" rot="0" directionfrom="0 1 0" emittime="0" sizerange="20" emitperiod="0" b="30"/>
+  </particle>
+  <particle label="" mesh="" endTime="0" max="60" rot="" orient="0" global="false" texture="t_fire_004" pos="" startTime="0">
+    <force_effector f="0" dir=""/>
+    <uv_effector sv="1" su="1"/>
+    <alpha_effector>
+      <keyframe lifepercent="0" a="0"/>
+      <keyframe lifepercent="0.3" a="255"/>
+      <keyframe lifepercent="0.8" a="200"/>
+      <keyframe lifepercent="1" a="0"/>
+    </alpha_effector>
+    <color_effector/>
+    <size_effector>
+      <keyframe lifepercent="0.1" sizeY="150" sizeX="150"/>
+      <keyframe lifepercent="0.4" sizeY="200" sizeX="200"/>
+      <keyframe lifepercent="1" sizeY="250" sizeX="250"/>
+    </size_effector>
+    <rect_emitter grange="0" sizeY="100" rrange="0" sizeX="100" arange="0" lifetimerange="100" emitrate="15" r="200" emittime="800" a="255" emitperiod="100000" b="200" lifetime="600" rotvelrange="0" rotvel="0" rotrange="360" velrange="0" rectz="30" recty="0" g="200" rectx="30" directionto="0 1 0" rot="360" directionfrom="0 0 0" sizerange="20" vel="1000" brange="0"/>
+  </particle>
+</effect>

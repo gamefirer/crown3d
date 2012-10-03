@@ -1,0 +1,27 @@
+<effect>
+  <stripe endtime="5000" dragtime="300" wide="100" label="" stripenum="1" endTime="0" max="20" starttime="0" startTime="0" texture="trail1" timeduv="true" pos="" widedir="2" billboard="true">
+    <dragger b="255" r="255" a="155" g="100"/>
+    <color_effector b="0" r="0" g="0"/>
+    <alpha_effector a="-100"/>
+  </stripe>
+  <quad endtime="5000" starttime="0" texture="dian" height="150" width="150" billboard="true" orient="2">
+    <scale>
+      <frame y="0.8" durtime="1000" x="0.8" z="0.8"/>
+      <frame y="1.2" durtime="1000" x="1.2" z="1.2"/>
+    </scale>
+    <color>
+      <frame b="250" durtime="300" a="255" r="255" g="100"/>
+      <frame b="0" durtime="300" a="255" r="185" g="96"/>
+    </color>
+  </quad>
+  <particle label="" global="true" orient="0" endTime="0" max="10" startTime="0" texture="dian" pos="" mesh="">
+    <color_effector b="-50" r="-100" g="100"/>
+    <rect_emitter rectz="0" directionto="1 1 1" sizeX="50" recty="0" rectx="0" lifetime="100" vel="100" emitperiod="0" directionfrom="-1 -1 -1" r="250" sizerange="5" rotvel="0" lifetimerange="200" emittime="0" rotvelrange="0" emitrate="50" a="255" g="50" b="50" rotrange="0" rot="0" velrange="50" size="55" sizeY="50"/>
+    <size_effector size="-200">
+      <keyframe sizeX="100" lifepercent="0.0" sizeY="100"/>
+      <keyframe sizeX="10" lifepercent="1.0" sizeY="10"/>
+    </size_effector>
+    <alpha_effector a="-250"/>
+  </particle>
+  <property lifetime="5000"/>
+</effect>

@@ -1,0 +1,44 @@
+<effect>
+  <property lifetime="3000" cache="5"/>
+  <editor>1.0</editor>
+  <particle label="baozha" starttime="0" endtime="500" pos="0 100 0" blendmode="" max="3" global="true" billboard="true" orient="0" mesh="" texture="baozha6">
+    <rect_emitter emitrate="50" lifetime="1000" lifetimerange="0" a="255" r="255" g="255" b="255" sizeX="200" sizeY="200" sizerange="5" directionfrom="-1 -1 -1" directionto="1 1 1" vel="0" velrange="0" rot="0" rotrange="0" rotvel="0" rotvelrange="0" emitperiod="0" emittime="0" rectx="0" recty="0" rectz="0"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector>
+      <keyframe a="139" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.48"/>
+      <keyframe a="255" lifepercent="0.98"/>
+    </alpha_effector>
+    <color_effector/>
+    <size_effector>
+      <keyframe sizeX="10" sizeY="10" lifepercent="0"/>
+      <keyframe sizeX="400" sizeY="400" lifepercent="0.5"/>
+    </size_effector>
+    <uv_effector su="0.28" sv="0.27">
+      <keyframe u="0.28" v="0" lifepercent="0"/>
+      <keyframe u="0.57" v="0" lifepercent="0.1"/>
+      <keyframe u="0" v="0.28" lifepercent="0.2"/>
+      <keyframe u="0.28" v="0.28" lifepercent="0.3"/>
+      <keyframe u="0.57" v="0.28" lifepercent="0.38"/>
+    </uv_effector>
+  </particle>
+  <mesh label="模型" starttime="0" endtime="1000" pos="0 0 0" blendmode="" alpha="false" texture="daoguang" file="tong">
+    <path close="false" align="false"/>
+    <scale loop="true">
+      <frame durtime="500" x="2" y="20" z="2"/>
+      <frame durtime="490" x="30" y="2" z="30"/>
+      <frame durtime="10" x="30" y="1" z="30"/>
+    </scale>
+    <rotate loop="true">
+      <frame durtime="1000" x="0" y="200" z="0"/>
+    </rotate>
+    <color loop="true">
+      <frame durtime="500" a="100" r="255" g="204" b="0"/>
+      <frame durtime="490" a="0" r="153" g="0" b="0"/>
+      <frame durtime="10" a="0" r="255" g="255" b="255"/>
+    </color>
+    <uv smooth="false" repeat="false"/>
+  </mesh>
+</effect>

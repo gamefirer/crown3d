@@ -1,0 +1,43 @@
+<effect>
+  <property cache="1" lifetime="3000">
+    <scale>
+      <frame z="1" y="1" durtime="0" x="1"/>
+    </scale>
+    <path>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </path>
+    <rotate>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </rotate>
+  </property>
+  <quad label="q1" height="100" pos="" width="100" texture="aura1" orient="1" rot="0" billboard="false" endtime="0" starttime="0">
+    <color>
+      <frame r="255.0" g="255" durtime="1000" a="196" b="62.0"/>
+      <frame r="255.0" g="255" durtime="1000" a="140" b="68"/>
+    </color>
+    <uv>
+      <frame r="0" su="1" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <scale loop="true">
+      <frame z="1.8" y="1" durtime="1000" x="1.8"/>
+      <frame z="1" y="1" durtime="1000" x="1"/>
+    </scale>
+    <rotate>
+      <frame z="0" y="100" durtime="1000" x="0"/>
+    </rotate>
+  </quad>
+  <quad label="q2" height="100" pos="" width="100" texture="aura1" orient="1" rot="0" billboard="false" endtime="0" starttime="0">
+    <color>
+      <frame r="255.0" g="255" durtime="1200" a="118" b="68"/>
+      <frame r="255.0" g="255.0" durtime="1200" a="172" b="163"/>
+    </color>
+    <scale>
+      <frame z="2" y="1" durtime="1500" x="2"/>
+      <frame z="2" y="1" durtime="200" x="2"/>
+      <frame z="2.5" y="1" durtime="200" x="2.5"/>
+    </scale>
+    <rotate>
+      <frame z="0" y="-30" durtime="1000" x="0"/>
+    </rotate>
+  </quad>
+</effect>

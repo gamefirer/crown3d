@@ -1,0 +1,33 @@
+<effect>
+  <particle pos="" label="quan" mesh="" global="true" texture="dian" max="10" orient="1" billboard="false" startTime="0" endTime="0">
+    <color_effector g="0" b="-250" r="-100">
+      <keyframe g="255" b="169" r="141" lifepercent="0.0"/>
+      <keyframe g="255" b="99" r="48" lifepercent="1"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeX="200" sizeY="200" lifepercent="0.0"/>
+      <keyframe sizeX="150" sizeY="150" lifepercent="0.5"/>
+      <keyframe sizeX="50" sizeY="50" lifepercent="1"/>
+    </size_effector>
+    <rect_emitter emitrate="10" rotvel="0" rectz="0" sizerange="5" lifetimerange="0.0" recty="0" rectx="0" emittime="400" rotrange="0" b="255" emitperiod="10000" a="255" directionto="0 1 0" velrange="50" lifetime="500" rot="0" sizeX="50" vel="250" sizeY="50" g="255" rotvelrange="0" r="255" directionfrom="0 1 0"/>
+    <alpha_effector a="-300">
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.2"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <particle texture="dian" label="xing" global="true" mesh="" billboard="false" pos="" max="10" orient="3.0" startTime="0" endTime="0">
+    <color_effector>
+      <keyframe g="255.0" b="132.0" r="117.0" lifepercent="0.0"/>
+      <keyframe g="255" b="105.0" r="50.0" lifepercent="1.0"/>
+    </color_effector>
+    <size_effector/>
+    <rect_emitter rotvelrange="0" rotvel="0" b="200" sizerange="5" lifetimerange="300" recty="0.0" g="200" rectx="50" emittime="500" rotrange="0" sizeY="50" emitperiod="10000.0" a="255" directionto="0 1 0" velrange="0" lifetime="400" directionfrom="0 1 0" sizeX="5" vel="200" rectz="50" emitrate="40" r="200" rot="0"/>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.2"/>
+      <keyframe a="0.0" lifepercent="1.0"/>
+    </alpha_effector>
+  </particle>
+  <property cache="10" lifetime="700"/>
+</effect>

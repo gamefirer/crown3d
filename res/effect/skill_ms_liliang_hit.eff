@@ -1,0 +1,76 @@
+<effect>
+  <property lifetime="500" cache="1"/>
+  <particle label="" mesh="" endTime="0" max="20" billboard="false" pos="" orient="4" global="false" texture="dian" rot="" blendmode="add" startTime="0">
+    <scale>
+      <frame z="1" durtime="0" y="1" x="1"/>
+    </scale>
+    <force_effector f="0" dir=""/>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <uv_effector sv="1" su="1"/>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="200"/>
+      <keyframe lifepercent="0.4" a="150"/>
+      <keyframe lifepercent="1" a="0"/>
+    </alpha_effector>
+    <rect_emitter grange="0" sizeY="70" rrange="0" sizeX="8" arange="0" lifetimerange="100" emitrate="300" r="200" emittime="300" a="255" emitperiod="10000" b="200" lifetime="300" rotvelrange="0" rotvel="0" rotrange="0" velrange="0" rectz="0" recty="0" g="200" rectx="0" directionto="1 1 1" rot="0" directionfrom="-1 -1 -1" sizerange="80" vel="400" brange="0"/>
+    <color_effector>
+      <keyframe r="255" g="215" lifepercent="0.1" b="87"/>
+      <keyframe r="255" g="217" b="62" lifepercent="1"/>
+    </color_effector>
+    <size_effector/>
+    <attract_effector f="0" p=""/>
+  </particle>
+  <particle label="" mesh="" endTime="0" max="20" texture="t_light_001" pos="" orient="4" global="false" billboard="false" rot="" startTime="0">
+    <scale>
+      <frame z="1" durtime="0" y="1" x="1"/>
+    </scale>
+    <force_effector f="0" dir=""/>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <uv_effector sv="1" su="1"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0"/>
+      <keyframe a="200" lifepercent="0.5"/>
+      <keyframe lifepercent="1" a="0"/>
+    </alpha_effector>
+    <color_effector/>
+    <size_effector>
+      <keyframe lifepercent="0.1" sizeY="35" sizeX="10"/>
+      <keyframe lifepercent="0.8" sizeY="130" sizeX="80"/>
+    </size_effector>
+    <rect_emitter grange="44" sizeY="20" rrange="0.0" sizeX="20" arange="0" lifetimerange="1" emitrate="300" r="255" emittime="300" a="255" emitperiod="10000" b="109" lifetime="300" rotvelrange="0" rotvel="0" rotrange="0" velrange="0" rectz="0" recty="0" g="180" rectx="0" directionto="1 1 1" rot="0" directionfrom="-1 -1 -1" sizerange="50" vel="500" brange="0.0"/>
+    <attract_effector f="0" p=""/>
+  </particle>
+  <particle label="" mesh="" endTime="0" max="5" texture="t_thunder_001" pos="" orient="4" global="false" billboard="false" rot="" startTime="0">
+    <scale>
+      <frame z="1" durtime="0" y="1" x="1"/>
+    </scale>
+    <force_effector f="0" dir=""/>
+    <attract_effector f="0" p=""/>
+    <uv_effector smoothV="false" sv="1" smoothU="true" su="0.25">
+      <keyframe lifepercent="0.1" v="0" u="0"/>
+      <keyframe lifepercent="0.25" v="0" u="0.75"/>
+      <keyframe lifepercent="0.5" v="0" u="0.5"/>
+      <keyframe lifepercent="0.75" v="0" u="0.25"/>
+    </uv_effector>
+    <alpha_effector>
+      <keyframe lifepercent="0" a="255"/>
+      <keyframe lifepercent="0.5" a="200"/>
+      <keyframe a="0" lifepercent="1"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe lifepercent="0.1" g="212" b="0.0" r="255"/>
+    </color_effector>
+    <size_effector>
+      <keyframe lifepercent="0.1" sizeY="100" sizeX="25"/>
+      <keyframe lifepercent="0.8" sizeY="200" sizeX="50"/>
+    </size_effector>
+    <rect_emitter grange="0.0" sizeY="20" rrange="0.0" sizeX="20" arange="0" lifetimerange="1" emitrate="300" r="255" emittime="200" a="255" emitperiod="10000" b="255" lifetime="200" rotvelrange="0" rotvel="0" rotrange="0" velrange="0" rectz="0" recty="0" g="255" rectx="0" directionto="1 1 1" rot="0" directionfrom="-1 -1 -1" sizerange="5" vel="800" brange="0.0"/>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+  </particle>
+</effect>

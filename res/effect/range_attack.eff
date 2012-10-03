@@ -1,0 +1,51 @@
+<effect>
+  <stripe endtime="5000" dragtime="300" wide="20" label="" parallel="true" endTime="0" max="10" starttime="0" stripenum="1" texture="trail1" timeduv="false" pos="" widedir="2" billboard="true" startTime="0">
+    <size_effector/>
+    <alpha_effector a="-100"/>
+    <dragger b="191" r="255" a="255" g="199"/>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <uv_effector su="1" sv="1"/>
+    <path/>
+    <color_effector b="0" r="0" g="0"/>
+  </stripe>
+  <quad endtime="5000" height="150" label="" width="150" orient="2" zUp="true" starttime="0" rot="0" texture="flash03" pos="" billboard="true">
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <color>
+      <frame b="177" durtime="500" a="255" r="255" g="100"/>
+      <frame b="126" durtime="500" a="183" r="191" g="145"/>
+    </color>
+    <scale>
+      <frame y="0.8" durtime="1000" x="0.8" z="0.8"/>
+      <frame y="1.2" durtime="1000" x="1.2" z="1.2"/>
+    </scale>
+    <uv>
+      <frame durtime="1000" r="0" sv="1" v="0" su="1" u="0"/>
+    </uv>
+  </quad>
+  <particle label="" max="5" orient="0" endTime="0" global="true" texture="pixies1" pos="" mesh="" startTime="0">
+    <size_effector size="-20">
+      <keyframe sizeX="60" lifepercent="0.0" sizeY="60"/>
+      <keyframe sizeX="10" lifepercent="1" sizeY="10"/>
+    </size_effector>
+    <color_effector b="-50" r="-100" g="100"/>
+    <rect_emitter rectz="0" vel="20" sizeX="30" recty="0" a="255" rotvel="20" lifetime="300" directionto="1 1 1" rectx="0" directionfrom="-1 -1 -1" emittime="0" sizerange="30" emitperiod="0" lifetimerange="200" rotvelrange="0" emitrate="10" r="226" g="174" b="140" rotrange="360" rot="0" velrange="5" size="25" sizeY="30"/>
+    <alpha_effector a="-250">
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="97" lifepercent="1"/>
+    </alpha_effector>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+  </particle>
+  <property cache="1" lifetime="5000"/>
+</effect>

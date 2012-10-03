@@ -1,0 +1,22 @@
+<effect>
+  <quad endtime="5000" height="350" label="" width="350" orient="2" starttime="0" rot="0" texture="dian" pos="" billboard="true">
+    <color>
+      <frame b="250" durtime="400" a="255" r="255" g="100"/>
+      <frame b="0" durtime="300" a="0.0" r="185" g="96"/>
+    </color>
+    <scale>
+      <frame y="0.8" durtime="1000" x="0.8" z="0.8"/>
+      <frame y="1.2" durtime="1000" x="1.2" z="1.2"/>
+    </scale>
+  </quad>
+  <particle label="" max="50" orient="0" endTime="0" global="true" texture="smoke08" pos="" mesh="" startTime="0">
+    <size_effector size="550"/>
+    <color_effector b="-50" r="-100" g="100"/>
+    <circle_emitter height="0" sizeX="100" r="255" g="50" lifetime="100" directionto="1 1 1" directionfrom="-1 -1 -1" emittime="150" sizerange="200" radiussmall="50" emitperiod="10000.0" lifetimerange="0.0" rotvelrange="0" emitrate="200" a="255" rot="0" vel="0" b="50" rotrange="0" radiusbig="200" rotvel="0" velrange="0" sizeY="100"/>
+    <alpha_effector a="-250">
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1.0"/>
+    </alpha_effector>
+  </particle>
+  <property cache="1" lifetime="300"/>
+</effect>

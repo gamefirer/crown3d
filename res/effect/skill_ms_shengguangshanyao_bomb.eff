@@ -1,0 +1,23 @@
+<effect>
+  <property lifetime="1000" cache="1"/>
+  <particle label="" mesh="" endTime="0" max="10" billboard="false" pos="" orient="4.0" global="true" texture="dian" rot="" startTime="0">
+    <scale>
+      <frame z="1" durtime="0" y="1" x="1"/>
+    </scale>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <alpha_effector>
+      <keyframe lifepercent="0.1" a="255"/>
+      <keyframe lifepercent="1.0" a="0.0"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe r="255" g="255" lifepercent="0.1" b="255"/>
+    </color_effector>
+    <size_effector>
+      <keyframe lifepercent="0.1" sizeY="40" sizeX="30"/>
+      <keyframe lifepercent="0.1" sizeY="200" sizeX="30"/>
+    </size_effector>
+    <rect_emitter grange="0" sizeY="20" rrange="0" sizeX="20" arange="0" lifetimerange="100" emitrate="50" r="200" emittime="300" a="255" emitperiod="10000" b="200" lifetime="300" rotvelrange="0" rotvel="0" rotrange="0" velrange="0" rectz="0" recty="0" g="200" rectx="0" directionto="1 1 1" rot="0" directionfrom="-1 -1 -1" sizerange="20" vel="500" brange="0"/>
+  </particle>
+</effect>

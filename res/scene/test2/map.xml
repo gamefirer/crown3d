@@ -1,0 +1,94 @@
+<scene>
+  <texturepath path=""/>
+  <terraintexturepath path="terrain"/>
+  <effectpath path="effect"/>
+  <soundpath path="sound"/>
+  <mesh name="diban" vertexColor="false">
+    <pos x="0.0" y="0.0" z="0.0"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="false" light="true"/>
+  </mesh>
+  <mesh name="object11" vertexColor="false">
+    <pos x="0.0" y="0.0" z="0.0"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="false" light="true"/>
+  </mesh>
+  <mesh name="object26" vertexColor="false">
+    <pos x="0.0" y="0.0" z="0.0"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="false" light="true"/>
+  </mesh>
+  <mesh name="object05" vertexColor="false">
+    <pos x="0.0" y="0.0" z="0.0"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="false" light="true"/>
+  </mesh>
+  <mesh name="object91" vertexColor="false">
+    <pos x="656.524" y="0.0" z="-415.955"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="true" light="true"/>
+  </mesh>
+  <mesh name="01" vertexColor="false">
+    <pos x="-656.524" y="0.0" z="415.955"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="true" light="true"/>
+  </mesh>
+  <mesh name="object41" vertexColor="false">
+    <pos x="1236.97" y="-493.818" z="157.344"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="false" light="true"/>
+  </mesh>
+  <mesh name="object83" vertexColor="false">
+    <pos x="-1453.88" y="-93.1035" z="93.6852"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="false" light="true"/>
+  </mesh>
+  <mesh name="object01" vertexColor="false">
+    <pos x="0.0" y="-8.58351" z="0.0"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="false" light="true"/>
+  </mesh>
+  <mesh name="object02" vertexColor="false">
+    <pos x="0.0" y="-8.58351" z="0.0"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="false" light="true"/>
+  </mesh>
+  <terrain name="terrain"/>
+  <effect name="effect01" file="fire">
+    <pos x="410.774" y="0.0" z="-438.625"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+  </effect>
+  <world>
+    <point x="957.191" z="-206.14"/>
+    <point x="1558.03" z="-206.14"/>
+    <point x="1647.52" z="87.889"/>
+    <point x="1567.62" z="222.119"/>
+    <point x="966.779" z="202.944"/>
+    <point x="960.387" z="490.58"/>
+    <point x="759.041" z="698.318"/>
+    <point x="-752.649" z="711.102"/>
+    <point x="-953.995" z="480.992"/>
+    <point x="-963.583" z="209.336"/>
+    <point x="-1542.05" z="206.14"/>
+    <point x="-1657.11" z="59.1254"/>
+    <point x="-1564.42" z="-199.748"/>
+    <point x="-947.604" z="-215.727"/>
+    <point x="-966.779" z="-477.796"/>
+    <point x="-762.238" z="-711.101"/>
+    <point x="759.037" z="-714.298"/>
+    <point x="969.974" z="-480.993"/>
+  </world>
+  <scenebound minX="-1615.71" maxX="1615.71" minY="-707.924" maxY="707.924"/>
+  <light name="light01" tex="dm_ps01.dds" size="500" bright="0.5" x="490.15" z="-51.45" rot="90" r="204" g="255" b="51"/>
+  <light name="light02" tex="dm_lz03.dds" size="600" bright="1" x="-161.56" z="32.22" rot="90" r="255" g="255" b="255"/>
+</scene>

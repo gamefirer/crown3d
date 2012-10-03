@@ -1,0 +1,38 @@
+<effect>
+  <particle texture="blood_a" orient="4" endTime="0" blendmode="alpha" pos="" max="30" global="false" mesh="" label="blood" startTime="0" billboard="false">
+    <force_effector dir="0 -1 0" f="0.0"/>
+    <attract_effector p="" f="0"/>
+    <uv_effector sv="1" smoothV="true" smoothU="true" su="1"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter rot="0.0" recty="0" directionfrom="-1 -1 -1" rectx="0" lifetime="250" directionto="1 1 1" r="88" vel="500" sizeY="100" sizerange="20" a="255" lifetimerange="0.0" emittime="500" b="100" emitrate="100" sizeX="100" rotvel="0" rectz="0" rotvelrange="0" rotrange="0.0" g="255" velrange="0.0" emitperiod="10000"/>
+    <color_effector>
+      <keyframe g="0.0" lifepercent="0.0" b="0.0" r="255"/>
+      <keyframe g="5" lifepercent="1" b="0.0" r="130"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeX="50" sizeY="50" lifepercent="0.0"/>
+      <keyframe sizeX="30" sizeY="150" lifepercent="1"/>
+    </size_effector>
+  </particle>
+  <particle texture="flash05" max="10" startTime="0" global="true" mesh="" label="" orient="0" endTime="0" pos="">
+    <rect_emitter rot="0" g="0.0" directionfrom="-1 -1 -1" rectx="0.0" lifetime="300" directionto="1 1 1" r="255" vel="0" sizeY="100" sizerange="20" sizeX="100" lifetimerange="0.0" emittime="400" rotvelrange="0" emitrate="15" a="255" rotvel="0" rectz="0.0" b="0.0" rotrange="360" recty="0.0" velrange="0" emitperiod="10000"/>
+    <size_effector>
+      <keyframe sizeX="20" sizeY="20" lifepercent="0.0"/>
+      <keyframe sizeX="300" sizeY="300" lifepercent="1"/>
+    </size_effector>
+  </particle>
+  <property cache="1" lifetime="5000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+</effect>

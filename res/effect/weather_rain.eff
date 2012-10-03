@@ -1,0 +1,7 @@
+<effect pos="0 0 0">
+  <particle mesh="" endTime="0" billboard="false" texture="vocals01" pos="0 500 0" max="100" startTime="0" orient="3.0" global="true" label="">
+    <alpha_effector/>
+    <circle_emitter vel="3000" emitrate="150" rot="0" radiusbig="1000" lifetimerange="0.0" height="100" directionto="0 -1 0" radiussmall="50" sizeY="400" emittime="0" velrange="20" a="255" b="183.0" rotrange="0" directionfrom="0 -1 0" sizeX="50" emitperiod="0" rotvelrange="0" g="134.0" sizerange="5" r="112.0" lifetime="200" rotvel="0"/>
+  </particle>
+  <property cache="1" lifetime="4000"/>
+</effect>

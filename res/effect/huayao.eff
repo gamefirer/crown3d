@@ -1,0 +1,46 @@
+<effect>
+  <property cache="1" lifetime="3000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <particle texture="dian" mesh="" billboard="false" pos="" endTime="0" max="10" orient="4" global="true" startTime="0" label="diandian">
+    <rect_emitter directionto="1 1 1" g="200" rectx="100" directionfrom="-1 -1 -1" emittime="0" sizerange="20" emitperiod="0" lifetimerange="0.0" rotvelrange="0" emitrate="15" vel="0" rotvel="0" a="255" rotrange="0" b="200" velrange="0" sizeY="100" rectz="100" sizeX="100" recty="100" r="200" rot="0" lifetime="500"/>
+    <size_effector>
+      <keyframe sizeX="10" sizeY="10" lifepercent="0.0"/>
+      <keyframe sizeX="2" sizeY="20" lifepercent="1"/>
+    </size_effector>
+    <force_effector dir="" f="0"/>
+    <attract_effector p="0 0 0" f="1000"/>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <particle texture="1" mesh="" startTime="0" pos="" endTime="0" max="383.0" orient="0" global="true" billboard="true" label="quanquan">
+    <scale>
+      <frame z="14.0" y="15.7" x="16.4" durtime="0"/>
+    </scale>
+    <rect_emitter directionto="1 1 1" g="185.0" rectx="20" directionfrom="-1 -1 -1" emittime="0" sizerange="20" emitperiod="0" lifetimerange="640.0" rotvelrange="0" emitrate="200" vel="0" rotvel="0" a="190.0" rotrange="360" b="22.0" velrange="0" sizeY="50" rectz="20" sizeX="50" recty="20" r="93.0" rot="0" lifetime="705.0"/>
+    <size_effector>
+      <keyframe sizeX="80" sizeY="80" lifepercent="0.0"/>
+      <keyframe sizeX="0.0" lifepercent="0.2" sizeY="0.0"/>
+      <keyframe sizeX="15" lifepercent="0.8" sizeY="15"/>
+    </size_effector>
+    <path>
+      <frame z="0" y="0" x="0" durtime="1000"/>
+    </path>
+    <force_effector dir="" f="0"/>
+    <attract_effector p="" f="0"/>
+    <color_effector/>
+    <rotate>
+      <frame z="0" y="0" x="0" durtime="1000"/>
+    </rotate>
+  </particle>
+</effect>

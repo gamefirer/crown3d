@@ -1,0 +1,80 @@
+<effect>
+  <property lifetime="300" cache="1">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+  </property>
+  <light g="105" texture="lightningball" height="100" width="100" starttime="0" label="" rot="0" b="0.0" pos="0 0 0" bright="0.5" endtime="0" r="255">
+    <scale>
+      <frame x="1" z="1" durtime="300" y="5"/>
+      <frame x="10" z="10" durtime="1000" y="6"/>
+    </scale>
+  </light>
+  <quad texture="quan" height="100" width="100" starttime="0" label="" rot="0" pos="" billboard="false" orient="1" endtime="0">
+    <scale>
+      <frame x="1" z="1" durtime="300" y="1"/>
+      <frame x="10" z="10" durtime="1000" y="1"/>
+    </scale>
+    <color>
+      <frame a="43" durtime="200" g="255" b="193" r="255"/>
+      <frame a="129.0" durtime="100" g="156" b="54" r="255"/>
+      <frame a="0.0" durtime="1000" g="0.0" b="0.0" r="255"/>
+    </color>
+    <uv>
+      <frame v="0" r="0" u="0" sv="1" durtime="1000" su="1"/>
+    </uv>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <path>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </path>
+  </quad>
+  <quad orient="1" pos="" height="100" width="100" starttime="0" label="12" rot="0" texture="001" billboard="false" endtime="0">
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <color>
+      <frame a="0.0" durtime="200" g="255" b="193" r="255"/>
+      <frame a="99" durtime="100" g="156" b="54" r="255"/>
+      <frame a="0.0" durtime="1000" g="0.0" b="0.0" r="255"/>
+    </color>
+    <uv>
+      <frame v="0" r="0" u="0" sv="1" durtime="1000" su="1"/>
+    </uv>
+    <scale>
+      <frame x="5" durtime="1667" z="5" y="1"/>
+      <frame x="19.7" durtime="365" z="17.4" y="1"/>
+      <frame x="20" durtime="200" z="16.4" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </rotate>
+  </quad>
+  <quad orient="1" pos="" height="100" width="100" starttime="0" label="13" rot="0" texture="bo" billboard="false" endtime="0">
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <color>
+      <frame a="255" durtime="200" g="255" b="193" r="255"/>
+      <frame a="255" durtime="100" g="156" b="54" r="255"/>
+      <frame a="0.0" durtime="1000" g="0.0" b="0.0" r="255"/>
+    </color>
+    <uv>
+      <frame v="0" r="0" u="0" sv="1" durtime="1000" su="1"/>
+    </uv>
+    <scale>
+      <frame x="1" durtime="300" z="1" y="1"/>
+      <frame x="10" durtime="841" z="10" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </rotate>
+  </quad>
+</effect>

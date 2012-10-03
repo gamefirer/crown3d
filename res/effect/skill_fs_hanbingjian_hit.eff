@@ -1,0 +1,86 @@
+<effect pos="0 0 0">
+  <property lifetime="500" cache="3"/>
+  <quad label="flash" texture="t_blast_005" height="100" pos="" width="100" orient="2" billboard="true" rot="0" endtime="200" starttime="0">
+    <color>
+      <frame r="255" g="255" a="255" durtime="200" b="255"/>
+      <frame r="128" g="133" a="255" durtime="1000" b="255"/>
+    </color>
+    <uv>
+      <frame r="0" v="0" u="0" durtime="1000" sv="1" su="1"/>
+    </uv>
+    <scale>
+      <frame z="2.5" durtime="200" y="2.5" x="2.5"/>
+      <frame z="1" durtime="1000" y="1" x="1"/>
+    </scale>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <path>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </path>
+  </quad>
+  <quad label="blast" height="100" texture="t_blast_003" rot="0" width="100" orient="2" billboard="true" pos="" endtime="200" starttime="0">
+    <color>
+      <frame r="144" g="168" a="255" durtime="150" b="255"/>
+      <frame r="255" g="255" a="60" durtime="50" b="255"/>
+      <frame r="255" g="255" a="0" durtime="1000" b="255"/>
+    </color>
+    <uv>
+      <frame r="0" v="0" u="0" durtime="1000" sv="1" su="1"/>
+    </uv>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <scale>
+      <frame z="1" durtime="200" y="1" x="1"/>
+      <frame z="3.5" durtime="1000" y="3.5" x="3.5"/>
+    </scale>
+    <path>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </path>
+  </quad>
+  <quad label="flash" texture="dian" height="250" pos="" width="250" orient="2" billboard="true" rot="0" endtime="200" starttime="0">
+    <color>
+      <frame r="144" g="168" a="255" durtime="200" b="255"/>
+      <frame r="87" g="119" a="0.0" durtime="1000" b="255"/>
+    </color>
+    <uv>
+      <frame r="0" v="0" u="0" durtime="1000" sv="1" su="1"/>
+    </uv>
+    <scale>
+      <frame z="0.8" durtime="200" y="0.8" x="0.8"/>
+      <frame z="1.5" durtime="1000" y="1.5" x="1.5"/>
+    </scale>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <path>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </path>
+  </quad>
+  <particle label="splash" mesh="" endTime="0" max="20" orient="0" global="true" texture="t_splash_001" pos="0 0 0" startTime="0">
+    <scale>
+      <frame z="1" durtime="0" y="1" x="1"/>
+    </scale>
+    <force_effector f="1000" dir="0 -1 0"/>
+    <path>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </path>
+    <attract_effector f="0" p=""/>
+    <uv_effector sv="1" su="1"/>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="223" lifepercent="0.5"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <color_effector/>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeY="90" sizeX="90"/>
+      <keyframe lifepercent="1" sizeY="70" sizeX="70"/>
+    </size_effector>
+    <rect_emitter lifetime="200" rotvelrange="21.2" rectx="0" sizeY="50" directionto="1 1 1" rotrange="360" recty="0" velrange="0" lifetimerange="100" sizeX="50" rectz="0" emitrate="150" r="255" g="255" rotvel="0" a="255" emitperiod="10000" rot="0" directionfrom="-1 -1 -1" emittime="200" sizerange="10" vel="350" b="255"/>
+  </particle>
+</effect>

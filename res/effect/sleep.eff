@@ -1,0 +1,21 @@
+<effect>
+  <particle mesh="" texture="qipao" endTime="0" pos="" max="5" orient="0" label="" global="true" startTime="0" billboard="true">
+    <color_effector r="-100" g="0" b="-250"/>
+    <size_effector size="-30">
+      <keyframe lifepercent="0.0" sizeY="20" sizeX="20"/>
+      <keyframe lifepercent="1.0" sizeY="5" sizeX="5"/>
+    </size_effector>
+    <force_effector dir="0 1 0" f="40"/>
+    <rect_emitter rotrange="0" recty="0" g="150" emitperiod="0" lifetime="500" directionto="0 1 0" velrange="20" rectx="30" directionfrom="0 1 0" emittime="0" lifetimerange="100" a="255" sizerange="5" emitrate="10" b="250" rotvelrange="0" sizeX="63.0" vel="30" sizeY="88.0" size="15" rot="0" r="155" rectz="30" rotvel="0"/>
+    <uv_effector su="0.25" sv="0.25">
+      <keyframe v="0" lifepercent="0.0" u="0"/>
+      <keyframe v="0" lifepercent="0.2" u="0.5"/>
+      <keyframe v="0.25" lifepercent="0.4" u="0.25"/>
+      <keyframe v="0.25" lifepercent="0.5" u="0.75"/>
+      <keyframe v="0.5" lifepercent="0.7" u="0.5"/>
+      <keyframe v="0.75" lifepercent="0.9" u="0.5"/>
+    </uv_effector>
+    <alpha_effector a="-250"/>
+  </particle>
+  <property lifetime="5000"/>
+</effect>

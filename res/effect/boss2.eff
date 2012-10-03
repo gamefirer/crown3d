@@ -1,0 +1,38 @@
+<effect pos="0 0 0">
+  <particle texture="quntizhiliao2" mesh="" startTime="0" pos="" endTime="0" max="10" orient="0" global="true" label="">
+    <rect_emitter directionto="0 1 0" g="200" rectx="80" directionfrom="0 1 0" emittime="300" sizerange="50" emitperiod="10000" lifetimerange="300" rotvelrange="0" emitrate="20" vel="300" rotvel="0" a="255" rotrange="131" b="200" velrange="100" sizeY="10" rectz="80" sizeX="10" recty="10" r="200" rot="54" lifetime="300"/>
+    <size_effector/>
+    <uv_effector su="0.5" sv="0.5">
+      <keyframe v="0" lifepercent="0.0" u="0"/>
+      <keyframe v="0" lifepercent="0.2" u="0.5"/>
+      <keyframe v="0.5" lifepercent="0.5" u="0"/>
+      <keyframe v="0.5" lifepercent="0.7" u="0.5"/>
+      <keyframe v="0" u="0" lifepercent="0.1"/>
+    </uv_effector>
+    <color_effector/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <mesh file="tong2" texture="quntizhiliao" starttime="0" endtime="0" pos="0 0 0" label="">
+    <scale>
+      <frame x="9.6" z="9.8" y="8.6" durtime="1000"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </rotate>
+    <color>
+      <frame a="255" g="207" b="177" r="218" durtime="300"/>
+      <frame a="0.0" g="255" b="148" r="173" durtime="1000"/>
+      <frame a="0.0" g="255" b="255" r="255" durtime="1000"/>
+    </color>
+    <uv>
+      <frame v="0" su="1" u="0" durtime="1000" r="0" sv="1"/>
+    </uv>
+    <path>
+      <frame z="0" y="0" x="0" durtime="1000"/>
+    </path>
+  </mesh>
+  <property cache="1" lifetime="1000"/>
+</effect>

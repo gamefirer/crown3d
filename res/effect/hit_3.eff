@@ -1,0 +1,15 @@
+<effect>
+  <property lifetime="500" cache="1"/>
+  <particle startTime="0" orient="0" texture="a3" endTime="0" label="" global="true" pos="" max="5" mesh="">
+    <color_effector/>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeX="100" sizeY="100"/>
+      <keyframe lifepercent="1" sizeX="300" sizeY="300"/>
+    </size_effector>
+    <rect_emitter sizeY="100" emitperiod="10000" directionfrom="-1 -1 -1" rot="-45" lifetime="150" rotvelrange="0" sizerange="50" emitrate="15" rectz="0.0" rotvel="0" a="255.0" g="126.0" b="209.0" rotrange="360" sizeX="100" lifetimerange="50" rectx="0.0" directionto="1 1 1" vel="0" r="120.0" emittime="150" velrange="0" recty="0.0"/>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+  </particle>
+</effect>

@@ -1,0 +1,61 @@
+<effect>
+  <particle label="fire" global="true" orient="1" endTime="0" max="100" texture="stand" pos="" mesh="" billboard="false" startTime="0">
+    <rect_emitter rectz="10" directionto="0 1 0" sizeX="50" recty="2" r="234" rectx="10" lifetime="1000" vel="500" directionfrom="0 1 0" emittime="0" sizerange="0" emitperiod="0" lifetimerange="0" rotvelrange="0" emitrate="4" a="255" rotvel="0" rot="0" b="43" rotrange="0" g="89" velrange="0" sizeY="50" arange="0" rrange="0" grange="0" brange="0" radiusbig="100" radiussmall="0" showemit="1" height="50"/>
+    <alpha_effector>
+      <keyframe a="0" lifepercent="0"/>
+      <keyframe a="131" lifepercent="0.5"/>
+      <keyframe a="0" lifepercent="1"/>
+    </alpha_effector>
+    <size_effector>
+      <keyframe sizeX="10" sizeY="10" lifepercent="0"/>
+      <keyframe sizeX="100" sizeY="100" lifepercent="0.49"/>
+      <keyframe sizeX="10" sizeY="10" lifepercent="1"/>
+    </size_effector>
+    <color_effector>
+      <keyframe r="255" g="0" b="0" lifepercent="0"/>
+      <keyframe r="0" g="255" b="0" lifepercent="0.49"/>
+      <keyframe r="0" g="0" b="255" lifepercent="1"/>
+    </color_effector>
+    <uv_effector/>
+    <attract_effector/>
+    <force_effector/>
+    <rotate>
+      <frame durtime="500" x="0.00" y="1.55" z="0.00"/>
+      <frame durtime="500" x="0.00" y="0.00" z="0.00"/>
+    </rotate>
+    <path>
+      <frame durtime="1000" x="0" y="0" z="0"/>
+      <frame durtime="1000" x="300" y="0" z="0"/>
+      <frame durtime="1000" x="0" y="0" z="0"/>
+    </path>
+    <scale/>
+  </particle>
+  <mesh starttime="0" texture="tx_pet_chunvzuo_034" endtime="0" pos="0 0 0" label="" file="quan">
+    <uv smooth="true" repeat="true">
+      <frame durtime="500" r="1.56" sv="1" v="0" su="1" u="0"/>
+      <frame durtime="0" r="1.56" sv="1" v="0" su="1" u="0"/>
+    </uv>
+    <scale>
+      <frame y="1" durtime="1000" x="8" z="8"/>
+      <frame y="40" durtime="1000" x="9" z="9"/>
+    </scale>
+    <rotate>
+      <frame y="500.0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <color>
+      <frame b="33.0" durtime="1000" a="255" r="236.0" g="105.0"/>
+      <frame b="54.0" durtime="1000" a="113.0" r="255" g="78.0"/>
+    </color>
+  </mesh>
+  <property cache="1" lifetime="10000">
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+  </property>
+</effect>

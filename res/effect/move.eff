@@ -1,0 +1,23 @@
+<effect>
+  <property cache="1" lifetime="300"/>
+  <quad height="100" width="100" orient="1" rot="0" texture="quan" billboard="false" pos="" label="" endtime="300" starttime="0">
+    <path>
+      <frame durtime="300" x="0" z="0" y="0"/>
+      <frame durtime="1000" x="0" z="0" y="20"/>
+    </path>
+    <uv>
+      <frame v="0" durtime="1000" u="0" r="0" su="1" sv="1"/>
+    </uv>
+    <scale>
+      <frame durtime="300" x="0.2" z="0.2" y="0.2"/>
+      <frame durtime="1000" x="0.8" z="0.8" y="0.8"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+    <color>
+      <frame a="255" durtime="300" g="200" b="200" r="200"/>
+      <frame a="50" durtime="1000" g="96" b="0" r="185"/>
+    </color>
+  </quad>
+</effect>

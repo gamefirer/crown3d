@@ -1,0 +1,44 @@
+<effect>
+  <particle texture="shengguangdan2" endTime="0" global="true" max="50" orient="0" label="qi" mesh="" pos="" startTime="0">
+    <uv_effector sv="0.33333" su="0.3333">
+      <keyframe v="0" u="0" lifepercent="0.0"/>
+      <keyframe v="0" u="0.666" lifepercent="0.2"/>
+      <keyframe v="0.3333" u="0.3333" lifepercent="0.4"/>
+      <keyframe v="0.33333" u="0.66666" lifepercent="0.6"/>
+      <keyframe v="0.66666" u="0.33333" lifepercent="0.1"/>
+    </uv_effector>
+    <rect_emitter sizeY="100" rot="0" velrange="0" emitperiod="10000.0" a="255" directionto="1 1 1" sizeX="100" b="79" vel="0" sizerange="50" lifetime="500" g="107" rotvelrange="0" rectz="100" directionfrom="-1 -1 -1" lifetimerange="0.0" recty="100" rotvel="0" rectx="100" r="200" emitrate="50" emittime="4500" rotrange="360"/>
+  </particle>
+  <particle billboard="false" pos="" startTime="0" orient="4" label="guang" mesh="" global="true" texture="dian" endTime="0" max="30">
+    <rect_emitter sizeY="100" rot="0" velrange="26" emitperiod="10000.0" a="255" directionto="1 1 1" sizeX="100" b="71" vel="260" sizerange="20" lifetime="300" g="105" rotvelrange="0" rectz="0.0" directionfrom="-1 -1 -1" lifetimerange="0.0" recty="0.0" rotvel="0" rectx="0.0" r="200" emitrate="40" emittime="4500" rotrange="0"/>
+    <size_effector>
+      <keyframe sizeX="80" lifepercent="0.0" sizeY="80"/>
+      <keyframe sizeX="10" lifepercent="1" sizeY="250"/>
+    </size_effector>
+  </particle>
+  <mesh texture="a2" pos="0 0 0" endtime="0" starttime="0" label="" file="sphere">
+    <scale>
+      <frame y="1" durtime="7000" x="1" z="1"/>
+      <frame y="50" durtime="10000" x="50" z="50"/>
+    </scale>
+    <color>
+      <frame b="255" durtime="3000" a="255" r="255" g="255"/>
+      <frame b="33" durtime="10000" a="0.0" r="255" g="43"/>
+      <frame b="255" durtime="5000" a="0.0" r="255" g="255"/>
+    </color>
+    <rotate>
+      <frame y="200" durtime="1000" x="0" z="0"/>
+    </rotate>
+  </mesh>
+  <property cache="1" lifetime="5000">
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+  </property>
+</effect>

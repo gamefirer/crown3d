@@ -1,0 +1,71 @@
+<effect>
+  <property lifetime="5000" cache="1">
+    <scale>
+      <frame z="1" durtime="0" y="1" x="1"/>
+    </scale>
+    <path>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </path>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+  </property>
+  <quad label="" billboard="true" height="100" pos="" width="100" orient="2" texture="t_blast_002" rot="0" endtime="0" starttime="0">
+    <color>
+      <frame g="185.0" durtime="1000" a="255" r="255" b="130.0"/>
+    </color>
+    <uv>
+      <frame r="0" v="0" u="0" durtime="1000" sv="1" su="1"/>
+    </uv>
+    <scale loop="true">
+      <frame z="1.5" durtime="500" y="1.5" x="1.5"/>
+    </scale>
+    <rotate>
+      <frame z="-100" durtime="1000" y="0" x="0"/>
+    </rotate>
+  </quad>
+  <particle label="" mesh="" endTime="0" max="5" pos="" orient="0" global="false" texture="t_glow_001" rot="" startTime="0">
+    <alpha_effector>
+      <keyframe lifepercent="0" a="0"/>
+      <keyframe lifepercent="0.5" a="120"/>
+      <keyframe lifepercent="1" a="0"/>
+    </alpha_effector>
+    <color_effector/>
+    <size_effector>
+      <keyframe lifepercent="0.1" sizeY="300" sizeX="300"/>
+      <keyframe lifepercent="1" sizeY="400" sizeX="400"/>
+    </size_effector>
+    <rect_emitter grange="0" sizeY="300" rrange="0" sizeX="300" arange="0" lifetimerange="2" emitrate="15" r="200" emittime="0" a="255" emitperiod="0" b="200" lifetime="300" rotvelrange="0" rotvel="0" rotrange="360" velrange="0" rectz="0" recty="0" g="200" rectx="0" directionto="0 0 0" rot="360" directionfrom="0 0 0 " sizerange="20" vel="0" brange="0"/>
+  </particle>
+  <particle label="" mesh="" endTime="0" max="5" pos="" orient="0" global="false" texture="ripple" rot="" startTime="0">
+    <alpha_effector>
+      <keyframe a="0" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.5"/>
+      <keyframe a="0" lifepercent="1"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe r="234.0" g="239.0" lifepercent="0.1" b="128.0"/>
+    </color_effector>
+    <size_effector>
+      <keyframe lifepercent="0.1" sizeY="200" sizeX="200"/>
+      <keyframe lifepercent="1" sizeY="250" sizeX="250"/>
+    </size_effector>
+    <rect_emitter grange="0" sizeY="300" rrange="0" sizeX="300" arange="0" lifetimerange="2" emitrate="15" r="200" emittime="0" a="255" emitperiod="0" b="200" lifetime="300" rotvelrange="0" rotvel="0" rotrange="360" velrange="0" rectz="0" recty="0" g="200" rectx="0" directionto="0 0 0" rot="360" directionfrom="0 0 0 " sizerange="20" vel="0" brange="0"/>
+  </particle>
+  <mesh label="" file="m_sphere_001" texture="t_wave_003" pos="0 0 0" rot="" endtime="0" starttime="0">
+    <color>
+      <frame r="255.0" g="180.0" a="120" durtime="500" b="100.0"/>
+      <frame r="255.0" g="177.0" a="60" durtime="500" b="106.0"/>
+    </color>
+    <path>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </path>
+    <scale>
+      <frame z="2.2" durtime="500" y="2.2" x="2.2"/>
+      <frame z="1.8" durtime="500" y="1.8" x="1.8"/>
+    </scale>
+    <rotate>
+      <frame z="0" durtime="1000" y="200" x="0"/>
+    </rotate>
+  </mesh>
+</effect>

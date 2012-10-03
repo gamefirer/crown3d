@@ -1,0 +1,8 @@
+<effect>
+  <stripe endTime="0" wide="50" pos="" billboard="false" endtime="5000" timeduv="false" starttime="0" widedir="0.0" texture="daoguang" label="" parallel="true" max="20" stripenum="1" startTime="0" dragtime="500">
+    <color_effector r="0" g="0" b="0"/>
+    <dragger a="255" g="126" b="158" r="122"/>
+    <alpha_effector a="-500"/>
+  </stripe>
+  <property cache="1" lifetime="500"/>
+</effect>

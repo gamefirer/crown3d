@@ -1,0 +1,11 @@
+<effect pos="0 0 0">
+  <particle mesh="" endTime="0" orient="0" max="20" texture="dian" startTime="0" pos="" global="true" label="">
+    <circle_emitter vel="10" emitrate="2" rot="0" radiusbig="700" lifetimerange="3000" height="100" directionto="1 1 1" radiussmall="50" sizeY="10" emittime="0" velrange="20" a="255" b="183.0" rotrange="0" directionfrom="-1 1 -1" sizeX="10" emitperiod="0" rotvelrange="0" g="134.0" sizerange="5" r="112.0" lifetime="3000" rotvel="0"/>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="0.0"/>
+      <keyframe lifepercent="0.3" a="180"/>
+      <keyframe lifepercent="1.0" a="16.0"/>
+    </alpha_effector>
+  </particle>
+  <property cache="1" lifetime="6500"/>
+</effect>

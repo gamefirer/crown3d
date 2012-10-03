@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--施展速度爆发-->
+<effect xmlns="">
+<!--
+特效属性
+lifetime: 持续时间毫秒(ms)
+-->
+<property lifetime="300"/>
+
+<path
+	align="false"
+	close="true"
+	loop="true"
+	>
+		<frame durtime="50" x="0" y="0" z="0"/>
+		<frame durtime="50" x="0" y="200" z="0"/>		
+</path>
+
+<!--
+面片特效
+width, height 面片的长宽
+texture: 贴图名字
+billboard: 公告版模式
+orient: 朝向 0面向x轴 1面向y轴 2面向z轴 
+
+-->
+<quad
+width="150"
+height="150"
+texture="quan"
+billboard="false"
+orient="1"
+starttime="0"
+endtime="300"
+>
+	<color>
+		<frame durtime="300" a="255" r="200" g="200" b="200"/>
+		<frame durtime="0" a="50" r="185" g="96" b="0"/>
+	</color>
+
+	
+
+</quad>
+
+
+</effect>

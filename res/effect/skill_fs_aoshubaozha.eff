@@ -1,0 +1,98 @@
+<effect pos="0 0 0">
+  <mesh texture="t_wave_001" label="cover2" starttime="0" endtime="0" pos="0 0 0" file="m_sphere_002">
+    <scale>
+      <frame x="2" z="2" durtime="300" y="2"/>
+      <frame x="6.5" z="6.5" durtime="100" y="6.5"/>
+      <frame x="7" z="7" durtime="1000" y="7"/>
+    </scale>
+    <uv>
+      <frame su="1" r="0" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="-500"/>
+    </rotate>
+    <color>
+      <frame r="182" b="255" g="54" durtime="350" a="255"/>
+      <frame r="103" b="255" g="52" durtime="50" a="100"/>
+      <frame r="255" b="122" g="0.0" durtime="1000" a="0"/>
+    </color>
+  </mesh>
+  <mesh texture="t_wave_002" label="cover1" starttime="0" endtime="0" pos="0 0 0" file="m_sphere_002">
+    <scale>
+      <frame x="2" z="2" durtime="300" y="2"/>
+      <frame x="6.5" z="6.5" durtime="100" y="6.5"/>
+      <frame x="7" z="7" durtime="2000" y="7"/>
+    </scale>
+    <uv>
+      <frame su="1" r="0" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="200"/>
+    </rotate>
+    <color>
+      <frame r="35" b="255" g="231" durtime="300" a="255"/>
+      <frame r="57" b="255" g="212" durtime="50" a="120"/>
+      <frame r="255" b="255" g="255" durtime="1200" a="0"/>
+    </color>
+  </mesh>
+  <mesh texture="t_wave_002" label="blow" starttime="0" endtime="0" pos="0 0 0" file="m_circle_001">
+    <scale>
+      <frame x="2" z="2" durtime="300" y="3"/>
+      <frame x="8.5" z="8.5" durtime="100" y="2"/>
+      <frame x="12" z="12" durtime="1000" y="1"/>
+    </scale>
+    <uv>
+      <frame su="1" r="0" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <color>
+      <frame b="255" r="117" g="30" durtime="300" a="255"/>
+      <frame b="255" r="58" g="215" durtime="100" a="200"/>
+      <frame b="255" r="0.0" g="0.0" durtime="1000" a="0"/>
+    </color>
+  </mesh>
+  <property lifetime="400" cache="1"/>
+  <particle startTime="0" global="true" max="30" texture="t_star_001" pos="" mesh="" label="star" orient="0" endTime="0">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <color_effector>
+      <keyframe lifepercent="0.1" r="141" b="255" g="132"/>
+    </color_effector>
+    <rect_emitter lifetime="200" directionto="0 1 0" g="255.0" emittime="400" directionfrom="0 0 0" emitperiod="10000" sizerange="50" lifetimerange="300" emitrate="40" rotvel="0" r="255.0" b="255.0" rotrange="360" a="255" velrange="0" rot="360" sizeY="100" rectz="200" rotvelrange="0" vel="500" recty="0" sizeX="100" rectx="200"/>
+    <size_effector>
+      <keyframe sizeY="80" lifepercent="0.1" sizeX="80"/>
+      <keyframe sizeY="20" lifepercent="0.1" sizeX="20"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe lifepercent="0.1" a="255"/>
+      <keyframe lifepercent="1" a="0"/>
+    </alpha_effector>
+  </particle>
+  <quad texture="t_glow_004" pos="" rot="0" label="shock" orient="1" starttime="0" billboard="false" width="100" endtime="300" height="100">
+    <scale>
+      <frame x="1" z="1" durtime="200" y="1"/>
+      <frame x="12" z="12" durtime="100" y="12"/>
+      <frame x="15" z="15" durtime="1000" y="15"/>
+    </scale>
+    <uv>
+      <frame su="1" r="0" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <color>
+      <frame b="255" r="255" g="255" durtime="200" a="100"/>
+      <frame b="255" r="255" g="255" durtime="100" a="48"/>
+      <frame b="255" r="255" g="255" durtime="1000" a="0.0"/>
+    </color>
+  </quad>
+</effect>

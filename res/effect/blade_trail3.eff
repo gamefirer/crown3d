@@ -1,0 +1,33 @@
+<effect>
+  <property cache="1" lifetime="1000">
+    <scale>
+      <frame x="1" durtime="0" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </rotate>
+    <path>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </path>
+  </property>
+  <mesh endtime="750" file="blade" starttime="250" alpha="false" pos="0 0 0" texture="blade" label="">
+    <rotate>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </rotate>
+    <uv smooth="true" repeat="false">
+      <frame v="0.0" durtime="300" u="0.5" r="0" sv="1" su="1"/>
+      <frame v="0" durtime="200" u="0.2" r="0" sv="1" su="0.70001"/>
+      <frame v="0" durtime="1000" u="0.0" r="0" sv="1" su="1"/>
+    </uv>
+    <scale>
+      <frame x="2" durtime="250" z="2" y="1"/>
+      <frame x="4" durtime="250" z="4" y="1"/>
+      <frame x="2" durtime="1000" z="2" y="1"/>
+    </scale>
+    <color>
+      <frame a="188" g="46" b="19" r="255" durtime="250"/>
+      <frame a="255" g="188" b="0.0" r="255" durtime="250"/>
+      <frame a="0.0" g="54" b="24" r="255" durtime="1000"/>
+    </color>
+  </mesh>
+</effect>

@@ -1,0 +1,50 @@
+<effect>
+  <particle endTime="0" global="true" label="ripple" max="5" mesh="" orient="0" pos="" startTime="0" texture="ripple">
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <rect_emitter directionfrom="-1 -1 -1" rotvelrange="0" sizeX="30" rectz="0" sizerange="30" rotvel="360.0" recty="0" vel="20" rectx="0" lifetime="300" r="226" velrange="5" lifetimerange="200" directionto="1 1 1" emittime="0" a="255" g="174" emitrate="10" b="140" emitperiod="0" rotrange="360" rot="0" size="25" sizeY="30"/>
+    <alpha_effector a="-250">
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="1" a="97"/>
+    </alpha_effector>
+    <color_effector b="-50" r="-100" g="100"/>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <size_effector size="-20">
+      <keyframe sizeX="60" lifepercent="0.0" sizeY="60"/>
+      <keyframe sizeX="10" lifepercent="1" sizeY="10"/>
+    </size_effector>
+  </particle>
+  <particle endTime="0" global="true" orient="0" mesh="" max="20" pos="" startTime="0" label="" texture="smoke08">
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="1.0" a="140.0"/>
+    </alpha_effector>
+    <rect_emitter directionfrom="-1 -1 -1" rotvelrange="0" sizeX="100" rectz="10" sizerange="20" rotvel="0" recty="10" vel="0" rectx="10" lifetime="400" a="255" lifetimerange="0.0" emitperiod="0" directionto="1 1 1" emittime="0" r="200" g="200" emitrate="30" b="200" velrange="0" rotrange="0" rot="0" sizeY="100"/>
+    <color_effector>
+      <keyframe b="114.0" lifepercent="0.0" r="197.0" g="156.0"/>
+      <keyframe b="52.0" lifepercent="1.0" r="215.0" g="67.0"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeX="60" lifepercent="0.0" sizeY="60"/>
+      <keyframe sizeX="10" lifepercent="1.0" sizeY="10"/>
+    </size_effector>
+  </particle>
+  <property cache="1" lifetime="5000"/>
+  <stripe endTime="0" dragtime="300" label="" wide="30" parallel="true" widedir="2" timeduv="false" max="10" stripenum="1" endtime="5000" billboard="true" pos="" startTime="0" starttime="0" texture="daoguang">
+    <uv_effector sv="1" su="1"/>
+    <dragger b="191" r="255" a="255" g="199"/>
+    <alpha_effector a="-100"/>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <color_effector b="0" r="0" g="0"/>
+    <path/>
+    <size_effector/>
+  </stripe>
+</effect>

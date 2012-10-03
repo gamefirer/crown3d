@@ -1,0 +1,25 @@
+<effect>
+  <particle orient="0" mesh="" pos="" global="true" endTime="0" max="10" label="" texture="flash01" startTime="0">
+    <color_effector/>
+    <size_effector>
+      <keyframe sizeY="50" lifepercent="0.0" sizeX="50"/>
+      <keyframe sizeY="10" lifepercent="1.0" sizeX="10"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1.0"/>
+    </alpha_effector>
+    <rect_emitter vel="80" directionfrom="-1 -1 -1" g="196.0" lifetime="500" emitperiod="0" sizerange="20" rot="0" rectz="5" rotvelrange="0" b="123.0" recty="5" rectx="5" a="255.0" rotrange="0" sizeY="50" directionto="1 1 1" sizeX="50" rotvel="0" lifetimerange="0.0" emitrate="20" velrange="0" emittime="0" r="218.0"/>
+  </particle>
+  <property cache="5" lifetime="1000">
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+</effect>

@@ -1,0 +1,46 @@
+<effect pos="0 0 0">
+  <mesh endtime="0" pos="0 0 0" label="" texture="daoguang" starttime="0" file="tong">
+    <scale>
+      <frame y="2" durtime="200" x="10" z="10"/>
+      <frame y="15" durtime="10000" x="60" z="60"/>
+      <frame y="10" durtime="1000" x="60" z="60"/>
+    </scale>
+    <color>
+      <frame b="255" durtime="500" r="255" a="255" g="255"/>
+      <frame b="35" durtime="10000" r="255" a="0.0" g="91"/>
+      <frame b="65" durtime="1000" r="255" a="0.0" g="99"/>
+    </color>
+    <rotate>
+      <frame y="200" durtime="1000" x="0" z="0"/>
+    </rotate>
+  </mesh>
+  <light texture="dian" pos="0 0 0" bright="0.5" height="100" width="100" endtime="0" rot="0" r="255" g="100" label="" b="0" starttime="0">
+    <scale>
+      <frame y="5" durtime="500" x="3" z="3"/>
+      <frame y="6" durtime="100" x="20" z="20"/>
+      <frame y="1" durtime="1000" x="1" z="1"/>
+    </scale>
+  </light>
+  <property lifetime="1000" cache="1"/>
+  <particle mesh="" pos="0 40 0" texture="shengguangdan2" global="true" startTime="0" endTime="0" max="30" label="fire1" orient="0">
+    <uv_effector sv="0.3333" su="0.3333" smoothV="false">
+      <keyframe v="0" lifepercent="0.0" u="0.3333"/>
+      <keyframe v="0" lifepercent="0.2" u="0.66666"/>
+      <keyframe v="0.33333" lifepercent="0.4" u="0.33333"/>
+      <keyframe v="0.333333" lifepercent="0.6" u="0.666666"/>
+      <keyframe v="0.666666" lifepercent="0.8" u="0"/>
+      <keyframe v="0.6666666" lifepercent="0.9" u="0.33333"/>
+    </uv_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="32" lifepercent="1"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe b="73" lifepercent="0.0" r="255" g="142"/>
+      <keyframe b="65" lifepercent="1" r="255" g="83"/>
+    </color_effector>
+    <force_effector dir="" f="0"/>
+    <circle_emitter directionfrom="0 1 0" sizeX="100" sizeY="100" emitrate="100" rotvelrange="0" velrange="0.0" height="0.0" radiussmall="100" directionto="0 1 0" rot="0" r="255" vel="0.0" radiusbig="600" emittime="500" rotvel="0" lifetime="300" a="255" g="255" emitperiod="10000" lifetimerange="0.0" b="255" rotrange="0" sizerange="100"/>
+    <size_effector/>
+  </particle>
+</effect>

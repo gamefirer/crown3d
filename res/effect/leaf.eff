@@ -1,0 +1,28 @@
+<effect>
+  <property lifetime="5000" cache="1">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+  </property>
+  <particle orient="0" startTime="0" max="20" texture="quntizhiliao2" pos="0 200 0" global="true" mesh="" label="" endTime="0">
+    <circle_emitter radiussmall="100" b="255" a="255" rotvel="0" radiusbig="600" emitperiod="0" r="255" sizerange="20" lifetimerange="2000" sizeY="20" rotvelrange="0" velrange="30" sizeX="20" height="0" emitrate="2" g="255" rotrange="0" directionfrom="-1 -5 -1" lifetime="5000" vel="20" emittime="0" directionto="1 -5 1" rot="0"/>
+    <size_effector/>
+    <uv_effector su="0.5" sv="0.5">
+      <keyframe lifepercent="0.25" u="0" v="0"/>
+      <keyframe lifepercent="0.5" u="0.5" v="0"/>
+      <keyframe lifepercent="0.5" u="0" v="0.5"/>
+      <keyframe lifepercent="0.5" u="0.5" v="0.5"/>
+    </uv_effector>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="0.0"/>
+      <keyframe lifepercent="0.2" a="255.0"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+  </particle>
+</effect>

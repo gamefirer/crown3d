@@ -1,0 +1,57 @@
+<effect>
+  <property lifetime="1000" cache="1">
+    <scale>
+      <frame x="1" z="1" y="1" durtime="0"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </rotate>
+  </property>
+  <mesh file="quan" endtime="0" alpha="false" starttime="0" label="" texture="shengguangdan" pos="0 0 0">
+    <path/>
+    <scale>
+      <frame x="3" z="3" y="0.1" durtime="1000"/>
+      <frame x="0.1" z="0.1" y="40" durtime="1000"/>
+    </scale>
+    <uv smooth="true" repeat="true">
+      <frame v="0.0" u="1" durtime="1000" su="1" r="0.8" sv="1"/>
+      <frame v="0" su="1" u="0" r="0" sv="1" durtime="1000"/>
+    </uv>
+    <color>
+      <frame a="255" g="255" b="255" r="255" durtime="1000"/>
+      <frame a="0.0" g="255" b="255" r="255" durtime="1000"/>
+    </color>
+    <rotate/>
+  </mesh>
+  <particle label="p2" orient="0" max="20" global="false" mesh="" texture="dian" pos="" endTime="0" startTime="0">
+    <rect_emitter sizerange="20" r="200" g="200" lifetimerange="100" rotvelrange="0" emitrate="15" rot="0" sizeX="100" rotrange="0" sizeY="100" velrange="0" a="255" rectz="10" vel="586" b="200" recty="10" rotvel="0" rectx="10" lifetime="400" directionto="1 2 1" emitperiod="10000" directionfrom="-1 2 -1" emittime="500"/>
+    <size_effector>
+      <keyframe sizeX="150" sizeY="150" lifepercent="0.0"/>
+      <keyframe sizeX="1" sizeY="1" lifepercent="1"/>
+    </size_effector>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="172" b="255" r="141"/>
+      <keyframe lifepercent="1" g="81" b="255" r="48"/>
+    </color_effector>
+    <rotate>
+      <frame x="0" z="0" y="1000" durtime="1000"/>
+    </rotate>
+  </particle>
+  <particle label="p1" orient="0" max="20" global="false" mesh="" texture="flash01" pos="" endTime="0" startTime="0">
+    <rect_emitter sizerange="20" r="200" g="200" lifetimerange="0.0" rotvelrange="0" emitrate="20" rot="0" sizeX="100" rotrange="0" sizeY="100" velrange="100" a="255" rectz="10" vel="800" b="200" recty="10" rotvel="0" rectx="10" lifetime="500" directionto="1 3 1" emitperiod="10000" directionfrom="-1 3 -1" emittime="500"/>
+    <size_effector>
+      <keyframe sizeX="100" sizeY="100" lifepercent="0.0"/>
+      <keyframe sizeX="10" sizeY="10" lifepercent="1"/>
+    </size_effector>
+    <color_effector>
+      <keyframe r="207" g="215" b="255" lifepercent="0.0"/>
+      <keyframe r="109" g="142" b="255" lifepercent="1"/>
+    </color_effector>
+    <rotate>
+      <frame x="0" z="0" y="500" durtime="1000"/>
+    </rotate>
+  </particle>
+</effect>

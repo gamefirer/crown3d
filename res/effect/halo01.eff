@@ -1,0 +1,13 @@
+<effect>
+  <property lifetime="5000" cache="1"/>
+  <quad orient="2" billboard="true" starttime="0" height="210" texture="lizi" width="210" pos="0 50 0" label="" zUp="true" endtime="0" rot="0">
+    <scale>
+      <frame x="1" z="1" durtime="1000" y="1"/>
+      <frame x="1.2" z="1.2" durtime="5000" y="1.2"/>
+    </scale>
+    <color>
+      <frame durtime="300" r="228" b="41" g="155" a="220"/>
+      <frame durtime="300" r="228" b="41" g="155" a="200"/>
+    </color>
+  </quad>
+</effect>

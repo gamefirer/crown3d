@@ -1,0 +1,46 @@
+<effect>
+  <property lifetime="3000" cache="1">
+    <scale>
+      <frame x="1" z="1" y="1" durtime="0"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </rotate>
+  </property>
+  <mesh file="quan" endtime="0" alpha="false" starttime="0" label="" texture="huoyangqiang2" pos="0 -20 0">
+    <path/>
+    <scale>
+      <frame x="1" z="1" y="1.5" durtime="1000"/>
+      <frame x="2" z="2" y="1" durtime="1000"/>
+    </scale>
+    <uv smooth="true" repeat="true">
+      <frame v="0" su="1" u="0" r="0" sv="1" durtime="1000"/>
+      <frame v="1" su="1" u="0.0" r="0" sv="1" durtime="0"/>
+    </uv>
+    <color>
+      <frame a="255" g="174" b="255" r="151" durtime="1000"/>
+      <frame a="255" g="51" b="255" r="24" durtime="1000"/>
+    </color>
+    <rotate/>
+  </mesh>
+  <particle label="" orient="0" max="10" global="true" mesh="" texture="shockwave" pos="" endTime="0" startTime="0">
+    <rect_emitter sizerange="20" g="200" lifetimerange="250" rotvelrange="80" emitrate="5" rot="0" sizeX="100" rotrange="360" sizeY="100" velrange="0" rectx="10" a="255" rectz="10" vel="0" b="200" recty="10" emitperiod="0" rotvel="-40" lifetime="500" directionto="1 1 1" r="200" directionfrom="-1 -1 -1" emittime="0"/>
+    <size_effector>
+      <keyframe sizeX="30" sizeY="30" lifepercent="0.0"/>
+      <keyframe sizeX="40" sizeY="40" lifepercent="0.5"/>
+      <keyframe sizeX="20" sizeY="20" lifepercent="1"/>
+    </size_effector>
+    <color_effector>
+      <keyframe r="159" g="177" b="255" lifepercent="0.0"/>
+      <keyframe r="61" g="94" b="255" lifepercent="1"/>
+    </color_effector>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="161"/>
+      <keyframe lifepercent="0.5" a="255"/>
+      <keyframe lifepercent="1" a="121"/>
+    </alpha_effector>
+  </particle>
+</effect>

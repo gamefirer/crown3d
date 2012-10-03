@@ -1,0 +1,54 @@
+<effect>
+  <property cache="20" lifetime="500">
+    <scale>
+      <frame x="1" z="1" y="1" durtime="0"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </rotate>
+  </property>
+  <particle endTime="0" orient="4" pos="" billboard="false" mesh="" max="10" label="" global="true" startTime="0" texture="flash01">
+    <force_effector f="0" dir=""/>
+    <rotate>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </rotate>
+    <scale>
+      <frame x="1" z="1" y="1" durtime="0"/>
+    </scale>
+    <rect_emitter emitrate="83" g="200" emitperiod="10000" lifetime="500" rotvel="0" sizerange="20" directionfrom="-1 1 -1" sizeY="0.0" rectz="0.0" emittime="300" recty="0.0" a="255" rectx="0.0" b="200" rotrange="0" rot="0" sizeX="0.0" rotvelrange="0" directionto="1 1 1" lifetimerange="0.0" r="200" velrange="0" vel="18"/>
+    <alpha_effector>
+      <keyframe a="5" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.8"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <attract_effector p="" f="0"/>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeX="50" sizeY="0.0"/>
+      <keyframe lifepercent="1" sizeY="600" sizeX="50"/>
+    </size_effector>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="209" b="105" r="125"/>
+      <keyframe lifepercent="1" g="0.0" b="0.0" r="255"/>
+    </color_effector>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <particle endTime="0" orient="1" mesh="" billboard="false" pos="" max="3" label="" global="true" startTime="0" texture="flash01">
+    <rotate>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </rotate>
+    <scale>
+      <frame x="1" z="1" y="1" durtime="0"/>
+    </scale>
+    <rect_emitter emitrate="15" g="0.0" rotrange="0" vel="0" lifetime="500" rotvel="0" a="255" directionfrom="-1 -1 -1" sizeY="100" rectz="0.0" emittime="322.6" recty="0.0" sizerange="20" rectx="0.0" b="0.0" emitperiod="10000" sizeX="100" rotvelrange="0" directionto="1 1 1" lifetimerange="0.0" r="255" velrange="0" rot="0"/>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeX="10" sizeY="10"/>
+      <keyframe lifepercent="1" sizeY="500" sizeX="500"/>
+    </size_effector>
+    <color_effector/>
+    <alpha_effector>
+      <keyframe a="11" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.7"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+</effect>

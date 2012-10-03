@@ -1,0 +1,56 @@
+<effect>
+  <light starttime="0.0" width="138" texture="dian" b="255" endtime="0.0" r="122" height="122" rot="70" pos="0 0 0" g="215" label="" bright="0.1">
+    <scale>
+      <frame y="3" durtime="350" x="3" z="3"/>
+      <frame y="0.5" durtime="10000" x="0.5" z="0.5"/>
+    </scale>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+  </light>
+  <quad starttime="0" width="100" texture="dian" billboard="true" endtime="0" height="100" rot="0" orient="2" pos="" label="">
+    <scale>
+      <frame y="2" durtime="300" x="3" z="1"/>
+      <frame y="2" durtime="100" x="0.2" z="1"/>
+      <frame y="0.2" durtime="1000" x="0.2" z="1"/>
+    </scale>
+    <path>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </path>
+    <color>
+      <frame a="255" durtime="1000" r="98" b="201" g="137"/>
+    </color>
+  </quad>
+  <property lifetime="400" cache="1">
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+  </property>
+  <particle global="true" mesh="" startTime="0" billboard="false" orient="3" pos="" label="" max="10" texture="vocals01" endTime="0">
+    <force_effector f="0" dir=""/>
+    <uv_effector su="1" sv="1"/>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="1" a="99"/>
+    </alpha_effector>
+    <scale>
+      <frame z="1" y="1" durtime="0" x="1"/>
+    </scale>
+    <rect_emitter rotvel="0" vel="2000" lifetimerange="0.0" directionfrom="0 0 0" b="200" velrange="0" a="255" lifetime="100" directionto="0 -1 0" rectz="1.0" sizeY="300" r="117" emitrate="30" emittime="200" sizeX="100" rot="0" rectx="6.0" recty="0.0" g="156" rotrange="0" rotvelrange="0" sizerange="20" emitperiod="10000"/>
+    <color_effector/>
+    <size_effector/>
+    <rotate>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </rotate>
+    <path>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </path>
+    <attract_effector p="" f="0"/>
+  </particle>
+</effect>

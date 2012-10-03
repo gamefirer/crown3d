@@ -1,0 +1,36 @@
+<effect>
+  <property cache="1" lifetime="3000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <particle texture="shockwave" mesh="" startTime="0" pos="" endTime="0" max="10" orient="0" global="true" label="">
+    <rect_emitter directionto="1 1 1" g="200" rectx="10" directionfrom="-1 -1 -1" emittime="0" sizerange="20" emitperiod="0" lifetimerange="250" rotvelrange="80" emitrate="5" vel="0" rotvel="-40" a="255" rotrange="360" b="200" velrange="0" sizeY="100" rectz="10" sizeX="100" recty="10" r="200" rot="0" lifetime="500"/>
+    <size_effector>
+      <keyframe sizeX="30" sizeY="30" lifepercent="0.0"/>
+      <keyframe sizeX="40" sizeY="40" lifepercent="0.5"/>
+      <keyframe sizeX="20" sizeY="20" lifepercent="1"/>
+    </size_effector>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="177" b="255" r="159"/>
+      <keyframe lifepercent="1" g="94" b="255" r="61"/>
+    </color_effector>
+    <alpha_effector>
+      <keyframe a="161" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.5"/>
+      <keyframe a="121" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <particle mesh="" startTime="0" pos="" endTime="0" max="10" orient="0" global="true" texture="flash02" label="">
+    <color_effector r="-100" g="100" b="-50"/>
+    <rect_emitter size="55" directionto="1 1 1" g="126" rot="0" directionfrom="-1 1 -1" emittime="0" sizerange="5" emitperiod="0" lifetimerange="200" rotvelrange="0" emitrate="50" vel="9.0" rotvel="0" a="255" rotrange="0" b="144.0" velrange="18.0" sizeY="8" rectz="20" sizeX="8" recty="20" r="61" rectx="20" lifetime="490.0"/>
+    <size_effector size="-200"/>
+    <alpha_effector a="-250"/>
+  </particle>
+</effect>

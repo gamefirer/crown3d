@@ -1,0 +1,17 @@
+<effect>
+  <quad endtime="0" texture="flash01" height="100" label="" width="100" orient="2" rot="0" pos="" starttime="0" billboard="true">
+    <scale>
+      <frame x="1" z="1" durtime="50" y="1"/>
+      <frame x="3" z="1" durtime="150" y="3"/>
+      <frame x="0.01" z="1" durtime="1000" y="0.01"/>
+    </scale>
+    <color>
+      <frame a="183.0" g="255" b="255" r="255" durtime="300"/>
+      <frame a="0.0" g="78" b="255" r="45" durtime="1000"/>
+    </color>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </quad>
+  <property cache="1" lifetime="400"/>
+</effect>

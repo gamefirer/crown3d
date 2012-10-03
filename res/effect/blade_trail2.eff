@@ -1,0 +1,16 @@
+<effect>
+  <stripe parallel="true" label="" timeduv="false" pos="" max="20" starttime="0" startTime="0" endTime="0" texture="daoguang" widedir="0.0" billboard="false" endtime="5000" dragtime="500" stripenum="1" wide="50">
+    <color_effector g="0" b="0" r="0"/>
+    <alpha_effector a="-500"/>
+    <dragger a="255" g="38.0" b="40.0" r="255.0"/>
+  </stripe>
+  <particle orient="0" label="" pos="" global="true" startTime="0" endTime="0" texture="flash02" max="10" mesh="" billboard="true">
+    <rect_emitter directionfrom="-1 -1 -1" g="200" rectz="10" lifetime="500" rotrange="360.0" recty="10" sizerange="20" b="200" emitperiod="0.0" velrange="0" rectx="10" a="255" emittime="0.0" sizeY="100" vel="0" directionto="1 1 1" sizeX="100" rotvel="0" lifetimerange="500" rotvelrange="0" r="200" rot="0" emitrate="10"/>
+    <color_effector/>
+    <size_effector>
+      <keyframe sizeY="50" lifepercent="0.0" sizeX="50"/>
+      <keyframe sizeY="5" lifepercent="1.0" sizeX="5"/>
+    </size_effector>
+  </particle>
+  <property lifetime="1000" cache="1"/>
+</effect>

@@ -1,0 +1,31 @@
+<effect>
+  <property cache="1" lifetime="5362">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <mesh file="../equipment/weapon/zhanshi/t1_l" texture="lighting3" starttime="0" endtime="0" pos="0 0 0" label="">
+    <scale>
+      <frame z="1.05" y="1.05" x="1.05" durtime="0"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <color>
+      <frame a="100" g="255" b="255" r="255" durtime="1000"/>
+      <frame a="212.0" g="255" b="255" r="255" durtime="1000"/>
+      <frame a="100" g="255" b="255" r="255" durtime="1000"/>
+    </color>
+    <uv repeat="true" smooth="true">
+      <frame v="0" su="1" u="0.0" r="0" sv="1" durtime="1000"/>
+      <frame v="0.0" su="1.0" u="1.0" sv="1.0" r="1.4" durtime="1000"/>
+      <frame v="0" su="1" u="0" durtime="0" r="0" sv="1"/>
+    </uv>
+    <path>
+      <frame z="0" y="0" x="0" durtime="1000"/>
+    </path>
+  </mesh>
+</effect>

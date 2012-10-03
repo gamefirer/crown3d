@@ -1,0 +1,35 @@
+<effect pos="0 0 0">
+  <mesh texture="quntizhiliao" endtime="500" pos="0 0 0" label="" file="healthquan" starttime="0">
+    <color>
+      <frame a="255" durtime="300" g="207" b="177" r="218"/>
+      <frame a="0.0" durtime="1000" g="255" b="148" r="173"/>
+      <frame a="0.0" durtime="1000" g="255" b="255" r="255"/>
+    </color>
+    <uv/>
+    <scale>
+      <frame durtime="300" x="1" z="1" y="2"/>
+      <frame durtime="10000" x="8" z="8" y="50"/>
+      <frame durtime="1000" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </mesh>
+  <property lifetime="1000" cache="1"/>
+  <particle texture="quntizhiliao2" label="" global="true" max="10" startTime="0" pos="" orient="0" endTime="0" mesh="">
+    <color_effector/>
+    <uv_effector su="0.5" sv="0.5">
+      <keyframe v="0" u="0" lifepercent="0.0"/>
+      <keyframe v="0" u="0.5" lifepercent="0.2"/>
+      <keyframe v="0.5" u="0" lifepercent="0.5"/>
+      <keyframe v="0.5" u="0.5" lifepercent="0.7"/>
+      <keyframe v="0" lifepercent="0.1" u="0"/>
+    </uv_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter rotvel="0" sizerange="50" emitperiod="10000" lifetimerange="300" rotvelrange="0" emitrate="20" sizeX="10" rotrange="131" rot="54" sizeY="10" velrange="100" vel="300" a="255" rectz="80" directionto="0 1 0" b="200" recty="10" rectx="80" lifetime="300" g="200" r="200" directionfrom="0 1 0" emittime="300"/>
+    <size_effector/>
+  </particle>
+</effect>

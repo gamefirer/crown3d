@@ -1,0 +1,51 @@
+<effect>
+  <property lifetime="3000" cache="1"/>
+  <editor>1.0</editor>
+  <particle label="粒子" starttime="0" endtime="3000" pos="0 10 0" blendmode="" max="2" global="true" billboard="false" orient="1" mesh="" texture="dreamgray">
+    <rect_emitter emitrate="300" lifetime="300" lifetimerange="0" a="255" r="255" g="51" b="0" sizeX="100" sizeY="100" sizerange="0" directionfrom="0 0 0" directionto="0 0 0" vel="100" velrange="0" rot="0" rotrange="0" rotvel="0" rotvelrange="0" emitperiod="5000" emittime="200" rectx="0" recty="0" rectz="0"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector>
+      <keyframe a="0" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.33"/>
+      <keyframe a="0" lifepercent="0.45"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe r="255" g="255" b="0" lifepercent="0"/>
+      <keyframe r="255" g="0" b="0" lifepercent="0.8"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeX="10" sizeY="10" lifepercent="0"/>
+      <keyframe sizeX="300" sizeY="300" lifepercent="0.5"/>
+    </size_effector>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <particle label="粒子" starttime="0" endtime="3000" pos="0 10 100" blendmode="" max="10" global="true" billboard="false" orient="1" mesh="" texture="trail43spear">
+    <rect_emitter emitrate="500" lifetime="200" lifetimerange="0" a="54" r="255" g="102" b="51" sizeX="50" sizeY="100" sizerange="200" directionfrom="0 0 0" directionto="0 0 1" vel="30" velrange="500" rot="0" rotrange="10" rotvel="0" rotvelrange="0" emitperiod="5000" emittime="50" rectx="0" recty="0" rectz="0"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector>
+      <keyframe a="0" lifepercent="0"/>
+      <keyframe a="251" lifepercent="0.33"/>
+      <keyframe a="0" lifepercent="0.7533333333333333"/>
+    </alpha_effector>
+    <color_effector/>
+    <size_effector/>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <quad label="面片" pos="0 15 0" starttime="100" endtime="200" height="200" width="200" orient="1" blendmode="" rot="71" billboard="false" zUp="false" texture="ray17">
+    <color loop="false">
+      <frame durtime="110" a="255" r="255" g="255" b="255"/>
+      <frame durtime="10" a="100" r="255" g="102" b="51"/>
+    </color>
+    <uv smooth="false" repeat="false"/>
+    <path close="false" align="false"/>
+    <scale loop="false">
+      <frame durtime="50" x="0" y="0" z="0"/>
+      <frame durtime="50" x="2" y="2" z="2"/>
+    </scale>
+    <rotate loop="false"/>
+  </quad>
+</effect>

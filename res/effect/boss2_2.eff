@@ -1,0 +1,35 @@
+<effect>
+  <property cache="1" lifetime="5000"/>
+  <particle texture="bingfengbao" mesh="" startTime="0" pos="" endTime="0" max="5" orient="1" global="false" billboard="false" label="">
+    <rect_emitter size="15" directionto="0 1 0" g="255" rot="0.0" directionfrom="0 1 0" emittime="0" sizerange="5" emitperiod="0" lifetimerange="100" rotvelrange="180" emitrate="2" vel="0.0" rotvel="90" a="255" rotrange="360" b="255" velrange="0.0" sizeY="265" rectz="0.0" sizeX="265" recty="0" r="255" rectx="0.0" lifetime="1000"/>
+    <size_effector size="-30">
+      <keyframe sizeX="10" sizeY="10" lifepercent="0.0"/>
+      <keyframe sizeX="200" sizeY="200" lifepercent="1"/>
+    </size_effector>
+    <force_effector dir="0 1 0" f="0.0"/>
+    <uv_effector su="1" sv="1"/>
+    <color_effector r="-100" g="0" b="-250"/>
+    <alpha_effector a="-250">
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.8"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <quad texture="bingfengbao" height="100" width="100" pos="0 0 0" orient="1" billboard="false" starttime="0" endtime="2000" rot="0" label="">
+    <scale>
+      <frame x="0.5" z="0.5" y="1" durtime="1000"/>
+      <frame x="2" z="2" y="1" durtime="1000"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" y="-233.3" durtime="1000"/>
+    </rotate>
+    <uv>
+      <frame v="0" su="1" u="0" r="0" sv="1" durtime="1000"/>
+    </uv>
+    <color>
+      <frame a="0.0" g="255" b="255" r="255" durtime="300"/>
+      <frame a="255" g="255" b="255" r="255" durtime="800"/>
+      <frame a="64" g="255" b="255" r="255" durtime="1000"/>
+    </color>
+  </quad>
+</effect>

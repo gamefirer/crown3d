@@ -1,0 +1,28 @@
+<effect pos="0 0 0">
+  <property lifetime="500" cache="3"/>
+  <particle endTime="0" label="" orient="0" pos="0 0 0" max="10" texture="dust1" global="true" mesh="" startTime="0">
+    <force_effector dir="" f="0"/>
+    <color_effector/>
+    <uv_effector su="1" sv="1"/>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="0.0"/>
+      <keyframe lifepercent="0.5" a="223"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeY="200" sizeX="200"/>
+      <keyframe lifepercent="1.0" sizeY="100" sizeX="100"/>
+    </size_effector>
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <attract_effector p="" f="0"/>
+    <rect_emitter lifetime="400" directionfrom="-1 -1 -1" velrange="0" rot="0" rotvelrange="21.2" emitrate="200" vel="200" rotrange="360" sizeY="50" rotvel="0" sizerange="10" a="255" rectz="10" b="230" recty="10" sizeX="50" rectx="10" emittime="200" g="75" lifetimerange="100" r="50" directionto="1 1 1" emitperiod="10000.0"/>
+  </particle>
+</effect>

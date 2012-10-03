@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scene xmlns="">
+<texturepath path="citytex"/>
+<terraintexturepath path="terrain"/>
+<effectpath path="effect"/>
+<soundpath path="sound"/>
+<mesh name="box11" vertexColor="true">
+	<pos x="-2340.18" y="143.133" z="-345.32"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object02" vertexColor="true">
+	<pos x="-2275.34" y="-225.54" z="-35.3952"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="cylinder01" vertexColor="true">
+	<pos x="-2349.15" y="-241.773" z="-1426.48"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="box06" vertexColor="true">
+	<pos x="-1115.1" y="-256.487" z="-1592.53"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="plane02" vertexColor="true">
+	<pos x="-906.955" y="-240.241" z="-1684.87"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object14" vertexColor="true">
+	<pos x="-1149.91" y="-234.525" z="-1155.99"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object15" vertexColor="true">
+	<pos x="-2340.18" y="139.894" z="-345.32"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="box139" vertexColor="true">
+	<pos x="-1903.92" y="315.068" z="-45.296"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="plane08" vertexColor="true">
+	<pos x="-2349.44" y="128.687" z="-424.084"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="cylinder03" vertexColor="true">
+	<pos x="-1258.55" y="111.841" z="-1006.32"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="plane09" vertexColor="true">
+	<pos x="-1292.75" y="1.97025" z="-1006.33"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="true" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="box159" vertexColor="true">
+	<pos x="-2353.13" y="-119.123" z="-1597.79"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<terrain name="terrain"></terrain>
+<mesh name="objobject09" vertexColor="true">
+	<pos x="-2902.02" y="-241.773" z="-250.665"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="objobject07" vertexColor="true">
+	<pos x="-2902.02" y="-241.773" z="-250.665"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="objobject01" vertexColor="true">
+	<pos x="-2902.02" y="-241.773" z="-250.665"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="objobject04" vertexColor="true">
+	<pos x="-2902.02" y="-241.773" z="-250.665"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="objobject05" vertexColor="true">
+	<pos x="-2902.02" y="-241.773" z="-250.665"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="objobject06" vertexColor="true">
+	<pos x="-2902.02" y="-241.773" z="-250.665"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="objobject02" vertexColor="true">
+	<pos x="-2902.02" y="-241.773" z="-250.665"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object05" vertexColor="true">
+	<pos x="-1125.96" y="-19.4592" z="439.772"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<terraintex tex="hunhe" tex1="tu01" tex2="cao02" tex3="cao01" tex4="zhuan01" uvscale="10"/>
+</mesh>
+<mesh name="box224" vertexColor="true">
+	<pos x="-2828.99" y="-24.0136" z="1583.99"></pos>
+	<rot rx="-0.618365" ry="-0.342964" rz="-0.342965" rw="0.618365"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="cylinder17" vertexColor="true">
+	<pos x="-3273.52" y="291.058" z="938.382"></pos>
+	<rot rx="0.20356" ry="-0.647504" rz="0.710558" rw="0.185496"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="objzhucheng_yewai_291_zahuopu_01_d" vertexColor="true">
+	<pos x="-311.715" y="-21.9037" z="1171.21"></pos>
+	<rot rx="0.0" ry="0.841631" rz="0.0" rw="0.540054"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object19" vertexColor="true">
+	<pos x="-311.715" y="-21.9037" z="1171.21"></pos>
+	<rot rx="0.0" ry="0.841631" rz="0.0" rw="0.540054"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object20" vertexColor="true">
+	<pos x="-311.715" y="-21.9037" z="1171.21"></pos>
+	<rot rx="0.0" ry="0.841631" rz="0.0" rw="0.540054"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object21" vertexColor="true">
+	<pos x="-311.715" y="-21.9037" z="1171.21"></pos>
+	<rot rx="0.0" ry="0.841631" rz="0.0" rw="0.540054"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="object22" vertexColor="true">
+	<pos x="-311.715" y="-21.9037" z="1171.21"></pos>
+	<rot rx="0.0" ry="0.841631" rz="0.0" rw="0.540054"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="object24" vertexColor="true">
+	<pos x="-1125.96" y="-19.4592" z="439.772"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<terraintex tex="hunhe02" tex1="tu01" tex2="cao02" tex3="cao01" tex4="zhuan01" uvscale="10"/>
+</mesh>
+<mesh name="objbox01" vertexColor="true">
+	<pos x="-3113.31" y="-249.924" z="108.76"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="box01" vertexColor="true">
+	<pos x="5292.64" y="-217.514" z="131.14"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="box03" vertexColor="true">
+	<pos x="4390.99" y="-240.443" z="-157.104"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object18" vertexColor="true">
+	<pos x="53.434" y="-21.9006" z="517.973"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object711" vertexColor="true">
+	<pos x="4154.94" y="-19.4592" z="1320.1"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<terraintex tex="hunhe03" tex1="tu01" tex2="tu02" tex3="cao01" tex4="shi01" uvscale="10"/>
+</mesh>
+<mesh name="box02" vertexColor="true">
+	<pos x="-1416.3" y="-19.4592" z="2060.3"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="box41" vertexColor="true">
+	<pos x="-2361.31" y="756.296" z="2061.96"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="box134" vertexColor="true">
+	<pos x="-2361.1" y="270.67" z="1786.82"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object12" vertexColor="true">
+	<pos x="-1754.56" y="19.6505" z="1388.49"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="cylinder02" vertexColor="true">
+	<pos x="-1743.77" y="525.299" z="1462.46"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="plane06" vertexColor="true">
+	<pos x="-1607.98" y="291.327" z="1336.95"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<env>
+	<LightBackGround r="158" g="144" b="95"></LightBackGround>
+	<Fog r="156" g="208" b="255" near="2300" far="2800" alpha="0.4"></Fog>
+</env>
+<light name="light01" tex="light02.dds" size="3200" bright="1" x="-2306.65" z="-1084.8" rot="90.0" r="255" g="255" b="255"></light>
+<mesh name="object713" vertexColor="true">
+	<pos x="-2052.08" y="417.043" z="2761.54"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="dongxue" vertexColor="true">
+	<pos x="4046.11" y="-29.0825" z="836.309"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object718" vertexColor="true">
+	<pos x="328.955" y="-610.718" z="960.234"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object1448" vertexColor="true">
+	<pos x="3353.23" y="42.5883" z="1173.89"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="object1452" vertexColor="false">
+	<pos x="1380.44" y="47.6483" z="-23171.7"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="false"></mat>
+</mesh>
+<mesh name="objplane212" vertexColor="true">
+	<pos x="-1085.73" y="-205.947" z="-1607.42"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="true" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<light name="light02" tex="light03.dds" size="3200" bright="1" x="-1569.65" z="1017.91" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light03" tex="light02.dds" size="3200" bright="1" x="2511.82" z="644.327" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light04" tex="light02.dds" size="4000" bright="1" x="540.657" z="644.327" rot="90.0" r="255" g="255" b="255"></light>
+<mesh name="object1459" vertexColor="false">
+	<pos x="1380.44" y="47.6483" z="-22259.7"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="false"></mat>
+</mesh>
+<mesh name="object01" vertexColor="true">
+	<pos x="-1754.56" y="19.6505" z="1388.49"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<trigger name="1" x="-2829.34" y="0.0" z="1184.55" rot="-90.0"></trigger>
+<trigger name="2" x="-2417.25" y="0.0" z="1292.45" rot="-90.0"></trigger>
+<trigger name="3" x="-2366.04" y="0.0" z="-513.548" rot="-90.0"></trigger>
+<trigger name="4" x="-1670.36" y="0.0" z="1278.05" rot="-90.0"></trigger>
+<trigger name="5" x="-1075.2" y="0.0" z="532.318" rot="-90.0"></trigger>
+<trigger name="6" x="-288.177" y="0.0" z="903.951" rot="-90.0"></trigger>
+<trigger name="7" x="-1704.23" y="0.0" z="-1159.77" rot="-90.0"></trigger>
+<trigger name="8" x="3427.69" y="0.0" z="561.925" rot="-90.0"></trigger>
+<trigger name="9" x="3427.69" y="0.0" z="784.889" rot="-90.0"></trigger>
+<trigger name="10" x="1435.56" y="0.0" z="888.598" rot="-90.0"></trigger>
+<trigger name="11" x="1825.95" y="0.0" z="578.817" rot="-90.0"></trigger>
+<trigger name="12" x="295.914" y="0.0" z="578.817" rot="-90.0"></trigger>
+<trigger name="13" x="732.656" y="0.0" z="892.549" rot="-90.0"></trigger>
+<trigger name="14" x="-2157.5" y="0.0" z="-1032.77" rot="-90.0"></trigger>
+<trigger name="15" x="-3529.21" y="0.0" z="-997.1" rot="-90.0"></trigger>
+<trigger name="16" x="-3286.83" y="0.0" z="-1443.82" rot="-90.0"></trigger>
+<trigger name="17" x="-2689.4" y="0.0" z="-1118.59" rot="-90.0"></trigger>
+<trigger name="18" x="-2125.67" y="0.0" z="-1853.59" rot="-90.0"></trigger>
+<trigger name="19" x="-1668.36" y="0.0" z="-808.592" rot="-90.0"></trigger>
+<trigger name="20" x="-3430.67" y="0.0" z="418.257" rot="-90.0"></trigger>
+<trigger name="21" x="-2643.13" y="0.0" z="762.646" rot="-90.0"></trigger>
+<trigger name="22" x="-1977.7" y="0.0" z="706.404" rot="-90.0"></trigger>
+<trigger name="23" x="-1494.67" y="0.0" z="285.072" rot="-90.0"></trigger>
+<trigger name="24" x="2454.94" y="0.0" z="430.749" rot="-90.0"></trigger>
+<trigger name="25" x="2708.44" y="0.0" z="804.685" rot="-90.0"></trigger>
+<mesh name="box04" vertexColor="true">
+	<pos x="-3266.27" y="223.741" z="12.3822"></pos>
+	<rot rx="0.0" ry="-0.337291" rz="0.0" rw="0.9414"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<animation>
+		<rotate><frame durtime="1000" x="100" y="0" z="0"/></rotate>
+	</animation>
+</mesh>
+<effect name="effect10" file="fire01">
+	<pos x="-2918.34" y="100.635" z="-167.459"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<effect name="effect11" file="fire01">
+	<pos x="-2918.34" y="107.463" z="-135.733"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<effect name="effect12" file="fire01">
+	<pos x="-2898.09" y="103.541" z="-148.577"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<effect name="effect16" file="fire04">
+	<pos x="-1921.85" y="513.627" z="-37.7683"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<mesh name="plane31" vertexColor="true">
+	<pos x="406.179" y="-18.459" z="1257.8"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<effect name="effect20" file="leaf">
+	<pos x="2318.53" y="195.818" z="860.454"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<effect name="effect22" file="leaf">
+	<pos x="319.102" y="122.255" z="1106.89"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<mesh name="drawcall_197" vertexColor="true">
+	<pos x="2446.67" y="422.801" z="1208.88"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="drawcall_198" vertexColor="true">
+	<pos x="2469.66" y="379.049" z="1158.56"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="cao38" vertexColor="true">
+	<pos x="-501.566" y="-192.652" z="-2050.87"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="true" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<effect name="effect23" file="fire04">
+	<pos x="-2910.38" y="57.0309" z="-150.088"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<mesh name="object09" vertexColor="true">
+	<pos x="-866.185" y="-214.133" z="-2072.58"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="object11" vertexColor="true">
+	<pos x="-374.85" y="-216.406" z="-2065.95"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="true" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<effect name="effect24" file="leaf">
+	<pos x="-387.925" y="122.255" z="1351.91"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<effect name="effect25" file="leaf">
+	<pos x="-4045.51" y="168.538" z="640.806"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<effect name="effect26" file="leaf">
+	<pos x="-507.239" y="200.018" z="-2225.84"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<effect name="effect27" file="fire02">
+	<pos x="-1507.23" y="-212.549" z="-1753.49"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<effect name="effect28" file="fire02">
+	<pos x="-1279.61" y="-212.549" z="-1745.74"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<effect name="effect29" file="fire02">
+	<pos x="-1398.37" y="-212.549" z="-1549.04"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<mesh name="object06" vertexColor="false">
+	<pos x="-1275.81" y="-232.2" z="-1748.67"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="plane01" vertexColor="false">
+	<pos x="-1395.08" y="-230.573" z="-1682.51"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<animation>
+		<color><frame durtime="1000" a="200" g="150" b="137.0" r="150"/><frame durtime="2000" a="128" g="255" b="255" r="255"/></color>
+	</animation>
+</mesh>
+<effect name="effect30" file="chuansongdian">
+	<pos x="-3528.27" y="-120.495" z="-2015.82"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+</effect>
+<mesh name="object03" vertexColor="false">
+	<pos x="-4318.57" y="-102.422" z="-2662.51"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object07" vertexColor="false">
+	<pos x="-4330.57" y="-324.59" z="-2659.34"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="tyrtyrty" vertexColor="true">
+	<pos x="-4325.6" y="-281.293" z="-2670.62"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<trigger name="26" x="-1396.85" y="0.0" z="-1681.85" rot="-90.0"></trigger>
+<world>
+	<point x="-2899.92" z="1246.91"></point>
+	<point x="-3295.42" z="815.685"></point>
+	<point x="-3636.33" z="960.965"></point>
+	<point x="-3808.96" z="424.515"></point>
+	<point x="-3800.51" z="143.419"></point>
+	<point x="-3726.95" z="-120.727"></point>
+	<point x="-3791.6" z="-190.866"></point>
+	<point x="-3476.64" z="-619.471"></point>
+	<point x="-3535.6" z="-667.268"></point>
+	<point x="-3639.08" z="-806.875"></point>
+	<point x="-3765.57" z="-829.952"></point>
+	<point x="-3844.37" z="-915.654"></point>
+	<point x="-3821.61" z="-998.853"></point>
+	<point x="-3757.39" z="-984.202"></point>
+	<point x="-3671.79" z="-1107.61"></point>
+	<point x="-3679.91" z="-1188.1"></point>
+	<point x="-3586.83" z="-1385.34"></point>
+	<point x="-3758.48" z="-1569.46"></point>
+	<point x="-3368.43" z="-1897.1"></point>
+	<point x="-3183.98" z="-1703.65"></point>
+	<point x="-3027.48" z="-1796.88"></point>
+	<point x="-2954.38" z="-1814.6"></point>
+	<point x="-2905.17" z="-1889.84"></point>
+	<point x="-2674.39" z="-1962.18"></point>
+	<point x="-2586.53" z="-1979.43"></point>
+	<point x="-2533.27" z="-1831.13"></point>
+	<point x="-2367.22" z="-1883.35"></point>
+	<point x="-2144.36" z="-2066.82"></point>
+	<point x="-1391.7" z="-2123.78"></point>
+	<point x="-1127.84" z="-2093.34"></point>
+	<point x="-1059.76" z="-1825.46"></point>
+	<point x="-1141.98" z="-1693.07"></point>
+	<point x="-1144.02" z="-1500.82"></point>
+	<point x="-1211.07" z="-1504.88"></point>
+	<point x="-1253.87" z="-1442.85"></point>
+	<point x="-1272.17" z="-922.098"></point>
+	<point x="-1201.05" z="-602.769"></point>
+	<point x="-1001.62" z="-338.268"></point>
+	<point x="-1005.69" z="222.495"></point>
+	<point x="-960.112" z="253.229"></point>
+	<point x="-816.359" z="255.466"></point>
+	<point x="-684.343" z="153.89"></point>
+	<point x="-213.852" z="223.415"></point>
+	<point x="26.1951" z="336.805"></point>
+	<point x="220.333" z="353.825"></point>
+	<point x="478.084" z="246.95"></point>
+	<point x="1250.0" z="254.44"></point>
+	<point x="1715.07" z="381.963"></point>
+	<point x="1939.47" z="284.157"></point>
+	<point x="2970.48" z="296.53"></point>
+	<point x="3149.27" z="235.753"></point>
+	<point x="3476.89" z="199.999"></point>
+	<point x="3475.88" z="348.962"></point>
+	<point x="3525.44" z="397.232"></point>
+	<point x="3524.67" z="1004.15"></point>
+	<point x="3351.4" z="933.402"></point>
+	<point x="3264.23" z="957.875"></point>
+	<point x="3227.81" z="1036.08"></point>
+	<point x="3061.21" z="999.902"></point>
+	<point x="2878.14" z="1101.04"></point>
+	<point x="2779.25" z="1073.14"></point>
+	<point x="2644.6" z="840.942"></point>
+	<point x="2150.98" z="845.365"></point>
+	<point x="2048.44" z="1101.6"></point>
+	<point x="1077.28" z="1113.82"></point>
+	<point x="1040.62" z="971.43"></point>
+	<point x="899.867" z="967.056"></point>
+	<point x="824.405" z="1081.27"></point>
+	<point x="549.255" z="1072.72"></point>
+	<point x="454.049" z="859.975"></point>
+	<point x="180.77" z="835.052"></point>
+	<point x="-268.593" z="978.15"></point>
+	<point x="-358.237" z="1012.27"></point>
+	<point x="-537.412" z="1114.44"></point>
+	<point x="-838.838" z="1128.89"></point>
+	<point x="-898.087" z="1094.84"></point>
+	<point x="-970.647" z="1122.23"></point>
+	<point x="-1386.68" z="1126.62"></point>
+	<point x="-1389.67" z="1342.52"></point>
+	<point x="-1944.28" z="1340.41"></point>
+	<point x="-1952.95" z="1527.09"></point>
+	<point x="-2177.15" z="1555.87"></point>
+	<point x="-2361.18" z="1808.41"></point>
+	<point x="-2605.83" z="1691.24"></point>
+</world>
+<wall>
+	<point x="-3401.22" z="101.669"></point>
+	<point x="-3059.38" z="-416.562"></point>
+	<point x="-2265.78" z="-438.191"></point>
+	<point x="-2239.33" z="-627.374"></point>
+	<point x="-1899.01" z="-620.798"></point>
+	<point x="-1899.62" z="-330.376"></point>
+	<point x="-1745.02" z="-326.307"></point>
+	<point x="-1749.31" z="198.703"></point>
+	<point x="-1824.11" z="204.457"></point>
+	<point x="-1896.61" z="319.199"></point>
+	<point x="-2076.6" z="365.325"></point>
+	<point x="-2737.16" z="366.958"></point>
+	<point x="-3028.64" z="355.155"></point>
+	<point x="-3209.67" z="249.375"></point>
+</wall>
+<wall>
+	<point x="-2389.29" z="-1317.94"></point>
+	<point x="-2441.52" z="-1339.2"></point>
+	<point x="-2465.81" z="-1390.82"></point>
+	<point x="-2463.99" z="-1476.46"></point>
+	<point x="-2440.3" z="-1508.04"></point>
+	<point x="-2398.4" z="-1540.84"></point>
+	<point x="-2315.8" z="-1545.7"></point>
+	<point x="-2238.06" z="-1489.82"></point>
+	<point x="-2221.66" z="-1416.94"></point>
+	<point x="-2252.03" z="-1348.91"></point>
+	<point x="-2317.01" z="-1311.26"></point>
+</wall>
+<scenebound minX="-5100.53" maxX="4803.45" minY="-2989.03" maxY="3155.14"/>
+</scene>

@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scene xmlns="">
+<texturepath path="dilaotex"/>
+<terraintexturepath path="terrain"/>
+<effectpath path="effect"/>
+<soundpath path="sound"/>
+<env>
+	<LightBackGround r="70" g="70" b="70"></LightBackGround>
+	<Fog r="11" g="67" b="116" near="2000" far="2400" alpha="0.3"></Fog>
+</env>
+<effect name="effect42" file="fire01">
+	<pos x="-82.5117" y="452.817" z="437.982"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<light name="light02" tex="light08.dds" size="1000" bright="0.5" x="-1403.18" z="-2898.29" rot="90.0" r="56" g="221" b="200"></light>
+<light name="light21" tex="light02.dds" size="1200" bright="1.0" x="-3767.24" z="-1955.07" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light22" tex="light04.dds" size="1800" bright="1.0" x="-4988.15" z="-1602.28" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light24" tex="light02.dds" size="1600" bright="1.0" x="-4352.31" z="-3480.99" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light25" tex="light03.dds" size="1800" bright="1.0" x="-5307.2" z="-3748.12" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light30" tex="light03.dds" size="1200" bright="1.0" x="-3034.96" z="-2132.76" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light41" tex="light03.dds" size="1600" bright="1.0" x="-5817.75" z="-5110.86" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light59" tex="light04.dds" size="2000" bright="1.0" x="-4210.97" z="-4409.38" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light65" tex="light03.dds" size="1600" bright="1.0" x="-4823.35" z="-5286.54" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light68" tex="light03.dds" size="1200" bright="1.0" x="-4712.66" z="-2573.29" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light69" tex="light03.dds" size="1200" bright="1.0" x="-4134.26" z="-1162.85" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light71" tex="light04.dds" size="1800" bright="1.0" x="-353.448" z="-1830.05" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light72" tex="light08.dds" size="1400" bright="0.7" x="-1365.64" z="-132.587" rot="90.0" r="100" g="200" b="100"></light>
+<light name="light73" tex="light03.dds" size="1600" bright="0.3" x="-2176.86" z="-746.53" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light74" tex="light02.dds" size="1600" bright="0.6" x="-1229.06" z="-1457.79" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light78" tex="light08.dds" size="1800" bright="0.7" x="-6035.98" z="-4570.97" rot="90.0" r="19" g="133" b="59"></light>
+<light name="light80" tex="light08.dds" size="1400" bright="0.6" x="-5188.07" z="-5849.48" rot="90.0" r="99" g="181" b="128"></light>
+<trigger name="1" x="21.3154" y="0.0" z="-952.909" rot="90.0"></trigger>
+<trigger name="2" x="-1144.19" y="0.0" z="-1921.6" rot="90.0"></trigger>
+<trigger name="3" x="-1507.92" y="0.0" z="-1183.01" rot="90.0"></trigger>
+<trigger name="4" x="-1983.89" y="0.0" z="-1803.23" rot="90.0"></trigger>
+<trigger name="5" x="-1976.52" y="0.0" z="-556.114" rot="90.0"></trigger>
+<trigger name="6" x="-952.388" y="0.0" z="-360.122" rot="90.0"></trigger>
+<trigger name="7" x="-789.184" y="0.0" z="-2971.55" rot="90.0"></trigger>
+<trigger name="8" x="-1019.31" y="0.0" z="-2328.93" rot="90.0"></trigger>
+<trigger name="9" x="-1591.5" y="0.0" z="-2670.16" rot="90.0"></trigger>
+<trigger name="10" x="-3118.59" y="0.0" z="-1954.22" rot="90.0"></trigger>
+<trigger name="11" x="-3744.16" y="0.0" z="-1529.06" rot="90.0"></trigger>
+<trigger name="12" x="-4015.74" y="0.0" z="-2346.14" rot="90.0"></trigger>
+<trigger name="13" x="-4804.27" y="0.0" z="-3900.92" rot="90.0"></trigger>
+<trigger name="14" x="-5405.59" y="0.0" z="-4371.95" rot="90.0"></trigger>
+<trigger name="15" x="-4485.86" y="0.0" z="-4609.41" rot="90.0"></trigger>
+<trigger name="16" x="-5209.57" y="0.0" z="-3460.71" rot="90.0"></trigger>
+<trigger name="17" x="-5780.98" y="0.0" z="-2935.24" rot="90.0"></trigger>
+<trigger name="18" x="-673.78" y="0.0" z="-1535.52" rot="90.0"></trigger>
+<trigger name="19" x="-340.341" y="0.0" z="146.45" rot="90.0"></trigger>
+<trigger name="20" x="-5880.89" y="0.0" z="-3523.7" rot="90.0"></trigger>
+<trigger name="21" x="-4730.23" y="0.0" z="-1246.84" rot="90.0"></trigger>
+<trigger name="22" x="-5656.62" y="0.0" z="-1647.88" rot="90.0"></trigger>
+<trigger name="23" x="-4988.76" y="0.0" z="-2557.74" rot="90.0"></trigger>
+<trigger name="24" x="-4504.86" y="0.0" z="-1915.64" rot="90.0"></trigger>
+<trigger name="25" x="-4463.28" y="0.0" z="-3031.67" rot="90.0"></trigger>
+<trigger name="26" x="-3597.2" y="0.0" z="-2559.65" rot="90.0"></trigger>
+<trigger name="27" x="-5701.6" y="0.0" z="-2026.84" rot="90.0"></trigger>
+<trigger name="28" x="-4463.28" y="0.0" z="-5952.23" rot="90.0"></trigger>
+<trigger name="29" x="-3452.86" y="0.0" z="-3444.59" rot="90.0"></trigger>
+<trigger name="30" x="-290.731" y="0.0" z="-2697.75" rot="90.0"></trigger>
+<trigger name="31" x="-4302.91" y="0.0" z="-5190.92" rot="90.0"></trigger>
+<trigger name="32" x="-5056.77" y="0.0" z="-5641.66" rot="90.0"></trigger>
+<trigger name="33" x="-5607.88" y="0.0" z="-4915.25" rot="90.0"></trigger>
+<trigger name="34" x="-5792.06" y="0.0" z="-5753.95" rot="90.0"></trigger>
+<trigger name="35" x="-3091.26" y="0.0" z="-3708.59" rot="90.0"></trigger>
+<trigger name="36" x="-529.007" y="0.0" z="-1078.77" rot="90.0"></trigger>
+<mesh name="plane03" vertexColor="true">
+	<pos x="-6970.75" y="0.0" z="-2508.22"></pos>
+	<rot rx="0.0" ry="1.0" rz="0.0" rw="-4.21604e-006"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="true" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="plane04" vertexColor="true">
+	<pos x="-3860.36" y="3.0" z="-1888.37"></pos>
+	<rot rx="0.0" ry="1.0" rz="0.0" rw="-4.21604e-006"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="diaodeng" vertexColor="false">
+	<pos x="-1958.3" y="641.533" z="-1971.24"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="true" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="churukou" vertexColor="false">
+	<pos x="202.593" y="0.0" z="-902.306"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="true" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="plane96" vertexColor="false">
+	<pos x="-6378.42" y="1150.61" z="-1528.57"></pos>
+	<rot rx="-0.00985538" ry="0.49015" rz="-0.0175212" rw="0.871406"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="true" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object483" vertexColor="false">
+	<pos x="-2641.3" y="0.0" z="-3794.73"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="yuanpan02" vertexColor="false">
+	<pos x="-5033.6" y="-0.565918" z="-3840.12"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="true" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="zhalan01" vertexColor="false">
+	<pos x="-5477.23" y="0.0" z="-1454.78"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="lizhu" vertexColor="false">
+	<pos x="-688.241" y="0.0" z="-128.872"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="loafang3" vertexColor="true">
+	<pos x="-4065.88" y="0.0" z="-5573.23"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="huotai01" vertexColor="false">
+	<pos x="-5575.61" y="0.0" z="-2400.8"></pos>
+	<rot rx="0.0" ry="-3.01992e-007" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="true" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<terrain name="terrain"></terrain>
+<mesh name="qiang25" vertexColor="false">
+	<pos x="-8429.83" y="1.31744" z="-6626.04"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="true" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object15" vertexColor="false">
+	<pos x="-4065.88" y="0.0" z="-5573.23"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="true" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<effect name="effect78" file="fire01">
+	<pos x="-1513.57" y="452.817" z="437.982"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect79" file="fire01">
+	<pos x="69.9482" y="398.097" z="-506.478"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect80" file="fire01">
+	<pos x="69.9478" y="398.097" z="-1295.5"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect81" file="fire01">
+	<pos x="-803.125" y="169.461" z="-2206.72"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect82" file="fire01">
+	<pos x="-1766.29" y="169.461" z="-2206.72"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect83" file="fire01">
+	<pos x="-1766.29" y="169.461" z="-125.921"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect84" file="fire01">
+	<pos x="-803.125" y="169.461" z="-125.921"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect85" file="fire01">
+	<pos x="-1108.91" y="452.817" z="-3269.74"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect86" file="fire01">
+	<pos x="-80.6206" y="452.817" z="-3269.74"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect87" file="fire01">
+	<pos x="-1940.5" y="452.817" z="-3269.74"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect88" file="fire01">
+	<pos x="-1940.5" y="452.817" z="-3650.85"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect89" file="fire01">
+	<pos x="-1108.91" y="452.817" z="-3650.85"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect90" file="fire01">
+	<pos x="-80.6206" y="452.817" z="-3650.85"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect91" file="fire01">
+	<pos x="-82.5117" y="452.817" z="816.746"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect92" file="fire01">
+	<pos x="-1011.8" y="452.817" z="816.746"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect93" file="fire01">
+	<pos x="-1514.64" y="452.817" z="816.746"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect94" file="fire01">
+	<pos x="-2377.42" y="452.817" z="-379.739"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect95" file="fire01">
+	<pos x="-2756.33" y="452.817" z="-379.739"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect96" file="fire01">
+	<pos x="-2377.42" y="452.817" z="1477.57"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect97" file="fire01">
+	<pos x="-2756.33" y="452.817" z="1477.57"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect98" file="fire01">
+	<pos x="-3393.34" y="452.817" z="-3238.35"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect99" file="fire01">
+	<pos x="-2917.7" y="452.817" z="-4316.02"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect100" file="fire01">
+	<pos x="-3046.32" y="452.817" z="-966.641"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect101" file="fire01">
+	<pos x="-4070.25" y="452.817" z="-966.641"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect102" file="fire01">
+	<pos x="-4903.99" y="452.817" z="-966.641"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect103" file="fire01">
+	<pos x="-5927.8" y="452.817" z="-966.641"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect104" file="fire01">
+	<pos x="-4903.99" y="452.817" z="-585.49"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect105" file="fire01">
+	<pos x="-4070.25" y="452.817" z="-585.491"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect106" file="fire01">
+	<pos x="-3046.32" y="452.817" z="-585.491"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect107" file="fire01">
+	<pos x="-5927.8" y="452.817" z="-585.49"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect108" file="fire01">
+	<pos x="-6224.98" y="452.817" z="-1138.46"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect109" file="fire01">
+	<pos x="-6224.98" y="452.817" z="-2164.64"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect110" file="fire01">
+	<pos x="-6224.98" y="452.817" z="-2997.02"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect111" file="fire01">
+	<pos x="-6224.98" y="452.817" z="-4020.72"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect112" file="fire01">
+	<pos x="-6224.98" y="452.817" z="-4853.39"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect113" file="fire01">
+	<pos x="-6224.98" y="452.817" z="-5878.99"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect114" file="fire01">
+	<pos x="-6605.24" y="452.817" z="-2164.64"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect115" file="fire01">
+	<pos x="-6605.24" y="452.817" z="-1138.46"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect116" file="fire01">
+	<pos x="-6605.24" y="452.817" z="-2997.02"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect117" file="fire01">
+	<pos x="-6605.24" y="452.817" z="-4020.72"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect118" file="fire01">
+	<pos x="-6605.24" y="452.817" z="-4853.39"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect119" file="fire01">
+	<pos x="-6605.24" y="452.817" z="-5878.99"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect120" file="fire01">
+	<pos x="-6061.78" y="452.817" z="-6369.94"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect121" file="fire01">
+	<pos x="-7085.9" y="452.817" z="-6369.94"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect122" file="fire01">
+	<pos x="-7919.12" y="452.817" z="-6369.94"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect123" file="fire01">
+	<pos x="-8941.96" y="452.817" z="-6369.94"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect124" file="fire01">
+	<pos x="-5249.61" y="452.817" z="-6369.94"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect125" file="fire01">
+	<pos x="-4226.26" y="452.817" z="-6369.94"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect126" file="fire01">
+	<pos x="-4226.26" y="452.817" z="-6750.7"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect127" file="fire01">
+	<pos x="-5249.61" y="452.817" z="-6750.7"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect128" file="fire01">
+	<pos x="-6061.78" y="452.817" z="-6750.7"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect129" file="fire01">
+	<pos x="-7085.9" y="452.817" z="-6750.7"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect130" file="fire01">
+	<pos x="-7919.12" y="452.817" z="-6750.7"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect131" file="fire01">
+	<pos x="-8941.96" y="452.817" z="-6750.7"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect132" file="fire01">
+	<pos x="-4065.11" y="452.817" z="-6078.3"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect133" file="fire01">
+	<pos x="-4065.11" y="452.817" z="-5055.14"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect134" file="fire01">
+	<pos x="-4065.11" y="452.817" z="-4220.68"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect135" file="fire01">
+	<pos x="-2916.79" y="452.817" z="-3934.51"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect136" file="fire01">
+	<pos x="-3686.39" y="452.817" z="-6078.3"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect137" file="fire01">
+	<pos x="-3686.39" y="452.817" z="-5055.14"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect138" file="fire01">
+	<pos x="-3393.34" y="452.817" z="-2858.46"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect139" file="fire01">
+	<pos x="-4461.54" y="298.635" z="-2400.96"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect140" file="fire01">
+	<pos x="-5576.97" y="298.635" z="-2400.96"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect141" file="fire01">
+	<pos x="-4303.99" y="342.183" z="-1537.96"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect142" file="fire01">
+	<pos x="-5447.19" y="342.183" z="-1537.96"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect143" file="fire01">
+	<pos x="-4124.92" y="256.706" z="-5574.1"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect144" file="fire01">
+	<pos x="-4099.82" y="302.875" z="-3452.22"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect145" file="fire01">
+	<pos x="-5325.4" y="690.1" z="-3195.12"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect147" file="fire01">
+	<pos x="-853.282" y="307.356" z="403.21"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<mesh name="body_01" vertexColor="false">
+	<pos x="-2815.4" y="0.0" z="-1085.52"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="objxingju2" vertexColor="false">
+	<pos x="21.5581" y="-3.88701" z="-2523.95"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="objxingju1" vertexColor="false">
+	<pos x="-2460.59" y="-2.9119" z="-1080.47"></pos>
+	<rot rx="0.0" ry="-1.50996e-007" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="true" light="true"></mat>
+</mesh>
+<mesh name="objlaolong01" vertexColor="false">
+	<pos x="-5928.86" y="264.798" z="-3188.96"></pos>
+	<rot rx="0.0" ry="1.0" rz="0.0" rw="-4.21604e-006"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="laofang05" vertexColor="false">
+	<pos x="-4054.29" y="0.0" z="-3708.13"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<effect name="effect148" file="fire01">
+	<pos x="-5373.46" y="690.1" z="-3187.86"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect149" file="fire01">
+	<pos x="-5356.05" y="690.1" z="-3242.09"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect150" file="fire01">
+	<pos x="-5350.93" y="757.538" z="-3202.51"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<light name="light82" tex="light03.dds" size="1600" bright="0.3" x="-1900.85" z="106.814" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light83" tex="light02.dds" size="1600" bright="0.6" x="-682.529" z="-2428.05" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light84" tex="light03.dds" size="1200" bright="0.6" x="-2286.59" z="-2285.15" rot="90.0" r="255" g="255" b="255"></light>
+<effect name="effect151" file="fire01">
+	<pos x="-1979.95" y="757.538" z="-1962.6"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect152" file="fire01">
+	<pos x="-1954.43" y="690.1" z="-1955.21"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect153" file="fire01">
+	<pos x="-1985.08" y="690.1" z="-2002.18"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<effect name="effect154" file="fire01">
+	<pos x="-2002.48" y="690.1" z="-1947.95"></pos>
+	<rot rx="0.0" ry="0.707107" rz="0.0" rw="0.707107"></rot>
+</effect>
+<light name="light85" tex="light02.dds" size="1600" bright="1" x="-1981.26" z="-1979.72" rot="90.0" r="234" g="177" b="127"></light>
+<light name="light86" tex="light02.dds" size="1600" bright="0.6" x="14.1575" z="-901.146" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light87" tex="light03.dds" size="1600" bright="0.3" x="-190.124" z="154.998" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light88" tex="light03.dds" size="1600" bright="0.3" x="-265.034" z="-2901.0" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light89" tex="light03.dds" size="1200" bright="1.0" x="-5892.12" z="-1253.05" rot="90.0" r="255" g="255" b="255"></light>
+<light name="light90" tex="light02.dds" size="1600" bright="1" x="-5353.0" z="-3196.4" rot="90.0" r="234" g="177" b="127"></light>
+<world>
+	<point x="63.4119" z="-3185.98"></point>
+	<point x="59.5891" z="-2788.75"></point>
+	<point x="-151.144" z="-2776.28"></point>
+	<point x="-149.897" z="-2689.0"></point>
+	<point x="-36.4253" z="-2681.51"></point>
+	<point x="-28.9436" z="-2352.32"></point>
+	<point x="-147.403" z="-2347.33"></point>
+	<point x="-148.65" z="-2278.75"></point>
+	<point x="49.6135" z="-2266.28"></point>
+	<point x="41.0981" z="-1391.72"></point>
+	<point x="-19.3516" z="-1392.19"></point>
+	<point x="-20.5913" z="-1203.11"></point>
+	<point x="137.848" z="-1201.57"></point>
+	<point x="134.068" z="-610.031"></point>
+	<point x="-21.5259" z="-609.729"></point>
+	<point x="-21.2463" z="-402.571"></point>
+	<point x="89.4729" z="-402.569"></point>
+	<point x="94.5557" z="382.832"></point>
+	<point x="-2352.1" z="382.719"></point>
+	<point x="-2352.1" z="-1545.8"></point>
+	<point x="-2803.63" z="-1545.35"></point>
+	<point x="-2804.21" z="-1442.76"></point>
+	<point x="-2950.29" z="-1440.53"></point>
+	<point x="-2950.29" z="-1494.93"></point>
+	<point x="-3253.62" z="-1496.42"></point>
+	<point x="-3253.62" z="-1345.87"></point>
+	<point x="-2948.8" z="-1345.13"></point>
+	<point x="-2949.54" z="-1397.3"></point>
+	<point x="-2806.44" z="-1401.02"></point>
+	<point x="-2803.18" z="-948.719"></point>
+	<point x="-3327.41" z="-948.443"></point>
+	<point x="-3325.92" z="-1117.05"></point>
+	<point x="-3418.34" z="-1117.8"></point>
+	<point x="-3419.09" z="-949.932"></point>
+	<point x="-4291.97" z="-948.113"></point>
+	<point x="-4291.97" z="-1368.94"></point>
+	<point x="-4256.71" z="-1370.7"></point>
+	<point x="-4258.47" z="-1531.18"></point>
+	<point x="-4417.18" z="-1532.94"></point>
+	<point x="-4415.42" z="-1379.52"></point>
+	<point x="-4357.22" z="-1370.7"></point>
+	<point x="-4359.0" z="-948.11"></point>
+	<point x="-5461.91" z="-947.872"></point>
+	<point x="-5461.88" z="-1379.51"></point>
+	<point x="-5395.13" z="-1379.66"></point>
+	<point x="-5395.79" z="-1534.13"></point>
+	<point x="-5551.66" z="-1532.88"></point>
+	<point x="-5551.72" z="-1378.21"></point>
+	<point x="-5489.31" z="-1378.26"></point>
+	<point x="-5489.31" z="-949.114"></point>
+	<point x="-6143.02" z="-949.641"></point>
+	<point x="-6159.14" z="-5170.26"></point>
+	<point x="-6060.63" z="-5170.27"></point>
+	<point x="-6060.75" z="-5262.49"></point>
+	<point x="-6160.38" z="-5262.48"></point>
+	<point x="-6164.26" z="-6174.82"></point>
+	<point x="-4079.41" z="-6174.54"></point>
+	<point x="-4082.59" z="-5760.6"></point>
+	<point x="-4349.25" z="-5755.32"></point>
+	<point x="-4350.31" z="-5390.64"></point>
+	<point x="-4073.11" z="-5382.2"></point>
+	<point x="-4090.61" z="-3913.86"></point>
+	<point x="-3988.97" z="-3907.61"></point>
+	<point x="-3984.82" z="-3842.74"></point>
+	<point x="-3715.33" z="-3868.56"></point>
+	<point x="-3713.71" z="-3963.92"></point>
+	<point x="-2715.78" z="-3960.05"></point>
+	<point x="-2714.38" z="-3207.58"></point>
+	<point x="-3701.14" z="-3210.08"></point>
+	<point x="-3703.47" z="-3517.48"></point>
+	<point x="-3974.63" z="-3608.48"></point>
+	<point x="-4207.36" z="-3692.52"></point>
+	<point x="-4221.92" z="-3648.08"></point>
+	<point x="-4095.06" z="-3604.44"></point>
+	<point x="-4082.34" z="-2808.03"></point>
+	<point x="-2802.11" z="-2806.4"></point>
+	<point x="-2803.81" z="-2402.76"></point>
+	<point x="-2946.9" z="-2401.99"></point>
+	<point x="-2947.01" z="-2448.19"></point>
+	<point x="-3250.97" z="-2448.16"></point>
+	<point x="-3251.73" z="-2299.89"></point>
+	<point x="-2947.04" z="-2298.39"></point>
+	<point x="-2946.91" z="-2352.79"></point>
+	<point x="-2803.07" z="-2350.56"></point>
+	<point x="-2802.03" z="-2236.76"></point>
+	<point x="-2330.02" z="-2234.9"></point>
+	<point x="-2329.43" z="-3186.66"></point>
+</world>
+<wall>
+	<point x="-1778.89" z="-2345.58"></point>
+	<point x="-1528.34" z="-2345.58"></point>
+	<point x="-1528.34" z="-2080.78"></point>
+	<point x="-1778.89" z="-2080.78"></point>
+</wall>
+<wall>
+	<point x="-814.862" z="-2345.58"></point>
+	<point x="-564.311" z="-2345.58"></point>
+	<point x="-564.311" z="-2080.78"></point>
+	<point x="-814.862" z="-2080.78"></point>
+</wall>
+<wall>
+	<point x="-1778.89" z="-262.158"></point>
+	<point x="-1528.34" z="-262.158"></point>
+	<point x="-1528.34" z="2.64061"></point>
+	<point x="-1778.89" z="2.64064"></point>
+</wall>
+<wall>
+	<point x="-814.861" z="-262.158"></point>
+	<point x="-564.311" z="-262.158"></point>
+	<point x="-564.311" z="2.64061"></point>
+	<point x="-814.861" z="2.64064"></point>
+</wall>
+<wall>
+	<point x="-5463.98" z="-2288.63"></point>
+	<point x="-5688.34" z="-2288.63"></point>
+	<point x="-5688.34" z="-2514.64"></point>
+	<point x="-5463.98" z="-2514.64"></point>
+</wall>
+<wall>
+	<point x="-4346.46" z="-2287.44"></point>
+	<point x="-4572.43" z="-2287.44"></point>
+	<point x="-4572.43" z="-2515.17"></point>
+	<point x="-4346.46" z="-2515.17"></point>
+</wall>
+<scenebound minX="-9786.46" maxX="3938.68" minY="-10225.1" maxY="3044.7"/>
+</scene>

@@ -1,0 +1,101 @@
+<effect>
+  <particle mesh="" billboard="true" pos="" orient="0" endTime="0" label="quanquan" max="383" startTime="0" global="true" texture="1">
+    <uv_effector sv="1" su="1"/>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeY="80" sizeX="80"/>
+      <keyframe lifepercent="0.1" sizeY="0.0" sizeX="0.0"/>
+      <keyframe lifepercent="0.2" sizeY="10" sizeX="10"/>
+    </size_effector>
+    <path>
+      <frame y="0" x="0" durtime="1000" z="0"/>
+    </path>
+    <force_effector f="0" dir=""/>
+    <attract_effector p="" f="0"/>
+    <color_effector/>
+    <alpha_effector/>
+    <rotate>
+      <frame y="0" x="0" durtime="1000" z="0"/>
+    </rotate>
+    <rect_emitter directionfrom="-1 -1 -1" emitrate="34" emittime="0" sizerange="63.0" emitperiod="0" lifetimerange="1915" rectz="10" rotvelrange="0" sizeY="10" rotvel="0" sizeX="10" rotrange="130.0" b="98.0" vel="0" rot="0" a="126.0" g="45.0" velrange="0" recty="0" r="59.0" rectx="6.0" lifetime="3830" directionto="1 1 1"/>
+    <scale>
+      <frame y="15.7" x="16.4" durtime="0" z="14"/>
+    </scale>
+  </particle>
+  <particle mesh="" pos="" orient="0" endTime="0" label="" max="5" startTime="0" global="true" texture="pixies1">
+    <color_effector b="-50" r="-100" g="100"/>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <size_effector size="-20">
+      <keyframe lifepercent="0.0" sizeY="60" sizeX="60"/>
+      <keyframe lifepercent="1" sizeY="10" sizeX="10"/>
+    </size_effector>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <alpha_effector a="-250">
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="1" a="97"/>
+    </alpha_effector>
+    <rect_emitter directionfrom="-1 -1 -1" sizeY="30" emittime="0" sizerange="30" emitperiod="0" lifetimerange="200" rectz="0" rotvelrange="0" emitrate="10" rotvel="20" sizeX="30" rotrange="360" b="195" vel="20" rot="0" a="255" g="59" velrange="5" recty="0" r="43" size="25" rectx="0" lifetime="300" directionto="1 1 1"/>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+  </particle>
+  <particle mesh="" startTime="0" pos="" global="true" texture="blood_a" orient="0" endTime="0" label="" max="10">
+    <rect_emitter directionfrom="-1 -1 -1" emitrate="26" emittime="0" sizerange="20" emitperiod="0" lifetimerange="185" r="200" rotvelrange="0" sizeY="100" rotvel="0" sizeX="100" rotrange="0" recty="10" vel="0" rot="0" a="46" g="200" velrange="0" b="200" rectz="10" rectx="10" lifetime="1205" directionto="1 1 1"/>
+  </particle>
+  <stripe starttime="0" parallel="true" startTime="0" billboard="true" pos="" endtime="5000" timeduv="false" endTime="0" label="" max="445" texture="tou2" widedir="1" stripenum="9" dragtime="288.1" wide="40">
+    <color_effector b="0" r="0" g="0"/>
+    <size_effector/>
+    <dragger b="49" r="74" a="255" g="48"/>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <force_effector f="0" dir=""/>
+    <attract_effector p="" f="0"/>
+    <uv_effector sv="1" su="1">
+      <keyframe lifepercent="0.1" v="0.0" u="0.0"/>
+    </uv_effector>
+    <alpha_effector a="-100"/>
+  </stripe>
+  <property lifetime="5000" cache="1"/>
+  <quad pos="" orient="2" starttime="0" label="" height="100" zUp="true" endtime="5000" billboard="true" rot="0" texture="smoke08" width="100">
+    <uv>
+      <frame v="0" su="1" r="0" sv="1" durtime="1000" u="0"/>
+    </uv>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <color>
+      <frame b="177" durtime="500" r="255" a="40" g="100"/>
+      <frame b="126" durtime="500" r="191" a="118" g="145"/>
+    </color>
+    <scale>
+      <frame y="0.8" durtime="1000" x="0.8" z="0.8"/>
+      <frame y="1.2" durtime="1000" x="1.2" z="1.2"/>
+    </scale>
+  </quad>
+  <quad pos="" orient="2" starttime="0" label="" rot="0" zUp="true" texture="1" billboard="true" height="20" endtime="5000" width="20">
+    <uv>
+      <frame v="0" u="0" r="0" sv="1" durtime="1000" su="1"/>
+    </uv>
+    <rotate>
+      <frame y="0" x="0" durtime="1000" z="0"/>
+    </rotate>
+    <color>
+      <frame b="177" durtime="500" r="255" a="40" g="100"/>
+      <frame b="126" durtime="500" r="191" a="118" g="145"/>
+    </color>
+    <scale>
+      <frame y="0.8" x="0.8" durtime="1000" z="0.8"/>
+      <frame y="1.2" x="1.2" durtime="1000" z="1.2"/>
+    </scale>
+  </quad>
+</effect>

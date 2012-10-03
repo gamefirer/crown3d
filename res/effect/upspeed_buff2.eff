@@ -1,0 +1,21 @@
+<effect pos="0 0 0">
+  <property lifetime="4638" cache="1"/>
+  <particle mesh="" endTime="0" label="" pos="0 0 0" global="false" texture="vocals02" orient="2.0" max="10" billboard="false" startTime="0">
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <uv_effector su="1" sv="1"/>
+    <alpha_effector/>
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <color_effector/>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+    <size_effector/>
+    <force_effector dir="" f="0"/>
+    <attract_effector p="" f="0"/>
+    <rect_emitter rectz="30" emitrate="30" velrange="0" rotvel="0" rotvelrange="0" vel="500" rotrange="0" rot="0" sizeY="50" sizerange="20" a="255" lifetime="150" b="255.0" recty="50" sizeX="150" rectx="30" directionfrom="-1 0 0" emittime="0" g="255.0" lifetimerange="0.0" r="255.0" directionto="-1 0 0" emitperiod="0"/>
+  </particle>
+</effect>

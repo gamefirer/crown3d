@@ -1,0 +1,13 @@
+<effect>
+  <property cache="1" lifetime="3000"/>
+  <quad texture="2quan" orient="1" billboard="false" height="100" width="100">
+    <scale loop="true">
+      <frame x="1.4" z="1.4" y="1.4" durtime="300"/>
+      <frame x="1.2" z="1.2" y="1.2" durtime="300"/>
+    </scale>
+    <color>
+      <frame a="200" g="0.0" b="0.0" r="255" durtime="300"/>
+      <frame a="150" g="78" b="73" r="255" durtime="0"/>
+    </color>
+  </quad>
+</effect>

@@ -1,0 +1,27 @@
+<effect>
+  <property cache="20" lifetime="200">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+  <quad orient="2" texture="crescent" height="100" label="" rot="0" width="100" endtime="0" billboard="true" starttime="0" pos="">
+    <scale>
+      <frame durtime="200" x="0.1" z="1" y="0.1"/>
+      <frame durtime="1000" x="1.5" z="1" y="1.5"/>
+    </scale>
+    <uv>
+      <frame v="0" durtime="1000" sv="1" u="0" r="0" su="1"/>
+    </uv>
+    <rotate>
+      <frame durtime="1000" x="0" z="500" y="0"/>
+    </rotate>
+    <color>
+      <frame a="255" durtime="150" g="255" b="196" r="199"/>
+      <frame a="132" durtime="50" g="255" b="185" r="149"/>
+      <frame a="0.0" durtime="1000" g="255" b="148" r="82"/>
+    </color>
+  </quad>
+</effect>

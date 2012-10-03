@@ -1,0 +1,37 @@
+<effect>
+  <quad label="" orient="2" width="200" texture="onhit" rot="1.4" zUp="true" endtime="0.0" pos="" starttime="0" billboard="true" height="200">
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <color>
+      <frame a="255" g="209.0" b="142.0" r="255.0" durtime="150"/>
+      <frame a="255" g="188.0" b="115.0" r="255" durtime="200"/>
+      <frame a="0.0" g="212.0" b="199.0" r="255" durtime="100"/>
+    </color>
+    <uv>
+      <frame v="0" u="0" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0" u="0.25" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0" u="0.5" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0" u="0.75" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.25" u="0" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.25" u="0.25" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.25" u="0.5" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.25" u="0.75" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.5" u="0" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.5" u="0.25" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.5" u="0.5" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.5" u="0.75" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.75" u="0" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.75" u="0.25" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.75" u="0.5" su="0.25" sv="0.25" durtime="20" r="0"/>
+      <frame v="0.75" u="0.75" su="0.25" sv="0.25" durtime="1000" r="0"/>
+    </uv>
+  </quad>
+  <property lifetime="500" cache="1"/>
+</effect>

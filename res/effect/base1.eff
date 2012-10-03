@@ -1,0 +1,36 @@
+<effect>
+  <mesh texture="quntizhiliao" starttime="0" pos="0 0 0" endtime="0" label="" file="tong">
+    <rotate>
+      <frame y="50" x="0" durtime="1000" z="0"/>
+    </rotate>
+    <uv>
+      <frame sv="1" su="1" r="0" v="0" u="0" durtime="1000"/>
+    </uv>
+    <scale>
+      <frame y="10" x="10" durtime="1000" z="10"/>
+      <frame y="15" x="10" durtime="1000" z="10"/>
+    </scale>
+    <color>
+      <frame b="60" r="255" durtime="1000" a="172" g="67"/>
+      <frame b="52" r="255" durtime="1000" a="75" g="129"/>
+    </color>
+  </mesh>
+  <particle texture="dian" endTime="0" max="20" startTime="0" orient="0" label="" mesh="" pos="" global="true">
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+    <circle_emitter directionto="0 1 0" rot="0" sizeX="5" radiusbig="100" emittime="0" lifetimerange="500" height="0" rotvelrange="0" vel="149" directionfrom="0 1 0" r="255" lifetime="1000" b="81" rotvel="0" velrange="33" a="255" g="83" sizerange="5" rotrange="0" emitrate="20" radiussmall="90" emitperiod="0" sizeY="5"/>
+  </particle>
+  <property lifetime="3000" cache="1">
+    <scale>
+      <frame y="1" x="1" durtime="0" z="1"/>
+    </scale>
+    <path>
+      <frame y="0" x="0" durtime="1000" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" x="0" durtime="1000" z="0"/>
+    </rotate>
+  </property>
+</effect>

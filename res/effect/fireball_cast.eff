@@ -1,0 +1,12 @@
+<effect>
+  <particle label="" global="false" orient="1" endTime="0" max="20" startTime="0" texture="dian" pos="" mesh="" billboard="true">
+    <color_effector b="-500" r="-10" g="-500"/>
+    <rect_emitter rectz="5" directionto="1 1 1" sizeX="64.0" recty="5" r="186.0" rectx="5" lifetime="100" vel="500" directionfrom="-1 -1 -1" emittime="100" sizerange="0" emitperiod="30000" lifetimerange="50" rotvelrange="1800" emitrate="400" a="255" g="27.0" rotvel="-900" b="22.0" rotrange="0" rot="0" velrange="100" size="50" sizeY="64.0"/>
+    <size_effector size="200"/>
+    <force_effector f="0" dir=""/>
+    <path align="false" close="true" loop="true"/>
+    <attract_effector p="" f="0"/>
+    <alpha_effector a="-500"/>
+  </particle>
+  <property lifetime="3000"/>
+</effect>

@@ -1,0 +1,45 @@
+<effect>
+  <light endtime="0" bright="0.5" g="129" starttime="0" height="200" width="200" label="" pos="100 0 0" b="255" rot="0" texture="dian" r="98">
+    <scale>
+      <frame x="1" durtime="200" z="1" y="1"/>
+      <frame x="4" durtime="150" z="4" y="1"/>
+      <frame x="0.1" durtime="1000" z="0.1" y="0.1"/>
+      <frame x="0.1" durtime="1000" z="0.1" y="0.1"/>
+    </scale>
+  </light>
+  <property lifetime="800" cache="5">
+    <scale>
+      <frame x="1" durtime="0" z="1" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </rotate>
+  </property>
+  <particle pos="120 0 0" mesh="" billboard="false" orient="1" max="7" label="" texture="daoguang2" global="true" endTime="0" startTime="0">
+    <alpha_effector>
+      <keyframe a="35" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.5"/>
+      <keyframe a="43" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter sizerange="20" r="200" rotrange="120" directionto="1 1 1" directionfrom="-1 -1 -1" emittime="600" a="255" lifetime="150" emitperiod="10000" lifetimerange="0.0" rotvelrange="0.0" emitrate="20" rotvel="0.0" vel="54" sizeY="100" rot="210" velrange="16" b="200" rectz="20" g="200" sizeX="100" recty="20" rectx="20"/>
+    <rotate>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </rotate>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="129" b="255" r="50"/>
+      <keyframe lifepercent="0.5" g="223" b="255" r="159"/>
+      <keyframe lifepercent="1" g="126" b="255" r="54"/>
+    </color_effector>
+    <size_effector>
+      <keyframe size="10" sizeY="200" lifepercent="0.0" sizeX="250"/>
+      <keyframe size="10" sizeY="70" lifepercent="0.5" sizeX="300"/>
+      <keyframe size="10" sizeY="20" lifepercent="1" sizeX="400"/>
+    </size_effector>
+    <force_effector f="0" dir=""/>
+    <attract_effector p="" f="0"/>
+    <path/>
+  </particle>
+</effect>

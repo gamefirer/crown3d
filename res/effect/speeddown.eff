@@ -1,0 +1,33 @@
+<effect>
+  <property lifetime="3000" cache="1">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+  <particle texture="ray07" label="" pos="" billboard="false" max="10" startTime="0" global="true" orient="1" endTime="0" mesh="">
+    <color_effector>
+      <keyframe lifepercent="0.0" g="217.0" b="184.0" r="255.0"/>
+      <keyframe lifepercent="0.0" g="255.0" b="0.0" r="244.0"/>
+    </color_effector>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="0.6" a="255"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <uv_effector su="1" sv="1"/>
+    <rect_emitter sizerange="20" g="200" lifetimerange="0.0" rotvelrange="23" emitrate="7" emitperiod="0" rotvel="0" rotrange="360" rot="0" sizeY="100" velrange="0" vel="10" a="255" rectz="0.0" b="200" recty="0.0" sizeX="100" rectx="0.0" lifetime="1000" directionto="0 1 0" r="200" directionfrom="0 1 0" emittime="0"/>
+    <size_effector>
+      <keyframe sizeX="50" sizeY="50" lifepercent="0.0"/>
+      <keyframe sizeX="200" sizeY="200" lifepercent="1"/>
+    </size_effector>
+  </particle>
+</effect>

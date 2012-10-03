@@ -1,0 +1,11 @@
+<effect>
+  <property cache="1" lifetime="5000"/>
+  <stripe startTime="0" timeduv="true" pos="" endTime="0" texture="daoguang" max="20" widedir="0.0" billboard="false" stripenum="1" starttime="0" endtime="0" dragtime="150" wide="30" label="">
+    <dragger a="155" g="174.0" b="255.0" r="167.0"/>
+    <color_effector g="0" b="0" r="0">
+      <keyframe g="0.0" b="0.0" lifepercent="0" r="255.0"/>
+      <keyframe g="255.0" b="255.0" lifepercent="1" r="255.0"/>
+    </color_effector>
+    <alpha_effector a="-100"/>
+  </stripe>
+</effect>

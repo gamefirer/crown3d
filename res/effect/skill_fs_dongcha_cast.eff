@@ -1,0 +1,64 @@
+<effect>
+  <quad endtime="0" starttime="0" label="" height="100" orient="2.0" width="100" pos="0 100 0" billboard="true" rot="0" texture="dian">
+    <color>
+      <frame r="255" g="49.0" durtime="500" a="255.0" b="255"/>
+      <frame r="255" g="62.0" durtime="5000" a="0.0" b="255"/>
+    </color>
+    <scale>
+      <frame z="1.2" y="3" durtime="0" x="1.2"/>
+    </scale>
+  </quad>
+  <property cache="1" lifetime="600"/>
+  <mesh file="m_turbo_003" pos="0 -30 0" endtime="0" starttime="0" label="turbo" texture="t_flow_001">
+    <scale>
+      <frame z="2.2" y="2.2" durtime="1000" x="2.2"/>
+    </scale>
+    <rotate>
+      <frame z="0" y="100" durtime="1000" x="0"/>
+    </rotate>
+    <uv repeat="true" smooth="true">
+      <frame r="0" sv="1" v="0" su="1" u="1" durtime="400"/>
+      <frame r="0" sv="1" v="0" su="1" u="0.4" durtime="1000"/>
+    </uv>
+    <color>
+      <frame r="54" g="255" durtime="400" a="255" b="255"/>
+      <frame r="22" g="35" durtime="100000" a="0.0" b="255"/>
+    </color>
+  </mesh>
+  <mesh file="m_circle_003" pos="0 0 0" endtime="0" texture="t_wave_002" starttime="0" label="">
+    <scale>
+      <frame z="1" y="5" durtime="600" x="1"/>
+      <frame z="1.5" y="2" durtime="100000" x="1.5"/>
+    </scale>
+    <color>
+      <frame r="73.0" g="117.0" durtime="600" a="255" b="255"/>
+      <frame r="84.0" g="0.0" durtime="10000" a="0.0" b="182.0"/>
+    </color>
+    <rotate>
+      <frame z="0" y="200" durtime="1000" x="0"/>
+    </rotate>
+  </mesh>
+  <particle max="50" mesh="" endTime="0" label="" orient="0" pos="" global="false" startTime="0" texture="t_star_002">
+    <alpha_effector>
+      <keyframe a="0" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.2"/>
+      <keyframe a="0" lifepercent="1"/>
+    </alpha_effector>
+    <size_effector>
+      <keyframe sizeY="50" sizeX="50" lifepercent="0.1"/>
+      <keyframe sizeY="20" sizeX="20" lifepercent="1"/>
+    </size_effector>
+    <color_effector>
+      <keyframe r="65" g="90" b="255" lifepercent="0.1"/>
+      <keyframe r="255" g="179" b="106" lifepercent="1"/>
+    </color_effector>
+    <scale>
+      <frame z="1" y="1" durtime="0" x="1"/>
+    </scale>
+    <rect_emitter b="200" a="255" rectx="70" sizerange="50" sizeY="200" directionto="0 1 0" sizeX="200" directionfrom="0 0 0" emitrate="80" emittime="300" lifetime="200" emitperiod="10000" lifetimerange="100" r="200" g="200" rotvel="0" rectz="70" rotrange="0" recty="30" velrange="0" vel="900" rot="0" rotvelrange="0"/>
+    <rotate>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </rotate>
+    <attract_effector f="5000" p="0 80 0"/>
+  </particle>
+</effect>

@@ -1,0 +1,74 @@
+<effect>
+  <property cache="1" lifetime="400">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <quad texture="t_glow_003" pos="" billboard="false" label="" orient="1.0" starttime="0" rot="0" width="100" endtime="300" height="100">
+    <scale>
+      <frame x="1" z="1" durtime="300" y="1"/>
+      <frame x="4" z="4" durtime="1000" y="4"/>
+    </scale>
+    <uv>
+      <frame su="1" r="0" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <color>
+      <frame r="255" b="30.0" g="168.0" durtime="400" a="255"/>
+      <frame r="255" b="43.0" g="40.0" durtime="1000" a="0"/>
+    </color>
+  </quad>
+  <particle startTime="-100" global="true" max="30" texture="t_fire_001" pos="" mesh="" label="" orient="0" endTime="100">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <color_effector/>
+    <size_effector/>
+    <circle_emitter sizeY="5" r="255" sizeX="5" emittime="0" directionfrom="0 0 0" emitperiod="0" sizerange="15" radiussmall="0" lifetimerange="200" emitrate="50" g="255" directionto="0 1 0" rotrange="360.0" radiusbig="100" height="0" velrange="200" rot="150" lifetime="100" rotvelrange="0" b="255" vel="500" a="255" rotvel="73.1"/>
+    <alpha_effector>
+      <keyframe lifepercent="0" a="0"/>
+      <keyframe lifepercent="0.5" a="255"/>
+      <keyframe lifepercent="1" a="0"/>
+    </alpha_effector>
+  </particle>
+  <mesh texture="t_ray_001" label="" starttime="0" endtime="300" pos="0 0 0" file="m_cylinder_001">
+    <scale>
+      <frame x="1" z="1" durtime="300" y="1"/>
+      <frame x="0.5" z="0.5" durtime="1000" y="4"/>
+    </scale>
+    <uv>
+      <frame su="1" r="0" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="800"/>
+    </rotate>
+    <color>
+      <frame r="255" b="255" g="255" durtime="300" a="255"/>
+      <frame r="255" b="255" g="255" durtime="1000" a="0.0"/>
+    </color>
+  </mesh>
+  <mesh texture="t_ray_002" label="" starttime="0" endtime="300" pos="0 0 0" file="m_cylinder_001">
+    <scale>
+      <frame x="1" z="1" durtime="1000" y="2"/>
+      <frame x="2" z="2" durtime="1000" y="3"/>
+    </scale>
+    <color>
+      <frame r="255" b="255" g="255" durtime="300" a="255"/>
+      <frame r="255" b="255" g="255" durtime="200" a="0"/>
+    </color>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="500"/>
+    </rotate>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+  </mesh>
+</effect>

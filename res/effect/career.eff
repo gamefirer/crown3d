@@ -1,0 +1,562 @@
+<careers>
+  <career>
+    <name>男战士</name>
+    <id>1</id>
+    <avatar>zhanshi1</avatar>
+    <tex/>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1</move_speed_factor>
+    <scale_avatar>1.2</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>80,120</body_size>
+  </career>
+  <career>
+    <name>男法师</name>
+    <id>2</id>
+    <avatar>fashi1</avatar>
+    <tex/>
+    <attack_speed_factor>2.0</attack_speed_factor>
+    <move_speed_factor>1</move_speed_factor>
+    <scale_avatar>1.3</scale_avatar>
+    <scale_weapon>1.0</scale_weapon>
+    <body_size>60,90</body_size>
+  </career>
+  <career>
+    <name>男牧师</name>
+    <id>3</id>
+    <avatar>mushi1</avatar>
+    <tex/>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1</move_speed_factor>
+    <scale_avatar>1.2</scale_avatar>
+    <scale_weapon>1.2</scale_weapon>
+    <body_size>70,110</body_size>
+  </career>
+  <career>
+    <name>女战士</name>
+    <id>4</id>
+    <avatar>zhanshi0</avatar>
+    <tex/>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1</move_speed_factor>
+    <scale_avatar>1.2</scale_avatar>
+    <scale_weapon>0.8</scale_weapon>
+    <body_size>80,110</body_size>
+  </career>
+  <career>
+    <name>女法师</name>
+    <id>5</id>
+    <avatar>fashi0</avatar>
+    <tex/>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1</move_speed_factor>
+    <scale_avatar>1.3</scale_avatar>
+    <scale_weapon>0.8</scale_weapon>
+    <body_size>60,90</body_size>
+  </career>
+  <career>
+    <name>女牧师</name>
+    <id>6</id>
+    <avatar>mushi0</avatar>
+    <tex/>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1</move_speed_factor>
+    <scale_avatar>1.2</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>70,100</body_size>
+  </career>
+  <career>
+    <name>默认</name>
+    <id>10000</id>
+    <avatar>default</avatar>
+    <tex/>
+    <attack_speed_factor>1.2</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.8</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+  </career>
+  <career>
+    <name>NPC_村长</name>
+    <id>10</id>
+    <avatar>npc_chunzhang</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.25</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <effects>
+      <eff tag="Dm_1" effname="chunzhang_1"/>
+    </effects>
+    <body_size>70,80</body_size>
+  </career>
+  <career>
+    <name>NPC_公会男</name>
+    <id>11</id>
+    <avatar>npc_gonghuiman</avatar>
+    <tex/>
+    <attack_speed_factor>1.2</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.2</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>80,120</body_size>
+  </career>
+  <career>
+    <name>NPC_公会女</name>
+    <id>12</id>
+    <avatar>npc_gonghuinv</avatar>
+    <tex/>
+    <attack_speed_factor>1.2</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.2</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>80,110</body_size>
+  </career>
+  <career>
+    <name>怪物_狗</name>
+    <id>110</id>
+    <avatar>gou</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>100,80</body_size>
+    <texture>
+      <tex name="zhanshi/bodydown/z1b_kuzi" pos="0,0" xmlns="bl.ui:blUICharacter"/>
+      <tex name="fashi/bodydown/f0b_yifu" pos="0,0" xmlns="bl.ui:blUICharacter"/>
+      <tex name="fashi/bodyup/f1a_yifu" pos="0,0" xmlns="bl.ui:blUICharacter"/>
+      <tex name="mushi/leg/m1b_kuzi" pos="0,0" xmlns="bl.ui:blUICharacter"/>
+      <tex name="fashi/bodydown/f1a_kuzi" pos="0,0" xmlns="bl.ui:blUICharacter"/>
+      <tex name="fashi/bodyup/f0_yifu" pos="0,0" xmlns="bl.ui:blUICharacter"/>
+      <tex name="zhanshi/foot/z1a_xiezi" pos="0,0" xmlns="bl.ui:blUICharacter"/>
+      <tex name="fashi/face/f0a_toufa" pos="0,0" xmlns="bl.ui:blUICharacter"/>
+    </texture>
+    <model>
+      <subModel/>
+      <excludeModel/>
+    </model>
+  </career>
+  <career>
+    <name>怪物_骷髅</name>
+    <id>120</id>
+    <avatar>kulou</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>80,110</body_size>
+  </career>
+  <career>
+    <name>怪物_幽灵</name>
+    <id>130</id>
+    <avatar>bushi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.22</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>80,110</body_size>
+    <effects>
+      <eff tag="Dm_chest" effname="youling_blue"/>
+    </effects>
+    <texture>
+      <tex name="bushi/t1-0-0" pos="0,0"/>
+      <tex name="bushi/t1-0-32" pos="0,32"/>
+      <tex name="bushi/b1-128-0" pos="128,0"/>
+      <tex name="bushi/b1-128-64" pos="128,64"/>
+    </texture>
+    <model>
+      <subModel>objother_3,objother_1,objother_2</subModel>
+      <excludeModel/>
+    </model>
+  </career>
+  <career>
+    <name>怪物_幽灵首领</name>
+    <id>131</id>
+    <avatar>bushi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.32</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>90,120</body_size>
+    <effects>
+      <eff tag="Dm_chest" effname="youling_red"/>
+    </effects>
+    <texture>
+      <tex name="bushi/b2-128-0" pos="128,0"/>
+      <tex name="bushi/b2-128-64" pos="128,64"/>
+      <tex name="bushi/t2-0-0" pos="0,0"/>
+      <tex name="bushi/t2-0-32" pos="0,32"/>
+      <tex name="bushi/shouwan1-128-224" pos="128,224"/>
+    </texture>
+    <model>
+      <subModel>objother_1,objother_2,head_1,objother_5,objother_6,objother_7,objother_8,objother_9</subModel>
+      <excludeModel>head_0</excludeModel>
+    </model>
+  </career>
+  <career>
+    <name>怪物_幽灵领主</name>
+    <id>132</id>
+    <avatar>bushi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.5</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>100,130</body_size>
+    <effects>
+      <eff tag="Dm_chest" effname="youling_black"/>
+    </effects>
+    <texture>
+      <tex name="bushi/pifu3-0-96" pos="0,96"/>
+      <tex name="bushi/b4-128-64" pos="128,64"/>
+      <tex name="bushi/pifu3-0-224" pos="0,224"/>
+      <tex name="bushi/jingti2-0-0" pos="0,0"/>
+      <tex name="bushi/b4-128-0" pos="128,0"/>
+      <tex name="bushi/jingti2-128-192" pos="128,192"/>
+      <tex name="bushi/jingti2-0-32" pos="0,32"/>
+      <tex name="bushi/jingti2-192-192" pos="192,192"/>
+      <tex name="bushi/t4-0-0" pos="0,0"/>
+      <tex name="bushi/t4-0-32" pos="0,32"/>
+    </texture>
+    <model>
+      <subModel>objother_1,objother_2,head_1,objother_6,objother_7,objother_8,objother_9</subModel>
+      <excludeModel>head_0,objother_0</excludeModel>
+    </model>
+  </career>
+  <career>
+    <name>怪物_怨灵</name>
+    <id>133</id>
+    <avatar>bushi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.22</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>80,110</body_size>
+    <effects>
+      <eff tag="Dm_chest" effname="youling_black"/>
+    </effects>
+    <texture>
+      <tex name="bushi/jingti1-0-32" pos="0,32"/>
+      <tex name="bushi/jingti1-128-192" pos="128,192"/>
+      <tex name="bushi/pifu1-0-96" pos="0,96"/>
+      <tex name="bushi/jingti1-192-192" pos="192,192"/>
+      <tex name="bushi/pifu1-0-224" pos="0,224"/>
+      <tex name="bushi/jingti1-0-0" pos="0,0"/>
+      <tex name="bushi/t4-0-32" pos="0,32"/>
+      <tex name="bushi/t4-0-0" pos="0,0"/>
+      <tex name="bushi/b4-128-64" pos="128,64"/>
+      <tex name="bushi/b4-128-0" pos="128,0"/>
+    </texture>
+    <model>
+      <subModel>objother_3,objother_1,objother_2,objother_6</subModel>
+      <excludeModel/>
+    </model>
+  </career>
+  <career>
+    <name>怪物_怨灵首领</name>
+    <id>134</id>
+    <avatar>bushi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.32</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>110,130</body_size>
+    <effects>
+      <eff tag="Dm_chest" effname="youling_purple"/>
+    </effects>
+    <texture>
+      <tex name="bushi/jingti1-128-192" pos="128,192"/>
+      <tex name="bushi/jingti1-192-192" pos="192,192"/>
+      <tex name="bushi/jingti1-0-32" pos="0,32"/>
+      <tex name="bushi/jingti1-0-0" pos="0,0"/>
+      <tex name="bushi/t3-0-0" pos="0,0"/>
+      <tex name="bushi/t3-0-32" pos="0,32"/>
+      <tex name="bushi/b3-128-0" pos="128,0"/>
+      <tex name="bushi/b3-128-64" pos="128,64"/>
+      <tex name="bushi/pifu1-0-224" pos="0,224"/>
+      <tex name="bushi/pifu1-0-96" pos="0,96"/>
+      <tex name="bushi/shouwan1-128-224" pos="128,224"/>
+    </texture>
+    <model>
+      <subModel>objother_3,objother_1,objother_2,head_1,objother_5,objother_6,objother_7,objother_8,objother_9</subModel>
+      <excludeModel>head_0</excludeModel>
+    </model>
+  </career>
+  <career>
+    <name>怪物_小型机器傀儡</name>
+    <id>140</id>
+    <avatar>jiqiren</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.4</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>80,110</body_size>
+    <effects>
+      <eff tag="Dm_shoulder_R" effname="jiqiren_1"/>
+    </effects>
+  </career>
+  <career>
+    <name>怪物_强化机器傀儡</name>
+    <id>141</id>
+    <avatar>jiqiren</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.6</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>100,120</body_size>
+    <effects>
+      <eff tag="Dm_2" effname="jiqiren_1"/>
+      <eff tag="Dm_3" effname="jiqiren_1"/>
+    </effects>
+    <texture>
+      <tex name="jiqiren/t1-0-0" pos="0,0"/>
+      <tex name="jiqiren/t1-0-32" pos="0,32"/>
+      <tex name="jiqiren/t1-128-192" pos="128,192"/>
+      <tex name="jiqiren/t1-64-96" pos="64,96"/>
+    </texture>
+    <model>
+      <subModel>jianjia_r,headother_2,body_1,foot_1,head_2,headother_3,jianjia_l,boot_2,boot_1</subModel>
+      <excludeModel>head_0,headother_0,boot_0,foot_0</excludeModel>
+    </model>
+  </career>
+  <career>
+    <name>怪物_装甲机械傀儡</name>
+    <id>143</id>
+    <avatar>jiqiren</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.4</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>100,120</body_size>
+    <effects>
+      <eff tag="Dm_foot_L" effname="jiqiren_2"/>
+      <eff tag="Dm_shoulder_R" effname="jiqiren_1"/>
+    </effects>
+    <texture>
+      <tex name="jiqiren/b1-0-96" pos="0,96"/>
+      <tex name="jiqiren/b1-128-0" pos="128,0"/>
+      <tex name="jiqiren/b1-128-64" pos="128,64"/>
+      <tex name="jiqiren/t-0-32" pos="0,32"/>
+      <tex name="jiqiren/t-0-0" pos="0,0"/>
+    </texture>
+    <model>
+      <subModel/>
+      <excludeModel/>
+    </model>
+  </career>
+  <career>
+    <name>怪物_合金机械傀儡</name>
+    <id>144</id>
+    <avatar>jiqiren</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.6</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>100,120</body_size>
+    <effects>
+      <eff tag="Dm_2" effname="jiqiren_1"/>
+      <eff tag="Dm_3" effname="jiqiren_1"/>
+      <eff tag="Dm_foot_L" effname="jiqiren_2"/>
+      <eff tag="Dm_foot_R" effname="jiqiren_2"/>
+    </effects>
+    <texture>
+      <tex name="jiqiren/b1-128-0" pos="128,0"/>
+      <tex name="jiqiren/b1-128-64" pos="128,64"/>
+      <tex name="jiqiren/t1-128-192" pos="128,192"/>
+      <tex name="jiqiren/b1-0-96" pos="0,96"/>
+      <tex name="jiqiren/t1-64-96" pos="64,96"/>
+      <tex name="jiqiren/t2-0-0" pos="0,0"/>
+      <tex name="jiqiren/t2-0-32" pos="0,32"/>
+    </texture>
+    <model>
+      <subModel>jianjia_r,headother_2,body_1,foot_1,head_2,headother_3,jianjia_l,boot_2,boot_1</subModel>
+      <excludeModel>head_0,headother_0,boot_0,foot_0</excludeModel>
+    </model>
+  </career>
+  <career>
+    <name>怪物_巨型机械傀儡</name>
+    <id>145</id>
+    <avatar>jiqiren</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.8</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>120,140</body_size>
+    <effects>
+      <eff tag="Dm_2" effname="jiqiren_1"/>
+      <eff tag="Dm_3" effname="jiqiren_1"/>
+    </effects>
+    <texture>
+      <tex name="jiqiren/t1-0-0" pos="0,0"/>
+      <tex name="jiqiren/t1-128-192" pos="128,192"/>
+      <tex name="jiqiren/a1-0-96" pos="0,96"/>
+      <tex name="jiqiren/a1-0-32" pos="0,32"/>
+      <tex name="jiqiren/a1-0-224" pos="0,224"/>
+      <tex name="jiqiren/a1-0-0" pos="0,0"/>
+      <tex name="jiqiren/a1-128-192" pos="128,192"/>
+      <tex name="jiqiren/a1-128-64" pos="128,64"/>
+      <tex name="jiqiren/a1-128-0" pos="128,0"/>
+      <tex name="jiqiren/a2-0-32" pos="0,32"/>
+    </texture>
+    <model>
+      <subModel>body_1,boot_1,boot_2,foot_1,head_2,headother_2,headother_3,jianjia_l,jianjia_r</subModel>
+      <excludeModel>boot_0,foot_0,head_0,headother_0</excludeModel>
+    </model>
+  </career>
+  <career>
+    <name>怪物_死去的矿工</name>
+    <id>150</id>
+    <avatar>m_jiangshi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.25</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <texture>
+      <tex name="" pos="undefined,undefined"/>
+      <tex name="m_jiangshi/tou1-0-0" pos="0,0"/>
+      <tex name="m_jiangshi/tou1-0-32" pos="0,32"/>
+    </texture>
+    <model>
+      <subModel>beibao,eyes_l,eyes_r,head_1,pian,shetou</subModel>
+      <excludeModel>head_0,other_0</excludeModel>
+    </model>
+    <body_size>100,120</body_size>
+  </career>
+  <career>
+    <name>怪物-腐烂的矿工</name>
+    <id>151</id>
+    <avatar>m_jiangshi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.29</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <effects>
+      <eff tag="Dm_shoulder_L" effname="jingtiguang"/>
+    </effects>
+    <texture>
+      <tex name="" pos="undefined,undefined"/>
+      <tex name="m_jiangshi/lhand-0-224" pos="0,224"/>
+      <tex name="m_jiangshi/lhand-128-192" pos="128,192"/>
+      <tex name="m_jiangshi/tou1-0-0" pos="0,0"/>
+      <tex name="m_jiangshi/tou1-0-32" pos="0,32"/>
+      <tex name="m_jiangshi/yifu1-0-96" pos="0,96"/>
+      <tex name="m_jiangshi/yifu1-128-0" pos="128,0"/>
+      <tex name="m_jiangshi/wuqi2-0-160" pos="0,160"/>
+      <tex name="m_jiangshi/wuqi2-128-122" pos="128,122"/>
+    </texture>
+    <model>
+      <subModel>beibao,body_1,eyes_l,eyes_r,head_1,lhand_1,other_1,other_2,other_3,other_4,shetou,wuqi_2</subModel>
+      <excludeModel>body_0,head_0,lhand_0,wuqi_0</excludeModel>
+    </model>
+    <body_size>100,120</body_size>
+  </career>
+  <career>
+    <name>怪物-饥饿的僵尸</name>
+    <id>152</id>
+    <avatar>m_jiangshi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.25</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <texture>
+      <tex name="" pos="undefined,undefined"/>
+      <tex name="m_jiangshi/tou1-0-32" pos="0,32"/>
+      <tex name="m_jiangshi/jingti0-128-224" pos="128,224"/>
+      <tex name="m_jiangshi/tou1-0-0" pos="0,0"/>
+      <tex name="m_jiangshi/tou2-0-0" pos="0,0"/>
+      <tex name="m_jiangshi/yifu2-0-96" pos="0,96"/>
+      <tex name="m_jiangshi/yifu2-128-0" pos="128,0"/>
+    </texture>
+    <model>
+      <subModel>beibao,eyes_l,eyes_r,head_1,shetou</subModel>
+      <excludeModel>head_0,other_0</excludeModel>
+    </model>
+    <body_size>100,120</body_size>
+  </career>
+  <career>
+    <name>怪物_残暴的僵尸</name>
+    <id>153</id>
+    <avatar>m_jiangshi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.29</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <effects>
+      <eff tag="Dm_shoulder_L" effname="jingtiguang"/>
+    </effects>
+    <texture>
+      <tex name="" pos="undefined,undefined"/>
+      <tex name="m_jiangshi/lhand-0-224" pos="0,224"/>
+      <tex name="m_jiangshi/lhand-128-192" pos="128,192"/>
+      <tex name="m_jiangshi/tou1-0-0" pos="0,0"/>
+      <tex name="m_jiangshi/tou1-0-32" pos="0,32"/>
+      <tex name="m_jiangshi/tou2-0-0" pos="0,0"/>
+      <tex name="m_jiangshi/yifu2-128-0" pos="128,0"/>
+      <tex name="m_jiangshi/yifu2-0-96" pos="0,96"/>
+      <tex name="m_jiangshi/jingti0-128-224" pos="128,224"/>
+    </texture>
+    <model>
+      <subModel>beibao,body_1,eyes_l,eyes_r,head_1,lhand_1,other_1,other_2,other_3,other_4,shetou</subModel>
+      <excludeModel>body_0,head_0,lhand_0,wuqi_0</excludeModel>
+    </model>
+    <body_size>100,120</body_size>
+  </career>
+  <career>
+    <name>怪物-受诅咒的僵尸魔</name>
+    <id>154</id>
+    <avatar>m_jiangshi</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.0</move_speed_factor>
+    <scale_avatar>1.35</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <effects>
+      <eff tag="Dm_1" effname="jiangshi_1"/>
+      <eff tag="Dm_shoulder_L" effname="jingtiguang"/>
+      <eff tag="Dm_shoulder_R" effname="jingtiguang"/>
+    </effects>
+    <texture>
+      <tex name="" pos="undefined,undefined"/>
+      <tex name="m_jiangshi/yifu2-128-0" pos="128,0"/>
+      <tex name="m_jiangshi/yifu2-0-96" pos="0,96"/>
+    </texture>
+    <model>
+      <subModel>body_1,eyes_l,eyes_r,other_1,other_2,other_3,other_4,pian,shetou</subModel>
+      <excludeModel>body_0</excludeModel>
+    </model>
+    <body_size>100,120</body_size>
+  </career>
+  <career>
+    <name>怪物_Boss1</name>
+    <id>1000</id>
+    <avatar>boss1</avatar>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1.1</move_speed_factor>
+    <scale_avatar>1.5</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>130,150</body_size>
+    <effects>
+      <eff tag="Dm_shoulder_R" effname="youling_blue"/>
+      <eff tag="Dm_1" effname="youling_blue"/>
+      <eff tag="Dm_2" effname="youling_blue"/>
+      <eff tag="Dm_3" effname="youling_blue"/>
+      <eff tag="Dm_4" effname="youling_blue"/>
+      <eff tag="Dm_shoulder_L" effname="youling_blue"/>
+      <eff tag="Dm_hand_L" effname="youling_blue"/>
+    </effects>
+  </career>
+  <career>
+    <name>！！！临时测试！！！！</name>
+    <id>10000</id>
+    <avatar>zhanshi1</avatar>
+    <tex/>
+    <attack_speed_factor>1</attack_speed_factor>
+    <move_speed_factor>1</move_speed_factor>
+    <scale_avatar>1.2</scale_avatar>
+    <scale_weapon>1</scale_weapon>
+    <body_size>100,120</body_size>
+    <texture>
+      <tex/>
+    </texture>
+    <model>
+      <subModel>arm_1,leg_1,skirt_3,hair_3</subModel>
+      <excludeModel>belt_0,leg_0,arm_0,hair_0</excludeModel>
+    </model>
+  </career>
+</careers>

@@ -1,0 +1,78 @@
+<effect>
+  <quad texture="dian" height="22" width="22" pos="" orient="2" billboard="true" starttime="0" endtime="0" rot="0" label="">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+      <frame x="1.1" z="1.1" durtime="1000" y="1.1"/>
+      <frame x="1" z="1" durtime="0.0" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <uv>
+      <frame v="0" su="1" u="0" r="0" sv="1" durtime="1000"/>
+    </uv>
+    <color>
+      <frame a="255" g="255" b="255" r="255" durtime="1000"/>
+      <frame a="129" g="255" b="255" r="255" durtime="1000"/>
+    </color>
+  </quad>
+  <particle texture="flash02" mesh="" startTime="0" pos="" endTime="0" max="10" orient="0" global="true" label="">
+    <rect_emitter size="55" directionto="1 1 1" g="126" rot="0" directionfrom="-1 1 -1" emittime="0" sizerange="5" emitperiod="0" lifetimerange="200" rotvelrange="0" emitrate="50" vel="9" rotvel="0" a="255" rotrange="0" b="144" velrange="18" sizeY="8" rectz="20" sizeX="8" recty="20" r="61" rectx="20" lifetime="490"/>
+    <size_effector size="-200"/>
+    <color_effector r="-100" g="100" b="-50"/>
+    <alpha_effector a="-250"/>
+  </particle>
+  <particle texture="s2" mesh="" startTime="0" pos="" endTime="0" max="20" orient="1" global="true" label="">
+    <scale>
+      <frame x="0.5" z="0.5" durtime="0" y="0.5"/>
+    </scale>
+    <rect_emitter size="55" directionto="0 1 0" g="255" rot="0.0" directionfrom="0 1 0" emittime="0" sizerange="5" emitperiod="0" lifetimerange="100" rotvelrange="0.0" emitrate="10" vel="60" rotvel="0.0" a="255" rotrange="360" b="255" velrange="20" sizeY="50" rectz="15" sizeX="50" recty="0" r="255" rectx="15" lifetime="200"/>
+    <size_effector size="-200">
+      <keyframe sizeX="30" lifepercent="0.0" sizeY="30"/>
+      <keyframe sizeX="50" lifepercent="0.6" sizeY="50"/>
+      <keyframe sizeX="30" lifepercent="1" sizeY="30"/>
+    </size_effector>
+    <force_effector dir="" f="0"/>
+    <color_effector r="-100" g="100" b="-50"/>
+    <alpha_effector a="-250">
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <mesh file="sphere" texture="flash04" starttime="0" endtime="0" pos="0 0 0" label="">
+    <scale>
+      <frame x="1.7" z="1.7" y="1.7" durtime="1000"/>
+      <frame x="2" z="2" y="2" durtime="1000"/>
+      <frame x="1.7" z="1.7" y="1.7" durtime="1000"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" y="200" durtime="1000"/>
+    </rotate>
+    <color>
+      <frame a="255" g="255" b="255" r="255" durtime="100"/>
+      <frame a="0.0" g="255" b="255" r="255" durtime="100"/>
+      <frame a="255" g="255" b="255" r="255" durtime="100"/>
+      <frame a="0.0" g="255" b="255" r="255" durtime="100"/>
+      <frame a="255" g="255" b="255" r="255" durtime="100"/>
+    </color>
+    <uv>
+      <frame v="0" su="1" u="0" r="0.0" durtime="1000" sv="0.5"/>
+      <frame v="0" su="1" u="0" r="0" durtime="1000" sv="0.7"/>
+      <frame v="0" su="1" u="0" r="0" durtime="1000" sv="0.5"/>
+    </uv>
+    <path>
+      <frame z="0" y="0" x="0" durtime="1000"/>
+    </path>
+  </mesh>
+  <property cache="1" lifetime="5000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+</effect>

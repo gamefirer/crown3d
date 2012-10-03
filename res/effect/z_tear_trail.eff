@@ -1,0 +1,19 @@
+<effect>
+  <property lifetime="5000"/>
+  <stripe wide="25" billboard="true" max="20" endtime="5000" endTime="0" label="" starttime="0" pos="" timeduv="true" widedir="2" startTime="0" stripenum="1" dragtime="300" texture="t_blazer_001">
+    <alpha_effector/>
+    <size_effector/>
+    <color_effector r="255" g="200" b="0"/>
+    <scale>
+      <frame z="1" y="1" durtime="0" x="1"/>
+    </scale>
+    <dragger r="255" g="255" a="255" b="255"/>
+    <rotate>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </rotate>
+    <force_effector f="0" dir=""/>
+    <path>
+      <frame z="0" y="0" durtime="1000" x="0"/>
+    </path>
+  </stripe>
+</effect>

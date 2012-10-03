@@ -1,0 +1,76 @@
+<effect>
+  <property cache="1" lifetime="3000">
+    <scale>
+      <frame x="1" z="1" y="1" durtime="0"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </rotate>
+  </property>
+  <mesh file="../equipment/weapon/zhanshi/t2_r" texture="huoyangqiang2" starttime="0" endtime="0" pos="0 0 0" label="bo1">
+    <scale>
+      <frame x="1" z="1" y="1" durtime="400"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </rotate>
+    <color>
+      <frame a="255" g="255" b="35" r="24" durtime="500"/>
+      <frame a="255" g="255" b="174" r="151" durtime="500"/>
+    </color>
+    <uv repeat="true" smooth="true">
+      <frame v="0.0" su="1.0" u="0.0" sv="1.0" r="10.0" durtime="1028.0"/>
+      <frame v="1.0" su="1.0" u="0.7" sv="0.5" r="2.0" durtime="0"/>
+    </uv>
+    <path>
+      <frame z="0" y="0" x="0" durtime="1000"/>
+    </path>
+  </mesh>
+  <mesh file="quan" texture="chuansongdian" starttime="0" endtime="0" pos="0 0 0" label="bo2">
+    <scale>
+      <frame x="1.2" z="0.7" y="0.6" durtime="500"/>
+      <frame x="0.2" z="0.7" y="0.0" durtime="400"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" y="-100" durtime="1000"/>
+    </rotate>
+    <color>
+      <frame a="255" g="255" b="133" r="101" durtime="500"/>
+      <frame a="255" g="255" b="19" r="16" durtime="500"/>
+    </color>
+    <uv repeat="true" smooth="true">
+      <frame v="1" su="1" u="0" r="0" sv="1" durtime="500"/>
+      <frame v="0" su="1" u="0" r="0" sv="1" durtime="0"/>
+    </uv>
+    <path>
+      <frame z="0" y="0" x="0" durtime="1000"/>
+      <frame z="0" y="91.0" x="0" durtime="1000"/>
+      <frame z="0" y="0" x="0" durtime="1000"/>
+    </path>
+  </mesh>
+  <mesh file="quan" starttime="0" endtime="0" texture="chuansongdian" pos="0 0 0" label="bo3">
+    <scale>
+      <frame x="1.2" z="0.7" y="0.6" durtime="500"/>
+      <frame x="0.2" z="0.7" y="0.0" durtime="400"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+      <frame x="0" z="0" y="59.0" durtime="1000"/>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" y="-100" durtime="1000"/>
+    </rotate>
+    <color>
+      <frame a="255" g="255" b="133" r="101" durtime="500"/>
+      <frame a="255" g="255" b="19" r="16" durtime="500"/>
+    </color>
+    <uv repeat="true" smooth="true">
+      <frame v="1" su="1" u="0" sv="1" r="0" durtime="976.0"/>
+      <frame v="0" su="1" u="0" r="0" sv="1" durtime="0"/>
+    </uv>
+  </mesh>
+</effect>

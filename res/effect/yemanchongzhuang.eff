@@ -1,0 +1,37 @@
+<effect>
+  <property cache="5" lifetime="1000">
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <particle mesh="" texture="quan" label="qi" orient="0.0" global="false" startTime="0" endTime="0" pos="100 0 0" max="10" billboard="false">
+    <force_effector dir="-1 0 0" f="5000.0"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="19.0" lifepercent="1.0"/>
+    </alpha_effector>
+    <rect_emitter emitrate="20" velrange="0" g="200" rot="0" rectx="0.0" emitperiod="10000.0" rotrange="0" directionfrom="-1 0 0" b="200" rotvelrange="0" recty="0.0" sizerange="20" emittime="200" a="255" rotvel="0" sizeY="100" r="200" sizeX="100" lifetime="350" lifetimerange="0.0" vel="0.0" directionto="-1 0 0" rectz="0.0"/>
+    <size_effector>
+      <keyframe sizeY="1" sizeX="1" lifepercent="0.0"/>
+      <keyframe sizeY="300" sizeX="300" lifepercent="1.0"/>
+    </size_effector>
+  </particle>
+  <particle mesh="" texture="pixies1" label="" orient="0" global="true" startTime="0" endTime="0" pos="100 0 0" max="10">
+    <force_effector dir="0 -1 0" f="5000.0"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1.0"/>
+    </alpha_effector>
+    <rect_emitter emitrate="40" velrange="52.0" g="200" rot="219.0" rectx="0.0" emitperiod="10000.0" rotrange="291.0" directionfrom="-1 2 -1" b="200" rotvelrange="0.0" recty="0.0" sizerange="20" emittime="200" a="255" rotvel="0.0" sizeY="100" r="200" sizeX="100" lifetime="300" lifetimerange="0.0" vel="218.0" directionto="1 2 1" rectz="0.0"/>
+    <size_effector>
+      <keyframe sizeY="10" sizeX="10" lifepercent="0.0"/>
+      <keyframe sizeY="300" sizeX="300" lifepercent="1.0"/>
+    </size_effector>
+  </particle>
+</effect>

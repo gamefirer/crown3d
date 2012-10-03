@@ -1,0 +1,29 @@
+<effect>
+  <particle billboard="false" pos="-100 0 0" endTime="0" global="false" orient="1" texture="dian" startTime="0" label="" max="3" mesh="">
+    <scale>
+      <frame y="1" x="1" durtime="0" z="1"/>
+    </scale>
+    <force_effector f="5000.0" dir="1 0 0"/>
+    <alpha_effector>
+      <keyframe a="150" lifepercent="0.0"/>
+      <keyframe a="255.0" lifepercent="1.0"/>
+    </alpha_effector>
+    <color_effector/>
+    <size_effector>
+      <keyframe sizeX="250" lifepercent="0.4" sizeY="200" size="200"/>
+      <keyframe sizeX="30" lifepercent="1.0" sizeY="350" size="250"/>
+    </size_effector>
+    <rect_emitter velrange="1" rectx="0" sizerange="10" emittime="600" g="199.0" rotvel="0.0" rotvelrange="0.0" directionto="1 1 1" sizeY="167" rot="90" directionfrom="-1 -1 -1" sizeX="165" lifetime="400" emitperiod="10000" rotrange="0.0" lifetimerange="200" vel="0.0" a="255" emitrate="3" size="200" rectz="0" r="199.0" b="255.0" recty="0"/>
+  </particle>
+  <property cache="1" lifetime="5000">
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+  </property>
+</effect>

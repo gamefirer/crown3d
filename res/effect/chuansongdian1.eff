@@ -1,0 +1,30 @@
+<effect pos="0 0 0">
+  <mesh label="" file="sphere" endtime="0" pos="0 0 0" starttime="0" texture="">
+    <scale>
+      <frame y="10" durtime="1000" x="10" z="10"/>
+    </scale>
+    <color>
+      <frame b="255" durtime="1000" a="1" r="255" g="255"/>
+    </color>
+    <rotate>
+      <frame y="200" durtime="1000" x="0" z="0"/>
+    </rotate>
+  </mesh>
+  <particle endTime="0" max="20" label="light" global="false" mesh="" billboard="false" orient="2" pos="" startTime="0" texture="trail1">
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="0.0"/>
+      <keyframe lifepercent="0.1" a="255"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+    <rect_emitter directionfrom="-1 -1 -1" rotvelrange="0" sizeX="400" a="255" sizerange="50" rotvel="0" recty="0.0" vel="0" rectx="10" rotrange="0" r="41" lifetimerange="0.0" rectz="50" directionto="1 1 1" emittime="0" velrange="0" g="90" emitrate="2" b="200" emitperiod="0" lifetime="4000" rot="0" sizeY="400"/>
+  </particle>
+  <particle endTime="0" orient="2" label="dust" global="false" mesh="" billboard="true" max="20" pos="200 0 0" startTime="0" texture="dian">
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="0.0"/>
+      <keyframe lifepercent="0.2" a="255"/>
+      <keyframe lifepercent="1" a="255"/>
+    </alpha_effector>
+    <rect_emitter directionfrom="1 0 0" rotvelrange="0" sizeX="7" a="255" sizerange="0.0" rotvel="0" recty="200" vel="300" rectx="200" rotrange="0" r="33" lifetimerange="200" rectz="10" directionto="1 0 0" emittime="0" velrange="0" g="68" emitrate="20" b="200" emitperiod="0" lifetime="500" rot="0" sizeY="7"/>
+  </particle>
+  <property cache="1" lifetime="10000"/>
+</effect>

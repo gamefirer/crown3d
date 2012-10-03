@@ -1,0 +1,40 @@
+<effect>
+  <stripe label="" widedir="3" timeduv="true" endTime="0" max="20" stripenum="1" dragtime="400" texture="daoguang" wide="25" startTime="0" billboard="true" pos="" endtime="5000" starttime="0">
+    <dragger r="74" g="145" a="255" b="193"/>
+    <alpha_effector/>
+    <color_effector r="255" g="200" b="0">
+      <keyframe lifepercent="0.1" g="81" b="255" r="239"/>
+    </color_effector>
+  </stripe>
+  <property lifetime="5000" cache="1"/>
+  <particle label="" mesh="" endTime="0" max="20" orient="0" global="true" texture="t_star_004" pos="" startTime="0">
+    <force_effector f="4" dir="0 1 0"/>
+    <alpha_effector a="-250">
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <color_effector r="-100" g="100" b="-250">
+      <keyframe r="220" g="241" lifepercent="0.1" b="233"/>
+    </color_effector>
+    <size_effector size="50">
+      <keyframe lifepercent="0.0" sizeY="40" sizeX="40"/>
+      <keyframe lifepercent="1" sizeY="10" sizeX="10"/>
+    </size_effector>
+    <rect_emitter lifetime="500" rotvelrange="0" vel="30" sizeY="15" sizeX="15" r="74" rotvel="0" velrange="0.0" lifetimerange="0.0" rotrange="360" rectz="10" emitrate="40" recty="10" g="118" rectx="10" a="255" directionto="1 1 1" rot="0" directionfrom="-1 -1 -1" emittime="0" sizerange="5" emitperiod="0" b="191"/>
+  </particle>
+  <mesh label="sphere" file="m_sphere_003" texture="a2" pos="0 0 0" endtime="0" starttime="0">
+    <color>
+      <frame r="90" g="106" a="255" durtime="5000" b="233"/>
+    </color>
+    <uv repeat="true" smooth="true">
+      <frame r="0" v="5" u="0" durtime="3000" sv="1" su="1"/>
+      <frame r="0" v="0.1" u="0" durtime="3000" sv="1" su="1"/>
+    </uv>
+    <scale loop="false">
+      <frame z="0.5" durtime="1000" y="0.5" x="0.5"/>
+    </scale>
+    <rotate>
+      <frame z="0" durtime="1000" y="100" x="0"/>
+    </rotate>
+  </mesh>
+</effect>

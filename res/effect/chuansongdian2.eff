@@ -1,0 +1,47 @@
+<effect>
+  <mesh starttime="0" label="" texture="quntizhiliao" pos="0 0 0" endtime="0" file="tong">
+    <uv smooth="true" repeat="true">
+      <frame su="1" durtime="500" sv="1" r="0.0" v="0" u="0"/>
+      <frame su="1" durtime="0" sv="1" r="0.0" v="0" u="0"/>
+    </uv>
+    <rotate>
+      <frame y="10" x="0" durtime="1000" z="0"/>
+    </rotate>
+    <scale>
+      <frame y="1" x="9" durtime="1000" z="9"/>
+      <frame y="3" x="9" durtime="2000" z="9"/>
+      <frame y="2" x="9" durtime="1000" z="9"/>
+    </scale>
+    <color>
+      <frame b="203" r="69" durtime="1000" a="255" g="105"/>
+      <frame b="236" r="56" durtime="1000" a="255" g="78"/>
+    </color>
+  </mesh>
+  <particle label="" billboard="false" orient="3" mesh="" endTime="0" global="true" startTime="0" texture="tiao" max="20" pos="">
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeX="20" sizeY="20"/>
+      <keyframe lifepercent="1" sizeX="20" sizeY="700"/>
+    </size_effector>
+    <circle_emitter emitperiod="0" lifetime="500" sizeX="10" velrange="100" rot="0" rotvelrange="0" radiussmall="85" directionfrom="0 1 0" lifetimerange="200" rotvel="0" emitrate="30" a="255" emittime="0" radiusbig="90" rotrange="0" r="255" g="255" height="0" b="255" vel="300" directionto="0 1 0" sizerange="0.0" sizeY="60"/>
+    <color_effector>
+      <keyframe b="212" lifepercent="0.0" r="48" g="83"/>
+      <keyframe b="255" lifepercent="1" r="35" g="46"/>
+    </color_effector>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.1"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <property lifetime="5000" cache="1">
+    <scale>
+      <frame y="1" x="1" durtime="0" z="1"/>
+    </scale>
+    <path>
+      <frame y="0" x="0" durtime="1000" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" x="0" durtime="1000" z="0"/>
+    </rotate>
+  </property>
+</effect>

@@ -1,0 +1,17 @@
+<effect>
+  <particle mesh="" endTime="0" global="true" label="" orient="0" texture="lightningball" pos="" max="5" startTime="0">
+    <rect_emitter vel="0" directionfrom="-1 -1 -1" g="172.0" lifetime="300" emitperiod="10000.0" sizerange="40" rot="0" rectz="5" rotvelrange="0" b="246.0" recty="5" rectx="5" a="255" rotrange="0" sizeY="50" directionto="1 1 1" sizeX="50" rotvel="0" lifetimerange="200" emitrate="10" velrange="0" emittime="1000" r="149.0"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="56.0" lifepercent="1.0"/>
+    </alpha_effector>
+  </particle>
+  <property cache="5" lifetime="2000">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+</effect>

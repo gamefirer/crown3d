@@ -1,0 +1,42 @@
+<effect>
+  <particle texture="flash01" orient="4" endTime="0" pos="" max="20" global="false" mesh="" label="fire2" startTime="0" billboard="false">
+    <force_effector dir="0 -1 0" f="0.0"/>
+    <attract_effector p="" f="0"/>
+    <uv_effector sv="1" smoothV="true" smoothU="true" su="1"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter rot="0.0" recty="0" directionfrom="-1 1 -1" rectx="0" lifetime="700" directionto="1 1 1" r="165" vel="100" sizeY="100" sizerange="20" a="255" lifetimerange="0.0" emittime="0.0" b="157" emitrate="10" sizeX="100" rotvel="0" rectz="0" rotvelrange="0" rotrange="0.0" g="255" velrange="0.0" emitperiod="0.0"/>
+    <color_effector>
+      <keyframe g="156" lifepercent="0.0" b="155" r="215"/>
+      <keyframe g="5" lifepercent="1" b="0.0" r="218"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeX="100" sizeY="100" lifepercent="0.0"/>
+      <keyframe sizeX="30" sizeY="200" lifepercent="1"/>
+    </size_effector>
+  </particle>
+  <particle texture="huoyangqiang2" orient="0" label="fire1" endTime="0" pos="" max="10" global="false" mesh="" startTime="0">
+    <color_effector>
+      <keyframe lifepercent="0.0" g="121" b="0.0" r="255"/>
+      <keyframe lifepercent="1" g="140" b="146" r="255"/>
+    </color_effector>
+    <rect_emitter rot="0" g="166" directionfrom="0 1 0" rectx="20" lifetime="500" directionto="0 1 0" r="255" vel="130" sizeY="100" sizerange="20" sizeX="100" lifetimerange="0.0" emittime="0" rotvelrange="0" emitrate="15" a="255" rotvel="0" rectz="20" b="152" rotrange="0" recty="0.0" velrange="21" emitperiod="0"/>
+    <size_effector>
+      <keyframe sizeX="100" sizeY="100" lifepercent="0.0"/>
+      <keyframe sizeX="50" sizeY="150" lifepercent="1"/>
+    </size_effector>
+  </particle>
+  <property cache="1" lifetime="3000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+</effect>

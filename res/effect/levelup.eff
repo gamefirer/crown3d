@@ -1,0 +1,89 @@
+<effect>
+  <mesh endtime="0" texture="" pos="0 0 0" label="guang" file="tong" starttime="0">
+    <scale>
+      <frame z="1" durtime="1000" y="3" x="1"/>
+      <frame z="8" durtime="1000" y="100" x="8"/>
+    </scale>
+    <color>
+      <frame a="255" g="255" b="126.0" durtime="1000" r="255"/>
+      <frame a="0.0" g="255" b="201.0" durtime="6000" r="255"/>
+      <frame a="0.0" g="255" b="255" durtime="1000" r="255"/>
+    </color>
+    <rotate>
+      <frame z="0" durtime="1000" y="700" x="0"/>
+    </rotate>
+  </mesh>
+  <quad endtime="200" texture="quan" height="100" label="quan1" width="100" orient="1.0" rot="0" pos="" starttime="0" billboard="false">
+    <scale>
+      <frame z="1" durtime="150" y="1" x="1"/>
+      <frame x="30" z="30" durtime="10000" y="1"/>
+      <frame x="30" z="30" durtime="1000" y="1"/>
+    </scale>
+    <color>
+      <frame a="255" g="255" b="137.0" durtime="150" r="255"/>
+      <frame a="0.0" g="255" b="255" durtime="1000" r="255"/>
+    </color>
+  </quad>
+  <quad endtime="600" texture="bo" height="100" label="quan2" width="100" orient="1.0" rot="0" pos="" starttime="0" billboard="false">
+    <scale>
+      <frame z="1" durtime="600" y="1" x="1"/>
+      <frame x="20" z="20" durtime="10000" y="1"/>
+      <frame x="20" z="20" durtime="1000" y="1"/>
+    </scale>
+    <color>
+      <frame a="255" g="255" b="0.0" durtime="600" r="255"/>
+      <frame a="0.0" g="180.0" b="0.0" durtime="10000" r="255.0"/>
+    </color>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <uv>
+      <frame v="0" sv="1" u="0" durtime="1000" su="1" r="0"/>
+    </uv>
+  </quad>
+  <light endtime="0" g="177.0" texture="dian" height="100" label="" width="100" rot="0" b="0" pos="0 0 0" bright="0.5" r="223.0" starttime="0">
+    <scale>
+      <frame z="2" durtime="500" y="5" x="2"/>
+      <frame z="10" durtime="1000" y="6" x="10"/>
+      <frame x="0.1" z="0.1" durtime="1000" y="1"/>
+    </scale>
+  </light>
+  <property cache="1" lifetime="2000">
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <particle mesh="" texture="dian" label="qiliu" orient="1.0" global="true" startTime="0" endTime="0" pos="" max="20" billboard="false">
+    <color_effector>
+      <keyframe g="255" b="132.0" r="255" lifepercent="0.0"/>
+      <keyframe g="255" b="225.0" r="255" lifepercent="1.0"/>
+    </color_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1.0"/>
+    </alpha_effector>
+    <rect_emitter emitrate="20" velrange="0" g="200" rot="0" rectx="0.0" emitperiod="10000.0" rotrange="0" directionfrom="0 1 0" b="200" rotvelrange="0" recty="0.0" sizerange="20" emittime="700" a="255" rotvel="0" sizeY="100" r="200" sizeX="100" lifetime="500" lifetimerange="0.0" vel="400.0" directionto="0 1 0" rectz="0.0"/>
+    <size_effector>
+      <keyframe sizeY="250" sizeX="250" lifepercent="0.0"/>
+      <keyframe sizeY="200" sizeX="200" lifepercent="0.6"/>
+      <keyframe sizeY="30" sizeX="30" lifepercent="1.0"/>
+    </size_effector>
+  </particle>
+  <particle mesh="" texture="vocals01" label="" orient="3.0" global="true" startTime="0" endTime="0" pos="" max="20" billboard="false">
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1.0"/>
+    </alpha_effector>
+    <rect_emitter emitrate="30" velrange="100.0" g="200" rot="0.0" rectx="50" emitperiod="10000.0" rotrange="0.0" directionfrom="0 1 0" b="200" rotvelrange="0" recty="0.0" sizerange="50" emittime="600" a="255" rotvel="0.0" sizeY="200" r="200" sizeX="100" lifetime="500" lifetimerange="0.0" vel="800.0" directionto="0 1 0" rectz="50"/>
+    <size_effector>
+      <keyframe sizeY="100" sizeX="100" lifepercent="0.0"/>
+      <keyframe sizeY="2000" sizeX="100" lifepercent="1.0"/>
+    </size_effector>
+  </particle>
+</effect>

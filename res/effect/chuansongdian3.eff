@@ -1,0 +1,14 @@
+<effect pos="0 0 0">
+  <property cache="1" lifetime="10000"/>
+  <mesh texture="" file="sphere" starttime="0" pos="0 0 0" label="" endtime="0">
+    <scale>
+      <frame y="10" durtime="1000" x="10" z="10"/>
+    </scale>
+    <rotate>
+      <frame y="200" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <color>
+      <frame b="255" durtime="1000" a="1" r="255" g="255"/>
+    </color>
+  </mesh>
+</effect>

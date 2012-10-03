@@ -1,0 +1,18 @@
+<effect>
+  <property cache="1" lifetime="1000"/>
+  <particle texture="2quan" mesh="" startTime="0" pos="" endTime="0" max="3" orient="1" global="false" billboard="false" label="">
+    <scale>
+      <frame z="1.2" y="1.2" x="1.2" durtime="0"/>
+    </scale>
+    <rect_emitter directionto="1 1 1" g="200" directionfrom="-1 -1 -1" sizeY="100" emittime="200" sizerange="20" emitperiod="10000" lifetimerange="0.0" rotvelrange="0" emitrate="10" vel="0" rotvel="0" a="255" rotrange="0" b="200" velrange="0" rectx="0.0" rectz="0.0" sizeX="100" recty="0.0" r="200" rot="0" lifetime="200"/>
+    <size_effector>
+      <keyframe sizeX="200" sizeY="200" lifepercent="0.0"/>
+      <keyframe sizeX="100" sizeY="100" lifepercent="1"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="140" lifepercent="0.4"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+</effect>

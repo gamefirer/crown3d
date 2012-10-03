@@ -1,0 +1,16 @@
+<effect>
+  <property lifetime="1500" cache="1">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+  <particle mesh="" orient="0" endTime="0" global="true" texture="ray11" label="" pos="" max="10" startTime="0">
+    <rect_emitter lifetime="400" emitrate="20" g="115" rot="0" rotvelrange="0" vel="10" directionfrom="-1 -1 -1" rotvel="0" sizerange="20" a="255" rectz="0.0" rotrange="360" b="200" recty="0.0" sizeX="50" rectx="0.0" sizeY="50" emittime="1200" velrange="20" lifetimerange="0.0" r="106" directionto="1 1 1" emitperiod="10000"/>
+  </particle>
+</effect>

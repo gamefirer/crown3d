@@ -1,0 +1,39 @@
+<effect>
+  <quad label="" height="100" width="100" rot="0" pos="" billboard="true" orient="2" endtime="0" texture="dian" starttime="0">
+    <color>
+      <frame a="255" g="137.0" b="201.0" durtime="1000" r="98.0"/>
+    </color>
+    <scale>
+      <frame durtime="300" z="1" y="2" x="3"/>
+      <frame durtime="100" x="0.2" z="1" y="2"/>
+      <frame durtime="1000" x="0.2" z="1" y="0.2"/>
+    </scale>
+  </quad>
+  <light label="" g="215" height="122" width="138" bright="0.1" rot="70" pos="0 0 0" texture="dian" b="255" r="122" endtime="0.0" starttime="0.0">
+    <scale>
+      <frame durtime="350" x="3" z="3" y="3"/>
+      <frame durtime="10000" x="0.5" z="0.5" y="0.5"/>
+    </scale>
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+  </light>
+  <property lifetime="400" cache="1">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+  <particle mesh="" texture="vocals01" label="" pos="" global="true" billboard="false" orient="3.0" max="10" startTime="0" endTime="0">
+    <rect_emitter rectz="10" emitrate="30" g="156.0" rot="0" rotvel="0" vel="2000" directionfrom="0 1 0" rotvelrange="0" b="200" emitperiod="10000.0" sizerange="20" a="255" lifetime="100" sizeY="300" recty="0.0" sizeX="100" rectx="10" emittime="200" velrange="0" lifetimerange="0.0" r="117.0" directionto="0 1 0" rotrange="0"/>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="1.0" a="99.0"/>
+    </alpha_effector>
+  </particle>
+</effect>

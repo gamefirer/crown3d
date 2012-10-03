@@ -1,0 +1,25 @@
+<effect pos="0 0 0">
+  <particle label="" max="10" orient="0" endTime="0" global="false" texture="a2" pos="0 0 0" mesh="" startTime="0">
+    <size_effector/>
+    <color_effector/>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <rect_emitter rectz="10" directionto="1 1 1" sizeX="50" recty="10" r="50" rectx="10" lifetime="500" vel="10" directionfrom="-1 -1 -1" emittime="0" rotvel="0" emitperiod="0" lifetimerange="100" rotvelrange="21.2" emitrate="10" a="255" rot="0" b="230" rotrange="360" g="75" velrange="0" sizerange="10" sizeY="50"/>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <uv_effector su="1" sv="1"/>
+    <force_effector f="0" dir=""/>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="223" lifepercent="0.5"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <attract_effector p="" f="0"/>
+  </particle>
+  <property cache="1" lifetime="1000"/>
+</effect>

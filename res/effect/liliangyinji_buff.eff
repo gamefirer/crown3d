@@ -1,0 +1,33 @@
+<effect>
+  <property lifetime="1000" cache="1"/>
+  <particle mesh="" texture="lighting3" endTime="0" billboard="false" max="10" label="dian1" global="true" pos="" orient="4" startTime="0">
+    <force_effector dir="" f="0"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter emittime="0" sizerange="50" g="200" emitperiod="0" lifetimerange="100" rotvelrange="0" emitrate="40" sizeX="50" rotvel="0" rotrange="0.0" sizeY="50" rot="0" velrange="0" a="255" rectz="5" b="200" r="200" recty="5" rectx="5" lifetime="100" directionto="1 1 1" vel="27" directionfrom="-1 -1 -1"/>
+    <attract_effector p="" f="0"/>
+    <color_effector/>
+    <size_effector/>
+    <scale/>
+    <uv_effector sv="0.5" su="0.5">
+      <keyframe v="0" lifepercent="0.0" u="0.5"/>
+      <keyframe v="0.5" lifepercent="0.2" u="0.5"/>
+      <keyframe v="0.5" lifepercent="0.9" u="0"/>
+    </uv_effector>
+  </particle>
+  <particle texture="lighting3" endTime="0" label="dian2" global="true" max="10" mesh="" pos="" orient="4" startTime="0" billboard="false">
+    <uv_effector sv="0.5" su="0.5">
+      <keyframe v="0" lifepercent="0.0" u="0"/>
+      <keyframe v="0" lifepercent="0.25" u="0.5"/>
+      <keyframe v="0.5" lifepercent="0.5" u="0"/>
+      <keyframe v="0.5" lifepercent="0.75" u="0.5"/>
+    </uv_effector>
+    <rect_emitter emittime="0" sizerange="20" g="200" emitperiod="0" lifetimerange="0.0" rotvelrange="0" emitrate="15" a="255" rotvel="0" rotrange="0" sizeY="100" rot="0" velrange="20" sizeX="100" rectz="0.0" b="200" vel="50" recty="0.0" rectx="0.0" lifetime="150" directionto="1 1 1" r="200" directionfrom="-1 -1 -1"/>
+    <size_effector>
+      <keyframe sizeX="50" lifepercent="0.0" sizeY="50"/>
+      <keyframe sizeX="30" lifepercent="1" sizeY="100"/>
+    </size_effector>
+  </particle>
+</effect>

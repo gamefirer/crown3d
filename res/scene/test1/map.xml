@@ -1,0 +1,21 @@
+<scene>
+  <texturepath path=""/>
+  <terraintexturepath path="terrain"/>
+  <effectpath path="effect"/>
+  <soundpath path="sound"/>
+  <mesh name="plane01" vertexColor="false">
+    <pos x="0.0" y="0.0" z="0.0"/>
+    <rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"/>
+    <scale s="1.0"/>
+    <mat blend="false" twoSide="false" layer="0" shadow="false" light="true"/>
+  </mesh>
+  <terrain name="terrain"/>
+  <world>
+    <point x="522.034" z="499.435"/>
+    <point x="544.633" z="-517.514"/>
+    <point x="-549.152" z="-531.073"/>
+    <point x="-517.514" z="522.034"/>
+  </world>
+  <scenebound minX="-500.0" maxX="500.0" minY="-500.0" maxY="500.0"/>
+  <light name="dd1" tex="home.dds" size="300" bright="1" x="0.00" z="0.00" rot="0" r="255" g="255" b="255"/>
+</scene>

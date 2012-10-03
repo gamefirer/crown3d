@@ -1,0 +1,2 @@
+color和coloreffector共同作用
+路径动画的设置

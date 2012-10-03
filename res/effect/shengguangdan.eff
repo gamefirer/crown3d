@@ -1,0 +1,22 @@
+<effect>
+  <property cache="5" lifetime="500">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+  <stripe endTime="0" pos="" billboard="true" dragtime="300" parallel="true" wide="40" timeduv="false" stripenum="1" endtime="5000" widedir="2" max="20" starttime="0" label="" texture="shengguangdan" startTime="0">
+    <uv_effector smoothV="false" smoothU="true" su="1" sv="0.2">
+      <keyframe v="0" lifepercent="0.0" u="0"/>
+      <keyframe v="0.2" lifepercent="0.2" u="0.2"/>
+      <keyframe v="0.4" lifepercent="0.4" u="0.4"/>
+      <keyframe v="0.8" lifepercent="0.7" u="0.7"/>
+      <keyframe v="1" lifepercent="1" u="1"/>
+    </uv_effector>
+    <lighting a="255" g="255" lifeTime="500" shaketime="0.0" b="255" r="255" shakeamp="0.0"/>
+    <force_effector dir="" f="0"/>
+    <color_effector r="255" g="200" b="0"/>
+  </stripe>
+</effect>

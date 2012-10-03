@@ -1,0 +1,37 @@
+<effect pos="0 0 0">
+  <particle orient="0" endTime="0" pos="" global="true" mesh="" max="20" label="" texture="a4" startTime="0">
+    <size_effector>
+      <keyframe sizeY="80" lifepercent="0.0" sizeX="80"/>
+      <keyframe sizeY="100" lifepercent="1.0" sizeX="100"/>
+    </size_effector>
+    <color_effector>
+      <keyframe g="199.0" b="169.0" r="255" lifepercent="0.0"/>
+      <keyframe g="115.0" b="30.0" r="255" lifepercent="1.0"/>
+    </color_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1.0"/>
+    </alpha_effector>
+    <rect_emitter vel="600" directionfrom="-1 0 -1" g="200" lifetime="500" emitperiod="10000.0" sizerange="20" rot="0" rectz="0.0" rotvelrange="0" b="200" recty="0.0" rectx="0.0" a="255" rotrange="0" sizeY="100" directionto="1 0 1" sizeX="100" rotvel="0" lifetimerange="0.0" emitrate="100" velrange="0" emittime="150" r="200"/>
+  </particle>
+  <light g="100" height="100" width="100" endtime="0" pos="0 0 0" bright="1.0" rot="0" b="56.0" starttime="0" label="" texture="ray11" r="255">
+    <scale>
+      <frame durtime="400" z="1" y="1" x="1"/>
+      <frame durtime="1000" z="10" y="10" x="10"/>
+    </scale>
+    <path>
+      <frame durtime="1000" z="0" y="0" x="0"/>
+    </path>
+  </light>
+  <quad billboard="true" orient="2" height="100" width="100" pos="" rot="0" endtime="0" starttime="0" label="" texture="lightningball">
+    <scale>
+      <frame durtime="400" z="1" y="1" x="1"/>
+      <frame durtime="1000" x="10" z="10" y="10"/>
+    </scale>
+    <color>
+      <frame a="255" g="209.0" b="177.0" durtime="400" r="255.0"/>
+      <frame a="0.0" g="94.0" b="38.0" durtime="1000" r="210.0"/>
+    </color>
+  </quad>
+  <property cache="1" lifetime="400"/>
+</effect>

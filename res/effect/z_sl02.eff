@@ -1,0 +1,19 @@
+<effect>
+  <property lifetime="5000"/>
+  <stripe startTime="0" endTime="0" texture="t_blade_001" label="" pos="" timeduv="true" max="20" dragtime="300" endtime="5000" wide="25" starttime="0" billboard="true" widedir="2" stripenum="1">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <color_effector b="0" r="255" g="200"/>
+    <dragger r="255.0" b="255.0" g="255.0" a="255"/>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <size_effector/>
+    <alpha_effector/>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <force_effector dir="" f="0"/>
+  </stripe>
+</effect>

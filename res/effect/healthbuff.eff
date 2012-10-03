@@ -1,0 +1,47 @@
+<effect>
+  <mesh texture="daoguang2" endtime="0" pos="0 0 0" label="bo1" file="quan" starttime="0">
+    <color>
+      <frame a="255" durtime="500" g="255" b="35" r="24"/>
+      <frame a="255" durtime="500" g="255" b="174" r="151"/>
+    </color>
+    <uv repeat="true" smooth="true">
+      <frame v="0" durtime="500" r="0" u="0" su="1" sv="1"/>
+      <frame v="1" durtime="0" r="0" u="0.0" su="1" sv="1"/>
+    </uv>
+    <scale>
+      <frame durtime="400" x="5" z="5" y="1"/>
+      <frame durtime="400" x="6" z="4" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="100"/>
+    </rotate>
+  </mesh>
+  <mesh texture="chuansongdian" endtime="0" pos="0 0 0" label="bo2" file="quan" starttime="0">
+    <color>
+      <frame a="255" durtime="500" g="255" b="133" r="101"/>
+      <frame a="255" durtime="500" g="255" b="19" r="16"/>
+    </color>
+    <uv repeat="true" smooth="true">
+      <frame v="1" durtime="500" r="0" u="0" su="1" sv="1"/>
+      <frame v="0" durtime="0" r="0" u="0" su="1" sv="1"/>
+    </uv>
+    <scale>
+      <frame durtime="500" x="5" z="5" y="1"/>
+      <frame durtime="400" x="4" z="6" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="-100"/>
+    </rotate>
+  </mesh>
+  <property lifetime="3000" cache="1">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+  </property>
+</effect>

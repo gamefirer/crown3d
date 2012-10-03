@@ -1,0 +1,51 @@
+<effect>
+  <stripe timeduv="false" startTime="0" max="10" endTime="0" stripenum="1" endtime="5000" dragtime="400" wide="40" pos="" label="" billboard="true" starttime="0" texture="trail1" widedir="2" parallel="true">
+    <color_effector b="0" r="0" g="0"/>
+    <dragger b="84.0" r="255" a="255" g="199"/>
+    <size_effector/>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <path/>
+    <uv_effector su="1" sv="1"/>
+    <alpha_effector a="-100"/>
+  </stripe>
+  <quad endtime="5000" texture="flash03" billboard="true" zUp="true" width="200" orient="2" pos="" label="" rot="0" starttime="0" height="200">
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <color>
+      <frame b="95.0" durtime="500" a="255" r="255" g="158.0"/>
+      <frame b="71.0" durtime="500" a="183" r="191" g="72.0"/>
+    </color>
+    <scale>
+      <frame y="0.8" durtime="1000" x="0.8" z="0.8"/>
+      <frame y="1.2" durtime="1000" x="1.2" z="1.2"/>
+    </scale>
+    <uv>
+      <frame sv="1" v="0" r="0" durtime="1000" su="1" u="0"/>
+    </uv>
+  </quad>
+  <particle startTime="0" mesh="" endTime="0" max="5" orient="0" pos="" texture="pixies1" label="" global="true">
+    <rect_emitter directionto="1 1 1" sizeX="30" velrange="5" sizerange="30" rotrange="360" rectz="0" vel="20" recty="0" emitrate="10" rotvel="20" lifetime="300" emittime="0" b="43.0" directionfrom="-1 -1 -1" rot="0" r="226" g="123.0" emitperiod="0" lifetimerange="200" a="255" rotvelrange="0" rectx="0" size="25" sizeY="30"/>
+    <color_effector b="-50" r="-100" g="100"/>
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <size_effector size="-20">
+      <keyframe sizeX="100" lifepercent="0.0" sizeY="100"/>
+      <keyframe sizeX="20" lifepercent="1" sizeY="20"/>
+    </size_effector>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <alpha_effector a="-250">
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="97" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <property cache="1" lifetime="5000"/>
+</effect>

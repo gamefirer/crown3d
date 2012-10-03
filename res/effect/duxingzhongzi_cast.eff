@@ -1,0 +1,30 @@
+<effect>
+  <property lifetime="5000" cache="1"/>
+  <editor>1.0</editor>
+  <particle label="粒子" starttime="0" endtime="5000" pos="0 0 0" blendmode="" max="10" global="true" billboard="true" orient="0" mesh="" texture="dian">
+    <rect_emitter emitrate="20" lifetime="200" lifetimerange="600" a="255" r="0" g="102" b="0" sizeX="15" sizeY="15" sizerange="5" directionfrom="0 0 0" directionto="0 0 0" vel="30" velrange="0" rot="0" rotrange="0" rotvel="0" rotvelrange="0" emitperiod="0" emittime="0" rectx="0" recty="0" rectz="0"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0"/>
+      <keyframe a="32" lifepercent="0.998"/>
+    </alpha_effector>
+    <color_effector/>
+    <size_effector>
+      <keyframe sizeX="45" sizeY="45" lifepercent="0"/>
+      <keyframe sizeX="10" sizeY="10" lifepercent="0.998"/>
+    </size_effector>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <stripe label="条带" pos="0 0 0" texture="daoguang" blendmode="" starttime="0" endtime="5000" wide="25" dragtime="300" widedir="2" billboard="true" timeduv="true" parallel="false" stripenum="1" max="20">
+    <dragger r="0" g="51" b="0" a="255"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector/>
+    <color_effector/>
+    <size_effector/>
+    <uv_effector su="1" sv="1"/>
+  </stripe>
+</effect>

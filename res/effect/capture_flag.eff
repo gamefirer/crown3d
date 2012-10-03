@@ -1,0 +1,25 @@
+<effect>
+  <particle pos="" texture="huoyanqiang" endTime="0" orient="3" label="" billboard="false" global="true" mesh="" max="10" startTime="0">
+    <rect_emitter sizeX="100" rectz="30" emitperiod="0" rotrange="0" recty="0.0" directionfrom="0 1 0" rotvelrange="0" rectx="30" vel="300" lifetimerange="0.0" rot="0" directionto="0 1 0" sizerange="20" velrange="200" lifetime="500" r="255" sizeY="100" b="84" a="255" g="107" emitrate="20" emittime="0" rotvel="0"/>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="0.0"/>
+      <keyframe lifepercent="0.2" a="255"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+    <size_effector>
+      <keyframe sizeX="120" lifepercent="0.0" sizeY="150"/>
+      <keyframe sizeX="80" lifepercent="1" sizeY="250"/>
+    </size_effector>
+  </particle>
+  <property lifetime="3000" cache="1">
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+  </property>
+</effect>

@@ -1,0 +1,20 @@
+<effect>
+  <property cache="1" lifetime="5000"/>
+  <mesh endtime="0" starttime="0" label="" file="armor" texture="jiguangdianying2" pos="0 0 0">
+    <uv>
+      <frame v="0" u="0" su="0.3333333333333333" durtime="50" r="0" sv="0.5"/>
+      <frame v="0" u="0.3333333333333333" su="0.3333333333333333" durtime="50" r="0" sv="0.5"/>
+      <frame v="0" u="0.6666666666666666" su="0.3333333333333333" durtime="50" r="0" sv="0.5"/>
+      <frame v="0.5" u="0" su="0.3333333333333333" durtime="50" r="0" sv="0.5"/>
+      <frame v="0.5" u="0.3333333333333333" su="0.3333333333333333" durtime="50" r="0" sv="0.5"/>
+      <frame v="0.5" u="0.6666666666666666" su="0.3333333333333333" durtime="50" r="0" sv="0.5"/>
+    </uv>
+    <scale loop="true">
+      <frame durtime="300" x="3" z="3" y="4"/>
+      <frame durtime="300" x="4" z="4" y="5.5"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="200"/>
+    </rotate>
+  </mesh>
+</effect>

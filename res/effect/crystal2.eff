@@ -1,0 +1,35 @@
+<effect>
+  <morph starttime="0" pos="0 0 0" texture="bule" endtime="0" label="" file="crystal" alpha="true">
+    <scale>
+      <frame y="1.5" durtime="0" x="1.5" z="1.5"/>
+    </scale>
+    <color>
+      <frame b="52.0" durtime="1000" a="255" r="255" g="67.0"/>
+    </color>
+    <path close="true">
+      <frame y="50" durtime="5000" x="0" z="0"/>
+      <frame y="70" durtime="5000" x="0" z="0"/>
+    </path>
+    <rotate>
+      <frame y="30" durtime="1000" x="0" z="0"/>
+    </rotate>
+  </morph>
+  <property cache="1" lifetime="1000">
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+  </property>
+  <particle startTime="0" pos="" mesh="" max="20" texture="dian" orient="0" label="" global="true" endTime="0">
+    <rect_emitter rotvelrange="0" directionto="0 1 0" sizeX="10" lifetime="500" rotvel="0" sizerange="10" rotrange="0" emitperiod="0" rectz="40" emittime="0" r="218.0" g="70.0" lifetimerange="200" vel="350" directionfrom="0 1 0" rot="0" a="255" emitrate="40" recty="0.0" b="46.0" rectx="40" velrange="100" sizeY="10"/>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="1" a="21"/>
+    </alpha_effector>
+  </particle>
+</effect>

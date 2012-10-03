@@ -1,0 +1,49 @@
+<effect>
+  <mesh endtime="0" starttime="0" texture="tx_pet_chunvzuo_034" pos="0 0 0" label="lightmesh" file="quan">
+    <scale>
+      <frame y="1" durtime="1000" x="8" z="8"/>
+      <frame y="40" durtime="1000" x="9" z="9"/>
+    </scale>
+    <rotate>
+      <frame y="500" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <uv smooth="true" repeat="true">
+      <frame durtime="500" r="1.56" sv="1" v="0" su="1" u="0"/>
+      <frame durtime="0" r="1.56" sv="1" v="0" su="1" u="0"/>
+    </uv>
+    <color>
+      <frame b="33" durtime="1000" r="236" a="255" g="105"/>
+      <frame b="54" durtime="1000" r="255" a="113" g="78"/>
+    </color>
+  </mesh>
+  <particle label="fire" global="false" orient="1" endTime="0" max="10" texture="a2" pos="0 20 0" mesh="" billboard="false" startTime="0">
+    <rect_emitter rectz="0.0" vel="0" sizeX="200" recty="0.0" a="255" rectx="0.0" lifetime="700" directionto="1 1 1" directionfrom="-1 -1 -1" emittime="500" sizerange="100" emitperiod="10000" lifetimerange="0.0" rotvelrange="100" emitrate="10" r="234" rotvel="100" g="89" b="43" rotrange="360" rot="0" velrange="0" sizeY="200"/>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.5"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <particle label="lightparticle" global="true" orient="3" endTime="0" max="10" texture="vocals01" pos="" mesh="" billboard="false" startTime="0">
+    <size_effector>
+      <keyframe sizeX="200" lifepercent="0.0" sizeY="200"/>
+      <keyframe sizeX="150" lifepercent="1" sizeY="2000"/>
+    </size_effector>
+    <rect_emitter rectz="50" directionto="0 1 0" sizeX="100" recty="0.0" r="200" rectx="50" lifetime="500" vel="1000" directionfrom="0 1 0" emittime="0" sizerange="20" emitperiod="0" lifetimerange="700" rotvelrange="0" emitrate="15" a="255" rotvel="0" rot="0" b="30" rotrange="0" g="86" velrange="100" sizeY="100"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <property cache="1" lifetime="1000">
+    <scale>
+      <frame y="1" durtime="0" x="1" z="1"/>
+    </scale>
+    <rotate>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </rotate>
+    <path>
+      <frame y="0" durtime="1000" x="0" z="0"/>
+    </path>
+  </property>
+</effect>

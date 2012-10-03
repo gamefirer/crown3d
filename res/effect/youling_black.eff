@@ -1,0 +1,34 @@
+<effect>
+  <property cache="5" lifetime="3000"/>
+  <particle texture="blood_a" mesh="" blendmode="alpha" pos="0 -20 0" endTime="0" max="20" orient="0" global="true" startTime="0" label="">
+    <rect_emitter directionto="1 -3 1" g="150" rot="0" directionfrom="-1 -3 -1" emittime="0" sizerange="5" emitperiod="0" lifetimerange="500" rotvelrange="0" emitrate="10" vel="150" rotvel="38.4" a="255" rotrange="360" b="150" velrange="25" sizeY="35" rectz="5" sizeX="35" recty="5" r="55" rectx="5" lifetime="1000"/>
+    <size_effector size="-50">
+      <keyframe sizeX="100" sizeY="100" lifepercent="0.0"/>
+      <keyframe sizeX="80" sizeY="80" lifepercent="0.5"/>
+      <keyframe sizeX="40" sizeY="40" lifepercent="1"/>
+    </size_effector>
+    <force_effector dir="-1 0 0" f="0.0"/>
+    <attract_effector p="0 20 0" f="0"/>
+    <color_effector g="0" b="-250" r="-100">
+      <keyframe lifepercent="0.0" g="70" b="70" r="70"/>
+      <keyframe lifepercent="1" g="32" b="16" r="21"/>
+    </color_effector>
+    <alpha_effector a="-250">
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.2"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <light texture="dian" bright="0.5" height="100" width="100" pos="" b="182" starttime="0" endtime="0" g="105" r="170" rot="45" label="">
+    <scale>
+      <frame x="1.5" z="1.5" durtime="1000" y="5"/>
+      <frame x="2" z="2" durtime="1000" y="5"/>
+    </scale>
+    <path align="false" close="true" loop="true">
+      <frame x="0" z="0" durtime="50" y="0"/>
+      <frame x="0" z="10" durtime="50" y="0"/>
+      <frame x="0" z="0" durtime="50" y="0"/>
+      <frame x="0" z="-10" durtime="50" y="0"/>
+    </path>
+  </light>
+</effect>

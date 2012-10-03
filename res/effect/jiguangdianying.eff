@@ -1,0 +1,63 @@
+<effect>
+  <particle texture="jiguangdianying3" max="10" global="true" billboard="false" label="" endTime="0" orient="4" mesh="" pos="" startTime="0">
+    <rect_emitter r="200" g="200" rot="0" rotrange="0" directionto="1 1 1" b="200" emittime="0" velrange="0" lifetimerange="0.0" a="255" rectx="10" emitperiod="0" sizeY="100" emitrate="15" sizeX="100" recty="10" rotvelrange="0" directionfrom="-1 -1 -1" sizerange="0.0" vel="400" rectz="10" rotvel="0" lifetime="500"/>
+    <uv_effector sv="1" su="1"/>
+    <size_effector>
+      <keyframe sizeY="100" sizeX="100" lifepercent="0.0"/>
+      <keyframe sizeY="200" sizeX="30" lifepercent="0.4"/>
+      <keyframe sizeY="50" sizeX="20" lifepercent="1"/>
+    </size_effector>
+    <scale>
+      <frame x="1" durtime="0" z="1" y="1"/>
+    </scale>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.2"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rotate>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </rotate>
+    <color_effector>
+      <keyframe b="255" g="215" lifepercent="0.0" r="183"/>
+      <keyframe b="255" g="126" lifepercent="1" r="50"/>
+    </color_effector>
+    <force_effector dir="1 0 0" f="0.0"/>
+    <attract_effector p="0 100 0" f="0.0"/>
+    <path>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </path>
+  </particle>
+  <stripe wide="100" texture="jiguangdianying1" label="" parallel="true" timeduv="false" dragtime="300" endTime="0" widedir="2" starttime="0" billboard="true" max="20" stripenum="1" endtime="5000" pos="" startTime="0">
+    <uv_effector smoothU="true" su="1" sv="1">
+      <keyframe v="0" u="1" lifepercent="0.0"/>
+      <keyframe v="0" u="0.0" lifepercent="1"/>
+    </uv_effector>
+    <color_effector r="255" g="200" b="0"/>
+    <lighting a="255" g="255" b="255" shaketime="0.0" lifeTime="300" r="255" shakeamp="0.0"/>
+  </stripe>
+  <light bright="0.7" g="148" rot="0" label="" height="100" width="100" endtime="0" starttime="0" b="201" texture="dian" r="96" pos="0 0 0">
+    <scale>
+      <frame x="3" durtime="150" z="3" y="1"/>
+      <frame x="4" durtime="150" z="4" y="1"/>
+    </scale>
+  </light>
+  <quad starttime="0" billboard="true" texture="jiguangdianying2" label="" height="100" width="100" orient="2" rot="0" endtime="0" pos="">
+    <uv>
+      <frame v="0" su="0.3333333333333333" durtime="50" u="0" r="0" sv="0.5"/>
+      <frame v="0" su="0.3333333333333333" durtime="50" u="0.3333333333333333" r="0" sv="0.5"/>
+      <frame v="0" su="0.3333333333333333" durtime="50" u="0.6666666666666666" r="0" sv="0.5"/>
+      <frame v="0.5" su="0.3333333333333333" durtime="50" u="0" r="0" sv="0.5"/>
+      <frame v="0.5" su="0.3333333333333333" durtime="50" u="0.3333333333333333" r="0" sv="0.5"/>
+      <frame v="0.5" su="0.3333333333333333" durtime="50" u="0.6666666666666666" r="0" sv="0.5"/>
+    </uv>
+  </quad>
+  <property cache="1" lifetime="5000">
+    <scale>
+      <frame x="1" durtime="0" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </rotate>
+  </property>
+</effect>

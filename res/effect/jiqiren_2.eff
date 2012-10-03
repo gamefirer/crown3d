@@ -1,0 +1,27 @@
+<effect>
+  <property lifetime="3000" cache="1">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <particle label="" orient="0" max="10" global="true" mesh="" texture="pixies4" pos="" endTime="0" startTime="0">
+    <rect_emitter sizerange="20" g="255" lifetimerange="200" rotvelrange="70" emitrate="8" rot="0" a="255" directionto="1 3 1" rotrange="360" sizeY="100" velrange="46" rectx="0.0" sizeX="100" rectz="0.0" vel="223" b="255" recty="0.0" rotvel="0" lifetime="500" emitperiod="0" r="255" directionfrom="-1 3 -1" emittime="0"/>
+    <size_effector>
+      <keyframe sizeX="20" sizeY="20" lifepercent="0.0"/>
+      <keyframe sizeX="60" lifepercent="1" sizeY="60"/>
+    </size_effector>
+    <color_effector/>
+    <force_effector dir="0 -1 0" f="1500"/>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="107"/>
+      <keyframe lifepercent="0.1" a="255"/>
+      <keyframe lifepercent="1" a="94"/>
+    </alpha_effector>
+  </particle>
+</effect>

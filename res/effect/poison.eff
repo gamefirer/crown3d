@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--狗嘴里面的火-->
+<effect xmlns="">
+<!--
+特效属性
+lifetime: 持续时间毫秒(ms)
+-->
+<property lifetime="5000"/>
+
+<!--
+粒子
+max: 最大粒子数
+texture: 贴图
+global: 粒子是否在全局空间运动
+-->
+<particle 
+max="10"
+texture="dian"
+global="false"
+>
+	<!--
+	矩形发射器
+	rectx, recty, rectz: 发射器的矩形范围
+	emitrate: 发射速率(每秒发射多少个粒子)
+	lifetime: 生命期ms
+	lifetimerange: 生命期变换范围
+	a, r, g, b: 粒子的透明度和颜色
+	size: 粒子大小
+	sizerange: 粒子大小变化量
+	vel: 粒子速度(速度/秒)
+	velrange: 粒子速度变化量
+	rot: 粒子的旋转
+	rotrange: 粒子的旋转范围
+	rotvel: 粒子的旋转速度
+	rotvelrange: 粒子的旋转速度范围
+	-->
+	<rect_emitter
+	rectx="5"
+	recty="5"
+	rectz="5"
+	emitrate="5"
+	lifetime="1000"
+	lifetimerange="0"
+	a="255"
+	r="155"
+	g="250"
+	b="150"
+	size="55"
+	sizerange="5"
+	vel="80"
+	velrange="5"
+	rot="0"
+	rotrange="0"
+	rotvel="0"
+	rotvelrange="0"
+	directionfrom="-1 -1 -1"
+	directionto="1 1 1"
+	/>
+	
+	<!--大小控制器-->
+	<size_effector size="205"/>
+	<!--颜色控制器-->
+	<color_effector>
+		<keyframe lifepercent="0.1" r="100" g="0" b="250"/>
+		<keyframe lifepercent="0.5" r="60" g="0" b="150"/>
+		<keyframe lifepercent="0.9" r="10" g="0" b="50"/>
+	</color_effector>
+	
+	<!--透明控制器-->
+	<alpha_effector a="-250"/>
+	
+</particle>
+
+
+</effect>

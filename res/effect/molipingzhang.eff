@@ -1,0 +1,38 @@
+<effect>
+  <quad zUp="true" texture="quan2" height="230" label="" width="200" orient="2" rot="0" billboard="true" pos="" endtime="0" starttime="0">
+    <scale loop="true">
+      <frame x="1" z="1" durtime="500" y="1"/>
+      <frame x="1.2" z="1" durtime="500" y="1.2"/>
+    </scale>
+    <color loop="true">
+      <frame a="255" g="207" b="255" r="167" durtime="1000"/>
+      <frame a="255" g="137" b="255" r="69" durtime="1000"/>
+    </color>
+    <rotate>
+      <frame z="0" durtime="1000" y="0" x="0"/>
+    </rotate>
+    <uv>
+      <frame v="0" u="0" durtime="1000" sv="1" r="0" su="1"/>
+    </uv>
+  </quad>
+  <quad texture="ray05" height="350" label="" width="350" orient="2" rot="0" pos="" billboard="true" endtime="0" starttime="0">
+    <scale>
+      <frame z="1" durtime="800" y="1" x="1"/>
+      <frame x="1.2" z="1" durtime="800" y="1.2"/>
+    </scale>
+    <rotate>
+      <frame z="20" durtime="1000" y="0" x="0"/>
+    </rotate>
+  </quad>
+  <property cache="1" lifetime="5000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+</effect>

@@ -1,0 +1,40 @@
+<effect>
+  <property cache="1" lifetime="3000">
+    <scale>
+      <frame x="1" z="1" y="1" durtime="0"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </rotate>
+  </property>
+  <quad texture="aura1" height="100" width="100" orient="1" pos="" billboard="false" starttime="0" endtime="0" rot="0" label="q1">
+    <scale>
+      <frame x="1.8" z="1.8" y="1" durtime="1000"/>
+      <frame x="1" z="1" y="1" durtime="1000"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" y="100" durtime="1000"/>
+    </rotate>
+    <color>
+      <frame a="196" g="35.0" b="209.0" r="157" durtime="1000"/>
+      <frame a="140" g="54.0" b="68" r="66" durtime="1000"/>
+    </color>
+  </quad>
+  <quad texture="aura1" height="100" width="100" orient="1" pos="" billboard="false" starttime="0" endtime="0" rot="0" label="q2">
+    <scale>
+      <frame x="2" z="2" y="1" durtime="1500"/>
+      <frame x="2" z="2" y="1" durtime="200"/>
+      <frame x="2.5" z="2.5" y="1" durtime="200"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" y="-30" durtime="1000"/>
+    </rotate>
+    <color>
+      <frame a="118" g="40.0" b="68" r="80" durtime="1200"/>
+      <frame a="172" g="54.0" b="236.0" r="120" durtime="1200"/>
+    </color>
+  </quad>
+</effect>

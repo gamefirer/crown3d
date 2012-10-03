@@ -1,0 +1,78 @@
+<effect>
+  <property lifetime="3000" cache="1"/>
+  <editor>1.0</editor>
+  <particle label="粒子" starttime="0" endtime="3000" pos="0 10 0" blendmode="" max="3" global="true" billboard="false" orient="1" mesh="" texture="diffuseshockwavethin">
+    <rect_emitter emitrate="50" lifetime="3000" lifetimerange="0" a="255" r="255" g="255" b="255" sizeX="50" sizeY="50" sizerange="5" directionfrom="-1 -1 -1" directionto="1 1 1" vel="0" velrange="0" rot="0" rotrange="360" rotvel="0" rotvelrange="0" emitperiod="0" emittime="0" rectx="0" recty="0" rectz="0"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector>
+      <keyframe a="7" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.35"/>
+      <keyframe a="0" lifepercent="0.41"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe r="51" g="51" b="0" lifepercent="0"/>
+      <keyframe r="51" g="255" b="102" lifepercent="0.18"/>
+      <keyframe r="51" g="102" b="0" lifepercent="0.41"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeX="30" sizeY="30" lifepercent="0"/>
+      <keyframe sizeX="540" sizeY="540" lifepercent="0.23"/>
+      <keyframe sizeX="750" sizeY="750" lifepercent="0.41"/>
+    </size_effector>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <particle label="粒子" starttime="0" endtime="3000" pos="0 10 0" blendmode="" max="3" global="true" billboard="false" orient="1" mesh="" texture="ripple">
+    <rect_emitter emitrate="50" lifetime="3000" lifetimerange="0" a="255" r="255" g="255" b="255" sizeX="50" sizeY="50" sizerange="5" directionfrom="-1 -1 -1" directionto="1 1 1" vel="0" velrange="0" rot="0" rotrange="0" rotvel="0" rotvelrange="0" emitperiod="0" emittime="0" rectx="0" recty="0" rectz="0"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector>
+      <keyframe a="4" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.15"/>
+      <keyframe a="0" lifepercent="0.22"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe r="255" g="255" b="255" lifepercent="0"/>
+      <keyframe r="51" g="255" b="0" lifepercent="0.15"/>
+      <keyframe r="51" g="102" b="0" lifepercent="0.22"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeX="30" sizeY="30" lifepercent="0"/>
+      <keyframe sizeX="300" sizeY="300" lifepercent="0.15"/>
+      <keyframe sizeX="450" sizeY="450" lifepercent="0.22"/>
+    </size_effector>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <particle label="粒子" starttime="0" endtime="3000" pos="0 10 0" blendmode="" max="3" global="true" billboard="false" orient="1" mesh="" texture="dreamgray">
+    <rect_emitter emitrate="50" lifetime="3000" lifetimerange="0" a="255" r="255" g="255" b="255" sizeX="50" sizeY="50" sizerange="5" directionfrom="-1 -1 -1" directionto="1 1 1" vel="0" velrange="0" rot="0" rotrange="0" rotvel="0" rotvelrange="0" emitperiod="0" emittime="0" rectx="0" recty="0" rectz="0"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.18"/>
+      <keyframe a="0" lifepercent="0.23"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe r="255" g="255" b="255" lifepercent="0"/>
+      <keyframe r="51" g="255" b="0" lifepercent="0.12"/>
+      <keyframe r="0" g="102" b="0" lifepercent="0.18"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeX="30" sizeY="30" lifepercent="0"/>
+      <keyframe sizeX="600" sizeY="600" lifepercent="0.18"/>
+      <keyframe sizeX="30" sizeY="30" lifepercent="0.24"/>
+    </size_effector>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <light label="灯光" starttime="0" endtime="3000" height="100" width="100" rot="0" pos="0 0 0" blendmode="" texture="dian" r="51" g="255" b="0" bright="0.28">
+    <path close="false" align="false"/>
+    <scale loop="false">
+      <frame durtime="370" x="1" y="1" z="1"/>
+      <frame durtime="120" x="3" y="3" z="3"/>
+      <frame durtime="500" x="1" y="1" z="1"/>
+    </scale>
+  </light>
+</effect>

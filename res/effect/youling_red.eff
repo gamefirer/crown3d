@@ -1,0 +1,34 @@
+<effect>
+  <property lifetime="3000" cache="5"/>
+  <particle orient="0" texture="smoke08" endTime="0" label="" max="20" pos="0 -20 0" global="true" startTime="0" mesh="">
+    <rect_emitter rot="0" lifetime="1000" g="150" directionto="1 -3 1" velrange="25" emittime="0" sizerange="5" emitperiod="0" lifetimerange="500" rotvelrange="0" emitrate="10" a="255" rotvel="38.4" b="150" rotrange="360" sizeY="35" vel="100" rectx="5" sizeX="35" rectz="5" r="55" recty="5" directionfrom="-1 -3 -1"/>
+    <force_effector dir="-1 0 0" f="0.0"/>
+    <attract_effector p="0 20 0" f="50"/>
+    <alpha_effector a="-250">
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.2"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <size_effector size="-50">
+      <keyframe lifepercent="0.0" sizeX="80" sizeY="80"/>
+      <keyframe lifepercent="0.5" sizeX="60" sizeY="60"/>
+      <keyframe lifepercent="1" sizeX="40" sizeY="40"/>
+    </size_effector>
+    <color_effector g="0" b="-250" r="-100">
+      <keyframe g="121" b="52" r="255" lifepercent="0.0"/>
+      <keyframe g="0.0" b="0.0" r="255" lifepercent="1"/>
+    </color_effector>
+  </particle>
+  <light g="142" texture="dian" height="100" width="100" starttime="0" label="" rot="45" b="122" pos="" bright="0.5" endtime="0" r="218">
+    <scale>
+      <frame x="1.5" durtime="1000" z="1.5" y="5"/>
+      <frame x="2" durtime="1000" z="2" y="5"/>
+    </scale>
+    <path align="false" close="true" loop="true">
+      <frame x="0" durtime="50" z="0" y="0"/>
+      <frame x="0" durtime="50" z="10" y="0"/>
+      <frame x="0" durtime="50" z="0" y="0"/>
+      <frame x="0" durtime="50" z="-10" y="0"/>
+    </path>
+  </light>
+</effect>

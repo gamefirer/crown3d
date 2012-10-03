@@ -1,0 +1,47 @@
+<effect>
+  <particle label="fire" orient="4" endTime="0" pos="" max="30" global="false" mesh="" texture="a2" startTime="0" billboard="false">
+    <force_effector dir="0 -1 0" f="0.0"/>
+    <attract_effector p="" f="0"/>
+    <uv_effector smoothV="true" sv="1" su="1" smoothU="true"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter rotvelrange="0" recty="0" vel="600" rectx="0" lifetime="250" directionto="1 1 1" velrange="0.0" directionfrom="-1 1 -1" sizeY="100" sizerange="20" a="255" lifetimerange="0.0" emittime="200" rot="0.0" emitrate="100" emitperiod="10000" rotvel="0" rectz="0" b="100" rotrange="0.0" g="255" r="88" sizeX="100"/>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="64" b="79" r="255"/>
+      <keyframe lifepercent="1" g="161" b="149" r="255"/>
+    </color_effector>
+    <size_effector>
+      <keyframe sizeX="100" lifepercent="0.0" sizeY="100"/>
+      <keyframe sizeX="30" lifepercent="1" sizeY="100"/>
+    </size_effector>
+  </particle>
+  <particle label="fog" orient="0" texture="smoke08" endTime="0" pos="" max="10" global="true" mesh="" startTime="0">
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.7"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe g="191" lifepercent="0.0" b="187" r="255"/>
+      <keyframe g="142" lifepercent="1" b="119" r="255"/>
+    </color_effector>
+    <rect_emitter b="200" g="200" vel="205" rectx="0.0" lifetime="400" directionto="1 2 1" velrange="38" directionfrom="-1 2 -1" sizeY="100" sizerange="20" sizeX="100" lifetimerange="100" emittime="300" rot="0" emitrate="15" emitperiod="10000" rotvel="0" rectz="0.0" rotvelrange="0" rotrange="0" recty="0.0" r="200" a="255"/>
+    <size_effector>
+      <keyframe sizeX="200" sizeY="200" lifepercent="0.0"/>
+      <keyframe sizeX="300" sizeY="300" lifepercent="1"/>
+    </size_effector>
+  </particle>
+  <property cache="1" lifetime="5000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+</effect>

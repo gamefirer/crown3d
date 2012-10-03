@@ -1,0 +1,78 @@
+<effect>
+  <mesh blendmode="add" texture="t_shock_001" pos="0 0 0" file="m_multi8_001" label="body" starttime="0" endtime="0">
+    <scale>
+      <frame x="2" z="5" durtime="1000" y="3"/>
+    </scale>
+    <uv>
+      <frame su="1" r="0" v="0" u="0" durtime="1000" sv="1"/>
+    </uv>
+    <rotate>
+      <frame x="1000" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <path>
+      <frame x="-40" z="0" durtime="1000" y="0"/>
+    </path>
+    <color>
+      <frame r="100.0" b="255" g="128.0" durtime="1000" a="255"/>
+    </color>
+  </mesh>
+  <property cache="1" lifetime="5000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <particle startTime="0" global="true" mesh="" texture="t_fog_001" pos="" max="20" label="fog" orient="0.0" billboard="true" endTime="0.0">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <color_effector/>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <rect_emitter lifetime="350" r="86.0" rotvelrange="0" emittime="0" directionfrom="0 0 0" emitperiod="0" sizerange="10" lifetimerange="0.0" g="161.0" emitrate="30" rotvel="0" directionto="0 0 0" sizeX="20" rotrange="360" velrange="0" rot="0" sizeY="20" rectz="0.0" b="255.0" vel="100" recty="0.0" a="255" rectx="0"/>
+    <size_effector>
+      <keyframe sizeY="50" lifepercent="0.0" sizeX="50"/>
+      <keyframe sizeY="100" lifepercent="1" sizeX="100"/>
+    </size_effector>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <alpha_effector>
+      <keyframe lifepercent="0" a="87.0"/>
+      <keyframe lifepercent="0.5" a="255"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+  </particle>
+  <particle startTime="0" endTime="0.0" max="20" texture="t_star_001" orient="0.0" pos="" mesh="" label="star" billboard="true" global="true">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <color_effector>
+      <keyframe lifepercent="0" r="255" b="255" g="255"/>
+      <keyframe lifepercent="0.5" r="255" b="255" g="255"/>
+      <keyframe lifepercent="1" r="62.0" b="255" g="146.0"/>
+    </color_effector>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <rect_emitter sizeY="20" directionto="1 1 1" vel="100" emittime="0" lifetimerange="0.0" emitperiod="0" sizerange="10" g="255.0" rotvelrange="0" emitrate="30" rotvel="0" r="255.0" rotrange="360" directionfrom="-1 -1 -1 " velrange="0" rot="0" lifetime="500" rectz="0.0" b="255.0" sizeX="20" recty="0.0" a="255" rectx="0"/>
+    <size_effector>
+      <keyframe sizeY="25" lifepercent="0.0" sizeX="25"/>
+      <keyframe sizeY="10" lifepercent="1" sizeX="10"/>
+    </size_effector>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <alpha_effector>
+      <keyframe lifepercent="0" a="87.0"/>
+      <keyframe lifepercent="0.5" a="255"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+  </particle>
+</effect>

@@ -1,0 +1,47 @@
+<effect>
+  <property cache="1" lifetime="5000">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+  <particle endTime="0" pos="50 0 0" orient="1" billboard="false" max="3" texture="liuxingzhan1" label="" global="false" mesh="" startTime="0">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <alpha_effector>
+      <keyframe a="5" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.4"/>
+      <keyframe a="0.0" lifepercent="0.8"/>
+    </alpha_effector>
+    <rect_emitter rot="90" emitperiod="10000" g="255" rectx="0" rotrange="0.0" velrange="1" lifetimerange="200" directionto="1 1 1" sizeY="167" rectz="0" emittime="600" vel="0.0" a="255" b="255" r="255" directionfrom="-1 -1 -1" sizeX="165" recty="0" rotvelrange="0.0" size="200" sizerange="10" emitrate="3" lifetime="400" rotvel="0.0"/>
+    <color_effector/>
+    <size_effector>
+      <keyframe size="200" sizeY="200" lifepercent="0.1" sizeX="200"/>
+      <keyframe size="250" sizeY="350" lifepercent="1" sizeX="350"/>
+    </size_effector>
+  </particle>
+  <particle endTime="0" pos="50 0 0" orient="1" billboard="false" global="false" texture="liuxingzhan2" label="" max="5" mesh="" startTime="0">
+    <path/>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="204" lifepercent="0.3"/>
+      <keyframe a="8" lifepercent="1"/>
+    </alpha_effector>
+    <uv_effector su="1" sv="1"/>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+    <rect_emitter rot="80" emitperiod="10000" g="200" rectx="0.0" rotrange="20" velrange="0.0" lifetimerange="300" directionto="1 0 0" b="200" rectz="0.0" emittime="500" vel="24" a="255" sizeY="200" r="200" directionfrom="1 0 0" sizeX="200" recty="0.0" rotvelrange="0.0" size="178" sizerange="20" emitrate="5" lifetime="400" rotvel="0.0"/>
+    <color_effector/>
+    <size_effector>
+      <keyframe size="150" sizeY="200" lifepercent="0.1" sizeX="200"/>
+      <keyframe size="240" sizeY="300" lifepercent="1" sizeX="400"/>
+    </size_effector>
+  </particle>
+</effect>

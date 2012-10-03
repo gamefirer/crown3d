@@ -1,0 +1,40 @@
+<effect>
+  <particle orient="4.0" endTime="0" billboard="false" pos="50 0 0" max="20" mesh="" global="false" label="dust" texture="glow" startTime="0">
+    <size_effector>
+      <keyframe size="200" sizeY="200" sizeX="200" lifepercent="0.0"/>
+      <keyframe size="250" sizeY="500" sizeX="50" lifepercent="1"/>
+    </size_effector>
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <alpha_effector>
+      <keyframe a="5" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.4"/>
+      <keyframe a="0.0" lifepercent="0.8"/>
+    </alpha_effector>
+    <rect_emitter vel="600" directionfrom="-5 1 -5" g="196.0" lifetime="300" emitperiod="10000" sizerange="10" a="255" rectz="0" rotvelrange="0.0" lifetimerange="200" recty="0" rectx="0" rot="90" rotrange="0.0" size="200" sizeY="167" directionto="5 1 5" sizeX="165" rotvel="0.0" b="255" emitrate="200" velrange="1" emittime="100" r="170.0"/>
+    <color_effector/>
+  </particle>
+  <particle orient="1.0" endTime="0" billboard="false" pos="" global="true" mesh="" max="5" label="guangbo" texture="ray11" startTime="0">
+    <size_effector>
+      <keyframe sizeY="10" lifepercent="0.0" sizeX="10"/>
+      <keyframe sizeY="1000" lifepercent="1.0" sizeX="1000"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="56.0" lifepercent="1.0"/>
+    </alpha_effector>
+    <rect_emitter vel="0" directionfrom="-1 -1 -1" g="193.0" lifetime="200" emitperiod="10000.0" sizerange="20" rot="0" rectz="0.0" rotvelrange="0" b="255.0" recty="0.0" rectx="0.0" a="255" rotrange="0" sizeY="100" directionto="1 1 1" sizeX="100" rotvel="0" lifetimerange="200" emitrate="100" velrange="0" emittime="200" r="170.0"/>
+  </particle>
+  <property cache="1" lifetime="5000">
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+</effect>

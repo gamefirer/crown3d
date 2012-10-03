@@ -1,0 +1,31 @@
+<effect>
+  <property cache="1" lifetime="5362">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <mesh file="../equipment/weapon/mushi/t3_r" texture="uplight" starttime="0" endtime="0" pos="0 0 0" label="">
+    <scale>
+      <frame x="1" z="1" y="1" durtime="0"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <color>
+      <frame a="100" g="255" b="255" r="255" durtime="1000"/>
+      <frame a="212" g="255" b="255" r="255" durtime="1000"/>
+      <frame a="100" g="255" b="255" r="255" durtime="1000"/>
+    </color>
+    <uv repeat="true" smooth="true">
+      <frame v="0" su="1" u="0.0" r="0" sv="1" durtime="1000"/>
+      <frame v="0.0" su="1" u="1" r="4.9" sv="0.4" durtime="1000"/>
+      <frame v="0" su="1" u="0" r="0" durtime="0" sv="1"/>
+    </uv>
+    <path>
+      <frame x="0" z="0" y="0" durtime="1000"/>
+    </path>
+  </mesh>
+</effect>

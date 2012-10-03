@@ -1,0 +1,20 @@
+<effect>
+  <stripe timeduv="true" widedir="2" max="20" billboard="true" dragtime="300" pos="" wide="25" endTime="0" endtime="5000" texture="daoguang" starttime="0" startTime="0" label="" stripenum="1">
+    <dragger a="255" g="145" b="193" r="74"/>
+    <color_effector r="255" g="200" b="0"/>
+  </stripe>
+  <particle mesh="" pos="" max="20" endTime="0" texture="pixies1" global="true" startTime="0" label="" orient="0">
+    <force_effector dir="0 1 0" f="4"/>
+    <size_effector size="50">
+      <keyframe lifepercent="0.0" sizeY="60" sizeX="60"/>
+      <keyframe lifepercent="1" sizeX="10" sizeY="10"/>
+    </size_effector>
+    <rect_emitter rectz="0.0" emittime="0" lifetime="500" vel="30" rotrange="360.0" directionfrom="-1 -1 -1" rotvel="0" rotvelrange="0" rot="0" sizerange="5" a="255" g="118" b="191" recty="0" sizeX="15" rectx="0.0" sizeY="15" emitrate="40" velrange="0.0" lifetimerange="0.0" r="74" directionto="1 1 1" emitperiod="0"/>
+    <color_effector g="100" b="-250" r="-100"/>
+    <alpha_effector a="-250">
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+  <property lifetime="5000"/>
+</effect>

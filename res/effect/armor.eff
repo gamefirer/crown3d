@@ -1,0 +1,12 @@
+<effect>
+  <mesh texture="armor" endtime="0" label="" file="armor" starttime="0" pos="0 0 0">
+    <scale>
+      <frame x="3" z="3" durtime="1000" y="5"/>
+      <frame x="4" z="4" durtime="1000" y="5.5"/>
+    </scale>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="200"/>
+    </rotate>
+  </mesh>
+  <property lifetime="5000"/>
+</effect>

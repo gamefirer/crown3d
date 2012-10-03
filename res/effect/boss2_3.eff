@@ -1,0 +1,18 @@
+<effect>
+  <property cache="1" lifetime="5000"/>
+  <stripe texture="daoguang" startTime="0" pos="" parallel="false" endTime="0" timeduv="true" max="20" widedir="0.0" billboard="true" stripenum="1" starttime="0" endtime="0" dragtime="150" wide="30" label="">
+    <dragger a="155" g="174" b="255" r="167"/>
+    <color_effector g="0" b="0" r="0">
+      <keyframe b="168" g="83" lifepercent="0" r="85"/>
+      <keyframe b="0.0" g="0.0" lifepercent="1" r="0.0"/>
+    </color_effector>
+    <size_effector/>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <force_effector dir="" f="0"/>
+    <attract_effector p="" f="0"/>
+    <alpha_effector a="-100"/>
+    <uv_effector su="1" sv="1"/>
+  </stripe>
+</effect>

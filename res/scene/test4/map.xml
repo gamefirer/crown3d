@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scene xmlns="">
+<texturepath path=""/>
+<terraintexturepath path="terrain"/>
+<effectpath path="effect"/>
+<soundpath path="sound"/>
+<mesh name="plane14" vertexColor="false">
+	<pos x="0.0" y="0.0" z="0.0"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<animation>
+		<uv><frame durtime="1000" u="0" v="0" su="1" sv="1" r="0"/><frame durtime="1000"  u="0"  v="1"  su="1"  sv="1"  r="0"/></uv>
+	</animation>
+</mesh>
+<mesh name="object11" vertexColor="false">
+	<pos x="0.0" y="0.0" z="0.0"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<animation>
+		<color><frame durtime="150" a="255" g="255" b="137.0" r="255"/><frame durtime="1000" a="0.0" g="255" b="255" r="255"/></color>
+	</animation>
+</mesh>
+<mesh name="object26" vertexColor="false">
+	<pos x="0.0" y="0.0" z="0.0"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object05" vertexColor="false">
+	<pos x="0.0" y="0.0" z="0.0"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object91" vertexColor="false">
+	<pos x="656.524" y="0.0" z="-415.955"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<animation>
+		<rotate><frame durtime="1000" x="0" y="50" z="0"/></rotate>
+	</animation>
+</mesh>
+<mesh name="01" vertexColor="false">
+	<pos x="-656.524" y="0.0" z="415.955"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object41" vertexColor="false">
+	<pos x="1236.97" y="-493.818" z="157.344"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object83" vertexColor="false">
+	<pos x="-1453.88" y="-93.1035" z="93.6852"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object01" vertexColor="false">
+	<pos x="0.0" y="-8.58351" z="0.0"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<mesh name="object02" vertexColor="false">
+	<pos x="0.0" y="-8.58351" z="0.0"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+</mesh>
+<terrain name="terrain"></terrain>
+<mesh name="box01" vertexColor="false">
+	<pos x="329.54" y="356.949" z="-85.4476"></pos>
+	<rot rx="0.0" ry="-0.422618" rz="0.0" rw="0.906308"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<animation>
+		<rotate><frame durtime="1000" x="50" y="0" z="0"/></rotate>
+	</animation>
+</mesh>
+<mesh name="box02" vertexColor="false">
+	<pos x="329.54" y="0.0" z="305.602"></pos>
+	<rot rx="0.0" ry="-0.461749" rz="0.0" rw="0.887011"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<animation>
+		<path><frame durtime="1000" x="0" y="0" z="0"/><frame durtime="1000" x="0" y="1000" z="0"/><frame durtime="0" x="0" y="0" z="0"/></path>
+	</animation>
+</mesh>
+<mesh name="box03" vertexColor="false">
+	<pos x="329.54" y="0.0" z="-461.299"></pos>
+	<rot rx="0.0" ry="-0.461749" rz="0.0" rw="0.887011"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<animation>
+		<scale><frame durtime="1000" x="1" z="1" y="1"/><frame durtime="1000" x="2" z="2" y="3"/></scale>
+	</animation>
+</mesh>
+<mesh name="box04" vertexColor="false">
+	<pos x="-554.502" y="0.0" z="-85.4476"></pos>
+	<rot rx="0.0" ry="0.0" rz="0.0" rw="1.0"></rot>
+	<scale s="1.0"></scale>
+	<mat blend="false" twoSide="false" layer="0" shadow="false" light="true"></mat>
+	<animation>
+		<path><frame durtime="1000" x="0" y="0" z="0"/><frame durtime="1000" x="0" y="1000" z="0"/><frame durtime="0" x="0" y="0" z="0"/></path>
+		<rotate><frame durtime="1000" x="0" y="50" z="0"/></rotate>
+		<scale><frame durtime="1000" x="1" z="1" y="1"/><frame durtime="1000" x="2" z="2" y="3"/></scale>
+		<color><frame durtime="150" a="255" g="255" b="137.0" r="255"/><frame durtime="1000" a="0.0" g="255" b="255" r="255"/></color>
+		<uv><frame durtime="1000" u="0" v="0" su="1" sv="1" r="0"/><frame durtime="1000"  u="0"  v="1"  su="1"  sv="1"  r="0"/></uv>
+	</animation>
+</mesh>
+<world>
+	<point x="1574.01" z="-30.3616"></point>
+	<point x="1641.13" z="196.552"></point>
+	<point x="1318.33" z="218.923"></point>
+	<point x="1011.52" z="218.923"></point>
+	<point x="938.015" z="455.425"></point>
+	<point x="800.589" z="602.439"></point>
+	<point x="723.886" z="704.71"></point>
+	<point x="-84.6928" z="727.081"></point>
+	<point x="-714.298" z="723.885"></point>
+	<point x="-806.981" z="548.107"></point>
+	<point x="-973.171" z="477.796"></point>
+	<point x="-1001.93" z="209.336"></point>
+	<point x="-1433.39" z="206.139"></point>
+	<point x="-1666.69" z="94.2804"></point>
+	<point x="-1526.07" z="-228.511"></point>
+	<point x="-963.583" z="-234.903"></point>
+	<point x="-928.427" z="-519.344"></point>
+	<point x="-746.257" z="-707.906"></point>
+	<point x="1.59727" z="-714.298"></point>
+	<point x="698.317" z="-723.885"></point>
+	<point x="864.508" z="-538.52"></point>
+	<point x="985.954" z="-449.033"></point>
+	<point x="989.15" z="-180.573"></point>
+	<point x="1532.46" z="-199.748"></point>
+</world>
+<hole>
+	<point x="314.802" z="439.445"></point>
+	<point x="190.16" z="263.667"></point>
+	<point x="349.958" z="158.2"></point>
+	<point x="477.796" z="324.39"></point>
+</hole>
+<wall>
+	<point x="231.706" z="17.578"></point>
+	<point x="231.706" z="-196.551"></point>
+	<point x="455.423" z="-190.16"></point>
+	<point x="439.443" z="14.382"></point>
+</wall>
+<scenebound minX="-1615.71" maxX="1615.71" minY="-707.924" maxY="707.924"/>
+</scene>

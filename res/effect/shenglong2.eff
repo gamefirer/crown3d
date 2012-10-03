@@ -1,0 +1,69 @@
+<effect>
+  <property lifetime="3000" cache="1"/>
+  <editor>1.0</editor>
+  <quad label="火山口" pos="0 5 0" starttime="50" endtime="3000" height="1000" width="1000" orient="1" blendmode="" rot="0" billboard="false" zUp="false" texture="magmacrater128">
+    <color loop="false">
+      <frame durtime="2640" a="255" r="255" g="255" b="255"/>
+      <frame durtime="300" a="255" r="255" g="255" b="255"/>
+      <frame durtime="60" a="0" r="255" g="255" b="255"/>
+    </color>
+    <uv smooth="false" repeat="false"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+  </quad>
+  <particle label="红" starttime="0" endtime="3000" pos="0 0 0" blendmode="" max="30" global="true" billboard="true" orient="0" mesh="" texture="smoke08">
+    <rect_emitter emitrate="30" lifetime="1000" lifetimerange="1000" a="173" r="153" g="0" b="0" sizeX="40" sizeY="40" sizerange="30" directionfrom="0 1 0" directionto="0 1 0" vel="20" velrange="0" rot="0" rotrange="0" rotvel="0" rotvelrange="0" emitperiod="0" emittime="0" rectx="280" recty="0" rectz="280"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector>
+      <keyframe a="36" lifepercent="0"/>
+      <keyframe a="255" lifepercent="0.20333333333333334"/>
+      <keyframe a="0" lifepercent="0.7166666666666667"/>
+    </alpha_effector>
+    <color_effector/>
+    <size_effector>
+      <keyframe sizeX="50" sizeY="50" lifepercent="0"/>
+      <keyframe sizeX="100" sizeY="100" lifepercent="0.5066666666666667"/>
+      <keyframe sizeX="80" sizeY="100" lifepercent="0.7166666666666667"/>
+    </size_effector>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <particle label="白圈粒子" starttime="0" endtime="2000" pos="0 5 0" blendmode="add" max="2" global="true" billboard="false" orient="1" mesh="" texture="001">
+    <rect_emitter emitrate="5" lifetime="800" lifetimerange="0" a="255" r="255" g="255" b="255" sizeX="50" sizeY="50" sizerange="5" directionfrom="0 0 0" directionto="0 0 0" vel="300" velrange="0" rot="0" rotrange="0" rotvel="0" rotvelrange="0" emitperiod="5000" emittime="500" rectx="0" recty="0" rectz="0"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0"/>
+      <keyframe a="0" lifepercent="0.505"/>
+      <keyframe a="0" lifepercent="0.925"/>
+    </alpha_effector>
+    <color_effector/>
+    <size_effector>
+      <keyframe sizeX="10" sizeY="10" lifepercent="0"/>
+      <keyframe sizeX="2000" sizeY="1889" lifepercent="0.52"/>
+      <keyframe sizeX="1000" sizeY="991" lifepercent="0.995"/>
+    </size_effector>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <particle label="光线粒子" starttime="100" endtime="3000" pos="0 0 0" blendmode="" max="30" global="true" billboard="false" orient="4" mesh="" texture="dian">
+    <rect_emitter emitrate="300" lifetime="150" lifetimerange="0" a="19" r="255" g="255" b="255" sizeX="5" sizeY="600" sizerange="5" directionfrom="-1 0 -1" directionto="1 0 1" vel="3000" velrange="0" rot="0" rotrange="0" rotvel="0" rotvelrange="0" emitperiod="5000" emittime="200" rectx="0" recty="0" rectz="0"/>
+    <path close="false" align="false"/>
+    <scale loop="false"/>
+    <rotate loop="false"/>
+    <alpha_effector/>
+    <color_effector/>
+    <size_effector/>
+    <uv_effector su="1" sv="1"/>
+  </particle>
+  <light label="灯光" starttime="0" endtime="3000" height="100" width="100" rot="0" pos="0 100 0" blendmode="" texture="dian" r="153" g="0" b="0" bright="1">
+    <path close="false" align="false"/>
+    <scale loop="false">
+      <frame durtime="430" x="1" y="1" z="1"/>
+      <frame durtime="680" x="5" y="1" z="5"/>
+      <frame durtime="1890" x="1" y="1" z="1"/>
+    </scale>
+  </light>
+</effect>

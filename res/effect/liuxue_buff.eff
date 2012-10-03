@@ -1,0 +1,32 @@
+<effect>
+  <particle mesh="" pos="" billboard="false" orient="4" max="20" startTime="0" texture="dian" global="true" endTime="0" label="blood">
+    <force_effector dir="0 -1 0" f="1094"/>
+    <attract_effector p="" f="0"/>
+    <uv_effector su="1" smoothV="true" smoothU="true" sv="1"/>
+    <color_effector>
+      <keyframe g="0.0" b="0.0" r="255" lifepercent="0.0"/>
+      <keyframe g="5" b="0.0" r="130" lifepercent="1"/>
+    </color_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.7"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <size_effector>
+      <keyframe sizeX="10" sizeY="10" lifepercent="0.0"/>
+      <keyframe sizeX="30" sizeY="30" lifepercent="1"/>
+    </size_effector>
+    <rect_emitter emitrate="50" g="255" rotrange="0.0" rotvel="0" sizeX="100" emittime="300" rectz="0" emitperiod="500" sizeY="100" recty="0" rotvelrange="0" a="255" rectx="0" lifetime="300" b="100" directionto="1 1 1" vel="113" directionfrom="-1 1 -1" sizerange="20" velrange="0.0" r="88" lifetimerange="100" rot="0.0"/>
+  </particle>
+  <property lifetime="5000" cache="1">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+</effect>

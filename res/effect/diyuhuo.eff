@@ -1,0 +1,29 @@
+<effect>
+  <particle mesh="" pos="0 50 0" max="20" endTime="0" texture="a4" global="false" startTime="0" label="" orient="0">
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeX="80" sizeY="80"/>
+      <keyframe lifepercent="1" sizeX="60" sizeY="60"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe lifepercent="0.0" a="255"/>
+      <keyframe lifepercent="0.6" a="255"/>
+      <keyframe lifepercent="1" a="0.0"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="81.0" b="56.0" r="255.0"/>
+      <keyframe lifepercent="1" g="67.0" b="35.0" r="146"/>
+    </color_effector>
+    <rect_emitter emitrate="80" velrange="0" sizeY="20" vel="1200" directionfrom="4 0 -3" lifetimerange="0.0" lifetime="250" emitperiod="10000" rotvelrange="183.5" sizerange="10" a="255" rectz="0.0" rotvel="110.4" recty="0.0" sizeX="20" rectx="0.0" b="64" rotrange="360" g="99" emittime="500" r="255" directionto="4 0 3" rot="0"/>
+  </particle>
+  <property cache="1" lifetime="1000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+</effect>

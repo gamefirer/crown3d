@@ -1,0 +1,74 @@
+<effect>
+  <stripe timeduv="false" widedir="2" stripenum="5" billboard="true" parallel="false" dragtime="300" pos="" wide="40" endTime="0" starttime="0" endtime="5000" texture="a2" max="200" startTime="0" label="s1">
+    <attract_effector p="" f="0"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+    <path/>
+    <color_effector r="255" g="200" b="0"/>
+    <particle_dragger a="255" g="129" b="255" r="45" particle="p1"/>
+    <force_effector dir="" f="0"/>
+  </stripe>
+  <particle mesh="" pos="" max="20" endTime="0" texture="pixies1" global="false" startTime="0" label="p1" orient="0">
+    <force_effector dir="" f="0"/>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeY="50" sizeX="50"/>
+      <keyframe lifepercent="1.0" sizeY="10" sizeX="10"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <attract_effector p="" f="0"/>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="500"/>
+    </rotate>
+    <color_effector/>
+    <circle_emitter emitrate="50" velrange="0" radiusbig="200" emittime="400" radiussmall="180" directionfrom="0 1 0" height="0" rotvel="0" emitperiod="10000" rotvelrange="0" sizeX="50" sizerange="5" a="201" lifetime="800" sizeY="50" vel="100" b="255" rotrange="0" g="145" lifetimerange="0.0" r="64" directionto="0 1 0" rot="0"/>
+  </particle>
+  <particle mesh="" billboard="false" pos="" max="5" endTime="0" texture="bingfengbao" global="true" startTime="0" label="bing" orient="1">
+    <force_effector dir="" f="0"/>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeX="100" sizeY="100"/>
+      <keyframe lifepercent="1" sizeX="500" sizeY="500"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="500"/>
+    </rotate>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="255" b="255" r="255"/>
+      <keyframe lifepercent="1.0" g="86.0" b="220.0" r="48.0"/>
+    </color_effector>
+    <rect_emitter emitrate="5" g="200" b="200" vel="0" directionfrom="-1 -1 -1" lifetimerange="0.0" rotvel="0" emitperiod="10000" rotvelrange="0" sizerange="0.0" a="255" rectz="0.0" lifetime="800" recty="0.0" sizeX="100" rectx="0.0" sizeY="100" rotrange="0" velrange="0" emittime="800" r="200" directionto="1 1 1" rot="0"/>
+  </particle>
+  <particle mesh="" pos="" global="true" endTime="0" texture="dian" max="10" startTime="0" label="dust" orient="0">
+    <size_effector>
+      <keyframe lifepercent="0.1" sizeX="50" sizeY="50"/>
+      <keyframe lifepercent="1" sizeX="10" sizeY="10"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <circle_emitter emitrate="15" g="126" radiusbig="200" emittime="1500" radiussmall="0" directionfrom="0 3 0" height="0" lifetime="500" emitperiod="10000" rotvelrange="0" sizeX="50" sizerange="5" a="255" rotvel="0" b="255" vel="200" sizeY="50" rotrange="0" velrange="0" lifetimerange="300" r="61" directionto="1 3 1" rot="0"/>
+  </particle>
+  <property cache="1" lifetime="3000" pos="">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+</effect>

@@ -1,0 +1,19 @@
+<effect>
+  <property lifetime="3000" cache="1"/>
+  <particle label="" orient="0" max="30" global="true" mesh="" texture="a4" pos="" endTime="0" startTime="0">
+    <size_effector>
+      <keyframe sizeX="30" lifepercent="0.0" sizeY="30"/>
+      <keyframe sizeX="10" lifepercent="1" sizeY="10"/>
+    </size_effector>
+    <circle_emitter sizerange="5" emitperiod="0" lifetimerange="0.0" rotvelrange="0" emitrate="20" rot="0" rotvel="0" radiussmall="0" rotrange="360" radiusbig="10" sizeY="50" velrange="50" sizeX="50" g="255" vel="70" b="255" a="255" height="0" lifetime="650" directionto="0 1 0" r="255" directionfrom="0 1 0" emittime="0"/>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="126.0" b="122.0" r="228.0"/>
+      <keyframe lifepercent="1" g="86.0" b="16.0" r="215.0"/>
+    </color_effector>
+    <force_effector dir="" f="0"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+</effect>

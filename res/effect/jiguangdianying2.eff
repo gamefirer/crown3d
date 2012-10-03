@@ -1,0 +1,27 @@
+<effect>
+  <property cache="5" lifetime="800">
+    <path>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </path>
+    <scale>
+      <frame x="1" durtime="0" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame x="0" durtime="1000" z="0" y="0"/>
+    </rotate>
+  </property>
+  <quad pos="" billboard="true" height="100" orient="2" rot="0" width="100" endtime="0" starttime="0" label="" texture="jiguangdianying2">
+    <uv>
+      <frame su="0.3333333333333333" u="0" durtime="50" r="0" sv="0.5" v="0"/>
+      <frame su="0.3333333333333333" u="0.3333333333333333" durtime="50" r="0" sv="0.5" v="0"/>
+      <frame su="0.3333333333333333" u="0.6666666666666666" durtime="50" r="0" sv="0.5" v="0"/>
+      <frame su="0.3333333333333333" u="0" durtime="50" r="0" sv="0.5" v="0.5"/>
+      <frame su="0.3333333333333333" u="0.3333333333333333" durtime="50" r="0" sv="0.5" v="0.5"/>
+      <frame su="0.3333333333333333" u="0.6666666666666666" durtime="50" r="0" sv="0.5" v="0.5"/>
+    </uv>
+    <scale>
+      <frame x="1.2" durtime="400" z="1" y="1.2"/>
+      <frame x="1.5" durtime="400" z="1" y="1.5"/>
+    </scale>
+  </quad>
+</effect>

@@ -1,0 +1,13 @@
+<effect>
+  <property cache="1" lifetime="600"/>
+  <stripe endTime="0.0" pos="" billboard="true" dragtime="100" texture="lighting" parallel="true" wide="50" timeduv="false" endtime="5000" widedir="2" max="20" starttime="0" label="" stripenum="1" startTime="0">
+    <uv_effector smoothU="true" su="1" sv="0.25">
+      <keyframe v="0" lifepercent="0.0" u="0"/>
+      <keyframe v="0.25" lifepercent="0.2" u="0.2"/>
+      <keyframe v="0.5" lifepercent="0.5" u="0.5"/>
+      <keyframe v="0.75" lifepercent="0.7" u="0.6"/>
+    </uv_effector>
+    <lighting a="255" g="255" lifeTime="200" shaketime="50" b="255" r="255" shakeamp="30"/>
+    <color_effector r="255" g="200" b="0"/>
+  </stripe>
+</effect>

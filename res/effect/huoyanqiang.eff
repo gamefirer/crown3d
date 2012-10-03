@@ -1,0 +1,76 @@
+<effect>
+  <quad label="light1" orient="1" endtime="300" height="100" texture="dian" width="100" rot="0" pos="" billboard="false" starttime="0">
+    <scale>
+      <frame durtime="300" x="1" z="1" y="1"/>
+      <frame durtime="1000" x="8" z="8" y="1"/>
+      <frame durtime="1000" x="8" z="8" y="1"/>
+    </scale>
+    <color>
+      <frame durtime="1000" g="99" b="32" r="255" a="255"/>
+      <frame durtime="1000" g="113" b="94" r="143" a="0.0"/>
+    </color>
+  </quad>
+  <light label="" g="99" height="100" width="100" bright="1" rot="0" pos="0 0 0" texture="bo" b="113" r="247" endtime="800" starttime="200">
+    <scale>
+      <frame durtime="600" x="1" z="1" y="1"/>
+      <frame durtime="1000" x="8" z="8" y="1"/>
+      <frame durtime="1000" x="8" z="8" y="1"/>
+    </scale>
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+  </light>
+  <property lifetime="3000" cache="5">
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+  <particle mesh="" endTime="0" label="fire1" pos="" max="30" billboard="false" orient="3" global="true" texture="huoyanqiang" startTime="0">
+    <uv_effector smoothV="true" su="1" sv="1"/>
+    <circle_emitter emitrate="60" b="255" rot="0" height="0" g="255" vel="150" rotrange="0" radiussmall="0" rotvel="0" directionfrom="0 1 0" sizerange="5" a="255" lifetime="500" radiusbig="200" rotvelrange="0" sizeX="50" sizeY="50" emittime="2500" velrange="100" lifetimerange="200" r="255" directionto="0 1 0" emitperiod="10000"/>
+    <alpha_effector>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.4"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="191" b="105" r="255"/>
+      <keyframe lifepercent="1" g="107" b="62" r="175"/>
+    </color_effector>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeX="100" sizeY="20"/>
+      <keyframe lifepercent="1" sizeX="60" sizeY="250"/>
+    </size_effector>
+    <attract_effector p="" f="0"/>
+  </particle>
+  <particle mesh="" endTime="0" label="fire2" pos="" max="40" billboard="false" orient="3" global="true" texture="huoyangqiang2" startTime="0">
+    <circle_emitter rotrange="0" emitrate="80" sizeY="50" rot="0" rotvelrange="0" g="255" vel="150" directionfrom="0 1 0" radiussmall="0" rotvel="0" sizerange="5" a="255" lifetime="500" radiusbig="200" height="0" sizeX="50" b="255" emittime="2500" velrange="0" lifetimerange="0.0" r="255" directionto="0 1 0" emitperiod="10000"/>
+    <alpha_effector>
+      <keyframe a="3" lifepercent="0.0"/>
+      <keyframe a="191" lifepercent="0.3"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <color_effector>
+      <keyframe lifepercent="0.0" g="177" b="105" r="255"/>
+      <keyframe lifepercent="1" g="105" b="21" r="255"/>
+    </color_effector>
+    <size_effector>
+      <keyframe lifepercent="0.0" sizeX="100" sizeY="20"/>
+      <keyframe lifepercent="1" sizeX="60" sizeY="250"/>
+    </size_effector>
+  </particle>
+  <particle mesh="" orient="0" endTime="0" global="true" startTime="0" label="dust2" pos="" max="30" texture="dian">
+    <color_effector>
+      <keyframe lifepercent="0.0" g="161" b="99" r="255"/>
+      <keyframe lifepercent="1" g="97" b="46" r="255"/>
+    </color_effector>
+    <circle_emitter rotrange="0" emitrate="30" sizeY="15" rot="0" rotvelrange="0" g="255" vel="50" directionfrom="-1 1 -1" radiussmall="0" rotvel="0" sizerange="0.0" a="255" lifetime="1000" radiusbig="250" height="100" sizeX="15" b="255" emittime="2500" velrange="0" lifetimerange="0.0" r="255" directionto="1 1 1" emitperiod="10000"/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="11" lifepercent="1"/>
+    </alpha_effector>
+  </particle>
+</effect>

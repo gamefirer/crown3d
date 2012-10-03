@@ -1,0 +1,44 @@
+<effect>
+  <particle mesh="" billboard="false" pos="0 50 0" global="false" endTime="0" texture="quan" max="5" startTime="0" label="" orient="1">
+    <force_effector dir="1 0 -2" f="0.0"/>
+    <size_effector>
+      <keyframe lifepercent="0.0" size="200" sizeY="120" sizeX="120"/>
+      <keyframe lifepercent="1" size="250" sizeY="350" sizeX="350"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe a="5" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.4"/>
+      <keyframe a="0.0" lifepercent="0.9"/>
+    </alpha_effector>
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <color_effector/>
+    <rect_emitter emitrate="10" g="142.0" rotvel="-360" emittime="500" vel="273" directionfrom="0 1 0" sizeY="167" rotvelrange="0.0" sizeX="165" sizerange="10" a="255" rectz="0" size="200" lifetime="400" recty="0" emitperiod="10000" rectx="0" b="83.0" rotrange="114" velrange="11" lifetimerange="200" r="194.0" directionto="0 1 0       " rot="70"/>
+  </particle>
+  <property cache="1" lifetime="1000">
+    <scale>
+      <frame x="1" z="1" durtime="0" y="1"/>
+    </scale>
+    <path>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </path>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="0"/>
+    </rotate>
+  </property>
+  <mesh endtime="0" texture="" starttime="0" file="yuanyuezhan" label="" pos="0 0 0">
+    <scale>
+      <frame x="9" z="9" durtime="1000" y="9"/>
+      <frame x="9" z="9" durtime="1000" y="9"/>
+    </scale>
+    <color>
+      <frame a="19" g="172.0" b="134.0" r="194" durtime="500"/>
+      <frame a="255" g="124.0" b="35.0" r="170.0" durtime="500"/>
+      <frame a="0.0" g="89.0" b="24.0" r="149.0" durtime="1000"/>
+    </color>
+    <rotate>
+      <frame x="0" z="0" durtime="1000" y="1000"/>
+    </rotate>
+  </mesh>
+</effect>

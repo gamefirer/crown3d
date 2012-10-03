@@ -1,0 +1,39 @@
+<effect>
+  <particle orient="3" endTime="0" billboard="false" pos="" global="true" mesh="" max="5" label="guitou" texture="tou1" startTime="0">
+    <size_effector>
+      <keyframe sizeX="50" lifepercent="0.0" sizeY="30"/>
+      <keyframe sizeX="30" lifepercent="0.4" sizeY="100"/>
+      <keyframe sizeX="30" lifepercent="1" sizeY="100"/>
+    </size_effector>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter vel="250" directionfrom="0 1 0" g="200" emitperiod="10000" sizerange="20" a="255" rectz="50" rotvelrange="0" lifetime="1000" recty="0.0" lifetimerange="0.0" rectx="50" rot="0" rotrange="0" b="200" directionto="0 1 0" sizeX="100" rotvel="0" sizeY="100" emitrate="5" velrange="0" emittime="800" r="200"/>
+    <force_effector dir="0 1 0" f="0.0"/>
+    <color_effector/>
+  </particle>
+  <particle orient="0" endTime="0" pos="" max="5" mesh="" global="true" label="" texture="a3" startTime="0">
+    <size_effector>
+      <keyframe sizeX="10" lifepercent="0.0" sizeY="10"/>
+      <keyframe sizeX="400" lifepercent="1" sizeY="400"/>
+    </size_effector>
+    <color_effector/>
+    <alpha_effector>
+      <keyframe a="255" lifepercent="0.0"/>
+      <keyframe a="0.0" lifepercent="1"/>
+    </alpha_effector>
+    <rect_emitter vel="0" directionfrom="-1 -1 -1" g="126" emitperiod="10000" sizerange="20" a="255" rectz="0.0" rotvelrange="0" lifetime="500" recty="0.0" lifetimerange="0.0" rectx="0.0" rot="0" rotrange="0" b="200" directionto="1 1 1" sizeX="100" rotvel="0" sizeY="100" emitrate="15" velrange="0" emittime="500" r="98"/>
+  </particle>
+  <property cache="1" lifetime="2000">
+    <path>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </path>
+    <scale>
+      <frame durtime="0" x="1" z="1" y="1"/>
+    </scale>
+    <rotate>
+      <frame durtime="1000" x="0" z="0" y="0"/>
+    </rotate>
+  </property>
+</effect>
