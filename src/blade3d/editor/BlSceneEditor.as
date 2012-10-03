@@ -6,6 +6,7 @@ package blade3d.editor
 	import away3d.arcane;
 	import away3d.bounds.BoundingVolumeBase;
 	import away3d.containers.ObjectContainer3D;
+	import away3d.core.base.SubMesh;
 	import away3d.core.pick.PickingColliderType;
 	import away3d.core.render.DefaultRenderer;
 	import away3d.debug.Debug;
@@ -32,9 +33,12 @@ package blade3d.editor
 	import blade3d.editor.scene.BlSceneObjectPanel;
 	import blade3d.editor.scene.BlSceneTexLightPanel;
 	import blade3d.effect.BlEffect;
+	import blade3d.resource.BlResource;
 	import blade3d.scene.BlScene;
 	import blade3d.scene.BlSceneEvent;
 	import blade3d.scene.BlSceneManager;
+	import blade3d.scene.loadvo.LightVO;
+	import blade3d.scene.loadvo.MeshVO;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
@@ -286,6 +290,7 @@ package blade3d.editor
 			var arr:Array = new Array();
 			arr.push("模型");
 			arr.push("贴图灯");
+			arr.push("特效");
 			
 			var listData:VectorListModel = new VectorListModel(arr);
 			_addObjectComboBox = new JComboBox(listData);
@@ -294,7 +299,7 @@ package blade3d.editor
 			_addPanel.append(_addObjectComboBox);
 			
 			var addBtn : JButton = new JButton("添加");
-			addBtn.addActionListener(onAddObject);
+			addBtn.addActionListener(onAddObjectBtn);
 			_addPanel.append(addBtn);
 			
 			var delBtn : JButton = new JButton("删除");
@@ -427,31 +432,30 @@ package blade3d.editor
 			}
 		}
 		
-		private function onAddObject(evt:Event):void
+		private function onAddObjectBtn(evt:Event):void
 		{
-			var parent : ObjectContainer3D = selectedObject;
-			if(!parent)
-				return;
-			
 			var newObject : ObjectContainer3D;
 			var selIndex:int = _addObjectComboBox.getSelectedIndex();
 			if(selIndex == 0)
 			{	// 添加模型
-				
+				BlEditorManager.instance()._resourceEditor.setSelectFunction(onSelectMeshEnd, "选择要添加的模型", BlResourceEditor.FILTER_MESH);
+				BlEditorManager.instance().showResourceEditor(true);
 			}
 			else if(selIndex == 1)
 			{	// 添加贴图灯
-				var lightSprite : Sprite3D = new Sprite3D(null, 100, 100, true);
-				lightSprite.material = DefaultMaterialManager.getDefaultMaterial();
-				newObject = lightSprite;
+				var lightVO : LightVO = new LightVO;
+				BlSceneManager.instance().currentScene.loader.addTexLight(lightVO);
 			}
 			
-			parent.addChild(newObject);
-			
-			// 为特定对象，添加编辑辅助器
-			BlSceneManager.instance().currentScene.addHelperFor(newObject);
-			
 			refreshTree();
+		}
+		
+		private function onSelectMeshEnd(res:BlResource):void
+		{
+			var meshVO : MeshVO = new MeshVO;
+			meshVO.path = res.url;
+			
+			BlSceneManager.instance().currentScene.loader.addMesh(meshVO);
 		}
 		
 		private function createAxisList():Component
@@ -462,7 +466,6 @@ package blade3d.editor
 			arr.push("网格");
 			
 			var listData:VectorListModel = new VectorListModel(arr);
-			
 			
 			_axisCbb = new JComboBox(listData);
 			_axisCbb.setSelectedIndex(0);
@@ -526,7 +529,7 @@ package blade3d.editor
 			_sceneList = new JList(listData);
 			_sceneList.setBorder(new LineBorder(null, ASColor.RED, 1));
 			
-			_sceneList.setPreferredHeight(120);
+			_sceneList.setPreferredHeight(80);
 			return new JScrollPane(_sceneList);
 		}
 		
@@ -558,13 +561,21 @@ package blade3d.editor
 			var scene : BlScene = BlSceneManager.instance().currentScene;
 			
 			_rootTreeNode.setUserObject(new TreeNodeObject(scene.rootNode));
+			
+			filterList.length = 0;
 			recurScene(scene.rootNode, _rootTreeNode);
+			// 删除editor_node节点
+			for(var i:int=0; i<filterList.length; i++)
+			{
+				filterList[i].removeFromParent();
+			}
 			
 			_sceneTree.updateUI();
 		}
 		
 		static private var childList : Vector.<ObjectContainer3D> = new Vector.<ObjectContainer3D>;
 		static private var usedList : Vector.<Boolean> = new Vector.<Boolean>;
+		static private var filterList : Vector.<DefaultMutableTreeNode> = new Vector.<DefaultMutableTreeNode>;
 		private function recurScene(sceneNode:ObjectContainer3D, treeNode:DefaultMutableTreeNode):void
 		{
 			// 刷新树算法
@@ -582,10 +593,6 @@ package blade3d.editor
 						setMeshPickable(EditHelper(oneChild), _isPickChk.isSelected());		// 提供helper拾取功能
 					continue;
 				}
-				
-				// 排除编辑器用node
-//				if(oneChild.name == "editor_node")
-//					continue;
 				
 				childList.push(sceneNode.getChildAt(i));
 				usedList.push(false);
@@ -640,8 +647,18 @@ package blade3d.editor
 					// 给所有mesh上一个ColorTransform,编辑用
 					if(Mesh(obj).material is TextureMaterial 
 						&& !TextureMaterial(Mesh(obj).material).colorTransform)
-						TextureMaterial(Mesh(obj).material).colorTransform = new ColorTransform;	
+						TextureMaterial(Mesh(obj).material).colorTransform = new ColorTransform;
+					// 也给所以submesh上一个ColorTransform
+					for(i=0; i<Mesh(obj).subMeshes.length; i++)
+					{
+						var subMesh : SubMesh = Mesh(obj).subMeshes[i];
+						if(subMesh.material is TextureMaterial &&  !TextureMaterial(subMesh.material).colorTransform)
+							TextureMaterial(subMesh.material).colorTransform = new ColorTransform;
+					}
 				}
+				// filter node				
+				if(obj.name == "editor_node")
+					filterList.push(iterTNode);
 				
 				recurScene(obj, iterTNode);
 				
@@ -833,6 +850,18 @@ package blade3d.editor
 				TextureMaterial(mesh.material).colorTransform.greenMultiplier = 2;
 				TextureMaterial(mesh.material).colorTransform.blueMultiplier = 0;
 			}
+			
+			var i:int;
+			for(i=0; i<mesh.subMeshes.length; i++)
+			{
+				var subMesh : SubMesh = mesh.subMeshes[i];
+				if(subMesh.material)
+				{
+					TextureMaterial(subMesh.material).colorTransform.redMultiplier = 2;
+					TextureMaterial(subMesh.material).colorTransform.greenMultiplier = 2;
+					TextureMaterial(subMesh.material).colorTransform.blueMultiplier = 0;
+				}
+			}
 		}
 		
 		private function noLightMesh(mesh:Mesh):void
@@ -842,6 +871,18 @@ package blade3d.editor
 				TextureMaterial(mesh.material).colorTransform.redMultiplier = 1;
 				TextureMaterial(mesh.material).colorTransform.greenMultiplier = 1;
 				TextureMaterial(mesh.material).colorTransform.blueMultiplier = 1;
+			}
+			
+			var i:int;
+			for(i=0; i<mesh.subMeshes.length; i++)
+			{
+				var subMesh : SubMesh = mesh.subMeshes[i];
+				if(subMesh.material)
+				{
+					TextureMaterial(subMesh.material).colorTransform.redMultiplier = 1;
+					TextureMaterial(subMesh.material).colorTransform.greenMultiplier = 1;
+					TextureMaterial(subMesh.material).colorTransform.blueMultiplier = 1;
+				}
 			}
 		}
 		

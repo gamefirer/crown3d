@@ -153,7 +153,7 @@ package blade3d.editor.effect
 			
 			_orient.setSelectedIndex( int(_psXML.@orient.toString()) );
 			
-			var texFileName : String = BlEffectBaseParser.findValidPath(_psXML.@texture.toString() + BlStringUtils.texExtName, "effect/");
+			var texFileName : String = BlResourceManager.findValidPath(_psXML.@texture.toString() + BlStringUtils.texExtName, "effect/");
 			_texUrl.setText(texFileName);
 			var texRes : BlImageResource = BlResourceManager.instance().findImageResource(texFileName);
 			if(texRes.isLoaded)

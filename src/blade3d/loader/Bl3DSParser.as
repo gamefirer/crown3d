@@ -27,7 +27,7 @@ package blade3d.loader
 	{
 		private var _byteData : ByteArray;
 		
-		private var _textures : Object;			// 贴图
+//		private var _textures : Object;			// 贴图
 		private var _materials : Object;			// 材质
 		private var _unfinalized_objects : Object;
 		
@@ -53,7 +53,7 @@ package blade3d.loader
 				_byteData.position = 0;
 				_byteData.endian = Endian.LITTLE_ENDIAN;
 				
-				_textures = {};
+//				_textures = {};
 				_materials = {};
 				_unfinalized_objects = {};
 			}
@@ -406,9 +406,11 @@ package blade3d.loader
 				if(_callBack != null)
 				{
 					var texUrls : Vector.<String> = new Vector.<String>;
-					for(var url:String in _textures)
+					for( i=0; i<obj.materials.length; i++)
 					{
-						texUrls.push(url.toLowerCase());
+						var matVO:MaterialVO =_materials[obj.materials[i]];
+						if(matVO.colorMap && matVO.colorMap.url.length > 0)
+							texUrls.push(matVO.colorMap.url.toLowerCase());
 					}
 					_callBack(geom, texUrls);
 				}
@@ -831,7 +833,7 @@ package blade3d.loader
 			
 //			finalizeAsset(mat, _cur_mat.name);
 			
-//			_materials[_cur_mat.name] = _cur_mat;
+			_materials[_cur_mat.name] = _cur_mat;			//  记录材质数据
 //			_cur_mat.material = mat;
 			
 			_cur_mat = null;
@@ -862,7 +864,7 @@ package blade3d.loader
 				}
 			}
 			
-			_textures[tex.url] = tex;
+//			_textures[tex.url] = tex;
 //			addDependency(tex.url, new URLRequest(tex.url));
 			
 			if(!_firstTex)

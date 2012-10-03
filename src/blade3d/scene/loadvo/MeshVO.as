@@ -10,9 +10,9 @@ package blade3d.scene.loadvo
 	public class MeshVO
 	{
 		public var path : String;
-		public var pos : Vector3D;
-		public var rot : Quaternion;
-		public var scale : Vector3D;
+		public var pos : Vector3D = new Vector3D(0, 0, 0);
+		public var rot : Quaternion = new Quaternion;
+		public var scale : Vector3D = new Vector3D(1, 1, 1);
 		
 		public var hasVertexColor : Boolean = false;	// 是否有顶点色文件
 		

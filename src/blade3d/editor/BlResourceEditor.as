@@ -137,6 +137,7 @@ package blade3d.editor
 			
 			// 左边 up panel
 			_isImageChk = new JCheckBox("预览图片");
+			_isImageChk.setSelected(true);
 			_isImageChk.addActionListener(
 				function(evt:Event):void
 				{
@@ -147,6 +148,7 @@ package blade3d.editor
 			_upPanel2.append(_isImageChk);
 			
 			_isMeshChk = new JCheckBox("预览模型");
+			_isMeshChk.setSelected(true);
 			_upPanel2.append(_isMeshChk);
 			
 			var borders:SoftBox = SoftBox.createVerticalBox(2);
@@ -161,11 +163,13 @@ package blade3d.editor
 			group.append(_showMeshRB);
 			group.append(_showTexRB);
 			
+			_showAllRB.setSelected(true);
+			_showMeshRB.setSelected(false);
+			_showTexRB.setSelected(false);
+			
 			_showAllRB.addActionListener( onSwitchShowType );
 			_showMeshRB.addActionListener( onSwitchShowType );
 			_showTexRB.addActionListener( onSwitchShowType );
-			
-			_showAllRB.setSelected(true);
 			
 			// 左边center panel
 			onResourceList();
@@ -499,12 +503,7 @@ package blade3d.editor
 		{
 			super.visible = value;
 			
-			if(value)
-			{
-				_image.visible = true;
-				_showTexRB.setSelected(true);
-			}
-				
+			_ResourceNode.visible = value;
 		}
 		
 	}

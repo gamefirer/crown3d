@@ -143,21 +143,58 @@ package blade3d.scene
 			_loadTimer.stop();
 			_isStart = false;
 		}
+		// 添加模型( externalLoad 外部调用，非xml加载)
+		public function addMesh(meshVO:MeshVO, externalLoad:Boolean = true):Boolean
+		{
+			if(_meshLoading)
+				return false;		// 正在加载其他模型 
+			
+			if(externalLoad)
+			{
+				_loadCount++;
+				_isStart = true;
+			}
+			
+			_meshVO = meshVO;
+			_meshLoading = true;
+			var meshRes : BlModelResource = BlResourceManager.instance().findModelResource(meshVO.path);
+			meshRes.asycLoad(onMesh);
+			
+			return true;
+		}
+		
+		// 添加贴图灯
+		public function addTexLight(texLightVO:LightVO, externalLoad:Boolean = true):Boolean
+		{
+			if(_lightLoading)
+				return false;			// 正在加载其他的灯
+			
+			if(externalLoad)
+			{
+				_loadCount++;
+				_isStart = true;
+			}
+			
+			_lightVO = texLightVO;
+			_lightLoading = true;
+			var lightTex : BlImageResource = BlResourceManager.instance().findImageResource(_lightVO.texName);
+			if(lightTex)
+				lightTex.asycLoad(onLightTex);
+			else
+				onLightTex(null);
+			return true;
+		}
 		
 		private function onLoadInterval(event : TimerEvent = null) : void
 		{
+			var ret:Boolean;
 			// 加载静态模型
 			if(_parser.meshList.length > 0 && !_meshLoading)
 			{
-				_meshVO = _parser.meshList.pop();
-				if( _parser.meshList.length == 1)
-				{
-					var x:int = 0;
-				}
-				
-				_meshLoading = true;
-				var meshRes : BlModelResource = BlResourceManager.instance().findModelResource(_meshVO.path);
-				meshRes.asycLoad(onMesh);
+				var meshVO : MeshVO = _parser.meshList.pop();
+				ret = addMesh(meshVO, false);
+				if(!ret)
+					Debug.warning("addMesh failed");
 			}
 			// 加载地形碰撞
 			else if(_parser.terrainCollide)
@@ -180,11 +217,10 @@ package blade3d.scene
 			// 加载投影灯
 			else if(_parser.lightList.length > 0 && !_lightLoading)
 			{
-				_lightVO = _parser.lightList.pop();
-				
-				_lightLoading = true;
-				var lightTex : BlImageResource = BlResourceManager.instance().findImageResource(_lightVO.texName);
-				lightTex.asycLoad(onLightTex);
+				var lightVO : LightVO = _parser.lightList.pop();
+				ret = addTexLight(lightVO, false);
+				if(!ret)
+					Debug.warning("addTexLight failed");
 			}
 		}
 		
@@ -205,8 +241,15 @@ package blade3d.scene
 			// 光照强度 
 			lightSprite.intensity = _lightVO.lightIntensity;
 			// 投影灯贴图
-			lightSprite.material = new SceneLightMaterial( BlImageResource(res).bmpData );
-			lightSprite.material.bitmapDataUrl = res.url;
+			if(res)
+			{
+				lightSprite.material = new SceneLightMaterial( BlImageResource(res).bmpData );
+				lightSprite.material.bitmapDataUrl = res.url;
+			}
+			else
+			{
+				lightSprite.material = new SceneLightMaterial( DefaultMaterialManager.getDefaultBitmapData() );
+			}
 			lightSprite.material.depthWrite = false;
 			lightSprite.material.depthCompareMode = Context3DCompareMode.ALWAYS;
 			lightSprite.material.blendMode = BlendMode.ADD;
@@ -788,12 +831,18 @@ package blade3d.scene
 			{	// 加载贴图
 				var tex_path : String = BlModelResource(res).tex_path;
 				// 贴图目录
-				tex_path = tex_path.substr( tex_path.lastIndexOf("/")+1 );
-				tex_path = _parser.texturePathName + tex_path;
+				if(tex_path)
+				{
+					tex_path =  BlResourceManager.findValidPath(tex_path, _parser.texturePathName);
 				
-				var texRes : BlImageResource = BlResourceManager.instance().findImageResource(tex_path);
-				texRes.userObject = res;
-				texRes.asycLoad(onMeshTexture);
+					var texRes : BlImageResource = BlResourceManager.instance().findImageResource(tex_path);
+					texRes.userObject = res;
+					texRes.asycLoad(onMeshTexture);
+				}
+				else
+				{	// 无贴图
+					onMeshCreate(BlModelResource(res), null);
+				}
 			}
 		}
 		
@@ -830,12 +879,41 @@ package blade3d.scene
 		{
 			if(!_isStart) return;
 			
+			var texRes : BlImageResource = BlImageResource(res);
+			var meshRes : BlModelResource = BlModelResource(res.userObject);
+			onMeshCreate(meshRes, texRes);
+		}
+		
+		private function onMeshCreate(meshRes : BlModelResource, texRes : BlImageResource):void
+		{
 			// 创建Mesh
-			var tex : BitmapTexture = BitmapTextureCache.instance().getTexture(BlImageResource(res).bmpData);
-			var sceneMesh : Mesh = new Mesh(BlModelResource(res.userObject).geo, new TextureMaterial(tex, true, true));
-			sceneMesh.name = BlResource(res.userObject).url;
-			res.userObject = null;
-			sceneMesh.material.bitmapDataUrl = res.url;
+			var tex : BitmapTexture;
+			if(texRes)
+				tex = BitmapTextureCache.instance().getTexture(texRes.bmpData);
+			else
+				tex = DefaultMaterialManager.getDefaultTexture();
+			var sceneMesh : Mesh = new Mesh(meshRes.geo, new TextureMaterial(tex, true, true));
+			
+			// 多级材质处理
+			if( meshRes.tex_urls.length > 1)
+			{
+				for(var i:int=0; i<meshRes.tex_urls.length; i++)
+				{
+					var image : BlImageResource = BlResourceManager.instance().findImageResource( meshRes.tex_urls[i] );
+					if(image)
+					{
+						tex = BitmapTextureCache.instance().getTexture(image.bmpData);
+						sceneMesh.subMeshes[i].material = new TextureMaterial(tex, true, true);
+					}
+				}
+			}
+			
+			sceneMesh.name = meshRes.url;
+			if(texRes)
+			{
+				texRes.userObject = null;
+				sceneMesh.material.bitmapDataUrl = texRes.url;
+			}
 			
 			processMesh(sceneMesh, _meshVO);
 			
@@ -871,23 +949,6 @@ package blade3d.scene
 			{
 				mesh.renderLayer = Entity.Normal_Layer;
 			}
-			
-			// 设置mesh的材质
-			mesh.castsShadows = meshvo.isCastShadow;		// 是否产生阴影
-			// 接受阴影
-			var shadowMapMethod : NearShadowMapMethod = new NearShadowMapMethod(new FilteredShadowMapMethod(BlSceneManager.instance().whiteLight));
-			shadowMapMethod.epsilon = .0007;
-			TextureMaterial(mesh.material).shadowMethod = shadowMapMethod;			
-			TextureMaterial(mesh.material).lightPicker = BlSceneManager.instance().lightPicker;
-			// 接受场景灯
-			if(_meshVO.isRecvTexLight)
-				TextureMaterial(mesh.material).lightMapMethod = new SceneLightMapMethod(BlSceneManager.instance().texLight);		// 接受场景lightmap的渲染方法
-			// 是否半透明
-			TextureMaterial(mesh.material).alphaBlending = meshvo.isBlend;
-			// alpha裁剪
-			TextureMaterial(mesh.material).alphaThreshold = Number(10)/255;
-			// zbais
-			TextureMaterial(mesh.material).zBias = meshvo.zBias;
 			// 设置Mesh位置
 			var mat : Matrix3D = meshvo.rot.toMatrix3D();
 			mat.position = meshvo.pos;
@@ -895,6 +956,40 @@ package blade3d.scene
 			mesh.scaleX = meshvo.scale.x;
 			mesh.scaleY = meshvo.scale.y;
 			mesh.scaleZ = meshvo.scale.z;
+			
+			mesh.castsShadows = meshvo.isCastShadow;		// 是否产生阴影
+			
+			// 设置mesh的材质
+			var i:int;
+			var meshMaterials : Vector.<TextureMaterial> = new Vector.<TextureMaterial>;
+			if(mesh.material)
+				meshMaterials.push(mesh.material);
+			
+			for(i=0; i<mesh.subMeshes.length; i++)
+			{
+				if(mesh.subMeshes[i].material)
+					meshMaterials.push(mesh.subMeshes[i].material);
+			}
+			
+			for(i=0;i <meshMaterials.length; i++)
+			{
+				var material : TextureMaterial = meshMaterials[i];
+				// 接受阴影
+				var shadowMapMethod : NearShadowMapMethod = new NearShadowMapMethod(new FilteredShadowMapMethod(BlSceneManager.instance().whiteLight));
+				shadowMapMethod.epsilon = .0007;
+				material.shadowMethod = shadowMapMethod;			
+				material.lightPicker = BlSceneManager.instance().lightPicker;
+				// 接受场景灯
+				if(_meshVO.isRecvTexLight)
+					material.lightMapMethod = new SceneLightMapMethod(BlSceneManager.instance().texLight);		// 接受场景lightmap的渲染方法
+				// 是否半透明
+				material.alphaBlending = meshvo.isBlend;
+				// alpha裁剪
+				material.alphaThreshold = Number(10)/255;
+				// zbais
+				material.zBias = meshvo.zBias;
+			}
+			
 		}
 		
 		private function tellLoadSomething(tell:String):void

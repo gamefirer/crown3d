@@ -101,6 +101,25 @@ package blade3d.resource
 			return true;
 		}
 		
+		// 寻找可用路径
+		static public function findValidPath(url:String, path:String):String
+		{
+			var testUrl : String = url;
+			if( instance().findResource(testUrl) )
+				return testUrl;
+			
+			testUrl = path + url;
+			if( instance().findResource(testUrl) )
+				return testUrl;
+			
+			testUrl = path + url.substr(url.lastIndexOf('/')+1);
+			if( instance().findResource(testUrl) )
+				return testUrl;
+			
+			Debug.assert(false, "url not exist!");
+			return url;
+		}
+		
 		public function findResource(url:String):BlResource
 		{
 			return _ResourceMap[url];

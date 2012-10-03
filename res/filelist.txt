@@ -13,6 +13,13 @@ base/axis_x.3ds
 base/box.3ds
 base/helper_effect.png
 base/helper_texlight.png
+building/ceil.dds
+building/door.dds
+building/head.dds
+building/house.3ds
+building/tree.3ds
+building/tree1.dds
+building/tree2.dds
 character/avatar.txt
 character/default/animation.txt
 character/default/avatar.bla
@@ -933,6 +940,10 @@ scene/test2/object83.3ds
 scene/test2/object91.3ds
 scene/test2/plane01.3ds
 scene/test2/terrain.3ds
+scene/test3/dimian02.dds
+scene/test3/map.xml
+scene/test3/plane01.3ds
+scene/test3/terrain.3ds
 scene/test4/01.3ds
 scene/test4/box01.3ds
 scene/test4/box02.3ds

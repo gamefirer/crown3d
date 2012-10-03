@@ -308,20 +308,6 @@ package blade3d.effect.parser
 			
 			return vec;
 		}
-		// 解析 资源名(资源的url, 资源所在的目录)
-		static public function findValidPath(url:String, path:String):String
-		{
-			if( BlResourceManager.instance().findResource(url) )
-				return url;
-			
-			url = path + url;
-			
-			if( BlResourceManager.instance().findResource(url) )
-				return url;
-			
-			Debug.assert(false, "url not exist!");
-			return url;
-		}
 		
 	}
 }

@@ -86,7 +86,7 @@ package blade3d.effect.parser
 			else
 			{
 				// 粒子的贴图
-				var textureFileName : String = BlEffectBaseParser.findValidPath(xml.@texture.toString() + BlStringUtils.texExtName, path);
+				var textureFileName : String = BlResourceManager.findValidPath(xml.@texture.toString() + BlStringUtils.texExtName, path);
 				particleSystem.material = new GpuParticleMaterial(BlResourceManager.instance().findImageResource(textureFileName).bmpData);
 			}
 			

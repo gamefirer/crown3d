@@ -125,7 +125,7 @@ package blade3d.effect
 				if(resUrl.length == 0) continue;
 				
 				resUrl += BlStringUtils.texExtName;
-				resUrl = BlEffectBaseParser.findValidPath(resUrl, _effPath);
+				resUrl = BlResourceManager.findValidPath(resUrl, _effPath);
 				res = BlResourceManager.instance().findResource(resUrl);
 				_prepareCount++;
 				res.asycLoad(onPrepareEffResource);
