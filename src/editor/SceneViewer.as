@@ -46,9 +46,7 @@ package editor
 		
 		private function InitEngine():void
 		{
-			
 			addChild(BlEngine.init(this, onInitEngine));
-			
 		}
 		
 		private function onInitEngine():void

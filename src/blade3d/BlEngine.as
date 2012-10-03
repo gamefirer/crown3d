@@ -18,6 +18,7 @@ package blade3d
 	import blade3d.profiler.InfoStats;
 	import blade3d.profiler.Profiler;
 	import blade3d.profiler.ProfilerStats;
+	import blade3d.profiler.ViewStats;
 	import blade3d.resource.BlResourceManager;
 	import blade3d.scene.BlSceneManager;
 	import blade3d.ui.slUIManager;
@@ -43,6 +44,7 @@ package blade3d
 		static private var _infoStats : InfoStats;
 		static private var _profilerStats : ProfilerStats;
 		static private var _partitionStats : PartitionStats;
+		static private var _viewStats : ViewStats;
 		
 		static public function getStageWidth() : Number {return _sprite.stage.stageWidth;}
 		static public function getStageHeight() : Number {return _sprite.stage.stageHeight;}
@@ -131,7 +133,8 @@ package blade3d
 			_sprite.addChild(_awayStats = new AwayStats(mainView));
 			_sprite.addChild(_partitionStats = new PartitionStats);
 			_sprite.addChild(_infoStats = new InfoStats);
-
+			_sprite.addChild(_viewStats = new ViewStats);
+			
 			if(Profiler.isProfiler)
 			{
 				_profilerStats = new ProfilerStats();
@@ -144,6 +147,7 @@ package blade3d
 //			testView.y = 100;
 //			testView.width = mainView.width/2;
 //			testView.height = mainView.height/2;
+//			testView.backgroundAlpha = 0.2;
 			
 			onInitManagerCallBack(null);
 		}
@@ -216,6 +220,7 @@ package blade3d
 			
 			mainView.render();			// 3D场景渲染
 			
+			_viewStats.render();
 //			testView.render();
 
 			slUIManager.instance().render(mainView.time, mainView.deltaTime);		// 3D ui的渲染
