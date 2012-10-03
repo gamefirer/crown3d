@@ -257,7 +257,7 @@ package blade3d.scene
 			SceneLightMaterial(lightSprite.material).setLightIntensity(_lightVO.lightIntensity);
 			
 			_texLightNode.addChild(lightSprite);
-			
+			BlSceneManager.instance().dispatchEvent(new BlSceneEvent(BlSceneEvent.SCENE_ADD_OBJECT, _scene, lightSprite));
 			// 给灯添加编辑辅助器
 			_scene.addHelperFor(lightSprite);
 			
@@ -926,6 +926,7 @@ package blade3d.scene
 			else
 			{
 				_meshNode.addChild(sceneMesh);
+				BlSceneManager.instance().dispatchEvent(new BlSceneEvent(BlSceneEvent.SCENE_ADD_OBJECT, _scene, sceneMesh));
 				_meshLoading = false;
 				tellLoadSomething(sceneMesh.name);
 			}
@@ -934,6 +935,7 @@ package blade3d.scene
 		private function onVertexColor(sceneMesh:Mesh):void
 		{
 			_meshNode.addChild(sceneMesh);
+			BlSceneManager.instance().dispatchEvent(new BlSceneEvent(BlSceneEvent.SCENE_ADD_OBJECT, _scene, sceneMesh));
 			_meshLoading = false;
 			tellLoadSomething(sceneMesh.name);
 		}

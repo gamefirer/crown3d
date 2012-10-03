@@ -159,21 +159,33 @@ package blade3d.editor
 			updateTree(null);
 			
 			BlSceneManager.instance().addEventListener(BlSceneEvent.SCENE_LEAVE, onSceneLeave);
-			BlSceneManager.instance().addEventListener(BlSceneEvent.SCENE_ENTER, onSceneChange);
-			BlSceneManager.instance().addEventListener(BlSceneEvent.SCENE_LOAD_END, onSceneChange);
+			BlSceneManager.instance().addEventListener(BlSceneEvent.SCENE_ENTER, onSceneEnter);
+			BlSceneManager.instance().addEventListener(BlSceneEvent.SCENE_LOAD_END, onSceneLoadEnd);
 		}
 		
 		private function onSceneLeave(evt:Event):void
 	  	{
 			selectedObject = null;
 			_sceneEditorNode.detachParent();
+			BlSceneManager.instance().removeEventListener(BlSceneEvent.SCENE_ADD_OBJECT, onSceneAddObject);
 	  	}
 		
-		private function onSceneChange(event:Event):void
+		private function onSceneEnter(event:Event):void
 		{
 			BlSceneManager.instance().currentScene.addEditor(_sceneEditorNode);
 			refreshTree();
-			
+		}
+		
+		private function onSceneLoadEnd(event:BlSceneEvent):void
+		{
+			refreshTree();
+			BlSceneManager.instance().addEventListener(BlSceneEvent.SCENE_ADD_OBJECT, onSceneAddObject);
+		}
+		
+		private function onSceneAddObject(event:BlSceneEvent):void
+		{
+			refreshTree();
+			selectedObject = event.addObject
 		}
 		
 		private function initEditorObject():void
@@ -446,8 +458,6 @@ package blade3d.editor
 				var lightVO : LightVO = new LightVO;
 				BlSceneManager.instance().currentScene.loader.addTexLight(lightVO);
 			}
-			
-			refreshTree();
 		}
 		
 		private function onSelectMeshEnd(res:BlResource):void
@@ -707,6 +717,9 @@ package blade3d.editor
 			{
 				noLightMesh(Mesh(selectedObject));
 			}
+			
+			if(selectedObject is Entity)
+				Entity(selectedObject).showBounds = false;
 			
 			_selectedObject = obj;
 			onSelectedNode();

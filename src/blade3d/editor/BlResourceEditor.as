@@ -442,7 +442,7 @@ package blade3d.editor
 			
 //			resultMat.addMethod(new OutlineMethod());
 		
-//			resultMat.lightPicker = _lightPicker;
+			resultMat.lightPicker = BlSceneManager.instance().lightPicker;
 			
 			// 材质描述
 			var materialDesc : String = "";

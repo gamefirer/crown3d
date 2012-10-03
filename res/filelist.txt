@@ -19,6 +19,7 @@ building/head.dds
 building/house.3ds
 building/tree.3ds
 building/tree1.dds
+building/tree2.3ds
 building/tree2.dds
 character/avatar.txt
 character/default/animation.txt
