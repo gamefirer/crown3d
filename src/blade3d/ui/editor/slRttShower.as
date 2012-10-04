@@ -9,6 +9,7 @@ package blade3d.ui.editor
 	import blade3d.BlEngine;
 	import blade3d.postprocess.BlPostProcessManager;
 	import blade3d.scene.BlSceneManager;
+	import blade3d.viewer.BlViewerManager;
 	
 	import flash.display3D.textures.Texture;
 	
@@ -40,9 +41,6 @@ package blade3d.ui.editor
 			_rtts = new Vector.<slContext3DTexture>;
 			_rttImages = new Vector.<slImage>;
 			_rttSelectIndex = new Vector.<int>;
-			
-//			var rtt:slContext3DTexture;
-//			var rttImage:slImage;
 			
 			var vi : int;
 			var hi : int;
@@ -91,7 +89,6 @@ package blade3d.ui.editor
 					case 3:		// 贴图灯
 						_rtts[i].renderTexture = Texture(BlSceneManager.instance().texLight.lightMapper.lightMap.getTextureForStage3D(Context3DProxy.stage3DProxy));
 						break;
-					
 				}
 				
 			}

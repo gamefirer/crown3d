@@ -47,6 +47,8 @@ package sl2d.display
 		
 		public function onResizeView(rectWidth:int, rectHeight:int):void
 		{
+			setSize(rectWidth, rectHeight);
+			
 			for(var i:int = 0;i < _childWindows.length; i++)
 				_childWindows[i].onResizeView(rectWidth, rectHeight);
 		}

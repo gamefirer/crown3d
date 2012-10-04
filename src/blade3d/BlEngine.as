@@ -22,6 +22,7 @@ package blade3d
 	import blade3d.resource.BlResourceManager;
 	import blade3d.scene.BlSceneManager;
 	import blade3d.ui.slUIManager;
+	import blade3d.viewer.BlViewerManager;
 	
 	import com.greensock.OverwriteManager;
 	
@@ -44,12 +45,10 @@ package blade3d
 		static private var _infoStats : InfoStats;
 		static private var _profilerStats : ProfilerStats;
 		static private var _partitionStats : PartitionStats;
-		static private var _viewStats : ViewStats;
+//		static private var _viewStats : ViewStats;
 		
 		static public function getStageWidth() : Number {return _sprite.stage.stageWidth;}
 		static public function getStageHeight() : Number {return _sprite.stage.stageHeight;}
-		
-		static public var testView : View3D;
 		
 		public function BlEngine()
 		{
@@ -123,6 +122,11 @@ package blade3d
 			if(!BlPostProcessManager.instance().init(mainView, onInitManagerCallBack))
 				Debug.error("BlPostProcessManager init failed");
 			
+			// 3D视图管理器
+			_initCount++;
+			if(!BlViewerManager.instance().init(mainView, onInitManagerCallBack))
+				Debug.error("BlViewerManager init failed");
+			
 			// 3DUI管理器
 			_initCount++;
 			if(!slUIManager.instance().init(mainView, onInitManagerCallBack))
@@ -133,7 +137,7 @@ package blade3d
 			_sprite.addChild(_awayStats = new AwayStats(mainView));
 			_sprite.addChild(_partitionStats = new PartitionStats);
 			_sprite.addChild(_infoStats = new InfoStats);
-			_sprite.addChild(_viewStats = new ViewStats);
+//			_sprite.addChild(_viewStats = new ViewStats);
 			
 			if(Profiler.isProfiler)
 			{
@@ -212,18 +216,23 @@ package blade3d
 			
 			Context3DProxy.reset();
 			
-			BlCameraManager.instance().update(mainView.time, mainView.deltaTime);		// 摄像机
+			var time : uint = mainView.time;
+			var deltaTime : uint = mainView.deltaTime;
 			
-			BlEffectManager.instance().update(mainView.time, mainView.deltaTime);		// 特效
+			BlCameraManager.instance().update(time, deltaTime);		// 摄像机
 			
-			BlSceneManager.instance().update(mainView.time, mainView.deltaTime);		// 场景更新
+			BlEffectManager.instance().update(time, deltaTime);		// 特效
+			
+			BlSceneManager.instance().update(time, deltaTime);		// 场景更新
+			
+			BlViewerManager.instance().render(time, deltaTime);		// 3D视图渲染
 			
 			mainView.render();			// 3D场景渲染
 			
-			_viewStats.render();
+//			_viewStats.render();
 //			testView.render();
 
-			slUIManager.instance().render(mainView.time, mainView.deltaTime);		// 3D ui的渲染
+			slUIManager.instance().render(time, deltaTime);		// 3D ui的渲染
 			
 			Profiler.end("BlEngine.render");
 			

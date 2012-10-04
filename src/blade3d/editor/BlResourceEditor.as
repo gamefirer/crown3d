@@ -26,6 +26,9 @@ package blade3d.editor
 	import blade3d.resource.BlResourceManager;
 	import blade3d.scene.BlSceneEvent;
 	import blade3d.scene.BlSceneManager;
+	import blade3d.ui.slUIFrame;
+	import blade3d.viewer.BlViewer;
+	import blade3d.viewer.BlViewerManager;
 	
 	import editor.EffectViewer;
 	
@@ -36,11 +39,13 @@ package blade3d.editor
 	import flash.events.FocusEvent;
 	import flash.events.KeyboardEvent;
 	import flash.events.TimerEvent;
+	import flash.geom.Vector3D;
 	import flash.ui.Keyboard;
 	import flash.utils.Dictionary;
 	import flash.utils.Timer;
 	
 	import org.aswing.ASColor;
+	import org.aswing.AsWingConstants;
 	import org.aswing.BorderLayout;
 	import org.aswing.Box;
 	import org.aswing.ButtonGroup;
@@ -54,6 +59,7 @@ package blade3d.editor
 	import org.aswing.JPanel;
 	import org.aswing.JRadioButton;
 	import org.aswing.JScrollPane;
+	import org.aswing.JSlider;
 	import org.aswing.JTextArea;
 	import org.aswing.JTree;
 	import org.aswing.SoftBox;
@@ -64,6 +70,7 @@ package blade3d.editor
 	import org.aswing.border.EmptyBorder;
 	import org.aswing.border.LineBorder;
 	import org.aswing.border.TitledBorder;
+	import org.aswing.colorchooser.VerticalLayout;
 	import org.aswing.event.TreeSelectionEvent;
 	import org.aswing.geom.IntRectangle;
 	import org.aswing.tree.DefaultMutableTreeNode;
@@ -76,9 +83,7 @@ package blade3d.editor
 		static public var FILTER_MESH : int = 0x02;
 		static public var FILTER_TEXTURE : int = 0x04;
 		
-		private var _ResourceNode : ObjectContainer3D = new ObjectContainer3D;
-		private var _mesh : Mesh;
-		
+		private var _mesh : Mesh;		// 显示模型
 		private var _image:Bitmap;		// 显示图片 
 		
 		private var _selectRes : BlResource;
@@ -99,7 +104,12 @@ package blade3d.editor
 		private var _showAllRB : JRadioButton;			// 显示全部
 		private var _showMeshRB : JRadioButton;		// 显示模型
 		private var _showTexRB : JRadioButton;			// 显示贴图
-		private var _showFilter : uint = 0xff;			// 1 其他 2 模型 4 贴图
+		private var _showFilter : uint = 0xff;				// 1 其他 2 模型 4 贴图
+		
+		// 预览摄像机调整
+		private var _cameraZoom : JSlider;
+		private var _cameraRot : JSlider;
+		private var _cameraHeight : JSlider;
 		
 		// 资源树
 		private var _resTreeCtrl : JTree;
@@ -114,6 +124,9 @@ package blade3d.editor
 		
 		// 材质描述
 		private var _materialDesc : JTextArea;
+		
+		// 3D视图
+		public  var modelViewer : BlViewer;
 		
 		
 		private var _unLoadColor : ASColor = ASColor.LIGHT_GRAY;
@@ -133,6 +146,11 @@ package blade3d.editor
 			_image.y = 100;			
 			BlEditorManager.instance().rootSprite().addChild(_image);
 			
+			// 创建3D视图
+			modelViewer = BlViewerManager.instance().createViewer(512, 512);
+			modelViewer.backgroundColor = 0x111111;
+			modelViewer.visible = false;
+			
 			initPanel();
 						
 			show();
@@ -151,14 +169,24 @@ package blade3d.editor
 			
 			_isMeshChk = new JCheckBox("预览模型");
 			_isMeshChk.setSelected(true);
+			_isMeshChk.addActionListener(
+				function(evt:Event):void
+				{
+					modelViewer.visible = _isMeshChk.isSelected();
+				}
+			);
+			modelViewer.visible = _isMeshChk.isSelected();
 			_upPanel2.append(_isMeshChk);
+			
+			var hPanel : JPanel;
+			_upPanel2.append(hPanel = new JPanel);
 			
 			var borders:SoftBox = SoftBox.createVerticalBox(2);
 			borders.setBorder(new TitledBorder(null, "资源显示", TitledBorder.BOTTOM));
 			borders.append(_showAllRB = new JRadioButton("全部"));
 			borders.append(_showMeshRB = new JRadioButton("模型"));
 			borders.append(_showTexRB = new JRadioButton("贴图"));
-			_upPanel2.append(borders);
+			hPanel.append(borders);
 			
 			var group:ButtonGroup = new ButtonGroup();
 			group.append(_showAllRB);
@@ -172,6 +200,25 @@ package blade3d.editor
 			_showAllRB.addActionListener( onSwitchShowType );
 			_showMeshRB.addActionListener( onSwitchShowType );
 			_showTexRB.addActionListener( onSwitchShowType );
+			
+			// 预览Camera
+			var vPanel : JPanel;
+			hPanel.append(vPanel = new JPanel(new VerticalLayout));
+			_cameraZoom = new JSlider(AsWingConstants.HORIZONTAL, 50, 1000, 200);
+			_cameraZoom.setPreferredWidth(100);
+			_cameraZoom.addStateListener(updateModelViewerCamera);
+			vPanel.append(_cameraZoom);
+			
+			_cameraRot = new JSlider(AsWingConstants.HORIZONTAL, 0, 360, 0);
+			_cameraRot.setPreferredWidth(100);
+			_cameraRot.addStateListener(updateModelViewerCamera);
+			vPanel.append(_cameraRot);
+			
+			_cameraHeight = new JSlider(AsWingConstants.HORIZONTAL, -90, 90, 45);
+			_cameraHeight.setPreferredWidth(100);
+			_cameraHeight.addStateListener(updateModelViewerCamera);
+			vPanel.append(_cameraHeight);
+			
 			
 			// 左边center panel
 			onResourceList();
@@ -203,20 +250,21 @@ package blade3d.editor
 			
 			BlResourceManager.instance().addEventListener(BlResourceEvent.RESOURCE_COMPLETE, onResourceLoaded);
 			
-			_ResourceNode.name = "BlResourceEditor";
-			BlSceneManager.instance().currentScene.addEditor(_ResourceNode);
-			BlSceneManager.instance().addEventListener(BlSceneEvent.SCENE_LEAVE, onSceneLeave);
-			BlSceneManager.instance().addEventListener(BlSceneEvent.SCENE_ENTER, onSceneChange);
+			updateModelViewerCamera(null);
 		}
 		
-		private function onSceneLeave(evt:Event):void
+		private function updateModelViewerCamera(evt:Event):void
 		{
-			_ResourceNode.detachParent();
-		}
-		
-		private function onSceneChange(event:Event):void
-		{
-			BlSceneManager.instance().currentScene.addEditor(_ResourceNode);
+			var radius : Number = _cameraZoom.getValue();
+			var theta : Number = _cameraRot.getValue() / 180 * Math.PI;
+			var rho : Number = _cameraHeight.getValue() / 180 * Math.PI;
+			
+			var x:Number = radius * Math.cos(rho) * Math.sin(theta);
+			var y:Number = radius * Math.sin(rho);
+			var z:Number = radius * Math.cos(rho) * Math.cos(theta);
+			
+			modelViewer.camera.position = new Vector3D(x, y, z);
+			modelViewer.camera.lookAt(new Vector3D(0, 50, 0), new Vector3D(0, 1, 0));
 		}
 		
 		private function initPanel():void
@@ -415,12 +463,18 @@ package blade3d.editor
 		{
 			if(_mesh)
 			{
+				modelViewer.setRenderNode(null);
 				_mesh.dispose();
 				_mesh = null;
 			}
 			
-			if(!_isMeshChk.isSelected()) return;
+			if(!_isMeshChk.isSelected())
+			{
+				modelViewer.visible = false;
+				return;
+			}
 			
+			modelViewer.visible = true;
 			_mesh = new Mesh(res.geo);
 			
 			for(var i:int=0; i<res.tex_urls.length; i++)
@@ -430,7 +484,7 @@ package blade3d.editor
 					_mesh.subMeshes[i].material = createMaterial(image.bmpData);
 			}
 			
-			_ResourceNode.addChild(_mesh);
+			modelViewer.setRenderNode(_mesh);
 		}
 		
 		private function createMaterial(bmp:BitmapData):MaterialBase
@@ -505,7 +559,16 @@ package blade3d.editor
 		{
 			super.visible = value;
 			
-			_ResourceNode.visible = value;
+			if(value)
+			{
+				modelViewer.visible = _isMeshChk.isSelected();
+				_image.visible = _isImageChk.isSelected();
+			}
+			else
+			{
+				modelViewer.visible = false;
+				_image.visible = false;
+			}
 		}
 		
 	}

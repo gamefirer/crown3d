@@ -69,7 +69,6 @@ package sl2d
 			slGlobal.isInit = true;
 		}
 		
-		
 		private function configWorld():void
 		{
 			if(!slGlobal.TextureFactory)

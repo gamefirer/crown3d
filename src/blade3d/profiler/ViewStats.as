@@ -3,7 +3,7 @@
  */
 package blade3d.profiler
 {
-	import away3d.containers.ViewSimple;
+	import blade3d.viewer.BlViewer;
 	
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
@@ -15,7 +15,7 @@ package blade3d.profiler
 		private var _dia_bmp : BitmapData;
 		private var _diagram : Sprite;
 		
-		private var _viewSimple : ViewSimple;
+//		private var _viewSimple : BlViewer;
 		
 		public function ViewStats()
 		{
@@ -28,7 +28,7 @@ package blade3d.profiler
 		
 		private function init() : void
 		{
-			_dia_bmp = new BitmapData(_WIDTH, _HEIGHT, true, 0xaa00ffff);
+			_dia_bmp = new BitmapData(_WIDTH, _HEIGHT, true, 0x22333333);
 			_diagram = new Sprite;
 			_diagram.graphics.beginBitmapFill(_dia_bmp);
 			_diagram.graphics.drawRect(0, 0, _dia_bmp.width, _dia_bmp.height);
@@ -36,16 +36,18 @@ package blade3d.profiler
 			_diagram.y = 0;
 			addChild(_diagram);
 			
-			_viewSimple = new ViewSimple;
-			_viewSimple.y = 20;
-			_viewSimple.width = _WIDTH;
-			_viewSimple.height = _HEIGHT - _viewSimple.y;
-			addChild(_viewSimple);
+//			_viewSimple = new BlViewer;
+//			_viewSimple.y = 20;
+//			_viewSimple.width = _WIDTH;
+//			_viewSimple.height = _HEIGHT - _viewSimple.y;
+//			addChild(_viewSimple);
+//			
+//			_viewSimple.backgroundColor = 0xff0000;
 		}
 		
 		public function render() : void
 		{
-			_viewSimple.render();
+//			_viewSimple.render();
 		}
 	}
 }

@@ -42,8 +42,8 @@ package away3d.core.managers
 		{
 			if(index == 0)
 				_stage3DProxy = stage3d;
-//			else
-//				Debug.assert(false, "more stage");
+			else
+				Debug.assert(false, "more stage");
 			_stage3DProxys[index] = stage3d;
 		}
 		public static function get stage3DProxy() : Stage3DProxy {return _stage3DProxy;}

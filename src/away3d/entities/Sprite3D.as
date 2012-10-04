@@ -301,5 +301,11 @@ package away3d.entities
 		{
 			rot = val * Math.PI / 180 ;
 		}
+		
+		override public function dispose() : void
+		{
+			material = null;
+			super.dispose();
+		}
 	}
 }

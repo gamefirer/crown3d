@@ -213,9 +213,11 @@ package sl2d.display
 		
 		private function get textureWidth():Number
 		{
-			if(_textureRef == null) return super.width;
+			if(_textureRef == null) 
+				return 0;
 			var vec:Vector.<Number> = _textureRef.getUVByFrame(_frameIndex);
-			if(vec == null) return super.width;
+			if(vec == null) 
+				return super.width;
 			return vec[6];
 		}
 		
@@ -230,15 +232,17 @@ package sl2d.display
 		
 		private function get textureHeight():Number
 		{
-			if(_textureRef == null) return super.width;
+			if(_textureRef == null) 
+				return 0;
 			var vec:Vector.<Number> = _textureRef.getUVByFrame(_frameIndex);
-			if(vec == null) return super.width;
+			if(vec == null) 
+				return super.width;
 			return vec[7];
 		}
 		
 		override public function get height():Number
 		{
-			if(_textureRef == null) return super.width;
+			if(_textureRef == null) return super.height;
 			var vec:Vector.<Number> = _textureRef.getUVByFrame(_frameIndex);
 			if(vec == null) return super.width;
 			return vec[7] * _scaleInfo.y;

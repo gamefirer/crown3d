@@ -86,7 +86,7 @@
 		private var _menu1:ContextMenuItem;
 		private var _ViewContextMenu:ContextMenu;
 		private var _shareContext:Boolean = false;
-		private var _viewScissoRect:Rectangle;
+		private var _viewScissoRect:Rectangle;				// 矩形裁剪
 		
 		public function get depthRTT() : Texture {return _depthRender;}
 		public function get filter3DRender() : Filter3DRenderer {return _filter3DRenderer;}
@@ -194,7 +194,7 @@
 			_localPos.y = _stage3DProxy.y;
 			_globalPos.y = parent? parent.localToGlobal(_localPos).y : _stage3DProxy.y;
 			
-			_viewScissoRect = new Rectangle(_stage3DProxy.x, _stage3DProxy.y, _stage3DProxy.width, _stage3DProxy.height);
+			_viewScissoRect = new Rectangle(_stage3DProxy.x, _stage3DProxy.y, _stage3DProxy.width/2, _stage3DProxy.height);
 		}
 
 		/**

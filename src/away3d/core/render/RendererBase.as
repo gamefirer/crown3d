@@ -271,12 +271,15 @@ package away3d.core.render
 
 			_stage3DProxy.setRenderTarget(target, true, surfaceSelector);
 
-			if (!_shareContext) {
+			// clear backbuffer
+			if (!_shareContext) 
+			{
 				_context.clear(_backgroundR, _backgroundG, _backgroundB, _backgroundAlpha, 1, 0);
 			}
 			_context.setDepthTest(false, Context3DCompareMode.ALWAYS);
 			_stage3DProxy.scissorRect = scissorRect;
-			if (_backgroundImageRenderer) _backgroundImageRenderer.render();
+			if (_backgroundImageRenderer) 
+				_backgroundImageRenderer.render();
 
 			draw(entityCollector, target);
 

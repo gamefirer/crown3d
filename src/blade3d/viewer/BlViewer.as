@@ -1,15 +1,18 @@
 /**
  *	渲染简单对象用的View 
  */
-package away3d.containers
+package blade3d.viewer
 {
 	import away3d.arcane;
 	import away3d.cameras.Camera3D;
+	import away3d.containers.ObjectContainer3D;
+	import away3d.containers.Scene3D;
 	import away3d.core.managers.Stage3DManager;
 	import away3d.core.managers.Stage3DProxy;
 	import away3d.core.render.DefaultRenderer;
 	import away3d.core.render.RendererBase;
 	import away3d.core.traverse.EntityCollector;
+	import away3d.textures.RenderTexture;
 	import away3d.textures.Texture2DBase;
 	
 	import flash.display.Sprite;
@@ -21,54 +24,58 @@ package away3d.containers
 	
 	use namespace arcane;
 	
-	public class ViewSimple extends Sprite
+	public class BlViewer
 	{
+		
+		private var _renderTexture : RenderTexture;
+		private var _renderTextureInvalid : Boolean = true;
+		
 		private var _width : Number = 0;
 		private var _height : Number = 0;
-		private var _localPos : Point = new Point();
-		private var _globalPos : Point = new Point();
 		
 		protected var _aspectRatio : Number;
 		private var _time : Number = 0;
 		private var _deltaTime : uint;
 		
-		protected var _scene : Scene3D;					// 场景
-		protected var _camera : Camera3D;				// 摄像机
-		protected var _renderer : RendererBase;		// 渲染器
-		protected var _entityCollector : EntityCollector;	// 采集器
-		
-		private var _viewScissoRect:Rectangle;				//  矩形裁剪范围
-		private var _addedToStage:Boolean;
-		private var _stage3DManager : Stage3DManager;
+		protected var _scene : Scene3D;							// 场景
+		protected var _camera : Camera3D;						// 摄像机
+		protected var _renderer : RendererBase;				// 渲染器
+		protected var _entityCollector : EntityCollector;		// 采集器
+		protected var _renderNode : ObjectContainer3D;		// 渲染对象(由外部维护)
 		
 		protected var _stage3DProxy : Stage3DProxy;
-		private var _forceSoftware : Boolean;
-		protected var _parentIsStage : Boolean;
 		
-		protected var _backBufferInvalid : Boolean = true;
 		private var _background : Texture2DBase;
 		private var _antiAlias : uint;
 		private var _backgroundColor : uint = 0x000000;
 		private var _backgroundAlpha : Number = 1;
+	
+		public var visible : Boolean = true;
+		public function get renderTexture() : RenderTexture {return _renderTexture;}
+		public function get deltaTime() : uint {return _deltaTime;}
+		public function get time() : uint {return _time;}
 		
-		public function ViewSimple(scene : Scene3D = null, camera : Camera3D = null, renderer : RendererBase = null, forceSoftware:Boolean = false)
+		public function BlViewer(scene : Scene3D = null, camera : Camera3D = null, renderer : RendererBase = null)
 		{
-			super();
-			
 			_scene = scene || new Scene3D();
 			_camera = camera || new Camera3D();
 			_renderer = renderer || new DefaultRenderer();
-			_forceSoftware = forceSoftware;
 			
 			// 创建采集器
 			_entityCollector = _renderer.createEntityCollector();
 			
-			_viewScissoRect = new Rectangle();
-			
-			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage, false, 0, true);
-			addEventListener(Event.ADDED, onAdded, false, 0, true);
-			
 			_camera.partition = _scene.partition;
+		}
+		
+		public function setRenderNode(node:ObjectContainer3D):void
+		{
+			if(_renderNode)
+				_scene.removeChild(_renderNode);
+			
+			_renderNode = node;
+			
+			if(_renderNode)
+				_scene.addChild(_renderNode);
 		}
 		
 		public function get stage3DProxy() : Stage3DProxy
@@ -80,18 +87,6 @@ package away3d.containers
 		{
 			_stage3DProxy = stage3DProxy;
 			_renderer.stage3DProxy = _stage3DProxy;
-			
-			super.x = _stage3DProxy.x;
-			
-			_localPos.x = _stage3DProxy.x;
-			_globalPos.x = parent? parent.localToGlobal(_localPos).x : _stage3DProxy.x;
-			
-			super.y = _stage3DProxy.y;
-			
-			_localPos.y = _stage3DProxy.y;
-			_globalPos.y = parent? parent.localToGlobal(_localPos).y : _stage3DProxy.y;
-			
-			_viewScissoRect = new Rectangle(_stage3DProxy.x, _stage3DProxy.y, _stage3DProxy.width, _stage3DProxy.height);
 		}
 		
 		public function get background() : Texture2DBase
@@ -124,12 +119,12 @@ package away3d.containers
 			_renderer.viewWidth = _width;
 			_renderer.viewHeight = _height;
 			
-			invalidateBackBuffer();
+			invalidateRenderTexture();
 		}
 		
-		private function invalidateBackBuffer() : void
+		private function invalidateRenderTexture() : void
 		{
-			_backBufferInvalid = true;
+			_renderTextureInvalid = true;
 		}
 		
 		public function get antiAlias() : uint
@@ -142,7 +137,7 @@ package away3d.containers
 			_antiAlias = value;
 			_renderer.antiAlias = value;
 			
-			invalidateBackBuffer();
+			invalidateRenderTexture();
 		}
 		
 		public function get backgroundColor() : uint
@@ -200,12 +195,12 @@ package away3d.containers
 				_camera.partition = _scene.partition;
 		}
 		
-		override public function get width() : Number
+		public function get width() : Number
 		{
 			return _width;
 		}
 		
-		override public function set width(value : Number) : void
+		public function set width(value : Number) : void
 		{
 			if (_stage3DProxy && _stage3DProxy.usesSoftwareRendering && value > 2048)
 				value = 2048;
@@ -218,17 +213,15 @@ package away3d.containers
 			
 			_renderer.viewWidth = value;
 			
-			_viewScissoRect.width = value;
-			
-			invalidateBackBuffer();
+			invalidateRenderTexture();
 		}
 		
-		override public function get height() : Number
+		public function get height() : Number
 		{
 			return _height;
 		}
 		
-		override public function set height(value : Number) : void
+		public function set height(value : Number) : void
 		{
 			if (_stage3DProxy && _stage3DProxy.usesSoftwareRendering && value > 2048)
 				value = 2048;
@@ -241,92 +234,36 @@ package away3d.containers
 			
 			_renderer.viewHeight = value;
 			
-			_viewScissoRect.height = value;
-			
-			invalidateBackBuffer();
+			invalidateRenderTexture();
 		}
 		
-		override public function set x(value : Number) : void
+		public function set x(value : Number) : void
 		{
-			super.x = value;
 			
-			_localPos.x = value;
-			_globalPos.x = parent? parent.localToGlobal(_localPos).x : value;
-			_viewScissoRect.x = value;
-			
-			if (_stage3DProxy)
-				_stage3DProxy.x = _globalPos.x;
 		}
 		
-		override public function set y(value : Number) : void
+		public function set y(value : Number) : void
 		{
-			super.y = value;
 			
-			_localPos.y = value;
-			_globalPos.y = parent? parent.localToGlobal(_localPos).y : value;
-			_viewScissoRect.y = value;
-			
-			if (_stage3DProxy)
-				_stage3DProxy.y = _globalPos.y;
 		}
 		
-		override public function set visible(value : Boolean) : void
+		public function render(time:uint, deltaTime:uint) : void
 		{
-			super.visible = value;
+			if(!visible)
+				return;
 			
-			if (_stage3DProxy)
-				_stage3DProxy.visible = value;
-		}
-		
-		protected function updateBackBuffer() : void
-		{
-			if (_stage3DProxy.context3D) 
+			if (!stage3DProxy.recoverFromDisposal())
 			{
-				if( _width && _height )
-				{
-					if (_stage3DProxy.usesSoftwareRendering)
-					{
-						if (_width > 2048) _width = 2048;
-						if (_height > 2048) _height = 2048;
-					}
-					
-					_stage3DProxy.configureBackBuffer(_width, _height, _antiAlias, true);
-					_backBufferInvalid = false;
-				} 
-				else
-				{
-					width = stage.stageWidth;
-					height = stage.stageHeight;
-				}
-			}
-		}
-		
-		public function get deltaTime() : uint
-		{
-			return _deltaTime;
-		}
-		
-		public function get time() : uint
-		{
-			return _time;
-		}
-		
-		public function render() : void
-		{
-			//if context3D has Disposed by the OS,don't render at this frame
-			if (!stage3DProxy.recoverFromDisposal()) {
-				_backBufferInvalid = true;
+				_renderTextureInvalid = true;
 				return;
 			}
 			
-			// reset or update render settings
-			if (_backBufferInvalid)
-				updateBackBuffer();
-			
-			if (!_parentIsStage)
-				updateGlobalPos();
-			
-			updateTime();
+			// 更新渲染对象
+			if(_renderTextureInvalid)
+				createRenderTexture();
+		
+//			if (!_parentIsStage)
+//				updateGlobalPos();
 			
 			_entityCollector.clear();
 			_entityCollector.time = time;
@@ -338,29 +275,20 @@ package away3d.containers
 			_scene.traversePartitions(_entityCollector);
 			
 			// 渲染
-			_renderer.render(_entityCollector);
+			_renderer.render(_entityCollector, renderTexture.getTextureForStage3D(_stage3DProxy));
 			
 			// clean up data for this render
 			_entityCollector.cleanUp();
 			
 		}
 		
-		protected function updateGlobalPos() : void
+		private function createRenderTexture():void
 		{
-			var globalPos : Point = parent.localToGlobal(_localPos);
-			if (_globalPos.x != globalPos.x) 
-				_stage3DProxy.x = globalPos.x;
-			if (_globalPos.y != globalPos.y) 
-				_stage3DProxy.y = globalPos.y;
-			_globalPos = globalPos;
-		}
-		
-		protected function updateTime() : void
-		{
-			var time : Number = getTimer();
-			if (_time == 0) _time = time;
-			_deltaTime = time - _time;
-			_time = time;
+			if(_renderTexture)
+				_renderTexture.dispose();
+			
+			_renderTexture = new RenderTexture(_width, _height);
+			_renderTextureInvalid = false;
 		}
 		
 		private function updateViewSizeData() : void
@@ -374,12 +302,12 @@ package away3d.containers
 		
 		public function dispose() : void
 		{
-			_stage3DProxy.dispose();
 			_renderer.dispose();
+			_renderer = null;
 			
 			_stage3DProxy = null;
-			_renderer = null;
 			_entityCollector = null;
+			_renderNode = null;
 		}
 		
 		public function project(point3d : Vector3D) : Vector3D
@@ -402,43 +330,11 @@ package away3d.containers
 			return _camera.getRay((mX * 2 - _width)/_width, (mY * 2 - _height)/_height, mZ);
 		}
 		
-		arcane function get entityCollector() : EntityCollector
+		public function get entityCollector() : EntityCollector
 		{
 			return _entityCollector;
 		}
 		
-		private function onAddedToStage(event : Event) : void
-		{
-			if (_addedToStage)
-				return;
-			
-			_addedToStage = true;
-			
-			_stage3DManager = Stage3DManager.getInstance(stage);
-			if (!_stage3DProxy) 
-				_stage3DProxy = _stage3DManager.getFreeStage3DProxy( _forceSoftware);
-			
-			_stage3DProxy.x = _globalPos.x;
-			_stage3DProxy.y = _globalPos.y;
-			
-			if (_width == 0) 
-				width = stage.stageWidth;
-			if (_height == 0) 
-				height = stage.stageHeight;
-			
-			_renderer.stage3DProxy = _stage3DProxy;
-		}
-		
-		private function onAdded(event : Event) : void
-		{
-			_parentIsStage = (parent == stage);
-			_globalPos = parent.localToGlobal(new Point(x, y));
-			if (_stage3DProxy)
-			{
-				_stage3DProxy.x = _globalPos.x;
-				_stage3DProxy.y = _globalPos.y;
-			}
-		}
 		
 	}
 }
