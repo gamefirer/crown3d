@@ -18,6 +18,7 @@ package blade3d.effect.parser
 	import away3d.particle.ParticleSystem;
 	
 	import blade3d.effect.BlEffect;
+	import blade3d.resource.BlModelResource;
 	import blade3d.resource.BlResourceManager;
 	import blade3d.utils.BlStringUtils;
 
@@ -58,10 +59,16 @@ package blade3d.effect.parser
 			}
 			else
 			{
-				Debug.assert(false, "no mesh particle");
-//				var meshDisplayer : MeshDisplayer = new MeshDisplayer(null);
-//				particleSystem = new ParticleSystem(null, emitter, particleMax, meshDisplayer);
-//				meshDisplayer.setParticleSystem(particleSystem);
+				var meshUrl:String = BlResourceManager.findValidPath(meshName + BlStringUtils.modelExtName, path);
+				var modelRes:BlModelResource = BlResourceManager.instance().findModelResource(meshUrl);
+				
+				particleSystem = new ParticleSystem(
+					new GpuParticleMaterial(DefaultMaterialManager.getDefaultBitmapData()), 
+					emitter,
+					particleMax,
+					null,
+					modelRes.geo);
+				
 			}
 			
 			particleSystem.isWolrdParticle = (xml.@global.toString() == "true");

@@ -4,10 +4,12 @@
 package away3d.particle.Displayer
 {
 	import away3d.arcane;
+	import away3d.core.base.Geometry;
 	import away3d.core.base.SubGeometry;
 	import away3d.core.managers.Context3DProxy;
 	import away3d.core.managers.Stage3DProxy;
 	import away3d.core.traverse.PartitionTraverser;
+	import away3d.entities.Mesh;
 	import away3d.events.Stage3DEvent;
 	import away3d.materials.GpuParticleMaterial;
 	import away3d.materials.MaterialBase;
@@ -25,8 +27,9 @@ package away3d.particle.Displayer
 	public class GpuDisplayer implements ParticleDisplayerBase
 	{
 		private var _material : GpuParticleMaterial;					// 粒子的材质
+		private var _paritlceSubGeo : SubGeometry;					// 粒子所用的模型
+		static private var _defaultParticleSubGeo : SubGeometry;		// 默认的模型
 		
-		protected var _listeningForDispose : Vector.<Stage3DProxy> = new Vector.<Stage3DProxy>(8);
 		// index buffer
 		protected var _indexBuffer : Vector.<IndexBuffer3D> = new Vector.<IndexBuffer3D>(8);
 		protected var _indexBufferContext : Vector.<Context3D> = new Vector.<Context3D>(8);
@@ -37,7 +40,8 @@ package away3d.particle.Displayer
 		protected var _vertexBuffer1 : Vector.<VertexBuffer3D> = new Vector.<VertexBuffer3D>(8);		// va1(u,v, dx,dy) 偏移方向sizex,sizey = -1 or 1
 		protected var _vertexBuffer2 : Vector.<VertexBuffer3D> = new Vector.<VertexBuffer3D>(8);		// va2(starttime, lifetime, ?, ?)
 		protected var _vertexBuffer3 : Vector.<VertexBuffer3D> = new Vector.<VertexBuffer3D>(8);		// va3(Vx, Vy, Vz, ?)
-		protected var _vertexBuffer4 : Vector.<VertexBuffer3D> = new Vector.<VertexBuffer3D>(8);
+		protected var _vertexBuffer4 : Vector.<VertexBuffer3D> = new Vector.<VertexBuffer3D>(8);		// va4
+		protected var _vertexBuffer5 : Vector.<VertexBuffer3D> = new Vector.<VertexBuffer3D>(8);		// va5
 		
 		// Context
 		protected var _vertexBufferContext : Vector.<Context3D> = new Vector.<Context3D>(8);
@@ -45,6 +49,7 @@ package away3d.particle.Displayer
 		protected var _vertexBufferContext2 : Vector.<Context3D> = new Vector.<Context3D>(8);
 		protected var _vertexBufferContext3 : Vector.<Context3D> = new Vector.<Context3D>(8);
 		protected var _vertexBufferContext4 : Vector.<Context3D> = new Vector.<Context3D>(8);
+		protected var _vertexBufferContext5 : Vector.<Context3D> = new Vector.<Context3D>(8);
 		
 		// dirty flags
 		protected var _vertexBufferDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
@@ -52,6 +57,7 @@ package away3d.particle.Displayer
 		protected var _vertexBufferDirty2 : Vector.<Boolean> = new Vector.<Boolean>(8);
 		protected var _vertexBufferDirty3 : Vector.<Boolean> = new Vector.<Boolean>(8);
 		protected var _vertexBufferDirty4 : Vector.<Boolean> = new Vector.<Boolean>(8);
+		protected var _vertexBufferDirty5 : Vector.<Boolean> = new Vector.<Boolean>(8);
 		
 		
 		protected var _maxIndex : int = -1;
@@ -61,6 +67,7 @@ package away3d.particle.Displayer
 		private var _vertexData2 : Vector.<Number>;			// vertex2
 		private var _vertexData3 : Vector.<Number>;			// vertex3
 		private var _vertexData4 : Vector.<Number>;			// vertex4
+		private var _vertexData5 : Vector.<Number>;			// vertex5
 		
 		private var _indexData : Vector.<uint>;				// index
 		
@@ -75,159 +82,178 @@ package away3d.particle.Displayer
 		private var _particleSystem : ParticleSystem;
 		public function setParticleSystem(value : ParticleSystem) : void { _particleSystem = value; }
 		
-		
 		public function get indexData() : Vector.<uint> {return _indexData;}
+		public function get trianglesPerParticle() : uint {return _paritlceSubGeo.numTriangles;}
 		
-		public function GpuDisplayer(particleSystem:ParticleSystem=null)
+		public function GpuDisplayer(particleSystem:ParticleSystem=null, geo:Geometry = null)
 		{
 			setParticleSystem(particleSystem);
+			createDefaultGeometry();
+			
+			if(geo && geo.subGeometries.length>0)
+			{
+				_paritlceSubGeo = geo.subGeometries[0];
+			}
 			
 			createGeometry();
+		}
+		
+		private function createDefaultGeometry():void
+		{
+			if(_defaultParticleSubGeo) return;
+			
+			_defaultParticleSubGeo = new SubGeometry;
+			// 创建VertexBuffer, IndexBuffer, UVBuffer
+			// 0---1
+			// |   |
+			// 3---2
+			var vertices : Vector.<Number> = new Vector.<Number>(4*3, true);
+			vertices[0] = -50;
+			vertices[1] = 50;
+			vertices[2] = 0;
+			
+			vertices[3] = 50;
+			vertices[4] = 50;
+			vertices[5] = 0;
+			
+			vertices[6] = 50;
+			vertices[7] = -50;
+			vertices[8] = 0;
+			
+			vertices[9] = -50;
+			vertices[10] = -50;
+			vertices[11] = 0;
+			
+			var uvs : Vector.<Number> = new Vector.<Number>(4*2, true);
+			uvs[0] = 0.0;
+			uvs[1] = 0.0;
+			
+			uvs[2] = 1.0;
+			uvs[3] = 0.0;
+			
+			uvs[4] = 1.0;
+			uvs[5] = 1.0;
+			
+			uvs[6] = 0.0;
+			uvs[7] = 1.0;
+
+			var indices : Vector.<uint> = new Vector.<uint>(2*3, true);
+			indices[0] = 0;			// 0 1 2
+			indices[1] = 1;
+			indices[2] = 2;
+			indices[3] = 0;			// 0 2 3
+			indices[4] = 2;
+			indices[5] = 3;
+			
+			_defaultParticleSubGeo.updateVertexData(vertices);
+			_defaultParticleSubGeo.updateUVData(uvs);
+			_defaultParticleSubGeo.updateIndexData(indices);
 		}
 		
 		private function createGeometry() : void
 		{
 			var maxParticleNumber : uint = _particleSystem.maxParticleNumber;
 			
-			// 创建VertexBuffer, IndexBuffer, UVBuffer
-			// 0---1
-			// |   |
-			// 3---2
+			if(!_paritlceSubGeo)
+				_paritlceSubGeo = _defaultParticleSubGeo;
+			// 根据模型，生成粒子系统顶点数据
+			
+			var subGeo : SubGeometry = _paritlceSubGeo;
+			
 			var i:int;
 			var j:int;
+			var len:int;
 			
-			_maxVertexNum = maxParticleNumber*4;		// 一个粒子4个顶点
-			// 创建VertexBuffer			
-			_vertexData0 = new Vector.<Number>(_maxVertexNum*3, true);	// 3(x,y,z)
+			_maxVertexNum = maxParticleNumber*subGeo.numVertices;		// 一个粒子n个顶点
+			// 创建VertexBuffer(x, y, z, ?)
+			_vertexData0 = new Vector.<Number>(_maxVertexNum*3, true);	// (x,y,z)
 			
+			len = subGeo.numVertices * 3;
 			for(i=0;i<maxParticleNumber;i++)
 			{
-				_vertexData0[i*12+0] = -50;
-				_vertexData0[i*12+1] = 50;
-				_vertexData0[i*12+2] = 0;
-				
-				_vertexData0[i*12+3] = 50;
-				_vertexData0[i*12+4] = 50;
-				_vertexData0[i*12+5] = 0;
-				
-				_vertexData0[i*12+6] = 50;
-				_vertexData0[i*12+7] = -50;
-				_vertexData0[i*12+8] = 0;
-				
-				_vertexData0[i*12+9] = -50;
-				_vertexData0[i*12+10] = -50;
-				_vertexData0[i*12+11] = 0;
-
+				for(j=0; j<subGeo.numVertices; j++)
+				{
+					_vertexData0[i*len+j*3+0] = 0;
+					_vertexData0[i*len+j*3+1] = 0;
+					_vertexData0[i*len+j*3+2] = 0;
+				}
 			}
 			// vertexBuffer1( u, v, sizeX, sizeY )
+			len = subGeo.numVertices * 4;
 			_vertexData1 = new Vector.<Number>(_maxVertexNum*4, true);
+			
 			for(i=0;i<maxParticleNumber;i++)
 			{
-				_vertexData1[i*16] = 0.0;
-				_vertexData1[i*16+1] = 0.0;
-				_vertexData1[i*16+2] = -100;
-				_vertexData1[i*16+3] = 100;
-				
-				_vertexData1[i*16+4] = 1.0;
-				_vertexData1[i*16+5] = 0.0;
-				_vertexData1[i*16+6] = 100;
-				_vertexData1[i*16+7] = 100;
-				
-				_vertexData1[i*16+8] = 1.0;
-				_vertexData1[i*16+9] = 1.0;
-				_vertexData1[i*16+10] = 100;
-				_vertexData1[i*16+11] = -100;
-				
-				_vertexData1[i*16+12] = 0.0;
-				_vertexData1[i*16+13] = 1.0;
-				_vertexData1[i*16+14] = -100;
-				_vertexData1[i*16+15] = -100;
+				for(j=0;j<subGeo.numVertices;j++)
+				{
+					_vertexData1[i*len+j*4+0] = subGeo.UVData[j*2+0];
+					_vertexData1[i*len+j*4+1] = subGeo.UVData[j*2+1];
+					_vertexData1[i*len+j*4+2] = 100; 
+					_vertexData1[i*len+j*4+3] = 100;
+				}
 			}
 			// vertextBuffer2
 			_vertexData2 = new Vector.<Number>(_maxVertexNum*4, true);
 			for(i=0;i<maxParticleNumber;i++)
 			{
-				_vertexData2[i*16] = 0.0;
-				_vertexData2[i*16+1] = 0.0;
-				_vertexData2[i*16+2] = -100;
-				_vertexData2[i*16+3] = 100;
-				
-				_vertexData2[i*16+4] = 0.0;
-				_vertexData2[i*16+5] = 0.0;
-				_vertexData2[i*16+6] = 100;
-				_vertexData2[i*16+7] = 100;
-				
-				_vertexData2[i*16+8] = 0.0;
-				_vertexData2[i*16+9] = 0.0;
-				_vertexData2[i*16+10] = 100;
-				_vertexData2[i*16+11] = -100;
-				
-				_vertexData2[i*16+12] = 0.0;
-				_vertexData2[i*16+13] = 0.0;
-				_vertexData2[i*16+14] = -100;
-				_vertexData2[i*16+15] = -100;
+				for(j=0;j<subGeo.numVertices;j++)
+				{
+					_vertexData2[i*len+j*4+0] = 0;
+					_vertexData2[i*len+j*4+1] = 0;
+					_vertexData2[i*len+j*4+2] = 0; 
+					_vertexData2[i*len+j*4+3] = 0;
+				}
 			}
 			// vertexBuffer3
 			_vertexData3 = new Vector.<Number>(_maxVertexNum*4, true);
 			for(i=0;i<maxParticleNumber;i++)
 			{
-				_vertexData3[i*16] = 0;
-				_vertexData3[i*16+1] = 0;
-				_vertexData3[i*16+2] = 0;
-				_vertexData3[i*16+3] = 0;
-				
-				_vertexData3[i*16+4] = 0;
-				_vertexData3[i*16+5] = 0;
-				_vertexData3[i*16+6] = 0;
-				_vertexData3[i*16+7] = 0;
-				
-				_vertexData3[i*16+8] = 0;
-				_vertexData3[i*16+9] = 0;
-				_vertexData3[i*16+10] = 0;
-				_vertexData3[i*16+11] = 0;
-				
-				_vertexData3[i*16+12] = 0;
-				_vertexData3[i*16+13] = 0;
-				_vertexData3[i*16+14] = 0;
-				_vertexData3[i*16+15] = 0;
+				for(j=0;j<subGeo.numVertices;j++)
+				{
+					_vertexData3[i*len+j*4+0] = 0;
+					_vertexData3[i*len+j*4+1] = 0;
+					_vertexData3[i*len+j*4+2] = 0; 
+					_vertexData3[i*len+j*4+3] = 0;
+				}
 			}
 			
 			// vertexBuffer4 颜色(r, g, b, a)
 			_vertexData4 = new Vector.<Number>(_maxVertexNum*4, true);
 			for(i=0;i<maxParticleNumber;i++)
 			{
-				_vertexData4[i*16] = 0;
-				_vertexData4[i*16+1] = 0;
-				_vertexData4[i*16+2] = 0;
-				_vertexData4[i*16+3] = 0;
-				
-				_vertexData4[i*16+4] = 0;
-				_vertexData4[i*16+5] = 0;
-				_vertexData4[i*16+6] = 0;
-				_vertexData4[i*16+7] = 0;
-				
-				_vertexData4[i*16+8] = 0;
-				_vertexData4[i*16+9] = 0;
-				_vertexData4[i*16+10] = 0;
-				_vertexData4[i*16+11] = 0;
-				
-				_vertexData4[i*16+12] = 0;
-				_vertexData4[i*16+13] = 0;
-				_vertexData4[i*16+14] = 0;
-				_vertexData4[i*16+15] = 0;
+				for(j=0;j<subGeo.numVertices;j++)
+				{
+					_vertexData4[i*len+j*4+0] = 0;
+					_vertexData4[i*len+j*4+1] = 0;
+					_vertexData4[i*len+j*4+2] = 0; 
+					_vertexData4[i*len+j*4+3] = 0;
+				}
 			}
-			// 创建 indexbuffer
-			_maxIndexNum = maxParticleNumber*6;			// 一个粒子6个index
-			_indexData = new Vector.<uint>(_maxIndexNum, true);
+			// vertexBuffer5 偏移(ox, oy, oz)
+			_vertexData5 = new Vector.<Number>(_maxVertexNum*4, true);
 			
 			for(i=0;i<maxParticleNumber;i++)
 			{
-				_indexData[i*6] = i*4;			// 0 1 2
-				_indexData[i*6+1] = i*4+1;
-				_indexData[i*6+2] = i*4+2;
-				_indexData[i*6+3] = i*4;			// 0 2 3
-				_indexData[i*6+4] = i*4+2;
-				_indexData[i*6+5] = i*4+3;
+				for(j=0; j<subGeo.numVertices; j++)
+				{
+					_vertexData5[i*len+j*4+0] = subGeo.vertexData[j*3];
+					_vertexData5[i*len+j*4+1] = subGeo.vertexData[j*3+1];
+					_vertexData5[i*len+j*4+2] = subGeo.vertexData[j*3+2];
+					_vertexData5[i*len+j*4+3] = 1;
+				}
+			}
+			
+			// 创建 indexbuffer
+			_maxIndexNum = maxParticleNumber*subGeo.numTriangles*3;			// 一个粒子n个index
+			_indexData = new Vector.<uint>(_maxIndexNum, true);
+			
+			len = subGeo.numTriangles*3;
+			for(i=0;i<maxParticleNumber;i++)
+			{
+				for(j=0; j<len; j++)
+				{
+					_indexData[i*len+j] = subGeo.indexData[j] + subGeo.numVertices*i;
+				}
 			}				
 			
 			
@@ -237,6 +263,7 @@ package away3d.particle.Displayer
 			invalidateBuffers(_vertexBufferDirty2);
 			invalidateBuffers(_vertexBufferDirty3);
 			invalidateBuffers(_vertexBufferDirty4);
+			invalidateBuffers(_vertexBufferDirty5);
 		
 		}
 		
@@ -253,18 +280,10 @@ package away3d.particle.Displayer
 			for(i=0; i<=_particleSystem.maxLiveParticleIndex; i++)
 			{
 				var p : Particle = _Particles[i];				
-//				_vertexData2[i*16] = p.pastTime;
-//				_vertexData2[i*16+4] = p.pastTime;
-//				_vertexData2[i*16+8] = p.pastTime;
-//				_vertexData2[i*16+12] = p.pastTime;
-				
-//				Debug.bltrace(p.pastTime);
 				if(!p.IsDead())
 					liveCount++;
 			}
 			_particleSystem.particleNum = liveCount;
-			
-//			invalidateBuffers(_vertexBufferContext2);
 			
 			// 更新时间
 			GpuParticleMaterial(material).currentTime = traverser.time;
@@ -295,70 +314,48 @@ package away3d.particle.Displayer
 			}
 			
 			var index:int = newParticle.index;
+			
+			var i:int;
+			var j:int;
+			var len:int;
+			var subGeo : SubGeometry = _paritlceSubGeo;
+			var numVertices : int = subGeo.numVertices;
+			
 			// va0 粒子的位置
-			_vertexData0[index*12+0] = newParticle.pos.x;
-			_vertexData0[index*12+1] = newParticle.pos.y;
-			_vertexData0[index*12+2] = newParticle.pos.z;
+			len = numVertices*3;
+			for(i=0; i<numVertices; i++)
+			{
+				_vertexData0[index*len+i*3] = newParticle.pos.x;
+				_vertexData0[index*len+i*3+1] = newParticle.pos.y;
+				_vertexData0[index*len+i*3+2] = newParticle.pos.z;
 			
-			_vertexData0[index*12+3] = newParticle.pos.x;
-			_vertexData0[index*12+4] = newParticle.pos.y;
-			_vertexData0[index*12+5] = newParticle.pos.z;
-			
-			_vertexData0[index*12+6] = newParticle.pos.x;
-			_vertexData0[index*12+7] = newParticle.pos.y;
-			_vertexData0[index*12+8] = newParticle.pos.z;
-			
-			_vertexData0[index*12+9] = newParticle.pos.x;
-			_vertexData0[index*12+10] = newParticle.pos.y;
-			_vertexData0[index*12+11] = newParticle.pos.z;
-			
+			}
 			invalidateBuffers(_vertexBufferDirty);
 			
 			// va1 粒子的初始uv和sizeX,sizeY偏移
-			_vertexData1[index*16] = 0.0;
-			_vertexData1[index*16+1] = 0.0;
-			_vertexData1[index*16+2] = -newParticle.sizeX/2;
-			_vertexData1[index*16+3] = newParticle.sizeY/2;
-			
-			_vertexData1[index*16+4] = scaleU;
-			_vertexData1[index*16+5] = 0.0;
-			_vertexData1[index*16+6] = newParticle.sizeX/2;
-			_vertexData1[index*16+7] = newParticle.sizeY/2;
-			
-			_vertexData1[index*16+8] = scaleU;
-			_vertexData1[index*16+9] = scaleV;
-			_vertexData1[index*16+10] = newParticle.sizeX/2;
-			_vertexData1[index*16+11] = -newParticle.sizeY/2;
-			
-			_vertexData1[index*16+12] = 0.0;
-			_vertexData1[index*16+13] = scaleV;
-			_vertexData1[index*16+14] = -newParticle.sizeX/2;
-			_vertexData1[index*16+15] = -newParticle.sizeY/2;
+			len = numVertices*4;
+			for(i=0; i<subGeo.numVertices; i++)
+			{
+				_vertexData1[index*len+i*4] = subGeo.UVData[i*2] * scaleU;
+				_vertexData1[index*len+i*4+1] = subGeo.UVData[i*2+1] * scaleV;
+				_vertexData1[index*len+i*4+2] = newParticle.sizeX/2;
+				_vertexData1[index*len+i*4+3] = newParticle.sizeY/2;
+			}
 			
 			invalidateBuffers(_vertexBufferDirty1);
 			
 			
 			// va2 粒子生命期
-			var liftTime : int = newParticle.pastTime + newParticle.remainTime
-			_vertexData2[index*16] = newParticle.startTime;
-			_vertexData2[index*16+1] = liftTime;
-			_vertexData2[index*16+2] = newParticle.rot;
-			_vertexData2[index*16+3] = newParticle.rotVel;
+			var liftTime : int = newParticle.pastTime + newParticle.remainTime;
 			
-			_vertexData2[index*16+4] = newParticle.startTime;
-			_vertexData2[index*16+5] = liftTime;
-			_vertexData2[index*16+6] = newParticle.rot;
-			_vertexData2[index*16+7] = newParticle.rotVel;
+			for(i=0; i<subGeo.numVertices; i++)
+			{
+				_vertexData2[index*len+i*4] = newParticle.startTime;
+				_vertexData2[index*len+i*4+1] = liftTime;
+				_vertexData2[index*len+i*4+2] = newParticle.rot;
+				_vertexData2[index*len+i*4+3] = newParticle.rotVel;
+			}
 			
-			_vertexData2[index*16+8] = newParticle.startTime;
-			_vertexData2[index*16+9] = liftTime;
-			_vertexData2[index*16+10] = newParticle.rot;
-			_vertexData2[index*16+11] = newParticle.rotVel;
-			
-			_vertexData2[index*16+12] = newParticle.startTime;
-			_vertexData2[index*16+13] = liftTime;
-			_vertexData2[index*16+14] = newParticle.rot;
-			_vertexData2[index*16+15] = newParticle.rotVel;
 			
 			invalidateBuffers(_vertexBufferDirty2);
 			
@@ -366,51 +363,26 @@ package away3d.particle.Displayer
 			tmpVec3.copyFrom(newParticle.dir);
 			tmpVec3.scaleBy(newParticle.vel);
 			
-			_vertexData3[index*16] = tmpVec3.x;
-			_vertexData3[index*16+1] = tmpVec3.y;
-			_vertexData3[index*16+2] = tmpVec3.z;
-			_vertexData3[index*16+3] = 0;
-			
-			_vertexData3[index*16+4] = tmpVec3.x;
-			_vertexData3[index*16+5] = tmpVec3.y;
-			_vertexData3[index*16+6] = tmpVec3.z;
-			_vertexData3[index*16+7] = 0;
-			
-			_vertexData3[index*16+8] = tmpVec3.x;
-			_vertexData3[index*16+9] = tmpVec3.y;
-			_vertexData3[index*16+10] = tmpVec3.z;
-			_vertexData3[index*16+11] = 0;
-			
-			_vertexData3[index*16+12] = tmpVec3.x;
-			_vertexData3[index*16+13] = tmpVec3.y;
-			_vertexData3[index*16+14] = tmpVec3.z;
-			_vertexData3[index*16+15] = 0;
+			for(i=0; i<subGeo.numVertices; i++)
+			{
+				_vertexData3[index*len+i*4] = tmpVec3.x;
+				_vertexData3[index*len+i*4+1] = tmpVec3.y;
+				_vertexData3[index*len+i*4+2] = tmpVec3.z;;
+				_vertexData3[index*len+i*4+3] = 0;
+			}
 			
 			invalidateBuffers(_vertexBufferDirty3);
 			
 			// va4 粒子颜色
-			_vertexData4[index*16] = newParticle.r;
-			_vertexData4[index*16+1] = newParticle.g;
-			_vertexData4[index*16+2] = newParticle.b;
-			_vertexData4[index*16+3] = newParticle.alpha;
-			
-			_vertexData4[index*16+4] = newParticle.r;
-			_vertexData4[index*16+5] = newParticle.g;
-			_vertexData4[index*16+6] = newParticle.b;
-			_vertexData4[index*16+7] = newParticle.alpha;
-			
-			_vertexData4[index*16+8] = newParticle.r;
-			_vertexData4[index*16+9] = newParticle.g;
-			_vertexData4[index*16+10] = newParticle.b;
-			_vertexData4[index*16+11] = newParticle.alpha;
-			
-			_vertexData4[index*16+12] = newParticle.r;
-			_vertexData4[index*16+13] = newParticle.g;
-			_vertexData4[index*16+14] = newParticle.b;
-			_vertexData4[index*16+15] = newParticle.alpha;
+			for(i=0; i<subGeo.numVertices; i++)
+			{
+				_vertexData4[index*len+i*4] = newParticle.r;
+				_vertexData4[index*len+i*4+1] = newParticle.g;
+				_vertexData4[index*len+i*4+2] = newParticle.b;
+				_vertexData4[index*len+i*4+3] = newParticle.alpha;
+			}
 			
 			invalidateBuffers(_vertexBufferDirty4);
-			
 		}
 		
 		public function Stop(immediately:Boolean):void
@@ -418,15 +390,18 @@ package away3d.particle.Displayer
 			if(immediately)
 			{	// 所有粒子死亡
 				var i:int;
+				var j:int;
+				var subGeo : SubGeometry = _paritlceSubGeo;
+				var numVertices : int = subGeo.numVertices;
 				var _Particles : Vector.<Particle> = _particleSystem.particles;
 				
 				for(i=0; i<=_particleSystem.maxLiveParticleIndex; i++)
 				{
-					var p : Particle = _Particles[i];				
-					_vertexData2[i*16] = 0;
-					_vertexData2[i*16+4] = 0;
-					_vertexData2[i*16+8] = 0;
-					_vertexData2[i*16+12] = 0;
+					var p : Particle = _Particles[i];
+					for(j=0; j<numVertices; j++)
+					{
+						_vertexData2[i*numVertices*4+j*4] = 0;
+					}
 				}
 				invalidateBuffers(_vertexBufferDirty2);
 			}
@@ -600,6 +575,31 @@ package away3d.particle.Displayer
 			return _vertexBuffer4[contextIndex];
 		}
 		
+		public function getVertexBuffer5(stage3DProxy:Stage3DProxy):VertexBuffer3D
+		{
+			var contextIndex : int = stage3DProxy._stage3DIndex;
+			var context : Context3D = stage3DProxy._context3D;
+			
+			if (_vertexBufferContext5[contextIndex] != context || !_vertexBuffer5[contextIndex]) 
+			{
+				if(_vertexBuffer5[contextIndex])
+				{
+					Context3DProxy.disposeVertexBuffer(_vertexBuffer5[contextIndex]);
+				}
+				_vertexBuffer5[contextIndex] = Context3DProxy.createVertexBuffer(_maxVertexNum, 4);
+				_vertexBufferContext5[contextIndex] = context;
+				_vertexBufferDirty5[contextIndex] = true;
+			}
+			
+			if(_vertexBufferDirty5[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_vertexBuffer5[contextIndex], _vertexData5, 0, _maxVertexNum);
+				_vertexBufferDirty5[contextIndex] = false;
+			}
+			
+			return _vertexBuffer5[contextIndex];
+		}
+		
 		public function getIndexBuffer(stage3DProxy:Stage3DProxy):IndexBuffer3D
 		{
 			var contextIndex : int = stage3DProxy._stage3DIndex;
@@ -672,6 +672,11 @@ package away3d.particle.Displayer
 			{
 				Context3DProxy.disposeVertexBuffer(_vertexBuffer4[index]);
 				_vertexBuffer4[index] = null;
+			}
+			if (_vertexBuffer5[index]) 
+			{
+				Context3DProxy.disposeVertexBuffer(_vertexBuffer5[index]);
+				_vertexBuffer5[index] = null;
 			}
 			if (_indexBuffer[index]) 
 			{

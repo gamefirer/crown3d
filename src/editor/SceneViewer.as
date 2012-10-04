@@ -52,9 +52,9 @@ package editor
 		private function onInitEngine():void
 		{
 			// 显示场景编辑界面
-			BlEditorManager.instance().showResourceEditor(true);
+//			BlEditorManager.instance().showResourceEditor(true);
 //			BlEditorManager.instance().showSceneEditor(true);
-//			BlEditorManager.instance().showEffectEditor(true);
+			BlEditorManager.instance().showEffectEditor(true);
 			
 			
 			if(BlEditorManager.instance()._sceneEditor)

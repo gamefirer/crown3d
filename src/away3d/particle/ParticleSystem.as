@@ -76,7 +76,8 @@ package away3d.particle
 		public function ParticleSystem(material : MaterialBase,
 									   emitter : ParticleEmitterBase,
 									   max : int = 20,
-									   usdDisplayer : ParticleDisplayerBase = null)
+									   usdDisplayer : ParticleDisplayerBase = null,
+										geo : Geometry = null)
 		{
 			super();
 			
@@ -99,7 +100,7 @@ package away3d.particle
 			{
 				if(useGpuParticle)
 				{
-					_displayer = new GpuDisplayer(this);
+					_displayer = new GpuDisplayer(this, geo);
 					_useGpu = true;
 				}
 				else
@@ -459,7 +460,7 @@ package away3d.particle
 		public function get numTriangles() : uint
 		{
 			if(_useGpu)
-				return _maxParticleNumber*2;			// 使用gpu时，渲染所有粒子
+				return _maxParticleNumber*GpuDisplayer(_displayer).trianglesPerParticle;			// 使用gpu时，渲染所有粒子
 			else
 				return _particleNum*2;
 		}

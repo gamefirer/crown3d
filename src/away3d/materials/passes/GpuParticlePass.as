@@ -71,9 +71,8 @@ package away3d.materials.passes
 		{
 			super();
 			
-			_numUsedStreams = 5;
+			_numUsedStreams = 6;
 			_numUsedTextures = 1;
-			_numUsedVertexConstants = 36;
 			
 			_particleTexture = DefaultMaterialManager.getDefaultTexture();		//  默认贴图
 			
@@ -241,8 +240,9 @@ package away3d.materials.passes
 		 * va0		起始位置(x,y,z)
 		 * va1		uv和顶点偏移(u,v,sizeX,sizeY)
 		 * va2		生命值和旋转(starttime, lifetime, rot, rotv)
-		 * va3		速度(Vx,Vy,Vz)
+		 * va3		速度(Vx,Vy,Vz, ?)
 		 * va4		颜色(r,g,b,a) 
+		 * va5		顶点偏移(ox,oy,oz, ?)
 		 * 
 		 */		
 		/**
@@ -520,7 +520,8 @@ package away3d.materials.passes
 				"mov vt1.w, vc"+vcStart+".x\n" +		// vt1.w = 0
 				"mul vt1, vt1, vt5.w\n" +	// vt1 = 粒子速度*粒子生命/1000
 				"div vt1, vt1, vc"+(vcStart+1)+".x\n" +	// /1000
-				"add vt0, vt0, vt1\n";		// p = p + vt
+				"add vt0, vt0, vt1\n"+		// p = p + vt
+				"add vt0.xyz, vt0.xyz, va5.xyz\n";	// p = p + offset
 					
 			// 投影前.... vt0为粒子位置
 			if(_orient == BillboardType_billboard)
@@ -705,9 +706,9 @@ package away3d.materials.passes
 			return code;
 		}
 		/**
-		 *	v0	[u, v, ?, ?] 
+		 *		v0	[u, v, ?, ?] 
 		 * 	v1	[r,	g, b, a]
-		 *  v2	[dead, ?, ?, ?]		// x 是否粒子死亡不渲染-1
+		 *  	v2	[dead, ?, ?, ?]		// x 是否粒子死亡不渲染-1
 		 */	
 		arcane override function getFragmentCode() : String
 		{
@@ -743,6 +744,7 @@ package away3d.materials.passes
 			stage3DProxy.setSimpleVertexBuffer(2, displayer.getVertexBuffer2(stage3DProxy), Context3DVertexBufferFormat.FLOAT_4);
 			stage3DProxy.setSimpleVertexBuffer(3, displayer.getVertexBuffer3(stage3DProxy), Context3DVertexBufferFormat.FLOAT_4);
 			stage3DProxy.setSimpleVertexBuffer(4, displayer.getVertexBuffer4(stage3DProxy), Context3DVertexBufferFormat.FLOAT_4);
+			stage3DProxy.setSimpleVertexBuffer(5, displayer.getVertexBuffer5(stage3DProxy), Context3DVertexBufferFormat.FLOAT_4);
 			
 			
 			// 0,1
@@ -785,6 +787,8 @@ package away3d.materials.passes
 			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+32, _attractEffectorVect4, 1);
 			// 33 current time
 			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+33, _timeVect4, 1);
+			
+			_numUsedVertexConstants = vcStart + 34;
 			
 			super.render(renderable, stage3DProxy, camera, lightPicker);	
 		}

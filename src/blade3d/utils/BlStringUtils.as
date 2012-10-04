@@ -5,6 +5,7 @@ package blade3d.utils
 {
 	public class BlStringUtils
 	{
+		static public var modelExtName : String = ".3ds";
 		static public var texExtName : String = ".dds";
 		static public var vertexColorExtName : String = ".3dc";
 		

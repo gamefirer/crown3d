@@ -121,14 +121,26 @@ package blade3d.effect
 			particleList = _srcXML.particle;
 			for each(top_xml in particleList)
 			{
+				// 粒子的贴图
 				resUrl = top_xml.@texture;
-				if(resUrl.length == 0) continue;
-				
-				resUrl += BlStringUtils.texExtName;
-				resUrl = BlResourceManager.findValidPath(resUrl, _effPath);
-				res = BlResourceManager.instance().findResource(resUrl);
-				_prepareCount++;
-				res.asycLoad(onPrepareEffResource);
+				if(resUrl.length>0)
+				{
+					resUrl += BlStringUtils.texExtName;
+					resUrl = BlResourceManager.findValidPath(resUrl, _effPath);
+					res = BlResourceManager.instance().findResource(resUrl);
+					_prepareCount++;
+					res.asycLoad(onPrepareEffResource);
+				}
+				// 粒子的模型
+				resUrl = top_xml.@mesh;
+				if(resUrl.length>0)
+				{
+					resUrl += BlStringUtils.modelExtName;
+					resUrl = BlResourceManager.findValidPath(resUrl, _effPath);
+					res = BlResourceManager.instance().findResource(resUrl);
+					_prepareCount++;
+					res.asycLoad(onPrepareEffResource);
+				}
 			}
 			
 			onPrepareEffResource(null);

@@ -7,6 +7,7 @@ package blade3d.editor.effect
 	import blade3d.editor.BlResourceEditor;
 	import blade3d.effect.parser.BlEffectBaseParser;
 	import blade3d.resource.BlImageResource;
+	import blade3d.resource.BlModelResource;
 	import blade3d.resource.BlResource;
 	import blade3d.resource.BlResourceManager;
 	import blade3d.utils.BlStringUtils;
@@ -40,6 +41,9 @@ package blade3d.editor.effect
 		private var _billboard : JCheckBox;
 		// 朝向
 		private var _orient : JComboBox;
+		// 模型
+		private var _meshSelectBtn : JButton;
+		private var _meshUrl : JLabel;
 		// 贴图
 		private var _texSelectBtn: JButton;
 		private var _texUrl : JLabel;
@@ -94,6 +98,13 @@ package blade3d.editor.effect
 			vPanel.append(_orient);
 			_orient.addActionListener(updateData);
 			
+			// 模型
+			vPanel.append(new JLabel("粒子模型"));
+			vPanel.append(_meshSelectBtn = new JButton("选择模型"));
+			_meshSelectBtn.addActionListener(onSelectMesh);
+			
+			vPanel.append(_meshUrl = new JLabel(""));
+			
 			// 选择贴图
 			_texSelectBtn = new JButton("贴图");
 			_texSelectBtn.addActionListener(onSelectTex);
@@ -106,6 +117,40 @@ package blade3d.editor.effect
 			vPanel.append(_texPreview = new AssetPane);
 			_texPreview.scaleX = 1;
 			_texPreview.scaleY = 1;
+		}
+		
+		private function onSelectMesh(evt:Event):void
+		{
+			BlEditorManager.instance()._resourceEditor.setSelectFunction(onSelectMeshEnd, "选择粒子的模型", BlResourceEditor.FILTER_MESH);
+			BlEditorManager.instance().showResourceEditor(true);
+		}
+		
+		private function onSelectMeshEnd(res:BlResource):void
+		{
+			if(!_psXML) return;
+			
+			if(res.resType != BlResourceManager.TYPE_MESH)
+				return;
+			
+			BlModelResource(res).asycLoad(onLoadMesh);
+		}
+		
+		private function onLoadMesh(res:BlResource):void
+		{
+			if(!_psXML) return;
+			
+			// 顶点数检查
+			if(BlModelResource(res).geo.subGeometries.length == 0) return;
+			
+			var allVertexCount : uint = BlModelResource(res).geo.subGeometries[0].numVertices * _particleMax.getValue();
+			if(allVertexCount >= 0xffff)
+			{
+				_meshUrl.setText("顶点数太多");
+				return;
+			}
+			
+			_meshUrl.setText(res.url);
+			_psXML.@mesh = BlStringUtils.extractFileNameNoExt(res.url);
 		}
 		
 		private function onSelectTex(evt:Event):void
