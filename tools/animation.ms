@@ -129,7 +129,7 @@ function SkinCheck =
 		isOnlyOneMat = true
 		matId = -1
 		for fi=1 to faceNum do
-		(		
+		(	
 			if fi == 1 then
 				matId = getFaceMatID meshi fi
 			else

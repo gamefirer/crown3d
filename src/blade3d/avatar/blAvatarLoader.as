@@ -11,6 +11,7 @@ package blade3d.avatar
 	import away3d.materials.utils.DefaultMaterialManager;
 	
 	import blade3d.resource.BlBinaryResource;
+	import blade3d.resource.BlImageResource;
 	import blade3d.resource.BlResource;
 	import blade3d.resource.BlResourceConfig;
 	import blade3d.resource.BlResourceManager;
@@ -196,7 +197,11 @@ package blade3d.avatar
 			// 解析贴图
 			_meshLoadCount++;	// call onTextureLoaded
 			var textureFullFileName :String = _avatar_dir + "avatar" + BlResourceConfig.FILE_TYPE_TEXTURE;
-			BlResourceManager.instance().findImageResource(textureFullFileName).asycLoad(onTextureLoaded);
+			var texRes : BlImageResource = BlResourceManager.instance().findImageResource(textureFullFileName);
+			if(texRes)
+				texRes.asycLoad(onTextureLoaded);
+			else
+				onTextureLoaded(null);
 			// 解析mesh
 			var mi:int;
 			var meshName:String;
@@ -352,7 +357,9 @@ package blade3d.avatar
 		
 		private function onTextureLoaded(res:BlResource) : void
 		{	// 贴图加载完毕
-			var bm : BitmapData = res.res;
+			var bm : BitmapData = null;
+			if(res)
+				bm = res.res;
 			if(bm)
 				_textureBmp = bm;
 			else

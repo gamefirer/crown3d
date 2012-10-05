@@ -7,6 +7,7 @@ package away3d.animators
 	import away3d.core.base.*;
 	import away3d.core.managers.*;
 	import away3d.core.math.*;
+	import away3d.debug.Debug;
 	import away3d.entities.BoneTag;
 	import away3d.events.*;
 	import away3d.materials.passes.*;
@@ -24,6 +25,7 @@ package away3d.animators
 	 */
 	public class SkeletonAnimator extends AnimatorBase implements IAnimator
 	{
+		public static var useDualQuat : Boolean = true;		// 使用双四元数
 		public static var calcTimes : uint = 0;			// 骨骼计算次数 
 		
 		private var _activeNode:ISkeletonAnimationNode;
@@ -43,6 +45,7 @@ package away3d.animators
 		private var _jointsPerVertex : uint;
 		private var _stateTransition:StateTransitionBase;
 		
+		static private var _constantVector : Vector.<Number> = new <Number>[0, 1, 0, 0];		// 骨骼计算用常量寄存器
 		private var _BoneTags : Vector.<BoneTag> = new Vector.<BoneTag>;		// 骨骼上的attach点
 		
 		/**
@@ -149,17 +152,30 @@ package away3d.animators
 			_skeletonAnimationSet = skeletonAnimationSet;
 			_skeleton = skeleton;
 			_forceCPU = forceCPU;
+//			_forceCPU = true;
 			_jointsPerVertex = _skeletonAnimationSet.jointsPerVertex;
 			
 			_numJoints = _skeleton.numJoints;
-			_globalMatrices = new Vector.<Number>(_numJoints*12, true);
+			if(useDualQuat)
+				_globalMatrices = new Vector.<Number>(_numJoints*8, true);			// 每个骨头只需要2个常量寄存器
+			else
+				_globalMatrices = new Vector.<Number>(_numJoints*12, true);
 			_bufferFormat = "float" + _jointsPerVertex;
 
 			var j : int;
-			for (var i : uint = 0; i < _numJoints; ++i) {
-				_globalMatrices[j++] = 1; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0;
-				_globalMatrices[j++] = 0; _globalMatrices[j++] = 1; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0;
-				_globalMatrices[j++] = 0; _globalMatrices[j++] = 0; _globalMatrices[j++] = 1; _globalMatrices[j++] = 0;
+			for (var i : uint = 0; i < _numJoints; ++i)
+			{
+				if(useDualQuat)
+				{
+					_globalMatrices[j++] = 0; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0;
+					_globalMatrices[j++] = 0; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0;
+				}
+				else
+				{
+					_globalMatrices[j++] = 1; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0;
+					_globalMatrices[j++] = 0; _globalMatrices[j++] = 1; _globalMatrices[j++] = 0; _globalMatrices[j++] = 0;
+					_globalMatrices[j++] = 0; _globalMatrices[j++] = 0; _globalMatrices[j++] = 1; _globalMatrices[j++] = 0;
+				}
 			}
 		}
 		
@@ -208,14 +224,18 @@ package away3d.animators
 
 			// using condensed data
 			var numCondensedJoints : uint = skinnedGeom.numCondensedJoints;
-			if (_useCondensedIndices) {
+			if (_useCondensedIndices) 
+			{
 				if (skinnedGeom.numCondensedJoints == 0)
 					skinnedGeom.condenseIndexData();
 				updateCondensedMatrices(skinnedGeom.condensedIndexLookUp, numCondensedJoints);
 				stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vertexConstantOffset, _condensedMatrices, numCondensedJoints*3);
 			}
-			else {
-				if (_skeletonAnimationSet.usesCPU) {
+			else
+			{
+				// CPU骨骼动画
+				if (_skeletonAnimationSet.usesCPU) 
+				{
 					var subGeomAnimState : SubGeomAnimationState = _animationStates[skinnedGeom] ||= new SubGeomAnimationState(skinnedGeom);
 
 					if (subGeomAnimState.dirty) {
@@ -227,7 +247,14 @@ package away3d.animators
 					skinnedGeom.animatedTangentData = subGeomAnimState.animatedTangentData;
 					return;
 				}
-				stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vertexConstantOffset, _globalMatrices, _numJoints*3);
+				// GPU骨骼动画
+				if(useDualQuat)
+				{
+					stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vertexConstantOffset, _constantVector, 1);
+					stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vertexConstantOffset+1, _globalMatrices, _numJoints*2);
+				}
+				else
+					stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vertexConstantOffset, _globalMatrices, _numJoints*3);
 			}
 
 			stage3DProxy.setSimpleVertexBuffer(vertexStreamOffset, skinnedGeom.getJointIndexBuffer(stage3DProxy), _bufferFormat, 0);
@@ -239,8 +266,19 @@ package away3d.animators
          */
         public function testGPUCompatibility(pass : MaterialPassBase) : void
         {
-			if (!_useCondensedIndices && (_forceCPU || _jointsPerVertex > 4 || pass.numUsedVertexConstants + _numJoints * 3 > 128)) {
-				_skeletonAnimationSet._usesCPU = true;
+			if(useDualQuat)
+			{
+				if (!_useCondensedIndices && (_forceCPU || _jointsPerVertex > 4 || pass.numUsedVertexConstants + 1 + _numJoints * 2 > 128)) 
+				{
+					_skeletonAnimationSet._usesCPU = true;
+				}
+			}
+			else
+			{
+				if (!_useCondensedIndices && (_forceCPU || _jointsPerVertex > 4 || pass.numUsedVertexConstants + _numJoints * 3 > 128)) 
+				{
+					_skeletonAnimationSet._usesCPU = true;
+				}
 			}
         }
 		
@@ -284,6 +322,8 @@ package away3d.animators
 			} while (++i < numJoints);
 		}
 		
+		static private var vector16 : Vector.<Number> = new Vector.<Number>(16,true);		// 计算双四元数用
+		static private var globalMatrix : Matrix3D = new Matrix3D;
 		private function updateGlobalProperties() : void
 		{
 			_globalPropertiesDirty = false;
@@ -310,37 +350,133 @@ package away3d.animators
 			var quat : Quaternion;
 			var vec : Vector3D;
 
-			for (var i : uint = 0; i < _numJoints; ++i) {
+			for (var i : uint = 0; i < _numJoints; ++i) 
+			{
+				// 骨头的旋转和位移
 				pose = globalPoses[i];
 				quat = pose.orientation;
 				vec = pose.translation;
+				
+				// 四元数 -> 矩阵
+				// [ w^2+x^2-y^2-z^2 , 2xy-2wz , 2xz+2wy ]
+				// [ 2xy+2wz , w^2-x^2-y^2-z^2 , 2yz-2wx ]
+				// [ 2xz-2wy , 2yz+2wx , w^2-x^2-y^2-z^2 ]
 				ox = quat.x;	oy = quat.y;	oz = quat.z;	ow = quat.w;
 				xy2 = 2.0 * ox * oy; 	xz2 = 2.0 * ox * oz; 	xw2 = 2.0 * ox * ow;
 				yz2 = 2.0 * oy * oz; 	yw2 = 2.0 * oy * ow; 	zw2 = 2.0 * oz * ow;
 				xx = ox * ox;			yy = oy * oy;			zz = oz * oz; 			ww = ow * ow;
-
+				
+				// \ n11 n21 n31 0 \
+				// \ n12 n22 n32 0 \
+				// \ n13 n23 n33 0 \
+				// \ n14 n24 n34 1 \
 				n11 = xx - yy - zz + ww;	n12 = xy2 - zw2;			n13 = xz2 + yw2;			n14 = vec.x;
 				n21 = xy2 + zw2;			n22 = -xx + yy - zz + ww;	n23 = yz2 - xw2;			n24 = vec.y;
 				n31 = xz2 - yw2;			n32 = yz2 + xw2;			n33 = -xx - yy + zz + ww;	n34 = vec.z;
 
-				// prepend inverse bind pose
+				// prepend inverse bind pose(绑定位置的逆矩阵)
+				// \ m11 m21 m31 0 \
+				// \ m12 m22 m32 0 \
+				// \ m13 m23 m33 0 \
+				// \ m14 m24 m34 1 \
 				raw = joints[i].inverseBindPose;
 				m11 = raw[0];	m12 = raw[4];	m13 = raw[8];	m14 = raw[12];
 				m21 = raw[1];	m22 = raw[5];   m23 = raw[9];	m24 = raw[13];
 				m31 = raw[2];   m32 = raw[6];   m33 = raw[10];  m34 = raw[14];
-
-				_globalMatrices[mtxOffset++] = n11 * m11 + n12 * m21 + n13 * m31;
-				_globalMatrices[mtxOffset++] = n11 * m12 + n12 * m22 + n13 * m32;
-				_globalMatrices[mtxOffset++] = n11 * m13 + n12 * m23 + n13 * m33;
-				_globalMatrices[mtxOffset++] = n11 * m14 + n12 * m24 + n13 * m34 + n14;
-				_globalMatrices[mtxOffset++] = n21 * m11 + n22 * m21 + n23 * m31;
-				_globalMatrices[mtxOffset++] = n21 * m12 + n22 * m22 + n23 * m32;
-				_globalMatrices[mtxOffset++] = n21 * m13 + n22 * m23 + n23 * m33;
-				_globalMatrices[mtxOffset++] = n21 * m14 + n22 * m24 + n23 * m34 + n24;
-				_globalMatrices[mtxOffset++] = n31 * m11 + n32 * m21 + n33 * m31;
-				_globalMatrices[mtxOffset++] = n31 * m12 + n32 * m22 + n33 * m32;
-				_globalMatrices[mtxOffset++] = n31 * m13 + n32 * m23 + n33 * m33;
-				_globalMatrices[mtxOffset++] = n31 * m14 + n32 * m24 + n33 * m34 + n34;
+				
+				// _globalMatrices = [m]*[n];
+				if(!useDualQuat)
+				{
+					_globalMatrices[mtxOffset++] = n11 * m11 + n12 * m21 + n13 * m31;
+					_globalMatrices[mtxOffset++] = n11 * m12 + n12 * m22 + n13 * m32;
+					_globalMatrices[mtxOffset++] = n11 * m13 + n12 * m23 + n13 * m33;
+					_globalMatrices[mtxOffset++] = n11 * m14 + n12 * m24 + n13 * m34 + n14;
+					_globalMatrices[mtxOffset++] = n21 * m11 + n22 * m21 + n23 * m31;
+					_globalMatrices[mtxOffset++] = n21 * m12 + n22 * m22 + n23 * m32;
+					_globalMatrices[mtxOffset++] = n21 * m13 + n22 * m23 + n23 * m33;
+					_globalMatrices[mtxOffset++] = n21 * m14 + n22 * m24 + n23 * m34 + n24;
+					_globalMatrices[mtxOffset++] = n31 * m11 + n32 * m21 + n33 * m31;
+					_globalMatrices[mtxOffset++] = n31 * m12 + n32 * m22 + n33 * m32;
+					_globalMatrices[mtxOffset++] = n31 * m13 + n32 * m23 + n33 * m33;
+					_globalMatrices[mtxOffset++] = n31 * m14 + n32 * m24 + n33 * m34 + n34;
+				}
+				else
+				{
+					vector16[0] = n11 * m11 + n12 * m21 + n13 * m31;
+					vector16[4] = n11 * m12 + n12 * m22 + n13 * m32;
+					vector16[8] = n11 * m13 + n12 * m23 + n13 * m33;
+					vector16[12] = n11 * m14 + n12 * m24 + n13 * m34 + n14;
+					
+					vector16[1] = n21 * m11 + n22 * m21 + n23 * m31;
+					vector16[5] = n21 * m12 + n22 * m22 + n23 * m32;
+					vector16[9] = n21 * m13 + n22 * m23 + n23 * m33;
+					vector16[13] = n21 * m14 + n22 * m24 + n23 * m34 + n24;
+					
+					vector16[2] = n31 * m11 + n32 * m21 + n33 * m31;
+					vector16[6] = n31 * m12 + n32 * m22 + n33 * m32;
+					vector16[10] = n31 * m13 + n32 * m23 + n33 * m33;
+					vector16[14] = n31 * m14 + n32 * m24 + n33 * m34 + n34;
+					
+					vector16[3] = 0;
+					vector16[7] = 0;
+					vector16[11] = 0;
+					vector16[15] = 1;
+					
+					globalMatrix.copyRawDataFrom(vector16);
+					var vec3 : Vector.<Vector3D> = globalMatrix.decompose("quaternion");
+					
+					// 位移pos
+					_globalMatrices[mtxOffset++] = vec3[0].x;
+					_globalMatrices[mtxOffset++] = vec3[0].y;
+					_globalMatrices[mtxOffset++] = vec3[0].z;
+					_globalMatrices[mtxOffset++] = vec3[0].w;		// = 0
+					// 旋转quat(规范化)
+					_globalMatrices[mtxOffset++] = vec3[1].x;
+					_globalMatrices[mtxOffset++] = vec3[1].y;
+					_globalMatrices[mtxOffset++] = vec3[1].z;
+					_globalMatrices[mtxOffset++] = vec3[1].w;
+					
+//					trace(vec3[0].x.toFixed(2), vec3[0].y.toFixed(2), vec3[0].z.toFixed(2), vec3[0].w.toFixed(2));
+//					trace(vec3[1].x.toFixed(2), vec3[1].y.toFixed(2), vec3[1].z.toFixed(2), vec3[1].w.toFixed(2));
+//					Debug.assert( vec3[2].x == 1 && vec3[2].y == 1 && vec3[2].z == 1);
+					
+					// 测试
+//					var vector2_16 : Vector.<Number> = new Vector.<Number>(16,true);
+//					var _x : Number = vec3[1].x;
+//					var _y : Number = vec3[1].y;
+//					var _z : Number = vec3[1].z;
+//					var _w : Number = vec3[1].w;
+//					
+//					var _2x : Number = _x + _x;
+//					var _2y : Number = _y + _y;
+//					var _2z : Number = _z + _z;
+//					
+//					var fTwx : Number = _2x*_w;
+//					var fTwy : Number = _2y*_w;
+//					var fTwz : Number = _2z*_w;
+//					var fTxx : Number = _2x*_x;
+//					var fTxy : Number = _2y*_x;
+//					var fTxz : Number = _2z*_x;
+//					var fTyy : Number = _2y*_y;
+//					var fTyz : Number = _2z*_y;
+//					var fTzz : Number = _2z*_z;
+//					
+//					vector2_16[0] = 1.0-(fTyy+fTzz);
+//					vector2_16[4] = fTxy-fTwz;
+//					vector2_16[8] = fTxz+fTwy;
+//					vector2_16[12] = 0;
+//					
+//					vector2_16[1] = fTxy+fTwz;
+//					vector2_16[5] = 1.0-(fTxx+fTzz);
+//					vector2_16[9] = fTyz-fTwx;
+//					vector2_16[13] = 0;
+//					
+//					vector2_16[2] = fTxz-fTwy;
+//					vector2_16[6] = fTyz+fTwx;
+//					vector2_16[10] = 1.0-(fTxx+fTyy);
+//					vector2_16[14] = 0;
+					
+				}
 			}
 			
 			// 骨骼数据更新时,相应的绑定点也要更新
@@ -395,28 +531,72 @@ package away3d.animators
 				// todo: can we use actual matrices when using cpu + using matrix.transformVectors, then adding them in loop?
 
 				k = 0;
-				while (k < _jointsPerVertex) {
+				while (k < _jointsPerVertex)
+				{
 					weight = jointWeights[j];
-					if (weight == 0) {
+					if (weight == 0) 
+					{
 						j += _jointsPerVertex - k;
 						k = _jointsPerVertex;
 					}
-					else {
+					else
+					{
 						// implicit /3*12 (/3 because indices are multiplied by 3 for gpu matrix access, *12 because it's the matrix size)
 						mtxOffset = jointIndices[uint(j++)]*4;
-						m11 = _globalMatrices[mtxOffset]; m12 = _globalMatrices[mtxOffset+1]; m13 = _globalMatrices[mtxOffset+2];
-						m21 = _globalMatrices[mtxOffset+4]; m22 = _globalMatrices[mtxOffset+5]; m23 = _globalMatrices[mtxOffset+6];
-						m31 = _globalMatrices[mtxOffset+8]; m32 = _globalMatrices[mtxOffset+9]; m33 = _globalMatrices[mtxOffset+10];
-						vx += weight*(m11*vertX + m12*vertY + m13*vertZ + _globalMatrices[mtxOffset+3]);
-						vy += weight*(m21*vertX + m22*vertY + m23*vertZ + _globalMatrices[mtxOffset+7]);
-						vz += weight*(m31*vertX + m32*vertY + m33*vertZ + _globalMatrices[mtxOffset+11]);
-
+						
+						if(useDualQuat)
+						{
+							var _x : Number =_globalMatrices[mtxOffset+4];
+							var _y : Number = _globalMatrices[mtxOffset+5];
+							var _z : Number = _globalMatrices[mtxOffset+6];
+							var _w : Number = _globalMatrices[mtxOffset+7];
+							
+							var _2x : Number = _x + _x;
+							var _2y : Number = _y + _y;
+							var _2z : Number = _z + _z;
+							
+							var fTwx : Number = _2x*_w;
+							var fTwy : Number = _2y*_w;
+							var fTwz : Number = _2z*_w;
+							var fTxx : Number = _2x*_x;
+							var fTxy : Number = _2y*_x;
+							var fTxz : Number = _2z*_x;
+							var fTyy : Number = _2y*_y;
+							var fTyz : Number = _2z*_y;
+							var fTzz : Number = _2z*_z;
+							
+							m11= 1.0-(fTyy+fTzz);
+							m12 = fTxy-fTwz;
+							m13 = fTxz+fTwy;
+							
+							m21 = fTxy+fTwz;
+							m22 = 1.0-(fTxx+fTzz);
+							m23 = fTyz-fTwx;
+							
+							m31 = fTxz-fTwy;
+							m32 = fTyz+fTwx;
+							m33 = 1.0-(fTxx+fTyy);
+							
+							vx += weight*(m11*vertX + m12*vertY + m13*vertZ + _globalMatrices[mtxOffset+0]);
+							vy += weight*(m21*vertX + m22*vertY + m23*vertZ + _globalMatrices[mtxOffset+1]);
+							vz += weight*(m31*vertX + m32*vertY + m33*vertZ + _globalMatrices[mtxOffset+2]);
+						}
+						else
+						{
+							m11 = _globalMatrices[mtxOffset]; m12 = _globalMatrices[mtxOffset+1]; m13 = _globalMatrices[mtxOffset+2];
+							m21 = _globalMatrices[mtxOffset+4]; m22 = _globalMatrices[mtxOffset+5]; m23 = _globalMatrices[mtxOffset+6];
+							m31 = _globalMatrices[mtxOffset+8]; m32 = _globalMatrices[mtxOffset+9]; m33 = _globalMatrices[mtxOffset+10];
+							vx += weight*(m11*vertX + m12*vertY + m13*vertZ + _globalMatrices[mtxOffset+3]);
+							vy += weight*(m21*vertX + m22*vertY + m23*vertZ + _globalMatrices[mtxOffset+7]);
+							vz += weight*(m31*vertX + m32*vertY + m33*vertZ + _globalMatrices[mtxOffset+11]);
+						}
 						nx += weight*(m11*normX + m12*normY + m13*normZ);
 						ny += weight*(m21*normX + m22*normY + m23*normZ);
 						nz += weight*(m31*normX + m32*normY + m33*normZ);
 						tx += weight*(m11*tangX + m12*tangY + m13*tangZ);
 						ty += weight*(m21*tangX + m22*tangY + m23*tangZ);
 						tz += weight*(m31*tangX + m32*tangY + m33*tangZ);
+
 						k++;
 					}
 				}

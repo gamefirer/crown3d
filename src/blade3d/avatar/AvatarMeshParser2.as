@@ -3,6 +3,7 @@
  */
 package blade3d.avatar
 {
+	import away3d.animators.SkeletonAnimator;
 	import away3d.arcane;
 	import away3d.core.base.SkinnedSubGeometry;
 	import away3d.core.math.Quaternion;
@@ -132,7 +133,10 @@ package blade3d.avatar
 				for(i=0; i<boneCount; i++)
 				{
 					var boneIndex:int = _byteData.readShort();								// bone index
-					_boneIndices[vertexIndex*4+i] = boneIndex*3;					// 一个骨头占用3个vector
+					if(SkeletonAnimator.useDualQuat)
+						_boneIndices[vertexIndex*4+i] = boneIndex*2;					// 使用双四元数，一个骨头只占用2个vector
+					else
+						_boneIndices[vertexIndex*4+i] = boneIndex*3;					// 一个骨头占用3个vector
 					var boneWeight:Number = _byteData.readFloat();							// bone weight
 					_boneWeights[vertexIndex*4+i] = boneWeight;
 				}

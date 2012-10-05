@@ -80,6 +80,7 @@ package blade3d.avatar
 		}
 		
 		public function get name() : String {return _AvatarName;}
+		public function isLoaded() : Boolean {return _loadState==LOAD_LOADED;}			// 是否加载完成
 		
 		public function load():void
 		{
@@ -209,10 +210,7 @@ package blade3d.avatar
 		{
 			return _SequenceArray.length;
 		}
-		
-		
-		
-		
+
 		public function freeMeshPool(freeCount : int) : void
 		{
 			for(var i:int=0; i<freeCount; i++)

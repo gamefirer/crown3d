@@ -14,6 +14,8 @@ package blade3d.editor
 	
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	
 	import org.aswing.ASColor;
 	import org.aswing.BorderLayout;
@@ -186,6 +188,7 @@ package blade3d.editor
 		}
 		
 		// 选择avatar
+		private var _avatarTimer : Timer = new Timer(500);
 		private function onAvatarListSelected(evt:SelectionEvent):void
 		{
 			var avatarName : String = _avatarList.getSelectedValue();
@@ -201,9 +204,30 @@ package blade3d.editor
 			}
 			_avatarNode.addChild(_avatarMesh);
 			
+			updateAvatarUI(null);
+		}
+		
+		private function updateAvatarUI(evt:Event):void
+		{
+			if(_avatarMesh.avatarStore.isLoaded())
+			{
+				_avatarTimer.stop();
+				_avatarTimer.removeEventListener(TimerEvent.TIMER, updateAvatarUI);
+			}
+			else
+			{
+				_avatarTimer.addEventListener(TimerEvent.TIMER, updateAvatarUI);
+				_avatarTimer.start();
+				return;
+			}
+			
+			_avatarMesh.material.bothSides = true;
+//			_avatarMesh.material.lightPicker = BlSceneManager.instance().lightPicker;
+			
 			updateAnimationList();
 			updateBoneTagList();
 		}
+		
 		// 选择动画
 		private function onAnimationListSelected(evt:SelectionEvent):void
 		{

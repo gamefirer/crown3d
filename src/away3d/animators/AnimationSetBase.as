@@ -1,11 +1,13 @@
 package away3d.animators
 {
-	import away3d.errors.AnimationSetError;
-	import flash.utils.Dictionary;
-	import away3d.library.assets.AssetType;
-	import away3d.library.assets.NamedAssetBase;
-	import away3d.library.assets.IAsset;
 	import away3d.arcane;
+	import away3d.debug.Debug;
+	import away3d.errors.AnimationSetError;
+	import away3d.library.assets.AssetType;
+	import away3d.library.assets.IAsset;
+	import away3d.library.assets.NamedAssetBase;
+	
+	import flash.utils.Dictionary;
 	
 	use namespace arcane;
 	
@@ -38,7 +40,23 @@ package away3d.animators
 				++i;
 			}
 
-			// can't be reached
+			Debug.assert(false, "can't be reached");
+			return null;
+		}
+		
+		protected function findTempReg2(exclude : Array, excludeAnothers : Array = null) : String
+		{
+			var i : uint;
+			var reg : String;
+			while (true)
+			{
+				reg = "vt" + i;
+				if (exclude.indexOf(reg) == -1 && excludeAnothers.indexOf(reg)  == -1)
+					return reg;
+				++i;
+			}
+			
+			Debug.assert(false, "can't be reached");
 			return null;
 		}
 		

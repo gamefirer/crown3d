@@ -1,2 +1,6 @@
+1bone
+1plane
+1tri
+2bone
 default
 zhanshi1
