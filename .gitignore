@@ -1,6 +1,7 @@
 .actionScriptProperties
 .project
 *.bak
+*.pyc
 .settings/
 bin-debug/
 bin-release/
