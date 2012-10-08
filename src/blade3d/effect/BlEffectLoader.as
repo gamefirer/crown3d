@@ -173,6 +173,13 @@ package blade3d.effect
 				var morphList : XMLList;
 				var i:int;
 				
+				// 特效自身属性
+				property_xml = _srcXML.property[0];
+				if(property_xml)
+				{
+					parseProperty(property_xml, newEffect);
+				}
+				
 				// 创建粒子
 				particleList = _srcXML.particle;
 				for each(top_xml in particleList)
@@ -182,6 +189,13 @@ package blade3d.effect
 				
 				newEffect.onCreate();		// 创建完毕
 			}
+		}
+		
+		// 解析特效系统的基础属性
+		private function parseProperty(xml:XML, newEffect:BlEffect) : void
+		{
+			newEffect.lifeTime = int(xml.@lifetime.toString());
+			cacheNumber = Math.max(1, int(xml.@cache.toString()));
 		}
 		
 	

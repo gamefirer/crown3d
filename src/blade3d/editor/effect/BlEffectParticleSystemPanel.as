@@ -35,6 +35,8 @@ package blade3d.editor.effect
 		
 		// 最大粒子数
 		private var _particleMax : JStepper;
+		// 双面渲染
+		private var _twoSide : JCheckBox;
 		// 全局空间
 		private var _global : JCheckBox;
 		// billboard
@@ -43,6 +45,7 @@ package blade3d.editor.effect
 		private var _orient : JComboBox;
 		// 模型
 		private var _meshSelectBtn : JButton;
+		private var _meshNoSelectBtn : JButton;
 		private var _meshUrl : JLabel;
 		// 贴图
 		private var _texSelectBtn: JButton;
@@ -69,11 +72,18 @@ package blade3d.editor.effect
 			var vPanel : JPanel = new JPanel(new VerticalLayout);
 			append(vPanel);
 			
+			var hPanel : JPanel;
+			
 			// 最大粒子数
 			vPanel.append(new JLabel("最大粒子数"));
 			_particleMax = new JStepper;
 			vPanel.append(_particleMax);
 			_particleMax.addActionListener(updateData);
+			
+			// 双面渲染
+			_twoSide = new JCheckBox("双面渲染");
+			vPanel.append(_twoSide);
+			_twoSide.addActionListener(updateData);
 			
 			// 全局空间
 			_global = new JCheckBox("全局空间");
@@ -100,8 +110,19 @@ package blade3d.editor.effect
 			
 			// 模型
 			vPanel.append(new JLabel("粒子模型"));
-			vPanel.append(_meshSelectBtn = new JButton("选择模型"));
+			vPanel.append(hPanel = new JPanel);
+			
+			hPanel.append(_meshSelectBtn = new JButton("选择模型"));
 			_meshSelectBtn.addActionListener(onSelectMesh);
+			
+			hPanel.append(_meshNoSelectBtn = new JButton("无模型"));
+			_meshNoSelectBtn.addActionListener(
+				function(evt:Event):void
+				{
+					_meshUrl.setText("");
+					_psXML.@mesh = "";
+				}
+			);
 			
 			vPanel.append(_meshUrl = new JLabel(""));
 			
@@ -182,6 +203,8 @@ package blade3d.editor.effect
 		{
 			_psXML.@max = _particleMax.getValue();
 			
+			_psXML.@twoside = _twoSide.isSelected() ? 1 : 0;
+			
 			_psXML.@global = _global.isSelected() ? "true" : "false";
 			
 			_psXML.@billboard = _billboard.isSelected() ? "true" : "false";
@@ -192,11 +215,15 @@ package blade3d.editor.effect
 		
 		private function updateUIByData():void
 		{
+			_twoSide.setSelected( int(_psXML.@twoside.toString()) == 1 );
 			_particleMax.setValue( int(_psXML.@max.toString()) );
 			_global.setSelected( (_psXML.@global.toString() == "true") );
 			_billboard.setSelected( _psXML.@billboard.toString() != "false" );
 			
 			_orient.setSelectedIndex( int(_psXML.@orient.toString()) );
+			
+			var meshFileName : String = _psXML.@mesh;
+			_meshUrl.setText(meshFileName);
 			
 			var texFileName : String = BlResourceManager.findValidPath(_psXML.@texture.toString() + BlStringUtils.texExtName, "effect/");
 			_texUrl.setText(texFileName);

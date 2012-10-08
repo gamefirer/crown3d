@@ -354,9 +354,9 @@ package blade3d.editor.effect
 			_emitXML.@grange = GR;
 			_emitXML.@brange = BR;
 			// 大小
-			_emitXML.@sizeX = _sizeX.getValue();
-			_emitXML.@sizeY = _sizeY.getValue();
-			_emitXML.@sizerange = _sizeRange.getValue();
+			_emitXML.@sizeX = Number(_sizeX.getValue() / 100).toFixed(2);
+			_emitXML.@sizeY = Number(_sizeY.getValue() / 100).toFixed(2);
+			_emitXML.@sizerange = Number(_sizeRange.getValue() / 100).toFixed(2);
 			
 			// 发射方向
 			_emitXML.@directionfrom = _directionFromX.getValue()+" "+_directionFromY.getValue()+" "+_directionFromZ.getValue();
@@ -436,9 +436,9 @@ package blade3d.editor.effect
 			_colorB2.setValue(B+BR);
 			
 			// 大小
-			_sizeX.setValue( int(_emitXML.@sizeX.toString()) );
-			_sizeY.setValue( int(_emitXML.@sizeY.toString()) );
-			_sizeRange.setValue( int(_emitXML.@sizerange.toString()) );
+			_sizeX.setValue( Number(_emitXML.@sizeX.toString()) * 100 );
+			_sizeY.setValue( Number(_emitXML.@sizeY.toString()) * 100 );
+			_sizeRange.setValue( Number(_emitXML.@sizerange.toString()) * 100 );
 			
 			// 发射方向
 			var dirFrom:Vector3D = BlEffectBaseParser.parseVector3D(_emitXML.@directionfrom.toString());

@@ -1,11 +1,14 @@
 box.3ds
+box.dds
 box.png
 knot.3ds
 man.3ds
 men.dds
 multibox.3ds
 multiplane.3ds
+sphere.3ds
 teapot.3ds
+teapot2.3ds
 test1.dds
 test2.dds
 torus.3ds

@@ -108,20 +108,20 @@ package away3d.particle.Displayer
 			// |   |
 			// 3---2
 			var vertices : Vector.<Number> = new Vector.<Number>(4*3, true);
-			vertices[0] = -50;
-			vertices[1] = 50;
+			vertices[0] = -1;
+			vertices[1] = 1;
 			vertices[2] = 0;
 			
-			vertices[3] = 50;
-			vertices[4] = 50;
+			vertices[3] = 1;
+			vertices[4] = 1;
 			vertices[5] = 0;
 			
-			vertices[6] = 50;
-			vertices[7] = -50;
+			vertices[6] = 1;
+			vertices[7] = -1;
 			vertices[8] = 0;
 			
-			vertices[9] = -50;
-			vertices[10] = -50;
+			vertices[9] = -1;
+			vertices[10] = -1;
 			vertices[11] = 0;
 			
 			var uvs : Vector.<Number> = new Vector.<Number>(4*2, true);
@@ -255,7 +255,6 @@ package away3d.particle.Displayer
 					_indexData[i*len+j] = subGeo.indexData[j] + subGeo.numVertices*i;
 				}
 			}				
-			
 			
 			invalidateBuffers(_indexBufferDirty);
 			invalidateBuffers(_vertexBufferDirty);

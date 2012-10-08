@@ -71,6 +71,7 @@ package blade3d.effect.parser
 				
 			}
 			
+			particleSystem.twoSide = (int(xml.@twoside.toString()) == 1);
 			particleSystem.isWolrdParticle = (xml.@global.toString() == "true");
 			particleSystem.isBillBoard = (xml.@billboard.toString() != "false");
 			particleSystem.particleOrient = int(xml.@orient.toString());
@@ -84,18 +85,9 @@ package blade3d.effect.parser
 			
 			newEffect.addParticle(particleSystem, startTime, endTime);
 			
-			if(meshName.length != 0)
-			{	// 粒子的mesh
-//				incResourceLoad();
-//				var meshFileName : String = _path + "/" + meshName + ".3ds";
-//				blAssetsLoader.getMeshFromURL(meshFileName, _particles.length, onParticleMesh);
-			}
-			else
-			{
-				// 粒子的贴图
-				var textureFileName : String = BlResourceManager.findValidPath(xml.@texture.toString() + BlStringUtils.texExtName, path);
-				particleSystem.material = new GpuParticleMaterial(BlResourceManager.instance().findImageResource(textureFileName).bmpData);
-			}
+			// 粒子的贴图
+			var textureFileName : String = BlResourceManager.findValidPath(xml.@texture.toString() + BlStringUtils.texExtName, path);
+			particleSystem.material = new GpuParticleMaterial(BlResourceManager.instance().findImageResource(textureFileName).bmpData);
 			
 			// 粒子影响器(必须放最后，在effector中会嵌套粒子系统)
 			parseParticleEffector(xml, particleSystem, newEffect);

@@ -74,14 +74,14 @@ package blade3d.editor.effect
 			// sizeX
 			append(hp = new JPanel);
 			hp.append(new JLabel("X"));
-			_sizeX = new JStepper;
+			_sizeX = new JStepper(5);
 			_sizeX.addActionListener(updateData);
 			hp.append(_sizeX);
 			
 			// sizeY
 			append(hp = new JPanel);
 			hp.append(new JLabel("Y"));
-			_sizeY = new JStepper;
+			_sizeY = new JStepper(5);
 			_sizeY.addActionListener(updateData);
 			hp.append(_sizeY);
 		}
@@ -126,8 +126,8 @@ package blade3d.editor.effect
 			
 			
 			_lifePercent.setValue( Number(_selectFrameXML.@lifepercent.toString()) * 100 );
-			_sizeX.setValue( int(_selectFrameXML.@sizeX.toString()) );
-			_sizeY.setValue( int(_selectFrameXML.@sizeY.toString()) );
+			_sizeX.setValue( Number(_selectFrameXML.@sizeX.toString()) * 100 );
+			_sizeY.setValue( Number(_selectFrameXML.@sizeY.toString()) * 100 );
 		}
 		
 		private function updateData(evt:Event):void
@@ -135,8 +135,8 @@ package blade3d.editor.effect
 			if(!_selectFrameXML) return;
 			
 			_selectFrameXML.@lifepercent = Number(_lifePercent.getValue())/100;
-			_selectFrameXML.@sizeX = _sizeX.getValue();
-			_selectFrameXML.@sizeY = _sizeY.getValue();
+			_selectFrameXML.@sizeX = Number(_sizeX.getValue() / 100).toFixed(2);
+			_selectFrameXML.@sizeY = Number(_sizeY.getValue() / 100).toFixed(2);
 		}
 		
 		private function updateUIByData():void

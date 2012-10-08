@@ -236,6 +236,11 @@ package away3d.materials.passes
 			}
 		}
 		/**
+		 *	注意:
+		 * 	不能 mov vt0.yz, vt1.yz; 
+		 * 
+		 */		
+		/**
 		 *	输入寄存器的使用
 		 * va0		起始位置(x,y,z)
 		 * va1		uv和顶点偏移(u,v,sizeX,sizeY)
@@ -265,6 +270,7 @@ package away3d.materials.passes
 		 * vcStart+ 31		force effector(fx,fy,fz)
 		 * vcStart+ 32		attract effector(x,y,z,force)
 		 * vcStart+ 33		current time
+		 * vcStart+ 34-37	inverse camera transform
 		 */		
 		/**
 		 * vt的使用
@@ -272,7 +278,7 @@ package away3d.materials.passes
 		 *  
 		 * vt5( xyz粒子的速度, w 粒子经过的时间)
 		 * vt6( x 生命比例, y 旋转弧度, z sin(旋转弧度), w cos(旋转弧度) )
-		 * vt7( x x方向拉伸, y y方向拉伸 )
+		 * vt7( x x方向拉伸, y y方向拉伸, z z方向拉伸 ), xyz方向的Size
 		 */		
 		arcane override function getVertexCode(code:String) : String
 		{
@@ -282,12 +288,15 @@ package away3d.materials.passes
 			var vc2:uint;
 			var vci:uint;
 			
+			var const0:uint = vcStart;
+			var const1:uint = vcStart+1;
+			
 			var code : String = "";
 			
 			// clear 暂存寄存器(0,0,0,1)
 			code +=
-				"mov vt2, vc"+(vcStart)+".xxxy\n"+
-				"mov vt7, vc"+(vcStart)+".xxxy\n";
+				"mov vt2, vc"+(const0)+".xxxy\n"+
+				"mov vt7, vc"+(const0)+".xxxy\n";
 			
 			// 计算粒子的生命比例 vt6.x存放生命比例
 			code +=
@@ -297,7 +306,7 @@ package away3d.materials.passes
 			// uv effector vcStart+ 25-30(u,v,0,t)
 			vc1= vcStart+25;
 			code +=
-				"mov vt4, vc"+(vcStart)+".x\n";
+				"mov vt4, vc"+(const0)+".x\n";
 			if(_hasUVEffector)
 			{
 				for(vci=0; vci<(gpuEffectorKeyFrameMax*2-1); vci++,vc1++)
@@ -329,7 +338,7 @@ package away3d.materials.passes
 			vc1= vcStart + 16;
 			
 			code +=
-				"mov vt4, vc"+vcStart+".x\n";			// clear vt4,用vt4来存放结果,(use va4)
+				"mov vt4, vc"+const0+".x\n";			// clear vt4,用vt4来存放结果,(use va4)
 			
 			if(_hasColorEffector)
 			{
@@ -346,7 +355,7 @@ package away3d.materials.passes
 						"sub vt1.x, vt1.x, vc"+vc1+".w\n"+
 						"sub vt1.y, vt6.x, vc"+vc1+".w\n"+
 						"div vt1.x, vt1.y, vt1.x\n"+			// vt1.x = weight
-						"sub vt1.y, vc"+vcStart+".y, vt1.x\n"+			// vt1.y = 1 - weight
+						"sub vt1.y, vc"+const0+".y, vt1.x\n"+			// vt1.y = 1 - weight
 						
 						// color
 						"mul vt2.xyz, vc"+vc1+".xyz, vt1.y\n"+		// color = color(t1)*(1-weight)+color(t2)*weight
@@ -373,7 +382,7 @@ package away3d.materials.passes
 			vc1= vcStart + 19;
 			
 			code +=
-				"mov vt4, vc"+vcStart+".x\n";			// clear vt4
+				"mov vt4, vc"+const0+".x\n";			// clear vt4
 			
 			if(_hasAlphaEffector)
 			{
@@ -390,7 +399,7 @@ package away3d.materials.passes
 						"sub vt1.x, vt1.x, vc"+vc1+".w\n"+
 						"sub vt1.y, vt6.x, vc"+vc1+".w\n"+
 						"div vt1.x, vt1.y, vt1.x\n"+			// vt1.x = weight
-						"sub vt1.y, vc"+vcStart+".y, vt1.x\n"+			// vt1.y = 1 - weight
+						"sub vt1.y, vc"+const0+".y, vt1.x\n"+			// vt1.y = 1 - weight
 						// a
 						"mul vt2.x, vc"+vc1+".x, vt1.y\n"+		// alpha = alpha(t1)*(1-weight)+alpha(t2)*weight
 						"mul vt3.x, vc"+vc2+".x, vt1.x\n"+
@@ -414,7 +423,7 @@ package away3d.materials.passes
 			vc1=vcStart+22;
 			
 			code +=
-				"mov vt4, vc"+vcStart+".x\n";			// clear
+				"mov vt4, vc"+const0+".x\n";			// clear
 			
 			if(_hasSizeEffector)
 			{
@@ -430,8 +439,8 @@ package away3d.materials.passes
 						"mov vt1.x, vc"+vc2+".w\n"+
 						"sub vt1.x, vt1.x, vc"+vc1+".w\n"+
 						"sub vt1.y, vt6.x, vc"+vc1+".w\n"+
-						"div vt1.x, vt1.y, vt1.x\n"+			// vt1.x = weight
-						"sub vt1.y, vc"+vcStart+".y, vt1.x\n"+			// vt1.y = 1 - weight
+						"div vt1.x, vt1.y, vt1.x\n"+						// vt1.x = weight
+						"sub vt1.y, vc"+const0+".y, vt1.x\n"+			// vt1.y = 1 - weight
 						// x
 						"mul vt2.xy, vc"+vc1+".xy, vt1.y\n"+		// size = size(t1)*(1-weight)+size(t2)*weight
 						"mul vt3.xy, vc"+vc2+".xy, vt1.x\n"+
@@ -443,22 +452,18 @@ package away3d.materials.passes
 				}
 				
 				code +=
-					"mov vt7.xy, va1.zw\n"+
-					"abs vt0, vt7\n"+
-					"div vt7, vt7, vt0\n"+				// vt7 -> 1
-					"mul vt7.xy, vt7.xy, vt4.xy\n"+		// vt7 * size
-					"div vt7, vt7, vc"+vcStart+".z\n";				// vt7 * size / 2
+					"mov vt7.xyz, vt4.xyx\n";
 			}
 			else
 			{
 				code +=
-					"mov vt7.xy, va1.zw\n";
+					"mov vt7.xyz, va1.zwz\n";
 			}
 			
 			// 计算粒子的旋转 vt6.y存放旋转弧度 vt6.z=sin(rot) vt6.w=cos(rot)
 			code +=
 				"mul vt6.y, va2.w, vt5.w\n"+		// rotv * passtime
-				"div vt6.y, vt6.y, vc"+(vcStart+1)+".x\n"+		// 除1000
+				"div vt6.y, vt6.y, vc"+const1+".x\n"+		// 除1000
 				"add vt6.y, vt6.y, va2.z\n"+		// rot + rotv * passtime
 				"sin vt6.z, vt6.y\n"+
 				"cos vt6.w, vt6.y\n";
@@ -469,9 +474,9 @@ package away3d.materials.passes
 			if(_hasForceEffector)
 			{
 				code +=
-					"div vt0.x, vt5.w, vc"+(vcStart+1)+".x\n"+			// t=passtime/1000
+					"div vt0.x, vt5.w, vc"+const1+".x\n"+			// t=passtime/1000
 					"mul vt0.x, vt0.x, vt0.x\n"+			// t*t
-					"div vt0.x, vt0.x, vc"+vcStart+".z\n"+			// t*t/2
+					"div vt0.x, vt0.x, vc"+const0+".z\n"+			// t*t/2
 					"mul vt0, vc"+(vcStart+31)+", vt0.x\n" +			// a*t*t/2
 					"add vt5.xyz, va3.xyz, vt0.xyz\n";	// v= v(t) + a*t*t/2
 			}
@@ -487,7 +492,7 @@ package away3d.materials.passes
 				{
 					code +=
 						"mov vt0.xyz, vc"+(vcStart+32)+".xyz\n"+
-						"mov vt0.w, vc"+vcStart+".y\n"+
+						"mov vt0.w, vc"+const0+".y\n"+
 						"m44 vt0, vt0, vc"+(vcStart+2)+"\n"+			// 转换吸引点到全局空间
 						"sub vt0, vt0, va0\n"+			// 力的方向=吸引器位置 - 粒子初始位置
 						"nrm vt0.xyz, vt0\n"+
@@ -502,9 +507,9 @@ package away3d.materials.passes
 				}
 					
 				code +=
-					"div vt1.x, vt5.w, vc"+(vcStart+1)+".x\n"+			// t=passtime/1000
+					"div vt1.x, vt5.w, vc"+const1+".x\n"+			// t=passtime/1000
 					"mul vt1.x, vt1.x, vt1.x\n"+			// t*t
-					"div vt1.x, vt1.x, vc"+(vcStart)+".z\n"+			// t*t/2
+					"div vt1.x, vt1.x, vc"+const0+".z\n"+			// t*t/2
 					"mul vt1, vt0, vt1.x\n"+				// a*t*t/2
 					"add vt5.xyz, vt5.xyz, vt1\n";				// v = v + a*t*t/2
 			}
@@ -517,38 +522,64 @@ package away3d.materials.passes
 			code +=
 				"mov vt0, va0\n" +	// vt0 = 粒子初始位置
 				"mov vt1.xyz, vt5.xyz\n"+	// vt1 = 粒子速度
-				"mov vt1.w, vc"+vcStart+".x\n" +		// vt1.w = 0
+				"mov vt1.w, vc"+const0+".x\n" +		// vt1.w = 0
 				"mul vt1, vt1, vt5.w\n" +	// vt1 = 粒子速度*粒子生命/1000
-				"div vt1, vt1, vc"+(vcStart+1)+".x\n" +	// /1000
-				"add vt0, vt0, vt1\n"+		// p = p + vt
-				"add vt0.xyz, vt0.xyz, va5.xyz\n";	// p = p + offset
-					
-			// 投影前.... vt0为粒子位置
+				"div vt1, vt1, vc"+const1+".x\n" +	// /1000
+				"add vt0, vt0, vt1\n";		// p = p + vt
+			
+			// 计算顶点缩放后的偏移 -> vt7
+			code +=
+				// size & offset
+				"mul vt7.xyz, va5.xyz, vt7.xyz\n";
+				
+			
+			var vcCamTrans : int = vcStart+10;
+			
+			if(_isGlobal)
+			{
+				code+=
+					"m44 vt0, vt0, vc"+(vcStart+6)+"\n";		// * inverse m
+			}
+			
+			// 左手系
+			// 绕x轴旋转
+			// \ 1   0    0  \        \ 1   0  0 \
+			// \ 0  cos  sin \  = vt6 \ 0   w  z \
+			// \ 0 -sin  cos \        \ 0  -z  w \
+			
+			// 绕y轴旋转
+			// \ cos  0  -sin \        \ w  0 -z \
+			// \  0   1    0  \  = vt6 \ 0  1  0 \
+			// \ sin  0   cos \        \ z  0  w \
+			
+			// 绕z轴旋转
+			// \  cos  sin 0 \         \  w z 0 \
+			// \ -sin  cos 0 \  =  vt6 \ -z w 0 \
+			// \   0    0  1 \         \  0 0 1 \
+			
+			
+			// 投影前.... vt0为粒子位置, vt7为粒子顶点的偏移
 			if(_orient == BillboardType_billboard)
 			{
-				if(_isGlobal)
-				{
-					code+=
-						"m44 vt0, vt0, vc"+(vcStart+6)+"\n";		// * inverse m
-				}
-				// billboard(1,1,0,0)
+				// 绕-Z旋转
 				code +=
-					"mov vt1, vc"+(vcStart)+".x\n"+
-					"mov vt1.xy, vt7.xy\n"+			// xy偏移
-					
-					// 旋转
-					"mul vt2.x, vt1.x, vt6.w\n"+		
-					"mul vt2.y, vt1.x, vt6.z\n"+
-					"mul vt2.w, vt1.y, vt6.z\n"+
-					"neg vt2.w, vt2.w\n"+
-					"mul vt2.z, vt1.y, vt6.w\n"+
-					"mov vt1.xy, vt2.xy\n"+
-					"add vt1.xy, vt1.xy, vt2.wz\n"+
-					
-					"m33 vt1.xyz, vt1.xyz, vc"+(vcStart+10)+"\n"+		// * camera transform
-					"m33 vt1.xyz, vt1.xyz, vc"+(vcStart+6)+"\n"+		// * inverse m
-					
-					"add vt0, vt0, vt1\n";
+					// 使vt1 = [w -z 0]
+					"mov vt1.xy, vt6.wz\n"+
+					"neg vt1.y, vt1.y\n"+
+					"mov vt1.z, vc"+const0+".x\n"+
+					// 使vt2 = [z w 0]
+					"mov vt2.xy, vt6.zw\n"+
+					"mov vt2.z, vc"+const0+".x\n" +
+					// 使vt3 = [0 0 1]
+					"mov vt3.xyzw, vc"+const0+".xxyy\n"+
+					// v7 = vt7 * 旋转矩阵
+					"dp3 vt4.x, vt7, vt1\n"+
+					"dp3 vt4.y, vt7, vt2\n"+
+					"dp3 vt4.z, vt7, vt3\n"+
+					"mov vt7, vt4\n";
+				
+				code +=
+					"m33 vt7.xyz, vt7.xyz, vc"+(vcCamTrans)+"\n";		// * camTrans
 			}
 			else if(_orient == BillboardType_X)
 			{
@@ -574,24 +605,44 @@ package away3d.materials.passes
 			}
 			else if	(_orient == BillboardType_Y)
 			{
-				// 面向Y(1,0,0,1)
+				// 面片面向Y
 				code +=
-					"mov vt1.xy, vt7.xy\n"+
+					// vt7 * 绕x轴旋转90度
+					// \ 1  0  0 \
+					// \ 0  0  1 \
+					// \ 0 -1  0 \
+					"mov vt1.z, vt7.y\n"+
+					"neg vt7.y, vt7.z\n"+
+					"mov vt7.z, vt1.z\n"+
+					// 再绕y轴旋转
+					// 使vt1 [w 0 z]
+					"mov vt1.x, vt6.w\n"+
+					"mov vt1.y, vc"+const0+".x\n"+
+					"mov vt1.z, vt6.z\n"+ 
+					// 使vt2 [0 1 0]
+					"mov vt2, vc"+const0+".xyx\n"+
+					// 使vt3 [-z 0 w]
+					"neg vt3.x, vt6.z\n"+
+					"mov vt3.y, vc"+const0+".x\n"+
+					"mov vt3.z, vt6.w\n"+
+					// v7 = vt7 * 旋转矩阵
+					"dp3 vt4.x, vt7.xyz, vt1.xyz\n"+
+					"dp3 vt4.y, vt7.xyz, vt2.xyz\n"+
+					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+
+					"mov vt7.xyz, vt4.xyz\n";
 					
-					// 旋转
-					"mul vt2.xyw, vt1.xxy, vt6.wzz\n"+
-					"mul vt2.z, vt1.y, vt6.w\n"+
-					"neg vt2.w, vt2.w\n"+
-					"add vt1.xy, vt2.xy, vt2.wz\n"+
-					
-					"add vt0.x, vt0.x, vt1.x\n"+
-					"add vt0.z, vt0.z, vt1.y\n";
-				
-				if(_isGlobal)
-				{
-					code+=
-						"m44 vt0, vt0, vc"+(vcStart+6)+"\n";		// * inverse m
-				}
+//				code +=
+//					"mov vt1.xy, vt7.xy\n"+
+//					
+//					// 旋转
+//					"mul vt2.xyw, vt1.xxy, vt6.wzz\n"+
+//					"mul vt2.z, vt1.y, vt6.w\n"+
+//					"neg vt2.w, vt2.w\n"+
+//					"add vt1.xy, vt2.xy, vt2.wz\n"+
+//					
+//					"add vt0.x, vt0.x, vt1.x\n"+
+//					"add vt0.z, vt0.z, vt1.y\n";
+//				code +=
 			}
 			else if(_orient == BillboardType_Z)
 			{
@@ -624,7 +675,7 @@ package away3d.materials.passes
 				}
 				// Y轴向billboard(0,1,0,1)
 				code +=
-					"mov vt2.xyz, vc"+vcStart+".xyx\n"+		// make vt2=(0,1,0)
+					"mov vt2.xyz, vc"+const0+".xyx\n"+		// make vt2=(0,1,0)
 					"crs vt1.xyz, vt2, vc"+(vcStart+14)+"\n"+			// (0,1,0) * cameraZ = x偏移方向
 					"nrm vt1.xyz, vt1.xyz\n"+
 					
@@ -657,7 +708,7 @@ package away3d.materials.passes
 				}
 				// 平行于运动方向(0,0,1,1),旋转无作用
 				code +=
-					"mov vt2, vc"+vcStart+".x\n";		// clear vt2
+					"mov vt2, vc"+const0+".x\n";		// clear vt2
 					
 				if(_isGlobal)
 				{
@@ -682,13 +733,16 @@ package away3d.materials.passes
 					"mul vt1, vt1, vt7.x\n"+
 					"mul vt2, vt2, vt7.y\n"+
 					"add vt1, vt1, vt2\n"+
-					"mov vt1.w, vc"+vcStart+".x\n"+
+					"mov vt1.w, vc"+const0+".x\n"+
 					
 					"m33 vt1.xyz, vt1.xyz, vc"+(vcStart+6)+"\n"+		// * inverse m
 					
 					"add vt0, vt0, vt1\n";
 			}
-									
+			
+			code +=
+				"add vt0.xyz, vt0.xyz, vt7.xyz\n";	// p = p + offset
+			
 			// vt0为粒子的位置, vt7为投影后位置
 			code +=
 				"m44 vt7, vt0, vc0\n";		// vt7 = 粒子投影空间位置 = 粒子当前位置 * MVP
@@ -701,13 +755,13 @@ package away3d.materials.passes
 				"slt vt0.x, vt5.w, va2.y\n"+		// if 粒子死亡 vt0.x = 0 else vt0.x = 1
 				"mul op, vt7, vt0.x\n"+			// vt7 * vt0.x
 				
-				"sub v2, vt0.x, vc"+(vcStart)+".y";				// 死亡不渲染判断
+				"sub v2, vt0.x, vc"+(const0)+".y";				// 死亡不渲染判断
 				
 			return code;
 		}
 		/**
 		 *		v0	[u, v, ?, ?] 
-		 * 	v1	[r,	g, b, a]
+		 * 		v1	[r,	g, b, a]
 		 *  	v2	[dead, ?, ?, ?]		// x 是否粒子死亡不渲染-1
 		 */	
 		arcane override function getFragmentCode() : String
@@ -735,6 +789,7 @@ package away3d.materials.passes
 		private static var tmpVec4 : Vector.<Number> = Vector.<Number>([0, 0, 0, 0]);
 		// 设置常量寄存器(从8开始，0-3留给MVP了, 4是ratio， 5-7保留）
 		private static var vcStart : int = 8;
+	
 		arcane override function render(renderable : IRenderable, stage3DProxy : Stage3DProxy, camera : Camera3D, lightPicker : LightPickerBase) : void
 		{
 			var ps : ParticleSystem = ParticleSystem(renderable);
@@ -787,8 +842,10 @@ package away3d.materials.passes
 			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+32, _attractEffectorVect4, 1);
 			// 33 current time
 			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+33, _timeVect4, 1);
+			// 34-37 inverse camera transform
+			stage3DProxy._context3D.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, vcStart+34, camera.inverseSceneTransform, true);
 			
-			_numUsedVertexConstants = vcStart + 34;
+			_numUsedVertexConstants = vcStart + 38;
 			
 			super.render(renderable, stage3DProxy, camera, lightPicker);	
 		}

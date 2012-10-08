@@ -50,6 +50,8 @@ package away3d.materials
 		public function setParitlceSystem(ps : ParticleSystem) : void
 		{
 			_gpuParticlePass.setParitlceSystem(ps);
+			if(ps)
+				bothSides = ps.twoSide;
 		}
 		
 		public function updateTexture() : void

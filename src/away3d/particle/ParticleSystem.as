@@ -63,6 +63,7 @@ package away3d.particle
 		protected var _vertexData : Vector.<Number>;			// vertex
 		protected var _vertexColorData : Vector.<Number>;		// vertex color
 		protected var _uvData : Vector.<Number>;				// uv
+		protected var _twoSide : Boolean = false;				// 双面渲染
 		protected var _isWolrdParticle : Boolean = true;		// 粒子是否在World空间中运动
 		protected var _isBillBoard : Boolean = true;			// 粒子是否为公告板模式
 		protected var _particleOrient : int = 0;				// 非billboard粒子的朝向( 0朝x 1朝y 2朝z)
@@ -144,6 +145,8 @@ package away3d.particle
 		
 		public function get particleNum() : int { return _particleNum; }
 		public function set particleNum(value : int) : void { _particleNum = value; }
+		public function get twoSide() : Boolean { return _twoSide; }
+		public function set twoSide(value : Boolean) : void { _twoSide = value; }
 		public function get isWolrdParticle() : Boolean { return _isWolrdParticle; }
 		public function set isWolrdParticle(value : Boolean) : void { _isWolrdParticle = value; }
 		public function get isBillBoard() : Boolean { return _isBillBoard; }
