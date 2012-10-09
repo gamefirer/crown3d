@@ -583,29 +583,36 @@ package away3d.materials.passes
 			}
 			else if(_orient == BillboardType_X)
 			{
-				// 面向X(1,0,1,0)
+				// 面片面向X轴负方向
 				code +=
-					"mov vt1.xy, vt7.xy\n"+
-					"neg vt1.x, vt1.x\n"+
-					
-					// 旋转
-					"mul vt2.xyw, vt1.xxy, vt6.wzz\n"+
-					"mul vt2.z, vt1.y, vt6.w\n"+
-					"neg vt2.w, vt2.w\n"+
-					"add vt1.xy, vt2.xy, vt2.wz\n"+
-					
-					"add vt0.y, vt0.y, vt1.y\n"+
-					"add vt0.z, vt0.z, vt1.x\n";
+					// vt7 * 绕y轴旋转-90度
+					// \ 0  0  1 \
+					// \ 0  1  0 \
+					// \-1  0  0 \
+					"mov vt1.x, vt7.x\n"+
+					"neg vt7.x, vt7.z\n"+
+					"mov vt7.z, vt1.x\n"+
+					// 在绕x轴旋转
+					// 使vt1[ 1  0  0 ]
+					"mov vt1.xyz, vc"+const0+".yxx\n"+
+					// 使vt2[ 0  w -z ]
+					"mov vt2.x, vc"+const0+".x\n"+
+					"mov vt2.y, vt6.w\n"+
+					"neg vt2.z, vt6.z\n"+
+					// 使vt3[ 0  z  w ]
+					"mov vt3.x, vc"+const0+".x\n"+
+					"mov vt3.y, vt6.z\n"+
+					"mov vt3.z, vt6.w\n"+
+					// v7 = vt7 * 旋转矩阵
+					"dp3 vt4.x, vt7.xyz, vt1.xyz\n"+
+					"dp3 vt4.y, vt7.xyz, vt2.xyz\n"+
+					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+
+					"mov vt7.xyz, vt4.xyz\n";
 				
-				if(_isGlobal)
-				{
-					code+=
-						"m44 vt0, vt0, vc"+(vcStart+6)+"\n";		// * inverse m
-				}
 			}
 			else if	(_orient == BillboardType_Y)
 			{
-				// 面片面向Y
+				// 面片面向Y轴正方向
 				code +=
 					// vt7 * 绕x轴旋转90度
 					// \ 1  0  0 \
@@ -631,81 +638,64 @@ package away3d.materials.passes
 					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+
 					"mov vt7.xyz, vt4.xyz\n";
 					
-//				code +=
-//					"mov vt1.xy, vt7.xy\n"+
-//					
-//					// 旋转
-//					"mul vt2.xyw, vt1.xxy, vt6.wzz\n"+
-//					"mul vt2.z, vt1.y, vt6.w\n"+
-//					"neg vt2.w, vt2.w\n"+
-//					"add vt1.xy, vt2.xy, vt2.wz\n"+
-//					
-//					"add vt0.x, vt0.x, vt1.x\n"+
-//					"add vt0.z, vt0.z, vt1.y\n";
-//				code +=
 			}
 			else if(_orient == BillboardType_Z)
 			{
-				
-				// 面向Z(0,1,1,0)
+				// 面片面向Z轴负方向
 				code +=
 					"mov vt1.xy, vt7.xy\n"+
 					
-					// 旋转
-					"mul vt2.xyw, vt1.xxy, vt6.wzz\n"+
-					"mul vt2.z, vt1.y, vt6.w\n"+
-					"neg vt2.w, vt2.w\n"+
-					"add vt1.xy, vt2.xy, vt2.wz\n"+
-					
-					"add vt0.x, vt0.x, vt1.x\n"+
-					"add vt0.y, vt0.y, vt1.y\n";
+					// 绕Z轴旋转
+					// 使vt1 [w -z 0]
+					"mov vt1.x, vt6.w\n"+
+					"neg vt1.y, vt6.z\n"+
+					"mov vt1.z, vc"+const0+".x\n"+
+					// 使vt2 [z  w 0]
+					"mov vt2.x, vt6.z\n"+
+					"mov vt2.y, vt6.w\n"+
+					"mov vt2.z, vc"+const0+".x\n"+
+					// 使vt3 [0  0 1]
+					"mov vt3.xyz, vc"+const0+".xxy\n"+
+					// v7 = vt7 * 旋转矩阵
+					"dp3 vt4.x, vt7.xyz, vt1.xyz\n"+
+					"dp3 vt4.y, vt7.xyz, vt2.xyz\n"+
+					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+
+					"mov vt7.xyz, vt4.xyz\n";
 				
-				if(_isGlobal)
-				{
-					code+=
-						"m44 vt0, vt0, vc"+(vcStart+6)+"\n";		// * inverse m
-				}
 			}
 			else if(_orient == BillboardType_YBillboard)
 			{
-				if(_isGlobal)
-				{
-					code+=
-						"m44 vt0, vt0, vc"+(vcStart+6)+"\n";		// * inverse m
-				}
-				// Y轴向billboard(0,1,0,1)
+				// Y轴向billboard
 				code +=
-					"mov vt2.xyz, vc"+const0+".xyx\n"+		// make vt2=(0,1,0)
-					"crs vt1.xyz, vt2, vc"+(vcStart+14)+"\n"+			// (0,1,0) * cameraZ = x偏移方向
-					"nrm vt1.xyz, vt1.xyz\n"+
+					// 求出cameraZ与(0,0,1)的夹角a
+					"mov vt2.xyz, vc"+const0+".xxy\n"+
+					"dp3 vt1.x, vt2, vc"+(vcStart+14)+"\n"+		// vt1.x = cos(a)
+					// 求出cameraZ与(1,0,0)的夹角b
+					"mov vt2.xyz, vc"+const0+".yxx\n"+
+					"dp3 vt1.y, vt2, vc"+(vcStart+14)+"\n"+		// vt1.y = cos(b) = sin(a) 
 					
-					// 旋转
-					"mul vt3, vt1, vt6.w\n"+
-					"mul vt4, vt2, vt6.z\n"+
-					"add vt4, vt3, vt4\n"+
+					// 绕y轴旋转
+					// \ cos  0  -sin \        \ x  0 -y \
+					// \  0   1    0  \  = vt1 \ 0  1  0 \
+					// \ sin  0   cos \        \ y  0  x \
+					// 使 vt2[ x  0  y ]
+					"mov vt2.x, vt1.x\n"+
+					"mov vt2.y, vc"+const0+".x\n"+
+					"mov vt2.z, vt1.y\n"+
+					// [ 0  1  0 ]
+					// 使 vt3[-y  0  x ]
+					"neg vt3.x, vt1.y\n"+
+					"mov vt3.y, vc"+const0+".x\n"+
+					"mov vt3.z, vt1.x\n"+
+					// v7 = vt7 * 旋转矩阵
+					"dp3 vt4.x, vt7.xyz, vt2.xyz\n"+
+					"dp3 vt4.y, vt7.xyz, vc"+const0+".xyx\n"+
+					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+
+					"mov vt7.xyz, vt4.xyz\n";
 					
-					"mul vt3, vt2, vt6.w\n"+
-					"mul vt2, vt1, vt6.z\n"+
-					"neg vt2, vt2\n"+
-					
-					"add vt2, vt3, vt2\n"+
-					"mov vt1, vt4\n"+
-					
-					"mul vt1, vt1, vt7.x\n"+			//vt1 = x偏移量
-					"mul vt2, vt2, vt7.y\n"+
-					"add vt1, vt1, vt2\n"+
-				
-					"m33 vt1.xyz, vt1.xyz, vc"+(vcStart+6)+"\n"+		// * inverse m
-					
-					"add vt0, vt0, vt1\n";
 			}
 			else if(_orient == BillboardType_Vel)
 			{
-				if(_isGlobal)
-				{
-					code+=
-						"m44 vt0, vt0, vc"+(vcStart+6)+"\n";		// * inverse m
-				}
 				// 平行于运动方向(0,0,1,1),旋转无作用
 				code +=
 					"mov vt2, vc"+const0+".x\n";		// clear vt2
@@ -722,26 +712,36 @@ package away3d.materials.passes
 				}
 				
 				code +=
-					"crs vt1.xyz, vt2, vc"+(vcStart+14)+"\n"+				//	x偏移方向 = v * cameraZ
-					"nrm vt1.xyz, vt1.xyz\n"+
+					"nrm vt2.xyz, vt2.xyz\n"+		// vt2 为速度方向 up方向
 					
-					"crs vt2.xyz, vt1, vc"+(vcStart+14)+"\n"+ 				// y偏移方向 = dirX * cameraZ
-					"nrm vt2.xyz, vt2.xyz\n"+
-					"neg vt2, vt2\n"+
+					"crs vt1.xyz, vt2, vc"+(vcStart+14)+"\n"+		// right方向 = up方向 × cameraZ 
+					"crs vt3.xyz, vt1, vt2\n"+						// dir方向 = right × up
 					
-					// 旋转
-					"mul vt1, vt1, vt7.x\n"+
-					"mul vt2, vt2, vt7.y\n"+
-					"add vt1, vt1, vt2\n"+
-					"mov vt1.w, vc"+const0+".x\n"+
+					// 单位正交矩阵的逆矩阵=转秩矩阵
+					// vt1.y <-> vt2.x
+					"mov vt4.x, vt1.y\n"+
+					"mov vt1.y, vt2.x\n"+
+					"mov vt2.x, vt4.x\n"+
+					// vt1.z <-> vt3.x
+					"mov vt4.x, vt1.z\n"+
+					"mov vt1.z, vt3.x\n"+
+					"mov vt3.x, vt4.x\n"+
+					// vt2.z <-> vt3.y
+					"mov vt4.x, vt2.z\n"+
+					"mov vt2.z, vt3.y\n"+
+					"mov vt3.y, vt4.x\n"+
 					
-					"m33 vt1.xyz, vt1.xyz, vc"+(vcStart+6)+"\n"+		// * inverse m
-					
-					"add vt0, vt0, vt1\n";
+					// v7 = vt7 * 旋转矩阵
+					"dp3 vt4.x, vt7.xyz, vt1.xyz\n"+			// right
+					"dp3 vt4.y, vt7.xyz, vt2.xyz\n"+			// up
+					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+			// dir
+					"mov vt7.xyz, vt4.xyz\n";
+				
 			}
 			
+			// p = p + offset
 			code +=
-				"add vt0.xyz, vt0.xyz, vt7.xyz\n";	// p = p + offset
+				"add vt0.xyz, vt0.xyz, vt7.xyz\n";
 			
 			// vt0为粒子的位置, vt7为投影后位置
 			code +=
