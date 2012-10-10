@@ -17,6 +17,7 @@ package away3d.materials.passes
 	import away3d.particle.Effector.ParticleEffectorBase;
 	import away3d.particle.Effector.SizeEffector;
 	import away3d.particle.Effector.UVEffector;
+	import away3d.particle.Effector.VelAttractEffector;
 	import away3d.particle.ParticleSystem;
 	import away3d.textures.BitmapTexture;
 	import away3d.textures.BitmapTextureCache;
@@ -37,7 +38,8 @@ package away3d.materials.passes
 		public static var BillboardType_YBillboard 	: int = 4;
 		public static var BillboardType_Vel 			: int = 5;
 		
-		public static const gpuEffectorKeyFrameMax : uint = 3;
+		public static const gpuEffectorKeyFrameMax : uint = 3;		// 效果器最大关键帧数
+		public static const gpuUVKeyFrameMax : uint = gpuEffectorKeyFrameMax*3;				// uv效果器最大关键帧数
 		
 		private var _orient : int = BillboardType_billboard;
 		private var _isGlobal : Boolean = true;
@@ -48,6 +50,7 @@ package away3d.materials.passes
 		private var _hasUVEffector : Boolean = false;
 		private var _hasForceEffector : Boolean = false;
 		private var _hasAttractEffector : Boolean = false;
+		private var _hasVelAttractEffector : Boolean = false;
 		
 		private var _ps : ParticleSystem;
 		private var _particleTexture : BitmapTexture;			// 粒子贴图
@@ -63,6 +66,7 @@ package away3d.materials.passes
 		private var _uvEffectorVect43 : Vector.<Number>;
 		private var _forceEffectorVect4 : Vector.<Number>;
 		private var _attractEffectorVect4 : Vector.<Number>;
+		private var _velAttractEffectorVect4 : Vector.<Number>;
 		private var _timeVect4 : Vector.<Number>;
 		
 		
@@ -105,8 +109,8 @@ package away3d.materials.passes
 				_sizeEffectorVect43[i*4+3] = 1.0;
 			}
 			
-			_uvEffectorVect43 = new Vector.<Number>(4*gpuEffectorKeyFrameMax*2, true);
-			for(i=0; i<gpuEffectorKeyFrameMax*2;i++)
+			_uvEffectorVect43 = new Vector.<Number>(4*gpuUVKeyFrameMax, true);
+			for(i=0; i<gpuUVKeyFrameMax;i++)
 			{
 				_uvEffectorVect43[i*4] = 1.0;
 				_uvEffectorVect43[i*4+1] = 1.0;
@@ -125,6 +129,12 @@ package away3d.materials.passes
 			_attractEffectorVect4[1] = 0.0;
 			_attractEffectorVect4[2] = 0.0;
 			_attractEffectorVect4[3] = 0.0;
+			
+			_velAttractEffectorVect4 = new Vector.<Number>(4, true);
+			_velAttractEffectorVect4[0] = 0.0;
+			_velAttractEffectorVect4[1] = 0.0;
+			_velAttractEffectorVect4[2] = 0.0;
+			_velAttractEffectorVect4[3] = 0.0;
 			
 			_timeVect4 = new Vector.<Number>(4, true);
 			_timeVect4[0] = 0;
@@ -203,6 +213,7 @@ package away3d.materials.passes
 			_hasUVEffector = false;
 			_hasForceEffector = false;
 			_hasAttractEffector = false;
+			_hasVelAttractEffector = false;
 			for(var ei:int=0; ei<effectors.length; ei++)
 			{
 				if(effectors[ei] is ColorEffector 
@@ -232,6 +243,10 @@ package away3d.materials.passes
 				else if(effectors[ei] is AttractEffector)
 				{
 					_hasAttractEffector = true;
+				}
+				else if(effectors[ei] is VelAttractEffector)
+				{
+					_hasVelAttractEffector = true;
 				}
 			}
 		}
@@ -266,11 +281,12 @@ package away3d.materials.passes
 		 * vcStart+ 16-18	color effector(r,g,b,t)		3 kf
 		 * vcStart+ 19-21	alpha effector(a,0,0,t)		3 kf
 		 * vcStart+ 22-24	size effector(x,y,0,t)		3 kf
-		 * vcStart+ 25-30	uv effector(u,v,0,t)		6 kf
-		 * vcStart+ 31		force effector(fx,fy,fz)
-		 * vcStart+ 32		attract effector(x,y,z,force)
-		 * vcStart+ 33		current time
-		 * vcStart+ 34-37	inverse camera transform
+		 * vcStart+ 25-33	uv effector(u,v,0,t)		6 kf
+		 * vcStart+ 34		force effector(fx,fy,fz)
+		 * vcStart+ 35		attract effector(x,y,z,force)
+		 * vcStart+ 36		current time
+		 * vcStart+ 37-40	inverse camera transform
+		 * vcStart+ 41		vel attract effector(x,y,z,vel)
 		 */		
 		/**
 		 * vt的使用
@@ -295,12 +311,13 @@ package away3d.materials.passes
 			
 			// clear 暂存寄存器(0,0,0,1)
 			code +=
+				"mov vt0, vc"+(const0)+".xxxy\n"+
 				"mov vt2, vc"+(const0)+".xxxy\n"+
 				"mov vt7, vc"+(const0)+".xxxy\n";
 			
 			// 计算粒子的生命比例 vt6.x存放生命比例
 			code +=
-				"sub vt5.w, vc"+(vcStart+33)+".x, va2.x\n" +	// vt5.w 为粒子已经经过的时间
+				"sub vt5.w, vc"+(vcStart+36)+".x, va2.x\n" +	// vt5.w 为粒子已经经过的时间
 				"div vt6.x, vt5.w, va2.y\n";		// vt6.x 为粒子生命比例
 			
 			// uv effector vcStart+ 25-30(u,v,0,t)
@@ -309,7 +326,7 @@ package away3d.materials.passes
 				"mov vt4, vc"+(const0)+".x\n";
 			if(_hasUVEffector)
 			{
-				for(vci=0; vci<(gpuEffectorKeyFrameMax*2-1); vci++,vc1++)
+				for(vci=0; vci<(gpuUVKeyFrameMax-1); vci++,vc1++)
 				{
 					vc2=vc1+1;
 					
@@ -318,15 +335,12 @@ package away3d.materials.passes
 						"slt vt0.y, vt6.x, vc"+vc2+".w\n"+
 						"mul vt0.x, vt0.x, vt0.y\n"+
 						
-						"mov vt2, vc"+vc1+"\n"+
-						
 						// if
-						"mul vt2, vt2, vt0.x\n"+
+						"mul vt2, vc"+vc1+", vt0.x\n"+
 						"add vt4, vt4, vt2\n";
 				}
 				code +=
-					"add vt4, vt4, va1\n"+
-					"mov v0, vt4\n";
+					"add v0, vt4, va1\n";
 			}
 			else
 			{
@@ -441,7 +455,7 @@ package away3d.materials.passes
 						"sub vt1.y, vt6.x, vc"+vc1+".w\n"+
 						"div vt1.x, vt1.y, vt1.x\n"+						// vt1.x = weight
 						"sub vt1.y, vc"+const0+".y, vt1.x\n"+			// vt1.y = 1 - weight
-						// x
+						// xy
 						"mul vt2.xy, vc"+vc1+".xy, vt1.y\n"+		// size = size(t1)*(1-weight)+size(t2)*weight
 						"mul vt3.xy, vc"+vc2+".xy, vt1.x\n"+
 						"add vt2.xy, vt2.xy, vt3.xy\n"+
@@ -469,41 +483,58 @@ package away3d.materials.passes
 				"cos vt6.w, vt6.y\n";
 			
 			// 计算粒子的速度 vt5 存放粒子的速度
+			code +=
+				"mov vt5.xyz, va3.xyz\n";
 			
+			// 速度吸引器
+			vc1=vcStart+41;
+			if(_hasVelAttractEffector)
+			{
+				code +=
+					"sub vt0.xyz, vc"+vc1+".xyz, va.xyz\n"+	// 速度吸引方向 = 吸引器位置 - 粒子位置
+					"nrm vt0.xyz, vt0\n"+
+					"mul vt0.xyz, vt0.xyz, vc"+vc1+".w\n"+				// 速度吸引方向 *= 速度大小
+					"add vt5.xyz, vt5.xyz, vt0.xyz\n";					// 速度 += 速度吸引方向
+			}
+			else
+			{
+				
+			}
 			// 力场
+			vc1=vcStart+34;
 			if(_hasForceEffector)
 			{
 				code +=
 					"div vt0.x, vt5.w, vc"+const1+".x\n"+			// t=passtime/1000
 					"mul vt0.x, vt0.x, vt0.x\n"+			// t*t
 					"div vt0.x, vt0.x, vc"+const0+".z\n"+			// t*t/2
-					"mul vt0, vc"+(vcStart+31)+", vt0.x\n" +			// a*t*t/2
-					"add vt5.xyz, va3.xyz, vt0.xyz\n";	// v= v(t) + a*t*t/2
+					"mul vt0, vc"+vc1+", vt0.x\n" +			// a*t*t/2
+					"add vt5.xyz, vt5.xyz, vt0.xyz\n";	// v= v(t) + a*t*t/2
 			}
 			else
 			{
-				code +=
-					"mov vt5.xyz, va3.xyz\n";
+				
 			}
 			// 吸引器
+			vc1=vcStart+35;
 			if(_hasAttractEffector)
 			{
 				if(_isGlobal)
 				{
 					code +=
-						"mov vt0.xyz, vc"+(vcStart+32)+".xyz\n"+
+						"mov vt0.xyz, vc"+vc1+".xyz\n"+
 						"mov vt0.w, vc"+const0+".y\n"+
 						"m44 vt0, vt0, vc"+(vcStart+2)+"\n"+			// 转换吸引点到全局空间
 						"sub vt0, vt0, va0\n"+			// 力的方向=吸引器位置 - 粒子初始位置
 						"nrm vt0.xyz, vt0\n"+
-						"mul vt0, vt0, vc"+(vcStart+32)+".w\n";
+						"mul vt0, vt0, vc"+vc1+".w\n";
 				}
 				else
 				{
 					code +=
-						"sub vt0, vc"+(vcStart+32)+", va0\n"+			// 力的方向=吸引器位置 - 粒子初始位置
+						"sub vt0, vc"+vc1+", va0\n"+			// 力的方向=吸引器位置 - 粒子初始位置
 						"nrm vt0.xyz, vt0\n"+
-						"mul vt0, vt0, vc"+(vcStart+32)+".w\n";			// 力=方向*力的大小
+						"mul vt0, vt0, vc"+vc1+".w\n";			// 力=方向*力的大小
 				}
 					
 				code +=
@@ -579,7 +610,8 @@ package away3d.materials.passes
 					"mov vt7, vt4\n";
 				
 				code +=
-					"m33 vt7.xyz, vt7.xyz, vc"+(vcCamTrans)+"\n";		// * camTrans
+					"m33 vt7.xyz, vt7.xyz, vc"+(vcCamTrans)+"\n"+		// * camTrans
+					"m33 vt7.xyz, vt7.xyz, vc"+(vcStart+6)+"\n";		// * inverse M
 			}
 			else if(_orient == BillboardType_X)
 			{
@@ -609,6 +641,12 @@ package away3d.materials.passes
 					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+
 					"mov vt7.xyz, vt4.xyz\n";
 				
+				if(_isGlobal)
+				{
+					code +=
+						"m33 vt7.xyz, vt7.xyz, vc"+(vcStart+6)+"\n";		// * inverse M		
+				}
+				
 			}
 			else if	(_orient == BillboardType_Y)
 			{
@@ -637,6 +675,13 @@ package away3d.materials.passes
 					"dp3 vt4.y, vt7.xyz, vt2.xyz\n"+
 					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+
 					"mov vt7.xyz, vt4.xyz\n";
+				
+				if(_isGlobal)
+				{
+					code +=
+						"m33 vt7.xyz, vt7.xyz, vc"+(vcStart+6)+"\n";		// * inverse M		
+				}
+				
 					
 			}
 			else if(_orient == BillboardType_Z)
@@ -661,6 +706,12 @@ package away3d.materials.passes
 					"dp3 vt4.y, vt7.xyz, vt2.xyz\n"+
 					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+
 					"mov vt7.xyz, vt4.xyz\n";
+				
+				if(_isGlobal)
+				{
+					code +=
+						"m33 vt7.xyz, vt7.xyz, vc"+(vcStart+6)+"\n";		// * inverse M		
+				}
 				
 			}
 			else if(_orient == BillboardType_YBillboard)
@@ -691,7 +742,9 @@ package away3d.materials.passes
 					"dp3 vt4.x, vt7.xyz, vt2.xyz\n"+
 					"dp3 vt4.y, vt7.xyz, vc"+const0+".xyx\n"+
 					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+
-					"mov vt7.xyz, vt4.xyz\n";
+					"mov vt7.xyz, vt4.xyz\n"+
+					
+					"m33 vt7.xyz, vt7.xyz, vc"+(vcStart+6)+"\n";		// * inverse M
 					
 			}
 			else if(_orient == BillboardType_Vel)
@@ -735,7 +788,9 @@ package away3d.materials.passes
 					"dp3 vt4.x, vt7.xyz, vt1.xyz\n"+			// right
 					"dp3 vt4.y, vt7.xyz, vt2.xyz\n"+			// up
 					"dp3 vt4.z, vt7.xyz, vt3.xyz\n"+			// dir
-					"mov vt7.xyz, vt4.xyz\n";
+					"mov vt7.xyz, vt4.xyz\n"+
+				
+					"m33 vt7.xyz, vt7.xyz, vc"+(vcStart+6)+"\n";		// * inverse M
 				
 			}
 			
@@ -834,18 +889,20 @@ package away3d.materials.passes
 			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+19, _alphaEffectorVect43, gpuEffectorKeyFrameMax);
 			// 22-24 Size Effector
 			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+22, _sizeEffectorVect43, gpuEffectorKeyFrameMax);
-			// 25-30 UV	Effector
-			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+25, _uvEffectorVect43, gpuEffectorKeyFrameMax*2);
-			// 31 force Effector
-			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+31, _forceEffectorVect4, 1);
-			// 32 attract Effector
-			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+32, _attractEffectorVect4, 1);
-			// 33 current time
-			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+33, _timeVect4, 1);
-			// 34-37 inverse camera transform
-			stage3DProxy._context3D.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, vcStart+34, camera.inverseSceneTransform, true);
+			// 25-33 UV	Effector 9帧
+			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+25, _uvEffectorVect43, gpuUVKeyFrameMax);
+			// 34 force Effector
+			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+34, _forceEffectorVect4, 1);
+			// 35 attract Effector
+			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+35, _attractEffectorVect4, 1);
+			// 36 current time
+			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+36, _timeVect4, 1);
+			// 37-40 inverse camera transform
+			stage3DProxy._context3D.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, vcStart+37, camera.inverseSceneTransform, true);
+			// 41 vel attract Effector
+			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, vcStart+41, _velAttractEffectorVect4, 1);
 			
-			_numUsedVertexConstants = vcStart + 38;
+			_numUsedVertexConstants = vcStart + 41 + 1;
 			
 			super.render(renderable, stage3DProxy, camera, lightPicker);	
 		}
@@ -859,7 +916,8 @@ package away3d.materials.passes
 			var sizeEffector : SizeEffector = null;
 			var uvEffector : UVEffector = null;
 			var forceEffector : ForceEffector = null;
-			var attractEffecotr : AttractEffector = null;
+			var attractEffector : AttractEffector = null;
+			var velAttractEffector : VelAttractEffector = null;
 			
 			for(var ei:int=0; ei<effectors.length; ei++)
 			{
@@ -874,7 +932,9 @@ package away3d.materials.passes
 				else if(effectors[ei] is ForceEffector)
 					forceEffector = ForceEffector(effectors[ei]);
 				else if(effectors[ei] is AttractEffector)
-					attractEffecotr = AttractEffector(effectors[ei]);
+					attractEffector = AttractEffector(effectors[ei]);
+				else if(effectors[ei] is VelAttractEffector)
+					velAttractEffector = VelAttractEffector(effectors[ei]);
 			}
 			
 			var i:uint;
@@ -997,9 +1057,9 @@ package away3d.materials.passes
 				_forceEffectorVect4[3] = 0.0;
 			}
 			// attract控制器
-			if(attractEffecotr && _hasAttractEffector)
+			if(attractEffector && _hasAttractEffector)
 			{
-				attractEffecotr.updateGpuData(_attractEffectorVect4);
+				attractEffector.updateGpuData(_attractEffectorVect4);
 			}
 			else
 			{
@@ -1007,6 +1067,18 @@ package away3d.materials.passes
 				_attractEffectorVect4[1] = 0.0;
 				_attractEffectorVect4[2] = 0.0;
 				_attractEffectorVect4[3] = 1000.0;
+			}
+			// vel attract控制器
+			if(velAttractEffector && _hasVelAttractEffector)
+			{
+				velAttractEffector.updateGpuData(_velAttractEffectorVect4);
+			}
+			else
+			{
+				_velAttractEffectorVect4[0] = 0.0;
+				_velAttractEffectorVect4[1] = 0.0;
+				_velAttractEffectorVect4[2] = 0.0;
+				_velAttractEffectorVect4[3] = 0.0;
 			}
 			
 		}

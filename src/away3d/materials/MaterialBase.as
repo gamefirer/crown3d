@@ -643,7 +643,7 @@ package away3d.materials
 					_requiresBlending = true;
 					break;
 				case BlendMode.ADD:		// 加色 one one
-					_srcBlend = Context3DBlendFactor.ONE;
+					_srcBlend = Context3DBlendFactor.SOURCE_ALPHA;
 					_destBlend = Context3DBlendFactor.ONE;
 					_requiresBlending = false;
 					break;

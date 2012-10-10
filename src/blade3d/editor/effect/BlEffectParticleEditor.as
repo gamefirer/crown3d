@@ -101,7 +101,6 @@ package blade3d.editor.effect
 			_actionListMod.clear();
 			_actionListMod.append("系统属性");
 			_actionListMod.append("发射器");
-			_actionListMod.append("采样器");
 			_actionListMod.append("效果器");
 			_actionListMod.append("动画器");
 			
@@ -134,13 +133,6 @@ package blade3d.editor.effect
 						_emitterPanel.srcData = _particleXML.circle_emitter[0];
 					else if(_particleXML.sphere_emitter[0])
 						_emitterPanel.srcData = _particleXML.sphere_emitter[0];
-					break;
-				}
-				case "采样器":
-				{
-//					_samplerPanel ||= new BlEffectParticleSamplerPanel();
-//					_upRightPanel.append(_samplerPanel, BorderLayout.CENTER);
-//					_samplerPanel.srcData = _srcXML.samplerData;
 					break;
 				}
 				case "效果器":

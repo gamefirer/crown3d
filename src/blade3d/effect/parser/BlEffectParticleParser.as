@@ -11,6 +11,7 @@ package blade3d.effect.parser
 	import away3d.particle.Effector.SizeEffector;
 	import away3d.particle.Effector.TerrainEffector;
 	import away3d.particle.Effector.UVEffector;
+	import away3d.particle.Effector.VelAttractEffector;
 	import away3d.particle.Emitter.CylinderParticleEmitter;
 	import away3d.particle.Emitter.ParticleEmitterBase;
 	import away3d.particle.Emitter.RectangleParticleEmitter;
@@ -298,6 +299,15 @@ package blade3d.effect.parser
 				forceEffector.forceDir = parseVector3D(effectorXML.@dir.toString());
 				forceEffector.force = Number(effectorXML.@f.toString());
 				particleSystem.addEffector(forceEffector);
+			}
+			// 粒子速度吸引器
+			effectorXML = xml.velattract_effector[0];
+			if(effectorXML)
+			{
+				var velAttractEffector : VelAttractEffector = new VelAttractEffector;
+				velAttractEffector.attractPoint = parseVector3D(effectorXML.@p.toString());
+				velAttractEffector.vel = Number(effectorXML.@f.toString());
+				particleSystem.addEffector(velAttractEffector);
 			}
 			
 		}

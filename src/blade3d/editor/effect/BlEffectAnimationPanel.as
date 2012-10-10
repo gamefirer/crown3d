@@ -42,7 +42,7 @@ package blade3d.editor.effect
 		{
 			var mainPanel : JPanel = new JPanel(new VerticalLayout);
 			var scroll : JScrollPane = new JScrollPane(mainPanel);
-			scroll.setPreferredWidth(300);
+			scroll.setPreferredWidth(250);
 			append(scroll);
 			
 			// 位移动画

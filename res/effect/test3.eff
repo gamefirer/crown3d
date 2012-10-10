@@ -1,6 +1,6 @@
 <effect>
-  <particle label="fire" global="true" orient="2" endTime="0" max="20" texture="box" pos="" mesh="torus" billboard="false" startTime="0" twoside="0">
-    <rect_emitter rectz="10" directionto="1 0 1" sizeX="0.99" recty="2" r="100" rectx="10" lifetime="2000" vel="200" directionfrom="-1 0 -1" emittime="0" sizerange="0.00" emitperiod="0" lifetimerange="0" rotvelrange="0" emitrate="30" a="47" rotvel="0" rot="0" b="100" rotrange="0" g="100" velrange="200" sizeY="1.00" arange="14" rrange="0" grange="0" brange="0" radiusbig="100" radiussmall="0" showemit="0" height="50"/>
+  <particle label="fire" global="true" orient="2" endTime="0" max="20" texture="box" pos="" mesh="" billboard="false" startTime="0" twoside="0">
+    <rect_emitter rectz="10" directionto="1 3 1" sizeX="10.00" recty="2" r="100" rectx="10" lifetime="2000" vel="200" directionfrom="-1 3 -1" emittime="0" sizerange="0.00" emitperiod="0" lifetimerange="0" rotvelrange="0" emitrate="30" a="47" rotvel="0" rot="0" b="100" rotrange="0" g="100" velrange="200" sizeY="10.00" arange="14" rrange="0" grange="0" brange="0" radiusbig="100" radiussmall="0" showemit="1" height="50"/>
     <rotate/>
     <path/>
     <scale/>
@@ -33,4 +33,16 @@
       <frame y="0" durtime="1000" x="0" z="0"/>
     </rotate>
   </property>
+  <particle label="fire1" global="true" orient="2" endTime="0" max="20" texture="box" pos="123 0 0" mesh="" billboard="false" startTime="0" twoside="0" rot="0 0 0" scl="1 1 1">
+    <rect_emitter rectz="10" directionto="1 3 1" sizeX="10.00" recty="2" r="100" rectx="10" lifetime="2000" vel="200" directionfrom="-1 3 -1" emittime="0" sizerange="0.00" emitperiod="0" lifetimerange="0" rotvelrange="0" emitrate="30" a="47" rotvel="0" rot="0" b="100" rotrange="0" g="100" velrange="200" sizeY="10.00" arange="14" rrange="0" grange="0" brange="0" radiusbig="100" radiussmall="0" showemit="1" height="50"/>
+    <rotate/>
+    <path/>
+    <scale/>
+  </particle>
+  <particle label="fire11" global="true" orient="2" endTime="0" max="20" texture="box" pos="-89 0 0" mesh="" billboard="false" startTime="0" twoside="0" rot="0 0 0" scl="1 1 1">
+    <rect_emitter rectz="10" directionto="1 3 1" sizeX="10.00" recty="2" r="100" rectx="10" lifetime="2000" vel="200" directionfrom="-1 3 -1" emittime="0" sizerange="0.00" emitperiod="0" lifetimerange="0" rotvelrange="0" emitrate="30" a="47" rotvel="0" rot="0" b="100" rotrange="0" g="100" velrange="200" sizeY="10.00" arange="14" rrange="0" grange="0" brange="0" radiusbig="100" radiussmall="0" showemit="1" height="50"/>
+    <rotate/>
+    <path/>
+    <scale/>
+  </particle>
 </effect>

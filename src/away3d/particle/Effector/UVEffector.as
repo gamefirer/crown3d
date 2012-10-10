@@ -116,7 +116,7 @@ package away3d.particle.Effector
 			var i:uint=0;
 			var ki:uint=0;
 			
-			while(i < GpuParticlePass.gpuEffectorKeyFrameMax*2)
+			while(i < GpuParticlePass.gpuUVKeyFrameMax)
 			{
 				if(ki < keyFrameLifeTime.length)
 				{
@@ -133,7 +133,7 @@ package away3d.particle.Effector
 				
 				if(i==0)
 					vect44[i*4+3] = 0;
-				else if(i == GpuParticlePass.gpuEffectorKeyFrameMax*2-1)
+				else if(i == GpuParticlePass.gpuUVKeyFrameMax-1)
 					vect44[i*4+3] = 1;
 				
 				if(i==0 && keyFrameLifeTime[ki] > 0)

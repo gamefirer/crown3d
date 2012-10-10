@@ -1,19 +1,37 @@
 <effect>
-  <particle texture="stand" label="" pos="" mesh="" global="true" endTime="0" startTime="0" max="20" orient="3" billboard="false">
+  <particle texture="shengguangdan2" label="ff1" pos="0 0 0" mesh="" global="true" endTime="0" startTime="0" max="20" orient="2" billboard="true" rot="0 0 0" scl="1 1 1" twoside="0">
     <color_effector>
-      <keyframe lifepercent="0.4" g="30" b="27" r="133"/>
-      <keyframe lifepercent="0.6" g="172" b="255" r="101"/>
+      <keyframe lifepercent="0" g="0" b="255" r="0"/>
+      <keyframe lifepercent="0.5" g="172" b="154" r="101"/>
+      <keyframe r="255" g="0" b="0" lifepercent="0.84"/>
     </color_effector>
-    <size_effector/>
-    <force_effector dir="" f="0"/>
-    <attract_effector p="0 0 0" global="true" f="1134.0"/>
-    <uv_effector su="1" sv="1"/>
-    <rect_emitter rectz="100" emittime="0" g="132" lifetimerange="700" directionto="0 1 0" emitperiod="0" vel="209" emitrate="5" rotvel="0.0" rotvelrange="0.0" rot="0.0" sizerange="0.0" a="255" directionfrom="0 1 0" b="5" recty="0.0" sizeX="100" rectx="100" sizeY="100" rotrange="0.0" velrange="49" r="255" lifetime="1000"/>
+    <size_effector>
+      <keyframe sizeX="100.00" sizeY="100.00" lifepercent="0"/>
+      <keyframe sizeX="200.00" sizeY="200.00" lifepercent="1"/>
+    </size_effector>
+    <force_effector dir="0 1 0" f="0"/>
+    <attract_effector p="0 0 0" global="true" f="0"/>
+    <uv_effector su="0.33" sv="0.33">
+      <keyframe u="0.00" v="0.00" lifepercent="0.00"/>
+      <keyframe u="0.33" v="0.00" lifepercent="0.11"/>
+      <keyframe u="0.67" v="0.00" lifepercent="0.22"/>
+      <keyframe u="0.00" v="0.33" lifepercent="0.33"/>
+      <keyframe u="0.33" v="0.33" lifepercent="0.44"/>
+      <keyframe u="0.67" v="0.33" lifepercent="0.56"/>
+      <keyframe u="0.00" v="0.67" lifepercent="0.67"/>
+      <keyframe u="0.33" v="0.67" lifepercent="0.78"/>
+      <keyframe u="0.67" v="0.67" lifepercent="0.89"/>
+    </uv_effector>
+    <rect_emitter rectz="200" emittime="0" g="132" lifetimerange="700" directionto="0 1 0" emitperiod="0" vel="500" emitrate="5" rotvel="0" rotvelrange="0" rot="0" sizerange="0.00" a="92" directionfrom="0 1 0" b="5" recty="0" sizeX="100.00" rectx="200" sizeY="100.00" rotrange="0" velrange="0" r="255" lifetime="1000" showemit="1" arange="17" rrange="0" grange="0" brange="0"/>
     <alpha_effector>
-      <keyframe a="29" lifepercent="0.2"/>
-      <keyframe a="255" lifepercent="0.5"/>
-      <keyframe a="0.0" lifepercent="0.7"/>
+      <keyframe a="0.0" lifepercent="0.0"/>
+      <keyframe a="255" lifepercent="0.62"/>
+      <keyframe a="28" lifepercent="1"/>
     </alpha_effector>
+    <path/>
+    <rotate/>
+    <scale/>
+    <velattract_effector p="0 0 0" f="100"/>
   </particle>
   <property lifetime="5362" cache="1">
     <scale>

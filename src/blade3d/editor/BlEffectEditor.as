@@ -452,17 +452,27 @@ package blade3d.editor
 				return;
 			
 			var addEleName : String = _addElementCbx.getSelectedItem();
-			if(!addEleName) return;
+			if(!addEleName) 
+				return;
 			
-//			switch(addEleName)
-//			{
-//				case "粒子":
-//					_currentStore.loader.srcData.addParticleData();
-//					break;
-//				
-//			}
-//			
-//			updateEffectElement(_currentStore.loader.srcData);
+			var addEleXML : XML;
+			
+			switch(addEleName)
+			{
+				case "粒子":	// 添加一个粒子对象
+					addEleXML = <particle label="particle" global="true" orient="2" endTime="0" max="20" texture="quan" pos="" mesh="" billboard="true" startTime="0" twoside="0">
+   	 								<rect_emitter rectz="10" directionto="1 3 1" sizeX="10.00" recty="2" r="100" rectx="10" lifetime="2000" vel="200" directionfrom="-1 3 -1" emittime="0" sizerange="0.00" emitperiod="0" lifetimerange="0" rotvelrange="0" emitrate="30" a="47" rotvel="0" rot="0" b="100" rotrange="0" g="100" velrange="200" sizeY="10.00" arange="14" rrange="0" grange="0" brange="0" radiusbig="100" radiussmall="0" showemit="1" height="50"/>
+    								<rotate/>
+    								<path/>
+    								<scale/>
+  								</particle>
+					break;
+				
+			}
+			
+			_currentStore.loader.srcXML.appendChild(addEleXML);
+			
+			updateEffect();
 		}
 		
 		private function onDelElement(evt:Event):void
@@ -470,11 +480,36 @@ package blade3d.editor
 			if(!_currentStore)
 				return;
 			
-			var delEleName : String = _elementList.getSelectedValue();
-			if(!delEleName) return;
+			var delEleObject : EffectListObject = _elementList.getSelectedValue();
+			if(!delEleObject) return;
 			
-//			if(_currentStore.loader.srcData.delData(delEleName))
-//				updateEffectElement(_currentStore.loader.srcData);
+			delElement(delEleObject.eleXML);
+		}
+		
+		private function delElement(delEleXml : XML):void
+		{
+			if(!_currentStore)
+				return;
+			
+			if(delEleXml.name() == "particle")
+			{
+				var di:int = 0;
+				var children : XMLList = _currentStore.loader.srcXML.children();
+				for each(var child : XML in children)
+				{
+					if(child.name() == "particle")
+					{
+						if(child.@label.toString() == delEleXml.@label.toString())
+						{
+							delete _currentStore.loader.srcXML.particle[di];
+							break;
+						}
+						di++;
+					}
+				}
+			}
+			
+			updateEffect();
 		}
 		
 		private function onCopyElement(evt:Event):void
@@ -482,11 +517,16 @@ package blade3d.editor
 			if(!_currentStore)
 				return;
 			
-			var copyEleName : String = _elementList.getSelectedValue();
-			if(!copyEleName) return;
+			var copyEleObject : EffectListObject = _elementList.getSelectedValue();
+			if(!copyEleObject) return;
 			
-//			if(_currentStore.loader.srcData.copyData(copyEleName))
-//				updateEffectElement(_currentStore.loader.srcData);
+			var copyXML : XML = new XML(copyEleObject.eleXML);
+			
+			copyXML.@label = copyXML.@label + '1';
+			
+			_currentStore.loader.srcXML.appendChild(copyXML);
+			
+			updateEffect();
 		}
 	}
 }

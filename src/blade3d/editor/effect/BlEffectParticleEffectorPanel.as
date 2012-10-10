@@ -30,11 +30,16 @@ package blade3d.editor.effect
 		private var _uvEffectorXML : XML;				// uv效果器
 		private var _attractEffectorXML : XML;			// 吸引效果器
 		private var _forceEffectorXML : XML;			// 力场效果器
+		private var _velAttractEffectorXML : XML;		// 速度吸引器
 		
 		// 面板
 		private var _sizePanel : BlEffectParticleEffectorSizePanel;		// 大小效果器面板
 		private var _alphaPanel : BlEffectParticleEffectorAlphaPanel;		// 透明度效果器面板
 		private var _colorPanel : BlEffectParticleEffectorColorPanel;		// 颜色效果器面板
+		private var _attractPanel : BlEffectParticleEffectorAttractPanel;	// 吸引效果器面板
+		private var _forcePanel : BlEffectParticleEffectorForcePanel;		// 力场效果器面板
+		private var _velAttractPanel : BlEffectParticleEffectorVelAttractPanel;	// 速度吸引器面板
+		private var _uvPanel : BlEffectParticleEffectorUVPanel;			// UV效果器面板
 		
 		// 效果器列表
 		private var _effectList : JList;
@@ -85,6 +90,7 @@ package blade3d.editor.effect
 			arr.push("UV效果器");
 			arr.push("吸引效果器");
 			arr.push("力场效果器");
+			arr.push("速度吸引器");
 			_addEffectList = new JComboBox(new VectorListModel(arr));
 			_addEffectList.setPreferredWidth(100);
 			_addEffectList.setSelectedIndex(0);
@@ -137,6 +143,12 @@ package blade3d.editor.effect
 						_particleXML.appendChild(<force_effector/>);
 					break;
 				}
+				case 6:
+				{
+					if(_particleXML.velattract_effector[0] == null)
+						_particleXML.appendChild(<velattract_effector/>);
+					break;
+				}
 				
 			}
 			
@@ -161,6 +173,8 @@ package blade3d.editor.effect
 				delete _particleXML.attract_effector;
 			else if(effectorXML.name() == "force_effector")
 				delete _particleXML.force_effector;
+			else if(effectorXML.name() == "velattract_effector")
+				delete _particleXML.velattract_effector;
 			
 			updateUIByData();
 		}
@@ -190,6 +204,30 @@ package blade3d.editor.effect
 				_colorPanel ||= new BlEffectParticleEffectorColorPanel;
 				_colorPanel.srcData = effectorXML;
 				_rightPanel.append(_colorPanel);
+			}
+			else if(effectorXML.name() == "uv_effector")
+			{
+				_uvPanel ||= new BlEffectParticleEffectorUVPanel;
+				_uvPanel.srcData = effectorXML;
+				_rightPanel.append(_uvPanel);
+			}
+			else if(effectorXML.name() == "attract_effector")
+			{
+				_attractPanel ||= new BlEffectParticleEffectorAttractPanel;
+				_attractPanel.srcData = effectorXML;
+				_rightPanel.append(_attractPanel);
+			}
+			else if(effectorXML.name() == "force_effector")
+			{
+				_forcePanel ||= new BlEffectParticleEffectorForcePanel;
+				_forcePanel.srcData = effectorXML;
+				_rightPanel.append(_forcePanel);
+			}
+			else if(effectorXML.name() == "velattract_effector")
+			{
+				_velAttractPanel ||= new BlEffectParticleEffectorVelAttractPanel;
+				_velAttractPanel.srcData = effectorXML;
+				_rightPanel.append(_velAttractPanel);
 			}
 			
 		}
@@ -239,7 +277,12 @@ package blade3d.editor.effect
 			{
 				_effectListModel.append(new effectListObject(_forceEffectorXML, "力场效果器"));
 			}
-			
+			// 速度吸引器
+			_velAttractEffectorXML = _particleXML.velattract_effector[0];
+			if(_velAttractEffectorXML)
+			{
+				_effectListModel.append(new effectListObject(_velAttractEffectorXML, "速度吸引器"));
+			}
 			
 		}
 	}
