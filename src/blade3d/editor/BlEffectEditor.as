@@ -3,11 +3,18 @@
  */
 package blade3d.editor
 {
+	import away3d.animators.PathAnimator;
+	import away3d.animators.RotateAnimator;
+	import away3d.animators.data.RotateAnimationFrame;
+	import away3d.animators.data.RotateAnimationSequence;
 	import away3d.containers.ObjectContainer3D;
 	import away3d.debug.Debug;
+	import away3d.debug.WireframeAxesGrid;
+	import away3d.paths.PathMaker;
 	
 	import blade3d.editor.effect.BlEffectBasePanel;
 	import blade3d.editor.effect.BlEffectParticleEditor;
+	import blade3d.editor.effect.BlEffectStripeEditor;
 	import blade3d.effect.BlEffect;
 	import blade3d.effect.BlEffectManager;
 	import blade3d.effect.BlEffectStore;
@@ -19,6 +26,7 @@ package blade3d.editor
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.TimerEvent;
+	import flash.geom.Vector3D;
 	import flash.utils.Timer;
 	
 	import org.aswing.ASColor;
@@ -44,6 +52,7 @@ package blade3d.editor
 	public class BlEffectEditor extends JFrame
 	{
 		private var _effectNode : ObjectContainer3D;
+		private var _effectWire : WireframeAxesGrid;
 		
 		private var _panel : JPanel;
 		
@@ -60,6 +69,7 @@ package blade3d.editor
 		
 		// 特效元素编辑界面
 		private var _particleEditor : BlEffectParticleEditor;
+		private var _stripeEditor : BlEffectStripeEditor;
 		
 		// 特效列表
 		private var _searchTxt : JTextField;
@@ -69,6 +79,8 @@ package blade3d.editor
 		private var _elementList : JList;
 		private var _elementListMod : VectorListModel;
 		
+		private var _effectNodeShow : JCheckBox;
+		private var _effectMoveList : JComboBox;
 		private var _effectAutoClear : JCheckBox;
 		private var _effectAdd : JButton;
 		private var _effectSave : JButton;
@@ -88,6 +100,8 @@ package blade3d.editor
 		// 特效对象
 		private var _currentStore : BlEffectStore;
 		
+		public function get effectNode() : ObjectContainer3D { return _effectNode; }
+		
 		public function BlEffectEditor(owner:*=null, title:String="", modal:Boolean=false)
 		{
 			super(owner, title, modal);
@@ -101,12 +115,14 @@ package blade3d.editor
 			
 			show();
 			
-			initPanel();
-			initUI();
-			
 			_effectNode = new ObjectContainer3D;
 			_effectNode.name = "BlEffectEditor";
 			_effectNode.y = 100;
+			_effectWire = new WireframeAxesGrid(5, 50);
+			_effectNode.addChild(_effectWire);
+			
+			initPanel();
+			initUI();
 			
 			BlSceneManager.instance().currentScene.addEditor(_effectNode);
 			BlSceneManager.instance().addEventListener(BlSceneEvent.SCENE_LEAVE, onSceneLeave);
@@ -191,6 +207,27 @@ package blade3d.editor
 			_leftCenterPanel.append(createEffectList());
 			
 			// 下
+			_leftDownPanel.append(_effectNodeShow = new JCheckBox("显示特效点"));
+			_effectNodeShow.setSelected(_effectWire.visible);
+			_effectNodeShow.addActionListener(
+				function(evt:Event):void
+				{
+					_effectWire.visible = _effectNodeShow.isSelected();
+				}
+				);
+			
+			_leftDownPanel.append(new JLabel("特效点运动方式"));
+			
+			var arr : Array = new Array;
+			arr.push("静止");
+			arr.push("直线运动");
+			arr.push("绕圈旋转");
+			_effectMoveList = new JComboBox(new VectorListModel(arr));
+			_effectMoveList.setPreferredWidth(100);
+			_effectMoveList.setSelectedIndex(0);
+			_leftDownPanel.append(_effectMoveList);
+			_effectMoveList.addActionListener(onEffectMove);
+			
 			_effectAutoClear = new JCheckBox("自动更新");
 			_effectAutoClear.setSelected(true);
 			_leftDownPanel.append(_effectAutoClear);
@@ -294,6 +331,65 @@ package blade3d.editor
 			_elementList.addSelectionListener(onEffectElementSelected);
 			return new JScrollPane(_elementList);
 		}
+		// 特效点移动方式
+		private function onEffectMove(evt:Event):void
+		{
+			var selectText : String = _effectMoveList.getSelectedItem();
+			_effectNode.pathAnimator = null;
+			_effectNode.rotateAnimator = null;
+			_effectNode.scaleAnimator = null;
+			
+			var path : Vector.<Vector3D>;
+			var pathMaker : PathMaker;
+			
+			switch(selectText)
+			{
+				case "静止":
+					break;
+				case "直线运动":
+				{
+					path = new Vector.<Vector3D>;
+					path.push(new Vector3D(0,0,0));
+					path.push(new Vector3D(500,0,0));
+					path.push(new Vector3D(0,0,0));					
+					pathMaker = new PathMaker;
+					pathMaker.pointData = path;
+					pathMaker.duration = 2000;
+					_effectNode.pathAnimator = new PathAnimator(pathMaker);
+					_effectNode.pathAnimator.global = false;
+					break;
+				}
+				case "绕圈旋转":
+				{
+					path = new Vector.<Vector3D>;
+					path.push(new Vector3D(500,0,0));
+					path.push(new Vector3D(353,0,353));
+					path.push(new Vector3D(0,0,500));
+					path.push(new Vector3D(-353,0,353));
+					path.push(new Vector3D(-500,0,0));
+					path.push(new Vector3D(-353,0,-353));
+					path.push(new Vector3D(0,0,-500));
+					path.push(new Vector3D(353,0,-353));
+					path.push(new Vector3D(500,0,0));
+					pathMaker = new PathMaker;
+					pathMaker.pointData = path;
+					pathMaker.duration = 5000;
+					_effectNode.pathAnimator = new PathAnimator(pathMaker);
+					_effectNode.pathAnimator.global = false;
+					
+					var rotateAnimator : RotateAnimator = new RotateAnimator();
+					var seq : RotateAnimationSequence = new RotateAnimationSequence("");
+					seq.addFrame(new RotateAnimationFrame(0, 0.785, 0), 1000);
+					rotateAnimator.addSequence(seq);
+					_effectNode.rotateAnimator = rotateAnimator;
+					
+					break;
+				}
+			}
+			
+			_effectNode.playAllAnimators();
+			
+		}
 		// 选择特效
 		private function onEffectListSelected(evt:Event):void
 		{
@@ -329,12 +425,20 @@ package blade3d.editor
 				_particleEditor.srcData = effObj.eleXML;
 				_particleEditor.visible = true;
 			}
+			else if(effObj.eleXML.name() == "stripe")
+			{	// 编辑条带
+				_stripeEditor ||= new BlEffectStripeEditor(this, "条带编辑器", false);
+				_stripeEditor.srcData = effObj.eleXML;
+				_stripeEditor.visible = true;
+			}
 		}
 		// 隐藏元素编辑面板
 		private function hideElementEditor():void
 		{
 			if(_particleEditor) 
 				_particleEditor.visible = false;
+			if(_stripeEditor)
+				_stripeEditor.visible = false;
 		}
 		
 		private function onSave(evt:Event):void
@@ -373,7 +477,7 @@ package blade3d.editor
 			_effectNode.addChild(effect);
 			
 			// 为特效对象添加辅助对象
-			BlSceneManager.instance().currentScene.addHelperFor(effect);
+//			BlSceneManager.instance().currentScene.addHelperFor(effect);
 		}
 		
 		private function onTimeUpdateEffectElement(evt:Event):void
@@ -461,7 +565,7 @@ package blade3d.editor
 			{
 				case "粒子":	// 添加一个粒子对象
 					addEleXML = <particle label="particle" global="true" orient="2" endTime="0" max="20" texture="quan" pos="" mesh="" billboard="true" startTime="0" twoside="0">
-   	 								<rect_emitter rectz="10" directionto="1 3 1" sizeX="10.00" recty="2" r="100" rectx="10" lifetime="2000" vel="200" directionfrom="-1 3 -1" emittime="0" sizerange="0.00" emitperiod="0" lifetimerange="0" rotvelrange="0" emitrate="30" a="47" rotvel="0" rot="0" b="100" rotrange="0" g="100" velrange="200" sizeY="10.00" arange="14" rrange="0" grange="0" brange="0" radiusbig="100" radiussmall="0" showemit="1" height="50"/>
+   	 								<rect_emitter rectz="10" directionto="1 3 1" sizeX="10.00" recty="2" r="255" rectx="10" lifetime="2000" vel="200" directionfrom="-1 3 -1" emittime="0" sizerange="0.00" emitperiod="0" lifetimerange="0" rotvelrange="0" emitrate="30" a="255" rotvel="0" rot="0" b="255" rotrange="0" g="255" velrange="200" sizeY="10.00" arange="14" rrange="0" grange="0" brange="0" radiusbig="100" radiussmall="0" showemit="1" height="50"/>
     								<rotate/>
     								<path/>
     								<scale/>

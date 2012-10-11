@@ -32,9 +32,13 @@ package away3d.particle.Displayer
 		private var _geometry : SubGeometry;	
 		private var _material : MaterialBase;					// 条带的材质
 		
+		private var _indexData : Vector.<uint>;			// index
 		private var _vertexData : Vector.<Number>;			// vertex
 		private var _vertexColorData : Vector.<Number>;		// vertex color
 		private var _uvData : Vector.<Number>;				// uv
+		
+		
+		public function get indexData() : Vector.<uint> {return _indexData;}
 		
 		public function StripeDisplayer(stripeSystem:StripeSystem=null)
 		{
@@ -78,18 +82,18 @@ package away3d.particle.Displayer
 				_vertexColorData[i*4+3] = 1;
 			}
 			
-			var indexData : Vector.<uint> = new Vector.<uint>(maxParticleNumber*6, true);
+			_indexData = new Vector.<uint>(maxParticleNumber*6, true);
 			
 			for(i=0;i<maxParticleNumber;i++)
 			{
-				indexData[i*6] = i*4;			// 0 1 2
-				indexData[i*6+1] = i*4+1;
-				indexData[i*6+2] = i*4+2;
-				indexData[i*6+3] = i*4;			// 0 2 3
-				indexData[i*6+4] = i*4+2;
-				indexData[i*6+5] = i*4+3;
+				_indexData[i*6] = i*4;			// 0 1 2
+				_indexData[i*6+1] = i*4+1;
+				_indexData[i*6+2] = i*4+2;
+				_indexData[i*6+3] = i*4;			// 0 2 3
+				_indexData[i*6+4] = i*4+2;
+				_indexData[i*6+5] = i*4+3;
 			}				
-			_geometry.updateIndexData(indexData);
+			_geometry.updateIndexData(_indexData);
 			
 			_uvData = new Vector.<Number>(maxParticleNumber*8, true);		//4*2
 			for(i=0;i<maxParticleNumber;i++)

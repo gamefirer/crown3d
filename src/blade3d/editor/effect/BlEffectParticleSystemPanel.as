@@ -74,6 +74,8 @@ package blade3d.editor.effect
 			
 			var hPanel : JPanel;
 			
+		
+			
 			// 最大粒子数
 			vPanel.append(new JLabel("最大粒子数"));
 			_particleMax = new JStepper;

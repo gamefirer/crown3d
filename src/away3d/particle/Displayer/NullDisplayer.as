@@ -58,6 +58,11 @@ package away3d.particle.Displayer
 			return null;
 		}
 		
+		public function get indexData() : Vector.<uint> 
+		{
+			return null;
+		}
+		
 		public function dispose() : void
 		{
 			

@@ -7,8 +7,8 @@ package away3d.particle
 	import away3d.core.math.Vector3DUtils;
 	import away3d.core.traverse.EntityCollector;
 	import away3d.core.traverse.PartitionTraverser;
-	import away3d.debug.Profiler;
 	import away3d.materials.DefaultMaterialBase;
+	import away3d.materials.MaterialBase;
 	import away3d.particle.Displayer.NullDisplayer;
 	import away3d.particle.Displayer.StripeDisplayer;
 	import away3d.particle.Dragger.DragStripeEmitter;

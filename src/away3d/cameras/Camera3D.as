@@ -234,5 +234,10 @@ package away3d.cameras
 		{
 			return lens.project(inverseSceneTransform.transformVector(point3d));
 		}
+		
+		public function unprojectRay(mX : Number, mY : Number):Vector3D	//产生一个沿camera可视方向的向量 mX mY [-1, 1]
+		{
+			return sceneTransform.deltaTransformVector(lens.unproject(mX, mY, 0));
+		}
 	}
 }

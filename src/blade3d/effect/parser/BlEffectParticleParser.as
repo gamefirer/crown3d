@@ -1,3 +1,6 @@
+/**
+ *	粒子系统解析器 
+ */
 package blade3d.effect.parser
 {
 	import away3d.debug.Debug;
@@ -200,7 +203,7 @@ package blade3d.effect.parser
 			
 		}
 		
-		static private function parseParticleEffector(xml:XML, particleSystem : ParticleSystem, newEffect:BlEffect) : void
+		static protected function parseParticleEffector(xml:XML, particleSystem : ParticleSystem, newEffect:BlEffect) : void
 		{
 			var effectorXML : XML;
 			// 粒子大小影响器

@@ -78,8 +78,7 @@ package blade3d.editor.effect
 			_upPanel.append(_upLeftPanel, BorderLayout.WEST);
 			_upPanel.append(_upRightPanel, BorderLayout.EAST);
 			
-			// 影响器列表
-			
+			// 系统编辑列表
 			var arr:Array = new Array();
 			_actionListMod = new VectorListModel(arr);
 			_actionList = new JList(_actionListMod);

@@ -297,6 +297,15 @@ package blade3d.editor
 				);
 			_btnPanel2.append(_terrainMapChk);
 			
+			var _selectEffectNode : JButton = new JButton("特效编辑点");
+			_selectEffectNode.addActionListener(
+				function(evt:Event):void
+				{
+					selectedObject = BlEditorManager.instance()._effectEditor.effectNode;
+				}
+				);
+			_btnPanel2.append(_selectEffectNode);
+			
 			
 			// 添加对象
 			var arr:Array = new Array();

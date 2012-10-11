@@ -12,6 +12,7 @@ package blade3d.effect
 	
 	import blade3d.effect.parser.BlEffectBaseParser;
 	import blade3d.effect.parser.BlEffectParticleParser;
+	import blade3d.effect.parser.BlEffectStripeParser;
 	import blade3d.resource.BlImageResource;
 	import blade3d.resource.BlResource;
 	import blade3d.resource.BlResourceManager;
@@ -142,6 +143,22 @@ package blade3d.effect
 					res.asycLoad(onPrepareEffResource);
 				}
 			}
+			// 条带所需资源
+			var stripeList : XMLList;
+			stripeList = _srcXML.stripe;
+			for each(top_xml in stripeList)
+			{
+				// 条带的贴图
+				resUrl = top_xml.@texture;
+				if(resUrl.length>0)
+				{
+					resUrl += BlStringUtils.texExtName;
+					resUrl = BlResourceManager.findValidPath(resUrl, _effPath);
+					res = BlResourceManager.instance().findResource(resUrl);
+					_prepareCount++;
+					res.asycLoad(onPrepareEffResource);
+				}
+			}
 			
 			onPrepareEffResource(null);
 		}
@@ -185,6 +202,12 @@ package blade3d.effect
 				for each(top_xml in particleList)
 				{
 					BlEffectParticleParser.parseParticle(top_xml, newEffect, _effPath);
+				}
+				// 创建条带
+				stripeList = _srcXML.stripe;
+				for each(top_xml in stripeList)
+				{
+					BlEffectStripeParser.parseStripe(top_xml, newEffect, _effPath);
 				}
 				
 				newEffect.onCreate();		// 创建完毕

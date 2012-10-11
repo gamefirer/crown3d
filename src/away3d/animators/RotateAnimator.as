@@ -26,7 +26,7 @@ package away3d.animators
 		public var ani_RotY : Number = 0;
 		public var ani_RotZ : Number = 0;
 		
-		public function RotateAnimator(target : ObjectContainer3D)
+		public function RotateAnimator(target : ObjectContainer3D = null)
 		{
 			super();
 			
