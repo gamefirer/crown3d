@@ -61,6 +61,7 @@ package blade3d.editor
 	import org.aswing.JScrollPane;
 	import org.aswing.JSlider;
 	import org.aswing.JTextArea;
+	import org.aswing.JTextField;
 	import org.aswing.JTree;
 	import org.aswing.SoftBox;
 	import org.aswing.SoftBoxLayout;
@@ -111,6 +112,8 @@ package blade3d.editor
 		private var _cameraRot : JSlider;
 		private var _cameraHeight : JSlider;
 		
+		private var _searchText : JTextField;			// 搜索
+		
 		// 资源树
 		private var _resTreeCtrl : JTree;
 		private var _resTreeModel : DefaultTreeModel;
@@ -156,6 +159,10 @@ package blade3d.editor
 			show();
 			
 			// 左边 up panel
+			
+			var hPanel : JPanel;
+			_upPanel2.append(hPanel = new JPanel);
+			
 			_isImageChk = new JCheckBox("预览图片");
 			_isImageChk.setSelected(true);
 			_isImageChk.addActionListener(
@@ -165,7 +172,7 @@ package blade3d.editor
 				}
 			);
 			_image.visible = _isImageChk.isSelected();
-			_upPanel2.append(_isImageChk);
+			hPanel.append(_isImageChk);
 			
 			_isMeshChk = new JCheckBox("预览模型");
 			_isMeshChk.setSelected(true);
@@ -176,13 +183,14 @@ package blade3d.editor
 				}
 			);
 			modelViewer.visible = _isMeshChk.isSelected();
-			_upPanel2.append(_isMeshChk);
+			hPanel.append(_isMeshChk);
 			
-			var hPanel : JPanel;
+			
 			_upPanel2.append(hPanel = new JPanel);
 			
 			var borders:SoftBox = SoftBox.createVerticalBox(2);
-			borders.setBorder(new TitledBorder(null, "资源显示", TitledBorder.BOTTOM));
+			borders.setBorder(new TitledBorder(null, "资源筛选", TitledBorder.TOP));
+			borders.setPreferredWidth(70);
 			borders.append(_showAllRB = new JRadioButton("全部"));
 			borders.append(_showMeshRB = new JRadioButton("模型"));
 			borders.append(_showTexRB = new JRadioButton("贴图"));
@@ -219,6 +227,19 @@ package blade3d.editor
 			_cameraHeight.addStateListener(updateModelViewerCamera);
 			vPanel.append(_cameraHeight);
 			
+			_upPanel2.append(hPanel = new JPanel);
+			
+			hPanel.append(new JLabel("搜索"));
+			
+			_searchText = new JTextField;
+			_searchText.setPreferredWidth(150);
+			_searchText.addActionListener(
+				function(evt:Event):void
+				{
+					UpdateTree();
+				}
+			);
+			hPanel.append(_searchText);
 			
 			// 左边center panel
 			onResourceList();
@@ -284,7 +305,7 @@ package blade3d.editor
 			_leftPanel1.setPreferredWidth(200);
 			
 			// 左边上中下
-			_upPanel2 = new JPanel();
+			_upPanel2 = new JPanel(new VerticalLayout);
 			_upPanel2.setBorder(new LineBorder(null, ASColor.BLUE));
 			_centerPanel2 = new JPanel(new BorderLayout);
 			_centerPanel2.setBorder(new LineBorder(null, ASColor.BLUE));
@@ -326,6 +347,7 @@ package blade3d.editor
 		
 		private function UpdateTree():void
 		{
+			var searchText : String = _searchText.getText();
 			// clear
 			_rootTreeNode.removeAllChildren();
 			
@@ -339,13 +361,24 @@ package blade3d.editor
 					isShow = true;
 				else if(_showFilter & 0x1)
 					isShow = true;
+				
+				
+				
 				if(!isShow)
 					continue;
 				
 				var currentNode:DefaultMutableTreeNode = _rootTreeNode;
 				// 添加树路径
 				var pathArray:Array = res.url.split("/");
-				var x:int = 0;
+				
+				// 搜索过滤
+				if(searchText.length > 0)
+				{
+					var fileName : String = pathArray[pathArray.length-1];
+					if(fileName.indexOf(searchText) < 0)
+						continue;
+				}
+				
 				for(var i:int=0; i<pathArray.length-1; i++)
 				{
 					// 检查是否存在该节点
