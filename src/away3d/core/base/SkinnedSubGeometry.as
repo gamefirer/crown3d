@@ -29,6 +29,9 @@ package away3d.core.base
 		private var _jointIndexContext : Vector.<Context3D> = new Vector.<Context3D>(8);
 		private var _jointsPerVertex : int;
 		
+		protected var _jointWeightDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
+		protected var _jointIndexDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
+		
 		private var _condensedJointIndexData : Vector.<Number>;
 		private var _condensedIndexLookUp : Vector.<uint>;	// used for linking condensed indices to the real ones
 		private var _numCondensedJoints : uint;
@@ -71,7 +74,7 @@ package away3d.core.base
 		public function set animatedNormalData(value : Vector.<Number>) : void
 		{
 			_animatedNormalData = value;
-			invalidateBuffers(_vertexNormalBufferContext);
+			invalidateBuffers(_vertexNormalBufferDirty);
 		}
 
 		/**
@@ -85,7 +88,7 @@ package away3d.core.base
 		public function set animatedTangentData(value : Vector.<Number>) : void
 		{
 			_animatedTangentData = value;
-			invalidateBuffers(_vertexTangentBufferContext);
+			invalidateBuffers(_vertexTangentBufferDirty);
 		}
 
 		/**
@@ -99,7 +102,7 @@ package away3d.core.base
 		public function set animatedVertexData(value : Vector.<Number>) : void
 		{
 			_animatedVertexData = value;
-			invalidateBuffers(_vertexBufferContext);
+			invalidateBuffers(_vertexBufferDirty);
 		}
 
 		/**
@@ -118,9 +121,16 @@ package away3d.core.base
 					Context3DProxy.disposeVertexBuffer(_jointWeightsBuffer[contextIndex]);
 				}
 				_jointWeightsBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_numVertices, _jointsPerVertex);
-				Context3DProxy.uploadVertexBufferFromVector(_jointWeightsBuffer[contextIndex], _jointWeightsData, 0, _jointWeightsData.length / _jointsPerVertex);
 				_jointWeightContext[contextIndex] = context;
+				_jointWeightDirty[contextIndex] = true;
 			}
+			
+			if(_jointWeightDirty[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_jointWeightsBuffer[contextIndex], _jointWeightsData, 0, _jointWeightsData.length / _jointsPerVertex);
+				_jointWeightDirty[contextIndex] = false;
+			}
+			
 			return _jointWeightsBuffer[contextIndex];
 		}
 
@@ -141,9 +151,16 @@ package away3d.core.base
 					Context3DProxy.disposeVertexBuffer(_jointIndexBuffer[contextIndex]);
 				}
 				_jointIndexBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_numVertices, _jointsPerVertex);
-				Context3DProxy.uploadVertexBufferFromVector(_jointIndexBuffer[contextIndex], _numCondensedJoints > 0? _condensedJointIndexData : _jointIndexData, 0, _jointIndexData.length / _jointsPerVertex);
 				_jointIndexContext[contextIndex] = context;
+				_jointIndexDirty[contextIndex] = true;
 			}
+			
+			if(_jointIndexDirty[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_jointIndexBuffer[contextIndex], _numCondensedJoints > 0? _condensedJointIndexData : _jointIndexData, 0, _jointIndexData.length / _jointsPerVertex);
+				_jointIndexDirty[contextIndex] = false;
+			}
+			
 			return _jointIndexBuffer[contextIndex];
 		}
 
@@ -152,7 +169,8 @@ package away3d.core.base
 		 */
 		override public function getVertexBuffer(stage3DProxy : Stage3DProxy) : VertexBuffer3D
 		{
-			if (_animatedVertexData) {
+			if (_animatedVertexData)
+			{
 				var contextIndex : int = stage3DProxy._stage3DIndex;
 				var context : Context3D = stage3DProxy._context3D;
 				if (_vertexBufferContext[contextIndex] != context || !_vertexBuffer[contextIndex])
@@ -162,9 +180,16 @@ package away3d.core.base
 						Context3DProxy.disposeVertexBuffer(_vertexBuffer[contextIndex]);
 					}
 					_vertexBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_animatedVertexData.length / 3, 3);
-					Context3DProxy.uploadVertexBufferFromVector(_vertexBuffer[contextIndex], _animatedVertexData, 0, _animatedVertexData.length / 3);
 					_vertexBufferContext[contextIndex] = context;
+					_vertexBufferDirty[contextIndex] = true;
 				}
+				
+				if(_vertexBufferDirty[contextIndex])
+				{
+					Context3DProxy.uploadVertexBufferFromVector(_vertexBuffer[contextIndex], _animatedVertexData, 0, _animatedVertexData.length / 3);
+					_vertexBufferDirty[contextIndex] = false;
+				}
+				
 			    return _vertexBuffer[contextIndex];
 			}
 			else
@@ -176,7 +201,8 @@ package away3d.core.base
 		 */
 		override public function getVertexNormalBuffer(stage3DProxy : Stage3DProxy) : VertexBuffer3D
 		{
-			if (_animatedNormalData) {
+			if (_animatedNormalData) 
+			{
 				var contextIndex : int = stage3DProxy._stage3DIndex;
 				var context : Context3D = stage3DProxy._context3D;
 				if (_vertexNormalBufferContext[contextIndex] != context || !_vertexNormalBuffer[contextIndex]) 
@@ -186,9 +212,16 @@ package away3d.core.base
 						Context3DProxy.disposeVertexBuffer(_vertexNormalBuffer[contextIndex]);
 					}
 					_vertexNormalBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_animatedNormalData.length / 3, 3);
-					Context3DProxy.uploadVertexBufferFromVector(_vertexNormalBuffer[contextIndex], _animatedNormalData, 0, _animatedNormalData.length/3);
 					_vertexNormalBufferContext[contextIndex] = context;
+					_vertexNormalBufferDirty[contextIndex] = true;
 				}
+				
+				if(_vertexNormalBufferDirty[contextIndex])
+				{
+					Context3DProxy.uploadVertexBufferFromVector(_vertexNormalBuffer[contextIndex], _animatedNormalData, 0, _animatedNormalData.length/3);
+					_vertexNormalBufferDirty[contextIndex] = false;
+				}
+				
 			    return _vertexNormalBuffer[contextIndex];
 			}
 			else
@@ -200,7 +233,8 @@ package away3d.core.base
 		 */
 		override public function getVertexTangentBuffer(stage3DProxy : Stage3DProxy) : VertexBuffer3D
 		{
-			if (_animatedTangentData) {
+			if (_animatedTangentData)
+			{
 				var contextIndex : int = stage3DProxy._stage3DIndex;
 				var context : Context3D = stage3DProxy._context3D;
 				if (_vertexTangentBufferContext[contextIndex] != context || !_vertexTangentBuffer[contextIndex]) 
@@ -210,9 +244,16 @@ package away3d.core.base
 						Context3DProxy.disposeVertexBuffer(_vertexTangentBuffer[contextIndex]);
 					}
 					_vertexTangentBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_animatedTangentData.length / 3, 3);
-					Context3DProxy.uploadVertexBufferFromVector(_vertexTangentBuffer[contextIndex], _animatedTangentData, 0, _animatedTangentData.length/3);
 					_vertexTangentBufferContext[contextIndex] = context;
+					_vertexTangentBufferDirty[contextIndex] = true;
 				}
+				
+				if(_vertexTangentBufferDirty[contextIndex])
+				{
+					Context3DProxy.uploadVertexBufferFromVector(_vertexTangentBuffer[contextIndex], _animatedTangentData, 0, _animatedTangentData.length/3);
+					_vertexTangentBufferDirty[contextIndex] = false;
+				}
+				
 			    return _vertexTangentBuffer[contextIndex];
 			}
 			else
@@ -281,7 +322,7 @@ package away3d.core.base
 			}
 			_numCondensedJoints = newIndex/3;
 
-			invalidateBuffers(_jointIndexContext);
+			invalidateBuffers(_jointIndexDirty);
 		}
 
 
@@ -301,7 +342,7 @@ package away3d.core.base
 			_condensedJointIndexData = null;
 
 			_jointWeightsData = value;
-			invalidateBuffers(_jointWeightContext);
+			invalidateBuffers(_jointWeightDirty);
 		}
 
 		/**
@@ -315,7 +356,7 @@ package away3d.core.base
 		arcane function updateJointIndexData(value : Vector.<Number>) : void
 		{
 			_jointIndexData = value;
-			invalidateBuffers(_jointIndexContext);
+			invalidateBuffers(_jointIndexDirty);
 		}
 
 

@@ -31,7 +31,22 @@ package blade3d.effect
 		public function BlEffect()
 		{
 			_particles = new Vector.<ParticleSystem>;
-			
+		}
+		
+		public function getParticle(index:int) : ParticleSystem {
+			return _particles[index];
+		}
+		
+		public function getParticleNum() : int {
+			return _particles.length;
+		}
+		
+		public function getStripe(index:int) : StripeSystem {
+			return _stripes[index];
+		}
+		
+		public function getStripeNum() : int {
+			return _stripes.length;
 		}
 		
 		public function addParticle(particle : ParticleSystem, startTime : int, endTime : int):void

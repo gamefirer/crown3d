@@ -77,15 +77,15 @@ package away3d.particle.Dragger
 				setStripeParticleNum(si, indexOrder.length);
 				
 				var isShake : Boolean = false;
-				if(_lastShakeTime < 0 || _lastShakeTime > shakeTime)
+				if(_lastShakeTime < 0)
 					isShake = true;
-				if( _lastShakeTime > shakeTime )
+				else if( _lastShakeTime > shakeTime )
 				{
 					_lastShakeTime %= shakeTime;
 					isShake = true;
 				}
 				
-				if(isShake && lightingPoint1 && lightingPoint2)
+				if(lightingPoint1 && lightingPoint2)
 				{
 					// 计算抖动方向
 					var p1 : Particle = _stripeSystem.particles[indexOrder[0]];
@@ -99,7 +99,6 @@ package away3d.particle.Dragger
 					
 					var shakeDir : Vector3D = stripeDir.crossProduct(camVector);
 					shakeDir.normalize();			// 抖动方向
-					
 					
 					var lightingDir : Vector3D = lightingPoint2.scenePosition.subtract( lightingPoint1.scenePosition );		// 闪电方向
 					
@@ -115,8 +114,12 @@ package away3d.particle.Dragger
 						p.pos = p.pos.add( tmpVec );
 							
 						// 抖动偏移
+						if(isShake)
+						{
+							p.shake = shakeAmp*(Math.random()*2 - 1);
+						}
 						tmpVec.copyFrom(shakeDir);
-						tmpVec.scaleBy( shakeAmp*Math.random() );
+						tmpVec.scaleBy(p.shake);
 						p.pos = p.pos.add(tmpVec);
 						
 						// 旋转

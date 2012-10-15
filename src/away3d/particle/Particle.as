@@ -28,6 +28,8 @@ package away3d.particle
 		public var su : Number = 1.0;			// u scale
 		public var sv : Number = 1.0;			// v scale
 		
+		public var shake : Number = 0.0;		// 抖动值(条带用)
+		
 		public var rotMat : Matrix3D = new Matrix3D;	// 旋转矩阵(非billboard时用,只保存旋转)(条带系统用)
 		
 		public function Particle(index : int)

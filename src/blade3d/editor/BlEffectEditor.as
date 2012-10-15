@@ -10,6 +10,8 @@ package blade3d.editor
 	import away3d.containers.ObjectContainer3D;
 	import away3d.debug.Debug;
 	import away3d.debug.WireframeAxesGrid;
+	import away3d.particle.Dragger.LightingStripeEmitter;
+	import away3d.particle.StripeSystem;
 	import away3d.paths.PathMaker;
 	
 	import blade3d.editor.effect.BlEffectBasePanel;
@@ -472,6 +474,17 @@ package blade3d.editor
 			{
 				Debug.trace("effect "+effectName+" not exist");
 				return;
+			}
+			
+			// 设定条带的带状生成器绑定点
+			for(var si:int=0; si<effect.getStripeNum(); si++)
+			{
+				var stripe : StripeSystem = effect.getStripe(si);
+				if(stripe.dragger is LightingStripeEmitter)
+				{
+					LightingStripeEmitter(stripe.dragger).lightingPoint1 = BlSceneManager.instance().currentScene.rootNode;
+					LightingStripeEmitter(stripe.dragger).lightingPoint2 = _effectNode;
+				}
 			}
 			
 			_effectNode.addChild(effect);

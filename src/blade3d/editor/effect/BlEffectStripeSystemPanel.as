@@ -129,20 +129,29 @@ package blade3d.editor.effect
 		
 		private function onDragger(evt:Event):void
 		{
-			delete _stripeXML.dragger;
-			delete _stripeXML.lighting;
-			
 			var draggerXML : XML;
 			if(_draggerType.getSelectedIndex() == 0)
 			{
-				draggerXML = <dragger b="255" r="255" a="255" g="255"/>;
+				// 删除其他发射器
+				delete _stripeXML.lighting;
+				// 添加拖尾器
+				if(_stripeXML.dragger[0] == null)
+				{
+					draggerXML = <dragger b="255" r="255" a="255" g="255"/>;
+					_stripeXML.appendChild(draggerXML);
+				}
 			}
 			else if(_draggerType.getSelectedIndex() == 1)
 			{
-				draggerXML = <lighting b="255" r="255" a="255" g="255" shakeamp="1" shaketime="500" lifeTime="0"/>;
+				// 删除其他发射器
+				delete _stripeXML.dragger;
+				// 添加带状生成器
+				if(_stripeXML.lighting[0] == null)
+				{
+					draggerXML = <lighting b="255" r="255" a="255" g="255" shakeamp="1" shaketime="500" lifeTime="0"/>;
+					_stripeXML.appendChild(draggerXML);
+				}
 			}
-			
-			_stripeXML.appendChild(draggerXML);
 		}
 		
 		private function updateData(evt:Event):void

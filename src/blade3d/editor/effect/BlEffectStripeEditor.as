@@ -28,6 +28,10 @@ package blade3d.editor.effect
 		
 		private var _systemPanel : BlEffectStripeSystemPanel;				// 系统面板
 		private var _animationPanel : BlEffectAnimationPanel;				// 动画面板
+		private var _effectorPanel : BlEffectParticleEffectorPanel;		// 效果器面板
+		
+		private var _draggerPanel : BlEffectStripeDraggerPanel;			// 拖尾生成器
+		private var _lightingPanel : BlEffectStripeLightingPanel;				// 带状生成器
 		
 		private var _actionList : JList;
 		
@@ -63,6 +67,8 @@ package blade3d.editor.effect
 			// 系统编辑列表
 			var arr:Array = new Array();
 			arr.push("系统属性");
+			arr.push("生成器");
+			arr.push("效果器");
 			arr.push("动画器");
 			var actionListMod : VectorListModel = new VectorListModel(arr);
 			_actionList = new JList(actionListMod);
@@ -99,6 +105,31 @@ package blade3d.editor.effect
 					_animationPanel.srcData = _stripeXML;
 					break;
 				}
+				case "效果器":
+				{
+					_effectorPanel ||= new BlEffectParticleEffectorPanel();
+					_rightPanel.append(_effectorPanel, BorderLayout.EAST);
+					_effectorPanel.srcData = _stripeXML;
+					break;
+				}
+				case "生成器":
+				{
+					if(_stripeXML.dragger[0])
+					{
+						_draggerPanel ||= new BlEffectStripeDraggerPanel;
+						_rightPanel.append(_draggerPanel, BorderLayout.EAST);
+						_draggerPanel.srcData = _stripeXML.dragger[0];
+					}
+					else if(_stripeXML.lighting[0])
+					{
+						_lightingPanel ||= new BlEffectStripeLightingPanel;
+						_rightPanel.append(_lightingPanel, BorderLayout.EAST);
+						_lightingPanel.srcData = _stripeXML.lighting[0];
+					}
+					
+					break;
+				}
+			
 			}
 			
 		}

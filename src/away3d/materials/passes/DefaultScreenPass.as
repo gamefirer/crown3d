@@ -702,9 +702,18 @@ package away3d.materials.passes
 				_normalMethod.setRenderState(_normalMethodVO, renderable, stage3DProxy, camera);
 
 			_ambientMethod.setRenderState(_ambientMethodVO, renderable, stage3DProxy, camera);
-			_ambientMethod._lightAmbientR = _ambientLightR;
-			_ambientMethod._lightAmbientG = _ambientLightG;
-			_ambientMethod._lightAmbientB = _ambientLightB;
+			if(_numLights == 0)
+			{	// 无灯时，环境色不起作用
+				_ambientMethod._lightAmbientR = 1;
+				_ambientMethod._lightAmbientG = 1;
+				_ambientMethod._lightAmbientB = 1;
+			}
+			else
+			{
+				_ambientMethod._lightAmbientR = _ambientLightR;
+				_ambientMethod._lightAmbientG = _ambientLightG;
+				_ambientMethod._lightAmbientB = _ambientLightB;
+			}
 			
 			if (_shadowMethod) _shadowMethod.setRenderState(_shadowMethodVO, renderable, stage3DProxy, camera);
 			if (_lightMapMethod) _lightMapMethod.setRenderState(_lightMapMethodVO, renderable, stage3DProxy, camera);

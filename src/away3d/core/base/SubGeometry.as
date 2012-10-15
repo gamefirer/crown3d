@@ -62,7 +62,7 @@
 		protected var _vertexTangentsDirty : Boolean = true;
 		protected var _vertexColorsDirty : Boolean = true;
 
-		// buffer dirty flags, per context:
+		// buffer per context:
 		protected var _vertexBufferContext : Vector.<Context3D> = new Vector.<Context3D>(8);
 		protected var _vertexColorBufferContext : Vector.<Context3D> = new Vector.<Context3D>(8);
 		protected var _uvBufferContext : Vector.<Context3D> = new Vector.<Context3D>(8);
@@ -71,6 +71,16 @@
 		protected var _vertexNormalBufferContext : Vector.<Context3D> = new Vector.<Context3D>(8);
 		protected var _vertexTangentBufferContext : Vector.<Context3D> = new Vector.<Context3D>(8);
 		protected var _customBufferContext : Vector.<Context3D>;
+		
+		// dirty flags
+		protected var _vertexBufferDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
+		protected var _vertexColorBufferDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
+		protected var _uvBufferDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
+		protected var _secondaryUvBufferDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
+		protected var _indexBufferDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
+		protected var _vertexNormalBufferDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
+		protected var _vertexTangentBufferDirty : Vector.<Boolean> = new Vector.<Boolean>(8);
+		protected var _customBufferDirty : Vector.<Boolean>;
 
 		protected var _numVertices : uint;
 		protected var _numIndices : uint;
@@ -174,6 +184,7 @@
 			_customElementsPerVertex = elementsPerVertex;
 			_customBuffer = new Vector.<VertexBuffer3D>(8);
 			_customBufferContext = new Vector.<Context3D>(8);
+			_customBufferDirty = new Vector.<Boolean>(8);
 		}
 
 		/**
@@ -192,9 +203,15 @@
 					Context3DProxy.disposeVertexBuffer(_customBuffer[contextIndex]);
 				}
 				_customBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_numVertices, _customElementsPerVertex);
-				Context3DProxy.uploadVertexBufferFromVector(_customBuffer[contextIndex], _customData, 0, _numVertices);
+				_customBufferDirty[contextIndex] = true;
 				_customBufferContext[contextIndex] = context;
  			}
+			
+			if(_customBufferDirty[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_customBuffer[contextIndex], _customData, 0, _numVertices);
+				_customBufferDirty[contextIndex] = false;
+			}
 
 			return _customBuffer[contextIndex];
 		}
@@ -217,9 +234,15 @@
 				}
 				// 创建新vb
 				_vertexBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_numVertices, 3);
-				Context3DProxy.uploadVertexBufferFromVector(_vertexBuffer[contextIndex], _vertices, 0, _numVertices);
 				_vertexBufferContext[contextIndex] = context;
+				_vertexBufferDirty[contextIndex] = true;
  			}
+			
+			if(_vertexBufferDirty[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_vertexBuffer[contextIndex], _vertices, 0, _numVertices);
+				_vertexBufferDirty[contextIndex] = false;
+			}
 
 			return _vertexBuffer[contextIndex];
 		}
@@ -241,8 +264,14 @@
 				}
 				// 创建新vb
 				_vertexColorBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_numVertices, 4);
-				Context3DProxy.uploadVertexBufferFromVector(_vertexColorBuffer[contextIndex], _verticesColor, 0, _numVertices);
 				_vertexColorBufferContext[contextIndex] = context;
+				_vertexColorBufferDirty[contextIndex] = true;
+			}
+			
+			if(_vertexColorBufferDirty[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_vertexColorBuffer[contextIndex], _verticesColor, 0, _numVertices);
+				_vertexColorBufferDirty[contextIndex] = false;
 			}
 			
 			return _vertexColorBuffer[contextIndex];
@@ -268,9 +297,15 @@
 					Context3DProxy.disposeVertexBuffer(_uvBuffer[contextIndex]);
 				}
 				_uvBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_numVertices, 2);
-				Context3DProxy.uploadVertexBufferFromVector(_uvBuffer[contextIndex], _uvs, 0, _numVertices);
 				_uvBufferContext[contextIndex] = context;
+				_uvBufferDirty[contextIndex] = true;
  			}
+			
+			if(_uvBufferDirty[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_uvBuffer[contextIndex], _uvs, 0, _numVertices);
+				_uvBufferDirty[contextIndex] = false;
+			}
 
 			return _uvBuffer[contextIndex];
 		}
@@ -337,9 +372,15 @@
 					Context3DProxy.disposeVertexBuffer(_secondaryUvBuffer[contextIndex]);
 				}
 				_secondaryUvBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_numVertices, 2);
-				Context3DProxy.uploadVertexBufferFromVector(_secondaryUvBuffer[contextIndex], _secondaryUvs, 0, _numVertices);
 				_secondaryUvBufferContext[contextIndex] = context;
+				_secondaryUvBufferDirty[contextIndex] = true;
  			}
+			
+			if(_secondaryUvBufferDirty[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_secondaryUvBuffer[contextIndex], _secondaryUvs, 0, _numVertices);
+				_secondaryUvBufferDirty[contextIndex] = false;
+			}
 
 			return _secondaryUvBuffer[contextIndex];
 		}
@@ -364,9 +405,15 @@
 					Context3DProxy.disposeVertexBuffer(_vertexNormalBuffer[contextIndex]);
 				}
 				_vertexNormalBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_numVertices, 3);
-				Context3DProxy.uploadVertexBufferFromVector(_vertexNormalBuffer[contextIndex], _vertexNormals, 0, _numVertices);
 				_vertexNormalBufferContext[contextIndex] = context;
+				_vertexNormalBufferDirty[contextIndex] = true;
  			}
+			
+			if(_vertexNormalBufferDirty[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_vertexNormalBuffer[contextIndex], _vertexNormals, 0, _numVertices);
+				_vertexNormalBufferDirty[contextIndex] = false;
+			}
 
 			return _vertexNormalBuffer[contextIndex];
 		}
@@ -391,9 +438,16 @@
 					Context3DProxy.disposeVertexBuffer(_vertexTangentBuffer[contextIndex]);
 				}
 				_vertexTangentBuffer[contextIndex] = Context3DProxy.createVertexBuffer(_numVertices, 3);
-				Context3DProxy.uploadVertexBufferFromVector(_vertexTangentBuffer[contextIndex], _vertexTangents, 0, _numVertices);
 				_vertexTangentBufferContext[contextIndex] = context;
+				_vertexTangentBufferDirty[contextIndex] = true;
  			}
+			
+			if(_vertexTangentBufferDirty[contextIndex])
+			{
+				Context3DProxy.uploadVertexBufferFromVector(_vertexTangentBuffer[contextIndex], _vertexTangents, 0, _numVertices);
+				_vertexTangentBufferDirty[contextIndex] = false;
+			}
+			
 			return _vertexTangentBuffer[contextIndex];
 		}
 
@@ -417,9 +471,15 @@
 				}
 				// 创建新ib
 				_indexBuffer[contextIndex] = Context3DProxy.createIndexBuffer(_numIndices);
-				Context3DProxy.uploadIndexBufferFromVector(_indexBuffer[contextIndex], _indices, 0, _numIndices);
 				_indexBufferContext[contextIndex] = context;
+				_indexBufferDirty[contextIndex] = true;
  			}
+			
+			if(_indexBufferDirty[contextIndex])
+			{
+				Context3DProxy.uploadIndexBufferFromVector(_indexBuffer[contextIndex], _indices, 0, _numIndices);
+				_indexBufferDirty[contextIndex] = false;
+			}
 
 			return _indexBuffer[contextIndex];
 		}
@@ -449,7 +509,7 @@
 			var len : uint = _vertices.length;
 			for (var i : uint = 0; i < len; ++i)
 				_vertices[i] *= scale;
-			invalidateBuffers(_vertexBufferContext);
+			invalidateBuffers(_vertexBufferDirty);
 		}
 
 		/**
@@ -483,7 +543,7 @@
 			_scaleU = scaleU;
 			_scaleV = scaleV;
 			 
-			invalidateBuffers(_uvBufferContext);
+			invalidateBuffers(_uvBufferDirty);
 		}
 
 		/**
@@ -546,7 +606,7 @@
 
 		public function updateCustomData(data : Vector.<Number>) : void
 		{
-			invalidateBuffers(_customBufferContext);
+			invalidateBuffers(_customBufferDirty);
 		}
 
 		/**
@@ -564,7 +624,7 @@
 			var numVertices : int = vertices.length / 3;
 			if (numVertices != _numVertices) disposeAllVertexBuffers();
 			_numVertices = numVertices;
-            invalidateBuffers(_vertexBufferContext);
+            invalidateBuffers(_vertexBufferDirty);
 
 			invalidateBounds();
 		}
@@ -606,7 +666,7 @@
 			_vertexColorsDirty = false;
 			_autoDeriveVertexColors = (vertexColor == null);
 			_verticesColor = vertexColor;
-			invalidateBuffers(_vertexColorBufferContext);
+			invalidateBuffers(_vertexColorBufferDirty);
 		}
 
 		/**
@@ -619,13 +679,13 @@
 			if (_autoDeriveVertexTangents) _vertexTangentsDirty = true;
 			_faceTangentsDirty = true;
 			_uvs = uvs;
-			invalidateBuffers(_uvBufferContext);
+			invalidateBuffers(_uvBufferDirty);
 		}
 
 		public function updateSecondaryUVData(uvs : Vector.<Number>) : void
 		{
 			_secondaryUvs = uvs;
-			invalidateBuffers(_secondaryUvBufferContext);
+			invalidateBuffers(_secondaryUvBufferDirty);
 		}
 
 		/**
@@ -647,7 +707,7 @@
 			_vertexNormalsDirty = false;
 			_autoDeriveVertexNormals = (vertexNormals == null);
 			_vertexNormals = vertexNormals;
-			invalidateBuffers(_vertexNormalBufferContext);
+			invalidateBuffers(_vertexNormalBufferDirty);
 		}
 
 		/**
@@ -671,7 +731,7 @@
 			_vertexTangentsDirty = false;
 			_autoDeriveVertexTangents = (vertexTangents == null);
 			_vertexTangents = vertexTangents;
-			invalidateBuffers(_vertexTangentBufferContext);
+			invalidateBuffers(_vertexTangentBufferDirty);
 		}
 
 		/**
@@ -697,7 +757,7 @@
 			if (_numTriangles != numTriangles)
 				disposeIndexBuffers(_indexBuffer);
 			_numTriangles = numTriangles;
-			invalidateBuffers(_indexBufferContext);
+			invalidateBuffers(_indexBufferDirty);
 			_faceNormalsDirty = true;
 
 			if (_autoDeriveVertexNormals) _vertexNormalsDirty = true;
@@ -734,10 +794,10 @@
 		 * Invalidates all buffers in a vector, causing them the update when they are first requested.
 		 * @param buffers The vector of buffers to invalidate.
 		 */
-		protected function invalidateBuffers(buffers : Vector.<Context3D>) : void
+		protected function invalidateBuffers(buffers : Vector.<Boolean>) : void
 		{
 			for (var i : int = 0; i < 8; ++i)
-				buffers[i] = null;
+				buffers[i] = true;
 		}
 
 		/**
@@ -794,7 +854,7 @@
 			}
 			
 			_vertexColorsDirty = false;
-			invalidateBuffers(_vertexBufferContext);
+			invalidateBuffers(_vertexBufferDirty);
 		}
 		
 		/**
@@ -852,7 +912,7 @@
 			}
 
 			_vertexNormalsDirty = false;
-			invalidateBuffers(_vertexNormalBufferContext);
+			invalidateBuffers(_vertexNormalBufferDirty);
 		}
 		
 		
@@ -890,7 +950,7 @@
 			_uvs.fixed = true;
 			
 			_uvsDirty = false;
-			invalidateBuffers(_uvBufferContext);
+			invalidateBuffers(_uvBufferDirty);
 		}
 
 		/**
@@ -949,7 +1009,7 @@
 			}
 
 			_vertexTangentsDirty = false;
-			invalidateBuffers(_vertexTangentBufferContext);
+			invalidateBuffers(_vertexTangentBufferDirty);
 		}
 
 		/**

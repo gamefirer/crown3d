@@ -5,7 +5,7 @@ package away3d.materials.methods
 	import away3d.materials.utils.ShaderRegisterCache;
 	import away3d.materials.utils.ShaderRegisterElement;
 	import away3d.textures.Texture2DBase;
-
+	
 	import flash.display3D.Context3D;
 	import flash.display3D.Context3DProgramType;
 
@@ -50,7 +50,9 @@ package away3d.materials.methods
 		
 		override arcane function initConstants(vo : MethodVO) : void
 		{
-			vo.fragmentData[vo.fragmentConstantsIndex+1] = 2;
+			// +0 alphaThreshold 用
+			vo.fragmentData[vo.fragmentConstantsIndex+1] = 2;			// lightmap 颜色*2用
+			vo.fragmentData[vo.fragmentConstantsIndex+2] = 1;			// 常量 1
 		
 		}
 
@@ -249,9 +251,12 @@ package away3d.materials.methods
 			var cutOffReg : ShaderRegisterElement;
 			
 			var temp : ShaderRegisterElement;
+			var temp2 : ShaderRegisterElement;
 
 			temp = regCache.getFreeFragmentVectorTemp();
 			regCache.addFragmentTempUsages(temp, 1);
+			temp2 = regCache.getFreeFragmentVectorTemp();
+			regCache.addFragmentTempUsages(temp2, 1);
 			
 			cutOffReg = regCache.getFreeFragmentConstant();
 			vo.fragmentConstantsIndex = cutOffReg.index*4;
@@ -260,6 +265,7 @@ package away3d.materials.methods
 			if (vo.numLights > 0) 
 			{
 				t = temp;
+				code += "mov " + t + ", " + cutOffReg + ".z\n";
 				if (_shadowRegister)
 					code += "mul " + _totalLightColorReg + ".xyz, " + _totalLightColorReg + ".xyz, " + _shadowRegister + ".w\n";
 			}
@@ -279,7 +285,9 @@ package away3d.materials.methods
 			{
 				_diffuseInputRegister = regCache.getFreeTextureReg();
 				vo.texturesIndex = _diffuseInputRegister.index;
-				code += getTexSampleCode(vo, t, _diffuseInputRegister);
+				code += getTexSampleCode(vo, temp2, _diffuseInputRegister);		// 贴图采样到temp2中
+				code += "mul "+ t + ", " + t + ", " + temp2 + "\n";			// 采样值*t
+				
 				if (_alphaThreshold > 0) 
 				{
 					code += "sub " + t + ".w, " + t + ".w, " + cutOffReg + ".x\n" +
@@ -289,8 +297,7 @@ package away3d.materials.methods
 			}
 			else 
 			{	// 无diffuse贴图
-				_diffuseInputRegister = regCache.getFreeFragmentConstant();
-//				vo.fragmentConstantsIndex = _diffuseInputRegister.index*4;			// 记得+4
+				_diffuseInputRegister = regCache.getFreeFragmentConstant();		// 传入diffuse color时，记得+4(这是该段shader中使用的第2个常量寄存器了)
 				code += "mov " + t + ", " + _diffuseInputRegister + "\n";
 			}
 			
@@ -312,7 +319,6 @@ package away3d.materials.methods
 					"sat " + targetReg + ".xyz, " + targetReg + ".xyz\n" +
 					"mul " + targetReg + ".xyz, " + t + ".xyz, " + targetReg + ".xyz\n" +
 					"mov " + targetReg + ".w, " + t + ".w\n"; 
-//				code += "mov " + targetReg + ", "+ t + "\n";		// deubg
 			}
 			
 			// 贴图颜色 = 贴图颜色 * (lightmap颜色 * 2)
@@ -327,6 +333,7 @@ package away3d.materials.methods
 			
 			regCache.removeFragmentTempUsage(_totalLightColorReg);
 			
+			regCache.removeFragmentTempUsage(temp2);
 			regCache.removeFragmentTempUsage(temp);
 			
 			return code;
@@ -351,7 +358,8 @@ package away3d.materials.methods
 			{
 				
 			}
-			else {
+			else 
+			{
 				var index : int = vo.fragmentConstantsIndex + 4;
 				var data : Vector.<Number> = vo.fragmentData;
 				data[index] = _diffuseR;

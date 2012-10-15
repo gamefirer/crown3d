@@ -1,15 +1,18 @@
 <effect>
   <property lifetime="5000"/>
-  <stripe billboard="false" texture="trail1" pos="0 0 0" wide="50" stripenum="1" dragtime="500" widedir="2" starttime="0" endTime="0" endtime="5000" startTime="0" max="40" label="sss" timeduv="true" rot="0 0 0" scl="1 1 1" parallel="false">
-    <alpha_effector a="-100"/>
-    <color_effector b="0" r="0" g="0"/>
+  <stripe billboard="true" texture="t_flow_002" pos="0 0 0" wide="50" stripenum="1" dragtime="500" widedir="2" starttime="0" endTime="0" endtime="5000" startTime="0" max="15" label="sss" timeduv="false" rot="0 0 0" scl="1 1 1" parallel="true">
+    <color_effector b="0" r="0" g="0">
+      <keyframe r="255" g="33" b="0" lifepercent="0"/>
+      <keyframe r="78" g="255" b="0" lifepercent="0.5"/>
+      <keyframe r="255" g="0" b="0" lifepercent="1"/>
+    </color_effector>
     <path>
       <frame durtime="1000" x="0" y="0" z="0"/>
-      <frame durtime="1000" x="500" y="0" z="0"/>
+      <frame durtime="1000" x="0" y="0" z="0"/>
       <frame durtime="1000" x="0" y="0" z="0"/>
     </path>
     <rotate/>
     <scale/>
-    <dragger b="255" r="255" a="255" g="255"/>
+    <lighting b="255" r="255" a="255" g="255" shakeamp="10" shaketime="100" lifeTime="500"/>
   </stripe>
 </effect>
