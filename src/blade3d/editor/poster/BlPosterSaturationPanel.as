@@ -33,28 +33,28 @@ package blade3d.editor.poster
 			append(new JLabel("红"));
 			_r = new JSlider;
 			_r.setMinimum(0);
-			_r.setMaximum(255);
+			_r.setMaximum(510);
 			_r.addStateListener(updateData);
 			append(_r);
 			
 			append(new JLabel("绿"));
 			_g = new JSlider;
 			_g.setMinimum(0);
-			_g.setMaximum(255);
+			_g.setMaximum(510);
 			_g.addStateListener(updateData);
 			append(_g);
 			
 			append(new JLabel("蓝"));
 			_b = new JSlider;
 			_b.setMinimum(0);
-			_b.setMaximum(255);
+			_b.setMaximum(510);
 			_b.addStateListener(updateData);
 			append(_b);
 			
 			append(new JLabel("溶解度"));
 			_saturation = new JSlider;
 			_saturation.setMinimum(0);
-			_saturation.setMaximum(100);
+			_saturation.setMaximum(200);
 			_saturation.addStateListener(updateData);
 			append(_saturation);
 			

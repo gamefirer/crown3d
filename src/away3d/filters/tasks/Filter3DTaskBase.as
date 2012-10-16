@@ -10,6 +10,7 @@ package away3d.filters.tasks
 	
 	import com.adobe.utils.AGALMiniAssembler;
 	
+	import flash.display3D.Context3D;
 	import flash.display3D.Context3DProgramType;
 	import flash.display3D.Context3DTextureFormat;
 	import flash.display3D.Program3D;
@@ -29,10 +30,23 @@ package away3d.filters.tasks
 		private var _target : Texture;
 		private var _requireDepthRender : Boolean;
 		protected var _textureScale : int = 0;
+		
+		private var _context3D : Context3D;		// 设备对象
 
 		public function Filter3DTaskBase(requireDepthRender : Boolean = false)
 		{
 			_requireDepthRender = requireDepthRender;
+		}
+		
+		private function checkContext3D(stage : Stage3DProxy):void
+		{
+			if(_context3D == stage.context3D)
+				return;
+			
+			_context3D = stage.context3D;
+			
+			_textureDimensionsInvalid = true;
+			invalidateProgram3D();
 		}
 
 		public function get textureScale() : int
@@ -87,15 +101,20 @@ package away3d.filters.tasks
 
 		public function getMainInputTexture(stage : Stage3DProxy) : Texture
 		{
-			if (_textureDimensionsInvalid) updateTextures(stage);
+			checkContext3D(stage);
+			
+			if (_textureDimensionsInvalid) 
+				updateTextures(stage);
 
 			return _mainInputTexture;
 		}
 
 		public function dispose() : void
 		{
-			if (_mainInputTexture) Context3DProxy.disposeTexture(_mainInputTexture); // _mainInputTexture.dispose();
-			if (_program3D) Context3DProxy.disposeProgram(_program3D); //  _program3D.dispose();
+			if (_mainInputTexture)
+				Context3DProxy.disposeTexture(_mainInputTexture); // _mainInputTexture.dispose();
+			if (_program3D) 
+				Context3DProxy.disposeProgram(_program3D); //  _program3D.dispose();
 		}
 
 		protected function invalidateProgram3D() : void
@@ -105,7 +124,9 @@ package away3d.filters.tasks
 
 		protected function updateProgram3D(stage : Stage3DProxy) : void
 		{
-			if (_program3D) _program3D.dispose();
+			if (_program3D) 
+				_program3D.dispose();
+			
 			_program3D = Context3DProxy.createProgram(); //  stage.context3D.createProgram();
 			_program3D.upload(	new AGALMiniAssembler(Debug.active).assemble(Context3DProgramType.VERTEX, getVertexCode(), Debug.active),
 								new AGALMiniAssembler(Debug.active).assemble(Context3DProgramType.FRAGMENT, getFragmentCode(), Debug.active));
@@ -126,7 +147,8 @@ package away3d.filters.tasks
 
 		protected function updateTextures(stage : Stage3DProxy) : void
 		{
-			if (_mainInputTexture) Context3DProxy.disposeTexture(_mainInputTexture); // _mainInputTexture.dispose();
+			if (_mainInputTexture)
+				Context3DProxy.disposeTexture(_mainInputTexture); // _mainInputTexture.dispose();
 
 			_mainInputTexture = Context3DProxy.createTexture(_scaledTextureWidth, _scaledTextureHeight, Context3DTextureFormat.BGRA, true);
 
@@ -135,7 +157,10 @@ package away3d.filters.tasks
 
 		public function getProgram3D(stage3DProxy : Stage3DProxy) : Program3D
 		{
-			if (_program3DInvalid) updateProgram3D(stage3DProxy);
+			checkContext3D(stage3DProxy);
+			
+			if (_program3DInvalid)
+				updateProgram3D(stage3DProxy);
 			return _program3D;
 		}
 

@@ -1,5 +1,6 @@
 package away3d.core.managers
 {
+	import away3d.events.Stage3DEvent;
 	import away3d.tools.utils.TextureUtils;
 	
 	import flash.display3D.Context3D;
@@ -31,30 +32,39 @@ package away3d.core.managers
 
 		public function RTTBufferManager(se : SingletonEnforcer, stage3DProxy : Stage3DProxy)
 		{
-			if (!se) throw new Error("No cheating the multiton!");
+			if (!se)
+				throw new Error("No cheating the multiton!");
 
 			_renderToTextureRect = new Rectangle();
 
 			_stage3DProxy = stage3DProxy;
+			_stage3DProxy.addEventListener(Stage3DEvent.CONTEXT3D_CREATED, onCreateContext3D); 
 		}
 
 		public static function getInstance(stage3DProxy : Stage3DProxy) : RTTBufferManager
 		{
-			if (!stage3DProxy) throw new Error("stage3DProxy key cannot be null!");
+			if (!stage3DProxy)
+				throw new Error("stage3DProxy key cannot be null!");
 			_instances ||= new Dictionary();
 			return _instances[stage3DProxy] ||= new RTTBufferManager(new SingletonEnforcer(), stage3DProxy);
 		}
-
+		
+		private function onCreateContext3D(evt:Stage3DEvent):void
+		{
+			invalidBuffer();
+		}
 
 		public function get textureRatioX() : Number
 		{
-			if (_buffersInvalid) updateRTTBuffers();
+			if (_buffersInvalid) 
+				updateRTTBuffers();
 			return _textureRatioX;
 		}
 
 		public function get textureRatioY() : Number
 		{
-			if (_buffersInvalid) updateRTTBuffers();
+			if (_buffersInvalid) 
+				updateRTTBuffers();
 			return _textureRatioY;
 		}
 
@@ -112,24 +122,29 @@ package away3d.core.managers
 
 		public function get renderToTextureVertexBuffer() : VertexBuffer3D
 		{
-			if (_buffersInvalid) updateRTTBuffers();
+			if (_buffersInvalid) 
+				updateRTTBuffers();
 			return _renderToTextureVertexBuffer;
 		}
 
 		public function get renderToScreenVertexBuffer() : VertexBuffer3D
 		{
-			if (_buffersInvalid) updateRTTBuffers();
+			if (_buffersInvalid) 
+				updateRTTBuffers();
 			return _renderToScreenVertexBuffer;
 		}
 
 		public function get indexBuffer() : IndexBuffer3D
 		{
+			if (_buffersInvalid) 
+				updateRTTBuffers();
 			return _indexBuffer;
 		}
 
 		public function get renderToTextureRect() : Rectangle
 		{
-			if (_buffersInvalid) updateRTTBuffers();
+			if (_buffersInvalid) 
+				updateRTTBuffers();
 			return _renderToTextureRect;
 		}
 
@@ -146,13 +161,20 @@ package away3d.core.managers
 		public function dispose() : void
 		{
 			delete _instances[_stage3DProxy];
-			if (_indexBuffer) {
+			invalidBuffer();
+		}
+		
+		private function invalidBuffer():void
+		{
+			if (_indexBuffer) 
+			{
 				Context3DProxy.disposeIndexBuffer(_indexBuffer);		// _indexBuffer.dispose();
-				_renderToScreenVertexBuffer.dispose();
-				_renderToTextureVertexBuffer.dispose();
+				Context3DProxy.disposeVertexBuffer(_renderToScreenVertexBuffer);		// _renderToScreenVertexBuffer.dispose();
+				Context3DProxy.disposeVertexBuffer(_renderToTextureVertexBuffer);		// _renderToTextureVertexBuffer.dispose();
 				_renderToScreenVertexBuffer = null;
 				_renderToTextureVertexBuffer = null;
 				_indexBuffer = null;
+				_buffersInvalid = true;
 			}
 		}
 

@@ -462,8 +462,9 @@ package away3d.core.managers
 		*/
 		private function onContext3DUpdate(event : Event) : void
 		{
-			if (_stage3D.context3D) {
-				var hadContext : Boolean = (_context3D != null);
+			if (_stage3D.context3D)
+			{
+//				var hadContext : Boolean = (_context3D != null);
 
 				_context3D = _stage3D.context3D;
 				_context3D.enableErrorChecking = Debug.context3DErrorCheck;
@@ -478,9 +479,11 @@ package away3d.core.managers
 				
 				// Dispatch the appropriate event depending on whether context was
 				// created for the first time or recreated after a device loss.
-				dispatchEvent(new Stage3DEvent(hadContext? Stage3DEvent.CONTEXT3D_RECREATED : Stage3DEvent.CONTEXT3D_CREATED));
-
-			} else {
+				dispatchEvent(new Stage3DEvent(Stage3DEvent.CONTEXT3D_CREATED));		// 第一次建立和重建，都调用
+				
+			}
+			else 
+			{
 				throw new Error("Rendering context lost!");
 			}
 		}
@@ -523,7 +526,7 @@ package away3d.core.managers
 		}
 
 		public function recoverFromDisposal() : Boolean
-		{			
+		{	
 			if (!_context3D) return false;
 			if (_context3D.driverInfo == "Disposed") {
 				_context3D = null;
