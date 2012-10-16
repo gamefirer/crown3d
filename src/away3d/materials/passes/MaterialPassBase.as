@@ -310,7 +310,8 @@ package away3d.materials.passes
 
 			context.setCulling(_bothSides? Context3DTriangleFace.NONE : _defaultCulling);
 
-			if (_renderToTexture) {
+			if (_renderToTexture) 
+			{
 				_rttData[0] = 1;
 				_rttData[1] = 1;
 				_oldTarget = stage3DProxy.renderTarget;
@@ -318,11 +319,12 @@ package away3d.materials.passes
 				_oldDepthStencil = stage3DProxy.enableDepthAndStencil;
 				_oldRect = stage3DProxy.scissorRect;
 			}
-			else {
+			else 
+			{
 				_rttData[0] = textureRatioX;
 				_rttData[1] = textureRatioY;
-				stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, 4, _rttData, 1);
 			}
+			stage3DProxy._context3D.setProgramConstantsFromVector(Context3DProgramType.VERTEX, 4, _rttData, 1);
 
 			context.setDepthTest( _depthWrite, _depthCompareMode );			// 设置深度测试模式
 		}

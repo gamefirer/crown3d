@@ -802,7 +802,9 @@ package away3d.materials.passes
 			code +=
 				"m44 vt7, vt0, vc0\n";		// vt7 = 粒子投影空间位置 = 粒子当前位置 * MVP
 			
-			// 投影后....
+			// 投影后，×ratio
+			code +=
+				"mul vt7, vt7, vc4\n";		// 
 			
 			
 			// 粒子死亡判断
