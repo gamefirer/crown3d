@@ -16,6 +16,7 @@ package blade3d.editor
 	
 	import blade3d.editor.effect.BlEffectBasePanel;
 	import blade3d.editor.effect.BlEffectParticleEditor;
+	import blade3d.editor.effect.BlEffectQuadEditor;
 	import blade3d.editor.effect.BlEffectStripeEditor;
 	import blade3d.effect.BlEffect;
 	import blade3d.effect.BlEffectManager;
@@ -72,6 +73,7 @@ package blade3d.editor
 		// 特效元素编辑界面
 		private var _particleEditor : BlEffectParticleEditor;
 		private var _stripeEditor : BlEffectStripeEditor;
+		private var _quadEditor : BlEffectQuadEditor;
 		
 		// 特效列表
 		private var _searchTxt : JTextField;
@@ -433,6 +435,13 @@ package blade3d.editor
 				_stripeEditor.srcData = effObj.eleXML;
 				_stripeEditor.visible = true;
 			}
+			else if(effObj.eleXML.name() == "quad")
+			{	// 编辑面片
+				_quadEditor ||= new BlEffectQuadEditor(this, "面片编辑器", false);
+				_quadEditor.srcData = effObj.eleXML;
+				_quadEditor.visible = true;
+			}
+			
 		}
 		// 隐藏元素编辑面板
 		private function hideElementEditor():void
@@ -441,6 +450,8 @@ package blade3d.editor
 				_particleEditor.visible = false;
 			if(_stripeEditor)
 				_stripeEditor.visible = false;
+			if(_quadEditor)
+				_quadEditor.visible = false;
 		}
 		
 		private function onSave(evt:Event):void

@@ -18,10 +18,12 @@ package blade3d.effect.parser
 	import away3d.core.base.Object3D;
 	import away3d.debug.Debug;
 	import away3d.entities.Mesh;
+	import away3d.materials.MaterialBase;
 	import away3d.paths.PathMaker;
 	
 	import blade3d.resource.BlResourceManager;
 	
+	import flash.display.BlendMode;
 	import flash.geom.Vector3D;
 
 	public class BlEffectBaseParser
@@ -309,5 +311,25 @@ package blade3d.effect.parser
 			return vec;
 		}
 		
+		// 解析 材质的blendMode
+		static public function parseBlendMode(xml:XML, mat : MaterialBase) : void
+		{
+			// 材质的blendMode
+			var blendMode : String = xml.@blendmode.toString();
+			
+			if(blendMode.length == 0)
+				return;
+			
+			switch(blendMode)
+			{
+				case BlendMode.ADD:
+				case BlendMode.SUBTRACT:
+				case BlendMode.ALPHA:
+				case BlendMode.MULTIPLY:
+				case BlendMode.NORMAL:
+					mat.blendMode = String(blendMode);
+					break;
+			}
+		}
 	}
 }

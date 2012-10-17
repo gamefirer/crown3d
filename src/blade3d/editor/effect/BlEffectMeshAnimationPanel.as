@@ -1,5 +1,5 @@
 /**
- *	基础动画面板 
+ *	模型动画面板 
  */
 package blade3d.editor.effect
 {
@@ -7,7 +7,6 @@ package blade3d.editor.effect
 	
 	import org.aswing.ASColor;
 	import org.aswing.BorderLayout;
-	import org.aswing.JLabel;
 	import org.aswing.JList;
 	import org.aswing.JPanel;
 	import org.aswing.JScrollPane;
@@ -17,7 +16,7 @@ package blade3d.editor.effect
 	import org.aswing.border.LineBorder;
 	import org.aswing.colorchooser.VerticalLayout;
 	
-	public class BlEffectAnimationPanel extends JPanel
+	public class BlEffectMeshAnimationPanel extends JPanel
 	{
 		private var _objectXML : XML;
 		
@@ -26,24 +25,19 @@ package blade3d.editor.effect
 		private var _actionList : JList;
 		
 		// 面板
-		private var _pathPanel : BlEffectAnimationPathPanel;
-		private var _rotPanel : BlEffectAnimationRotPanel;
-		private var _scalePanel : BlEffectAnimationScalePanel;
-		
-		// 选择动画
-		private var rotAniList : JList;
-		
-		
-		public function BlEffectAnimationPanel()
-		{
-			super(new SoftBoxLayout(SoftBoxLayout.X_AXIS));
-			initUI();
-		}
+		private var _colorPanel : BlEffectMeshAnimationColorPanel;
+		private var _uvPanel : BlEffectMeshAnimationUVPanel;
 		
 		public function set srcData(objectXML:XML):void
 		{
 			_objectXML = objectXML;
 			updateUIByData();
+		}
+		
+		public function BlEffectMeshAnimationPanel()
+		{
+			super(new SoftBoxLayout(SoftBoxLayout.X_AXIS));
+			initUI();
 		}
 		
 		private function initUI():void
@@ -60,22 +54,18 @@ package blade3d.editor.effect
 			
 			// left
 			var arr:Array = new Array;
-			arr.push("位移动画");
-			arr.push("旋转动画");
-			arr.push("缩放动画");
+			arr.push("颜色动画");
+			arr.push("UV动画");
 			var actionListMod : VectorListModel = new VectorListModel(arr);
 			_actionList = new JList(actionListMod);
 			_actionList.setPreferredWidth(150);
 			_actionList.addSelectionListener(onAnimationSelected);
 			_leftPanel.append(_actionList);
 			
-			// 位移动画
-			_pathPanel = new BlEffectAnimationPathPanel;
-			// 旋转动画
-			_rotPanel = new BlEffectAnimationRotPanel;
-			// 缩放动画
-			_scalePanel = new BlEffectAnimationScalePanel;
-			
+			// 颜色动画
+			_colorPanel = new BlEffectMeshAnimationColorPanel;
+			// UV动画
+			_uvPanel = new BlEffectMeshAnimationUVPanel;
 		}
 		
 		private function onAnimationSelected(evt:Event):void
@@ -87,19 +77,14 @@ package blade3d.editor.effect
 			
 			switch(actionName)
 			{
-				case "位移动画":
+				case "颜色动画":
 				{
-					_rightPanel.append(_pathPanel);
+					_rightPanel.append(_colorPanel);
 					break;
 				}
-				case "旋转动画":
+				case "UV动画":
 				{
-					_rightPanel.append(_rotPanel);
-					break;
-				}
-				case "缩放动画":
-				{
-					_rightPanel.append(_scalePanel);
+					_rightPanel.append(_uvPanel);
 					break;
 				}
 			}
@@ -107,28 +92,22 @@ package blade3d.editor.effect
 		
 		private function updateUIByData():void
 		{
-			var path_xml : XML = _objectXML.path[0];
-			if(!path_xml)
+			var color_xml : XML = _objectXML.color[0];
+			if(!color_xml)
 			{
-				path_xml = <path/>;
-				_objectXML.appendChild(path_xml);
-			}
-			var rotate_xml : XML = _objectXML.rotate[0];
-			if(!rotate_xml)
-			{
-				rotate_xml = <rotate/>;
-				_objectXML.appendChild(rotate_xml);
-			}
-			var scale_xml : XML = _objectXML.scale[0];
-			if(!scale_xml)
-			{
-				scale_xml = <scale/>;
-				_objectXML.appendChild(scale_xml);
+				color_xml = <color/>;
+				_objectXML.appendChild(color_xml);
 			}
 			
-			_pathPanel.srcData = path_xml;
-			_rotPanel.srcData = rotate_xml;
-			_scalePanel.srcData = scale_xml;
+			var uv_xml : XML = _objectXML.uv[0];
+			if(!uv_xml)
+			{
+				uv_xml = <uv/>;
+				_objectXML.appendChild(uv_xml);
+			}
+			
+			_colorPanel.srcData = color_xml;
+			_uvPanel.srcData = uv_xml;
 		}
 	}
 }

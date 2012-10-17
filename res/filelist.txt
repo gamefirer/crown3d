@@ -415,6 +415,7 @@ effect/test.eff
 effect/test2.eff
 effect/test3.eff
 effect/test4.eff
+effect/test5.eff
 effect/thumbs.db
 effect/tiao.dds
 effect/tong.3ds

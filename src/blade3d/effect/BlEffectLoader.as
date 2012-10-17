@@ -12,6 +12,7 @@ package blade3d.effect
 	
 	import blade3d.effect.parser.BlEffectBaseParser;
 	import blade3d.effect.parser.BlEffectParticleParser;
+	import blade3d.effect.parser.BlEffectQuadParser;
 	import blade3d.effect.parser.BlEffectStripeParser;
 	import blade3d.resource.BlImageResource;
 	import blade3d.resource.BlResource;
@@ -118,8 +119,7 @@ package blade3d.effect
 			var resUrl:String;
 			var top_xml : XML;
 			// 粒子所需资源
-			var particleList : XMLList;
-			particleList = _srcXML.particle;
+			var particleList : XMLList = _srcXML.particle;
 			for each(top_xml in particleList)
 			{
 				// 粒子的贴图
@@ -144,9 +144,23 @@ package blade3d.effect
 				}
 			}
 			// 条带所需资源
-			var stripeList : XMLList;
-			stripeList = _srcXML.stripe;
+			var stripeList : XMLList = _srcXML.stripe;
 			for each(top_xml in stripeList)
+			{
+				// 条带的贴图
+				resUrl = top_xml.@texture;
+				if(resUrl.length>0)
+				{
+					resUrl += BlStringUtils.texExtName;
+					resUrl = BlResourceManager.findValidPath(resUrl, _effPath);
+					res = BlResourceManager.instance().findResource(resUrl);
+					_prepareCount++;
+					res.asycLoad(onPrepareEffResource);
+				}
+			}
+			// 面片所需资源
+			var quadList : XMLList = _srcXML.quad;
+			for each(top_xml in quadList)
 			{
 				// 条带的贴图
 				resUrl = top_xml.@texture;
@@ -209,6 +223,13 @@ package blade3d.effect
 				{
 					BlEffectStripeParser.parseStripe(top_xml, newEffect, _effPath);
 				}
+				// 创建面片
+				quadList = _srcXML.quad;
+				for each(top_xml in quadList)
+				{
+					BlEffectQuadParser.parseQuad(top_xml, newEffect, _effPath);
+				}
+				
 				
 				newEffect.onCreate();		// 创建完毕
 			}

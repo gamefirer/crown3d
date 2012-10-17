@@ -1,10 +1,8 @@
 /**
- *	UV效果器面板 
+ *	模型UV动画 
  */
 package blade3d.editor.effect
 {
-	import away3d.materials.passes.GpuParticlePass;
-	
 	import flash.events.Event;
 	
 	import org.aswing.ASColor;
@@ -20,16 +18,17 @@ package blade3d.editor.effect
 	import org.aswing.border.LineBorder;
 	import org.aswing.colorchooser.VerticalLayout;
 	
-	public class BlEffectParticleEffectorUVPanel extends JPanel
+	public class BlEffectMeshAnimationUVPanel extends JPanel
 	{
-		private var _uvEffectorXML : XML;
+		private var _uvXML : XML;
 		
+		private var _auto_durtime : JStepper;
 		private var _auto_x : JStepper;
 		private var _auto_y : JStepper;
 		private var _auto_btn : JButton;
 		
-		private var _scaleU : JStepper;
-		private var _scaleV : JStepper;
+		private var _smooth : JCheckBox;
+		private var _repeat : JCheckBox;
 		
 		private var _frameList : JList;
 		private var _frameListModel : VectorListModel;
@@ -38,48 +37,58 @@ package blade3d.editor.effect
 		private var _add : JButton;
 		private var _del : JButton;
 		
-		private var _lifePercent : JAdjuster;
+		private var _durTime : JStepper;
 		private var _U : JAdjuster;
 		private var _V : JAdjuster;
+		private var _SU : JAdjuster;
+		private var _SV : JAdjuster;
+		private var _R : JStepper;
 		
-		public function set srcData(sizeXML:XML):void
+		
+		public function set srcData(uvXML:XML):void
 		{
-			_uvEffectorXML = sizeXML;
+			_uvXML = uvXML;
 			updateUIByData();
 		}
 		
-		public function BlEffectParticleEffectorUVPanel()
+		public function BlEffectMeshAnimationUVPanel()
 		{
-			super(new VerticalLayout());
+			super(new VerticalLayout);
 			
-			var hPanel : JPanel;
+			setBorder(new LineBorder(null, ASColor.GREEN, 1));
+			
+			var hp:JPanel;
 			
 			append(new JLabel("自动生成"));
-			append(hPanel = new JPanel);
 			
-			hPanel.append(_auto_x = new JStepper); 
-			hPanel.append(_auto_y = new JStepper);
+			append(hp = new JPanel);
+			hp.append(new JLabel("总时间"));
+			hp.append(_auto_durtime = new JStepper);
 			
+			append(hp = new JPanel);
+			hp.append(new JLabel("横向"));
+			hp.append(_auto_x = new JStepper);
 			_auto_x.setMinimum(1);
-			_auto_x.setMaximum(6);
+			_auto_x.setMaximum(8);
+			
+			append(hp = new JPanel);
+			hp.append(new JLabel("纵向"));
+			hp.append(_auto_y = new JStepper);
 			_auto_y.setMinimum(1);
-			_auto_y.setMaximum(6);
+			_auto_y.setMaximum(8);
 			
 			append(_auto_btn = new JButton("自动生成"));
 			_auto_btn.addActionListener(onAuto);
 			
-//			append(_smooth = new JCheckBox("平滑变化"));
-//			append(_repeat = new JCheckBox("UV重复"));
+			append(new JLabel("动画属性"));
 			
-			append(hPanel = new JPanel);
-			hPanel.append(new JLabel("U缩放"));
-			hPanel.append(_scaleU = new JStepper);
-			_scaleU.addActionListener(updateData);
+			append(_smooth = new JCheckBox("平滑"));
+			_smooth.addActionListener(updateData);
+			append(_repeat = new JCheckBox("重复"));
+			_repeat.addActionListener(updateData);
 			
-			append(hPanel = new JPanel);
-			hPanel.append(new JLabel("V缩放"));
-			hPanel.append(_scaleV = new JStepper);
-			_scaleV.addActionListener(updateData);
+			
+			append(new JLabel("UV动画"));
 			
 			// 帧列表
 			_frameListModel = new VectorListModel;
@@ -89,8 +98,7 @@ package blade3d.editor.effect
 			_frameList.addSelectionListener(onSelectFrame);
 			append(_frameList);
 			
-			var hp:JPanel = new JPanel;
-			append(hp);
+			append(hp = new JPanel);
 			
 			_add = new JButton("添加帧");
 			_add.addActionListener(onAddFrame);
@@ -99,14 +107,13 @@ package blade3d.editor.effect
 			_del.addActionListener(onDelFrame);
 			hp.append(_del);
 			
-			// 生命期
+			
+			// 持续时间
 			append(hp = new JPanel);
-			hp.append(new JLabel("生命期"));
-			_lifePercent = new JAdjuster;
-			_lifePercent.setMinimum(0);
-			_lifePercent.setMaximum(100);
-			_lifePercent.addActionListener(updateData);
-			hp.append(_lifePercent);
+			hp.append(new JLabel("持续时间"));
+			_durTime = new JStepper;
+			_durTime.addActionListener(updateData);
+			hp.append(_durTime);
 			
 			// U
 			append(hp = new JPanel);
@@ -125,35 +132,58 @@ package blade3d.editor.effect
 			_V.setMaximum(100);
 			_V.addActionListener(updateData);
 			hp.append(_V);
+			
+			// SU
+			append(hp = new JPanel);
+			hp.append(new JLabel("SU"));
+			_SU = new JAdjuster;
+			_SU.setMinimum(0);
+			_SU.setMaximum(100);
+			_SU.addActionListener(updateData);
+			hp.append(_SU);
+			
+			// V
+			append(hp = new JPanel);
+			hp.append(new JLabel("SV"));
+			_SV = new JAdjuster;
+			_SV.setMinimum(0);
+			_SV.setMaximum(100);
+			_SV.addActionListener(updateData);
+			hp.append(_SV);
+			
+			// R
+			append(hp = new JPanel);
+			hp.append(new JLabel("旋转"));
+			_R = new JStepper;
+			_durTime.addActionListener(updateData);
+			hp.append(_R);
+			
 		}
 		
 		private function onAuto(evt:Event):void
 		{
-			var maxFrame : int = GpuParticlePass.gpuUVKeyFrameMax;
+			var durtime : Number = _auto_durtime.getValue();
 			var wide : int = _auto_x.getValue();
 			var height : int = _auto_y.getValue();
-			
-			// 不能超过6帧
-			if(height > maxFrame/wide)
-				height = maxFrame/wide;
+			var intervalTime : Number = durtime / (wide * height);
 			
 			var frameCount : int = wide*height;
 			
-			_uvEffectorXML.@su = (Number(1.0)/wide).toFixed(2);
-			_uvEffectorXML.@sv = (Number(1.0)/height).toFixed(2);
-			
-			delete _uvEffectorXML.keyframe;
+			delete _uvXML.frame;
 			
 			for(var vi:int=0; vi<height; vi++)
 			{
 				for(var ui:int=0; ui<wide; ui++)
 				{
-					var kfXML : XML = <keyframe u="0" v="0" lifepercent="0"/>;
-					kfXML.@lifepercent = (Number(vi*wide + ui) / frameCount).toFixed(2);
+					var kfXML : XML = <frame durtime="0" u="0" v="0" su="0" sv="0" r="0"/>;
+					kfXML.@durtime = intervalTime.toFixed(2);
 					kfXML.@u = (Number(ui)/wide).toFixed(2);
 					kfXML.@v = (Number(vi)/height).toFixed(2);
+					kfXML.@su = (Number(1)/wide).toFixed(2);
+					kfXML.@sv = (Number(1)/height).toFixed(2);
+					kfXML.@r = 0;
 					
-					_uvEffectorXML.appendChild(kfXML);
+					_uvXML.appendChild(kfXML);
 				}
 			}
 			
@@ -162,11 +192,8 @@ package blade3d.editor.effect
 		
 		private function onAddFrame(evt:Event):void
 		{
-			if( _frameListModel.size() >= GpuParticlePass.gpuUVKeyFrameMax )
-				return;
-			
 			var selObj : frameObj = _frameList.getSelectedValue();
-			_uvEffectorXML.insertChildAfter((selObj ? selObj.xml : null), <keyframe u="0" v="0" lifepercent="0.0"/>);
+			_uvXML.insertChildAfter((selObj ? selObj.xml : null), <frame durtime="1000" v="0" u="0" su="0" sv="0" r="0"/>);
 			
 			updateUIByData();
 			
@@ -177,7 +204,7 @@ package blade3d.editor.effect
 			var selIndex : int = _frameList.getSelectedIndex();
 			if(selIndex == -1) selIndex = 0;
 			
-			var akeyFrameList:XMLList = _uvEffectorXML.keyframe;
+			var akeyFrameList:XMLList = _uvXML.frame;
 			if(akeyFrameList.length() <= selIndex)
 				return;
 			delete akeyFrameList[selIndex];
@@ -190,50 +217,51 @@ package blade3d.editor.effect
 			if(!selectObj) 
 			{
 				_selectFrameXML = null;
-				_lifePercent.setValue(0);
+				_durTime.setValue(0);
 				_U.setValue(0);
 				_V.setValue(0);
+				_SU.setValue(0);
+				_SV.setValue(0);
+				_R.setValue(0);
 				return;
 			}
 			
 			_selectFrameXML = selectObj.xml;
 			
-			
-			_lifePercent.setValue( Number(_selectFrameXML.@lifepercent.toString()) * 100 );
+			_durTime.setValue( int(_selectFrameXML.@durtime.toString()) );
 			_U.setValue( Number(_selectFrameXML.@u.toString()) * 100 );
 			_V.setValue( Number(_selectFrameXML.@v.toString()) * 100 );
+			_SU.setValue( Number(_selectFrameXML.@su.toString()) * 100 );
+			_SV.setValue( Number(_selectFrameXML.@sv.toString()) * 100 );
+			_R.setValue( Number(_selectFrameXML.@r.toString()) * 180 / Math.PI );
+			
 		}
 		
 		private function updateData(evt:Event):void
 		{
-			if(!_uvEffectorXML) return;
+			if(!_uvXML) return;
 			
-			_uvEffectorXML.@su = (Number(_scaleU.getValue()) / 100).toFixed(2);
-			_uvEffectorXML.@sv = (Number(_scaleV.getValue()) / 100).toFixed(2);
+			_uvXML.@smooth = _smooth.isSelected() ? "true" : "false";
+			_uvXML.@repeat = _repeat.isSelected() ? "true" : "false";
 			
 			if(!_selectFrameXML) return;
 			
-			_selectFrameXML.@lifepercent = Number(_lifePercent.getValue())/100;
+			_selectFrameXML.@durtime = _durTime.getValue();
 			_selectFrameXML.@u = (Number(_U.getValue()) / 100).toFixed(2);
 			_selectFrameXML.@v = (Number(_V.getValue()) / 100).toFixed(2);
+			_selectFrameXML.@su = (Number(_SU.getValue()) / 100).toFixed(2);
+			_selectFrameXML.@sv = (Number(_SV.getValue()) / 100).toFixed(2);
+			_selectFrameXML.@r = (_R.getValue() * Math.PI / 180).toFixed(2);
 		}
 		
 		private function updateUIByData():void
 		{
-			var scaleU:Number= Number(_uvEffectorXML.@su.toString());
-			if(scaleU == 0)
-				scaleU = 1;
-			
-			var scaleV:Number = Number(_uvEffectorXML.@sv.toString());
-			if(scaleV == 0)
-				scaleV = 1;
-			
-			_scaleU.setValue(scaleU * 100);
-			_scaleV.setValue(scaleV * 100);
+			_smooth.setSelected( (_uvXML.@smooth.toString() == "true") );
+			_repeat.setSelected( (_uvXML.@repeat.toString() == "true") );
 			
 			_frameListModel.clear();
 			
-			var akeyFrameList:XMLList = _uvEffectorXML.keyframe;
+			var akeyFrameList:XMLList = _uvXML.frame;
 			
 			var i:int = 1;
 			var akey:XML;

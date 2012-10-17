@@ -5,6 +5,7 @@ package blade3d.effect
 {
 	import away3d.containers.ObjectContainer3D;
 	import away3d.entities.Entity;
+	import away3d.entities.SpriteQuad;
 	import away3d.particle.ParticleSystem;
 	import away3d.particle.StripeSystem;
 	import away3d.primitives.SphereGeometry;
@@ -26,6 +27,9 @@ package blade3d.effect
 		// 条带
 		private var _stripes : Vector.<StripeSystem> = new Vector.<StripeSystem>;			// 条带特效
 		private var _stripesData : Vector.<ElementData> = new Vector.<ElementData>;
+		// 面片
+		private var _quads : Vector.<SpriteQuad> = new Vector.<SpriteQuad>;				// 面片特效
+		private var _quadsData : Vector.<ElementData> = new Vector.<ElementData>;
 		
 		
 		public function BlEffect()
@@ -47,6 +51,14 @@ package blade3d.effect
 		
 		public function getStripeNum() : int {
 			return _stripes.length;
+		}
+		
+		public function getQuad(index:int) : SpriteQuad {
+			return _quads[index];
+		}
+		
+		public function getQuadNum() : int {
+			return _quads.length;
 		}
 		
 		public function addParticle(particle : ParticleSystem, startTime : int, endTime : int):void
@@ -71,6 +83,17 @@ package blade3d.effect
 			_stripesData.push(elementData);
 		}
 		
+		public function addSpriteQuad(quad : SpriteQuad, startTime : int, endTime : int) : void
+		{
+			_quads.push(quad);
+			addChild(quad);
+			
+			var elementData : ElementData = new ElementData;
+			elementData.startTime = startTime;
+			elementData.endTime = endTime;
+			_quadsData.push(elementData);
+		}
+		
 		public function onCreate():void
 		{
 			var i:int;
@@ -82,6 +105,11 @@ package blade3d.effect
 			for(i = 0; i < _stripes.length; i++)
 			{
 				_stripes[i].renderLayer = Entity.Effect_Layer;
+			}
+			
+			for(i = 0; i < _quads.length; i++)
+			{
+				_quads[i].renderLayer = Entity.Effect_Layer;
 			}
 		}
 		
@@ -122,6 +150,17 @@ package blade3d.effect
 				else
 					_stripes[i].visible = false;
 			}
+			
+			for(i=0; i<_quads.length; i++)
+			{
+				if(_quadsData[i].startTime == 0)
+				{
+					_quads[i].playAllAnimators();
+					_quads[i].visible = true;
+				}
+				else
+					_quads[i].visible = false;
+			}
 		}
 		
 		public function stop() : void
@@ -137,6 +176,11 @@ package blade3d.effect
 			{
 				_stripes[i].Stop(true);
 				_stripes[i].stopAllAnimators();
+			}
+			
+			for(i=0; i<_quads.length; i++)
+			{
+				_quads[i].stopAllAnimators();
 			}
 		}
 		
@@ -164,6 +208,12 @@ package blade3d.effect
 				_stripes[i].dispose();
 			}
 			_stripes.length = 0;
+			
+			for(i=0; i<_quads.length; i++)
+			{
+				_quads[i].dispose();
+			}
+			_quads.length = 0;
 			
 			super.dispose();
 		}
@@ -203,6 +253,20 @@ package blade3d.effect
 					_stripes[i].stopAllAnimators();
 					_stripes[i].visible = false;
 				}
+			}
+			
+			for(i=0; i<_quads.length; i++)
+			{
+				if(_quadsData[i].startTime > _lastTime && _quadsData[i].startTime <= curLastTime)
+				{
+					_quads[i].playAllAnimators();
+					_quads[i].visible = true;
+				}
+				if(_quadsData[i].endTime > _lastTime && _quadsData[i].endTime <= curLastTime)
+				{
+					_quads[i].stopAllAnimators();
+					_quads[i].visible = false;
+				}				
 			}
 			
 			// 更新自身时间
